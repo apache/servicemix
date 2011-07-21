@@ -16,28 +16,52 @@
  */
 package org.apache.servicemix.core
 
-import collection.mutable.MutableList
-import org.apache.camel.spi.InterceptStrategy
+import collection.mutable.ListBuffer
 import org.apache.camel.model.ProcessorDefinition
-import org.apache.camel.{Processor, CamelContext}
+import org.apache.camel.{Exchange, Processor, CamelContext}
+import org.apache.camel.spi.InterceptStrategy
 
 class GlobalInterceptStrategy extends InterceptStrategy {
 
-  var strategies = new MutableList[InterceptStrategy]
+  val strategies = new ListBuffer[InterceptStrategy]
+  var lastUpdate = System.nanoTime();
 
   def addStrategy(strategy : InterceptStrategy) {
     strategies += strategy
+    lastUpdate = System.nanoTime()
   }
 
   def removeStrategy(strategy : InterceptStrategy) {
-    strategies.filterNot( _ == strategy)
+    strategies -= strategy
+    lastUpdate = System.nanoTime()
   }
 
-  def wrapProcessorInInterceptors(context: CamelContext, definition: ProcessorDefinition[_], target: Processor, nextTarget: Processor) : Processor = {
-    var t = target
-    for( strategy <- strategies ) {
-      t = strategy.wrapProcessorInInterceptors(context, definition, t, nextTarget)
+  def configure(context: CamelContext, definition: ProcessorDefinition[_], target: Processor, nextTarget: Processor) =
+    strategies.foldLeft(target){ (processor: Processor, strategy: InterceptStrategy) =>
+      strategy.wrapProcessorInInterceptors(context, definition, processor, nextTarget)
     }
-    t
+
+  def wrapProcessorInInterceptors(context: CamelContext, definition: ProcessorDefinition[_], target: Processor, nextTarget: Processor) : Processor =
+    new GlobalInterceptProcessor(context, definition, target, nextTarget, this)
+
+
+  class GlobalInterceptProcessor(context:CamelContext, definition: ProcessorDefinition[_], target: Processor,
+                                 nextTarget: Processor, globals: GlobalInterceptStrategy) extends Processor {
+
+    var currentProcessor = globals.configure(context, definition, target, nextTarget)
+    var lastUpdate = System.nanoTime();
+
+    def processor = {
+      if (lastUpdate < globals.lastUpdate) {
+        // global interceptor list has been updated - recreating the processor first
+        currentProcessor = globals.configure(context, definition, target, nextTarget)
+      }
+      currentProcessor
+    }
+
+    def process(exchange: Exchange) {
+      processor.process(exchange)
+    }
+
   }
 }

@@ -28,19 +28,15 @@ class BreadcrumbStrategy extends InterceptStrategy {
 
   import BreadcrumbStrategy.{hasBreadCrumb, addBreadCrumb}
 
-  def wrapProcessorInInterceptors(context: CamelContext, definition: ProcessorDefinition[_], target: Processor, nextTarget: Processor) : Processor = {
-    new ProcessorWrapper(target)
-  }
-
-  class ProcessorWrapper(target: Processor) extends Processor {
-    def process(exchange: Exchange) {
-      if (!hasBreadCrumb(exchange)) {
-        addBreadCrumb(exchange)
+  def wrapProcessorInInterceptors(context: CamelContext, definition: ProcessorDefinition[_], target: Processor, nextTarget: Processor) : Processor =
+    new Processor() {
+      def process(exchange: Exchange) {
+        if (!hasBreadCrumb(exchange)) {
+          addBreadCrumb(exchange)
+        }
+        target.process(exchange)
       }
-      target.process(exchange)
     }
-  }
-
 }
 
 object BreadcrumbStrategy {

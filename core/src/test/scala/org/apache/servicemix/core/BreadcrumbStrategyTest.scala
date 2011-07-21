@@ -19,7 +19,6 @@ package org.apache.servicemix.core
 import _root_.scala.Predef._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import collection.immutable.List
 import org.apache.camel.component.mock.MockEndpoint
 import org.apache.camel.scala.dsl.builder.{RouteBuilderSupport, RouteBuilder}
@@ -28,9 +27,11 @@ import scala.collection.JavaConversions.asScalaBuffer
 import org.apache.camel.impl.{DefaultCamelContext, DefaultProducerTemplate}
 
 import org.apache.servicemix.core.BreadcrumbStrategy.{hasBreadCrumb, getBreadCrumb}
+import org.scalatest.Assertions._
+import org.scalatest.{BeforeAndAfterEach, BeforeAndAfterAll, FunSuite}
 
 @RunWith(classOf[JUnitRunner])
-class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with BeforeAndAfterAll {
+class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with BeforeAndAfterAll with BeforeAndAfterEach {
 
   val messages = List("<gingerbread/>", "<cakes/>", "<sugar/>")
 
@@ -39,7 +40,6 @@ class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with Befo
   lazy val context = {
     val result = new DefaultCamelContext()
     result.addInterceptStrategy(globals)
-    globals.addStrategy(new BreadcrumbStrategy)
     result.addRoutes(createRouteBuilder())
     result.start()
     result
@@ -57,6 +57,8 @@ class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with Befo
   }
 
   test("add breadcrumbs to message headers") {
+    globals.addStrategy(new BreadcrumbStrategy)
+
     for (body <- messages) {
       template.sendBody("direct:test", body)
     }
@@ -76,6 +78,53 @@ class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with Befo
     assert(hansels == gretels, "Gretel should be able to find all of Hansel's bread crumbs")
   }
 
+  test("bread crumb strategy can be disabled if necessary") {
+    val breadcrumbs = new BreadcrumbStrategy
+    globals.addStrategy(breadcrumbs)
+
+    for (body <- messages) {
+      template.sendBody("direct:test", body)
+    }
+
+    val hansel = getMockEndpoint("mock:hansel")
+    hansel.expectedMessageCount(messages.size)
+
+    val gretel = getMockEndpoint("mock:gretel")
+    gretel.expectedMessageCount(messages.size)
+
+    List(hansel, gretel).foreach(_.assertIsSatisfied())
+
+    val hansels = for (exchange <- hansel.getExchanges) yield getBreadCrumb(exchange)
+    assert(hansels.toSet.size == messages.size, "We should have distinct breadcrumbs per message")
+
+    val gretels = for (exchange <- gretel.getExchanges) yield getBreadCrumb(exchange)
+    assert(hansels == gretels, "Gretel should be able to find all of Hansel's bread crumbs")
+
+    // let's now disable the bread crumbs and just continue with same context/processors/...
+    globals.removeStrategy(breadcrumbs)
+    MockEndpoint.resetMocks(context)
+
+    for (body <- messages) {
+      template.sendBody("direct:test", body)
+    }
+
+    hansel.expectedMessageCount(messages.size)
+
+    gretel.expectedMessageCount(messages.size)
+
+    List(hansel, gretel).foreach(_.assertIsSatisfied())
+
+    for (exchange <- hansel.getExchanges)
+      assert(!hasBreadCrumb(exchange), "There should be no more bread crumbs here")
+
+    for (exchange <- gretel.getExchanges)
+      assert(!hasBreadCrumb(exchange), "There should be no more bread crumbs here")
+  }
+
+  override protected def afterEach() = {
+    MockEndpoint.resetMocks(context)
+    globals.strategies.clear()
+  }
 
   def getMockEndpoint(name: String) = context.getEndpoint(name, classOf[MockEndpoint])
 
