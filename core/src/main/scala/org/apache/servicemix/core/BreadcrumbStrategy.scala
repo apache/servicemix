@@ -20,18 +20,50 @@ import org.apache.camel.spi.InterceptStrategy
 import org.apache.camel.model.ProcessorDefinition
 import org.apache.camel.{Exchange, Processor, CamelContext}
 
-
+/**
+ * The ServiceMix bread crumb strategy adds a header to the message to ensure we can follow the message throughout
+ * different routes and processors.
+ */
 class BreadcrumbStrategy extends InterceptStrategy {
 
+  import BreadcrumbStrategy.{hasBreadCrumb, addBreadCrumb}
+
   def wrapProcessorInInterceptors(context: CamelContext, definition: ProcessorDefinition[_], target: Processor, nextTarget: Processor) : Processor = {
-    System.out.println("Wrapping processor: " + target)
     new ProcessorWrapper(target)
   }
 
   class ProcessorWrapper(target: Processor) extends Processor {
     def process(exchange: Exchange) {
+      if (!hasBreadCrumb(exchange)) {
+        addBreadCrumb(exchange)
+      }
       target.process(exchange)
     }
   }
+
+}
+
+object BreadcrumbStrategy {
+
+  /**
+   * ServiceMix bread crumb header name
+   */
+  val SERVICEMIX_BREAD_CRUMB = "ServiceMixBreadCrumb"
+
+  /**
+   * Does the exchange have a ServiceMix bread crumb set?
+   */
+  def hasBreadCrumb(exchange: Exchange) : Boolean = getBreadCrumb(exchange) != null
+
+  /**
+   * Get the ServiceMix bread crumb value for an Exchange
+   */
+  def getBreadCrumb(exchange: Exchange) : String = exchange.getIn.getHeader(SERVICEMIX_BREAD_CRUMB, classOf[String])
+
+  /**
+   * Add a ServiceMix bread crumb to an Exchange
+   */
+  def addBreadCrumb(exchange: Exchange) : Unit = exchange.getIn.setHeader(SERVICEMIX_BREAD_CRUMB,
+                                                                          exchange.getContext.getUuidGenerator.generateUuid())
 
 }
