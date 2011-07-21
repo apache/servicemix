@@ -16,30 +16,28 @@
  */
 package org.apache.servicemix.core
 
-import org.apache.camel.spi.InterceptStrategy
-import org.apache.camel.model.ProcessorDefinition
-import org.apache.camel.{Exchange, Processor, CamelContext}
+import org.apache.camel.processor.DelegateAsyncProcessor
+import org.apache.camel.{AsyncCallback, Exchange, Processor, CamelContext}
 
 /**
  * The ServiceMix bread crumb strategy adds a header to the message to ensure we can follow the message throughout
  * different routes and processors.
  */
-class BreadcrumbStrategy extends InterceptStrategy {
+class Breadcrumbs extends DelegateProcessorFactory {
 
-  import BreadcrumbStrategy.{hasBreadCrumb, addBreadCrumb}
+  import Breadcrumbs.{hasBreadCrumb, addBreadCrumb}
 
-  def wrapProcessorInInterceptors(context: CamelContext, definition: ProcessorDefinition[_], target: Processor, nextTarget: Processor) : Processor =
-    new Processor() {
-      def process(exchange: Exchange) {
-        if (!hasBreadCrumb(exchange)) {
-          addBreadCrumb(exchange)
-        }
-        target.process(exchange)
+  def create(delegate: Processor) = new DelegateAsyncProcessor(delegate) {
+    override def process(exchange: Exchange, callback: AsyncCallback) = {
+      if (!hasBreadCrumb(exchange)) {
+        addBreadCrumb(exchange)
       }
+      processNext(exchange, callback)
     }
+  }
 }
 
-object BreadcrumbStrategy {
+object Breadcrumbs {
 
   /**
    * ServiceMix bread crumb header name
@@ -61,5 +59,27 @@ object BreadcrumbStrategy {
    */
   def addBreadCrumb(exchange: Exchange) : Unit = exchange.getIn.setHeader(SERVICEMIX_BREAD_CRUMB,
                                                                           exchange.getContext.getUuidGenerator.generateUuid())
+
+  /**
+   * Enable bread crumbs on the target CamelContext
+   */
+  def enable(context: CamelContext) = {
+    context.getProcessorFactory match {
+      case global: GlobalProcessorFactory => global.addFactory(new Breadcrumbs)
+      case _ => //unable to enable bread crumbs
+    }
+  }
+
+  /**
+   * Disable bread crumbs on the target CamelContext
+   */
+  def disable(context: CamelContext) = {
+    context.getProcessorFactory match {
+      case global: GlobalProcessorFactory => for (breadcrumb <- global.factories.filter(_.isInstanceOf[Breadcrumbs])) {
+        global.removeFactory(breadcrumb)
+      }
+      case _ => //unable to enable bread crumbs
+    }
+  }
 
 }

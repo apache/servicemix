@@ -26,20 +26,18 @@ import org.apache.camel.scala.dsl.builder.{RouteBuilderSupport, RouteBuilder}
 import scala.collection.JavaConversions.asScalaBuffer
 import org.apache.camel.impl.{DefaultCamelContext, DefaultProducerTemplate}
 
-import org.apache.servicemix.core.BreadcrumbStrategy.{hasBreadCrumb, getBreadCrumb}
+import org.apache.servicemix.core.Breadcrumbs.{hasBreadCrumb, getBreadCrumb}
 import org.scalatest.Assertions._
 import org.scalatest.{BeforeAndAfterEach, BeforeAndAfterAll, FunSuite}
 
 @RunWith(classOf[JUnitRunner])
-class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with BeforeAndAfterAll with BeforeAndAfterEach {
+class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAfterAll with BeforeAndAfterEach {
 
   val messages = List("<gingerbread/>", "<cakes/>", "<sugar/>")
 
-  val globals = new GlobalInterceptStrategy
-
   lazy val context = {
     val result = new DefaultCamelContext()
-    result.addInterceptStrategy(globals)
+    result.setProcessorFactory(new GlobalProcessorFactory)
     result.addRoutes(createRouteBuilder())
     result.start()
     result
@@ -57,7 +55,7 @@ class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with Befo
   }
 
   test("add breadcrumbs to message headers") {
-    globals.addStrategy(new BreadcrumbStrategy)
+    Breadcrumbs.enable(context)
 
     for (body <- messages) {
       template.sendBody("direct:test", body)
@@ -79,8 +77,7 @@ class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with Befo
   }
 
   test("bread crumb strategy can be disabled if necessary") {
-    val breadcrumbs = new BreadcrumbStrategy
-    globals.addStrategy(breadcrumbs)
+    Breadcrumbs.enable(context)
 
     for (body <- messages) {
       template.sendBody("direct:test", body)
@@ -101,7 +98,7 @@ class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with Befo
     assert(hansels == gretels, "Gretel should be able to find all of Hansel's bread crumbs")
 
     // let's now disable the bread crumbs and just continue with same context/processors/...
-    globals.removeStrategy(breadcrumbs)
+    Breadcrumbs.disable(context)
     MockEndpoint.resetMocks(context)
 
     for (body <- messages) {
@@ -123,7 +120,7 @@ class BreadcrumbStrategyTest extends FunSuite with RouteBuilderSupport with Befo
 
   override protected def afterEach() = {
     MockEndpoint.resetMocks(context)
-    globals.strategies.clear()
+    context.getProcessorFactory.asInstanceOf[GlobalProcessorFactory].factories.clear
   }
 
   def getMockEndpoint(name: String) = context.getEndpoint(name, classOf[MockEndpoint])

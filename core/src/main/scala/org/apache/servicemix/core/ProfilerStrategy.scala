@@ -17,7 +17,7 @@
 package org.apache.servicemix.core
 
 import org.apache.camel._
-import model.{RouteDefinition, ChoiceDefinition, WhenDefinition, ProcessorDefinition}
+import model.{RouteDefinition, ProcessorDefinition}
 import processor.DelegateAsyncProcessor
 import spi.{RouteContext, ProcessorFactory}
 import collection.mutable.LinkedHashMap
