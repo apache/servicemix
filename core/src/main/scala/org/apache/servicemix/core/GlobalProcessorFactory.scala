@@ -36,7 +36,7 @@ class GlobalProcessorFactory extends ProcessorFactory {
   def removeFactory(factory: DelegateProcessorFactory) = triggerUpdate(factories -= factory);
 
   def createChildProcessor(context: RouteContext, definition: ProcessorDefinition[_], mandatory: Boolean) = {
-    nullOrElse(definition.createProcessor(context))(new GlobalDelegateProcessor(context, definition, _))
+    nullOrElse(context.createProcessor(definition))(new GlobalDelegateProcessor(context, definition, _))
   }
 
   def createProcessor(context: RouteContext, definition: ProcessorDefinition[_]) = {

@@ -16,8 +16,11 @@
  */
 package org.apache.servicemix.core
 
-import org.apache.camel.processor.DelegateAsyncProcessor
 import org.apache.camel.{AsyncCallback, Exchange, Processor, CamelContext}
+import org.apache.camel.processor.{DelegateProcessor, DelegateAsyncProcessor}
+import org.apache.camel.processor.aggregate.{AggregationStrategy, AggregateProcessor}
+import collection.mutable.HashSet
+import collection.Iterable
 
 /**
  * The ServiceMix bread crumb strategy adds a header to the message to ensure we can follow the message throughout
@@ -25,15 +28,38 @@ import org.apache.camel.{AsyncCallback, Exchange, Processor, CamelContext}
  */
 class Breadcrumbs extends DelegateProcessorFactory {
 
-  import Breadcrumbs.{hasBreadCrumb, addBreadCrumb}
+  import Breadcrumbs.{hasBreadCrumb, addBreadCrumb, getBreadCrumb}
 
-  def create(delegate: Processor) = new DelegateAsyncProcessor(delegate) {
+  def create(delegate: Processor) = new DelegateAsyncProcessor(process(delegate)) {
     override def process(exchange: Exchange, callback: AsyncCallback) = {
       if (!hasBreadCrumb(exchange)) {
         addBreadCrumb(exchange)
       }
       processNext(exchange, callback)
     }
+  }
+
+  private def process(delegate: Processor) : Processor = {
+    var p = delegate
+    if (p.isInstanceOf[DelegateProcessor]) {
+      p = p.asInstanceOf[DelegateProcessor].getProcessor
+    }
+    if (p.isInstanceOf[AggregateProcessor]) {
+      val agg = p.asInstanceOf[AggregateProcessor]
+      val oldstrat = agg.getAggregationStrategy
+      val strategy = new AggregationStrategy {
+        def aggregate(oldExchange: Exchange, newExchange: Exchange) : Exchange = {
+          val ex = oldstrat.aggregate(oldExchange, newExchange)
+          if (oldExchange == null)
+            addBreadCrumb(ex, List(getBreadCrumb(newExchange)))
+          else
+            addBreadCrumb(ex, List(getBreadCrumb(oldExchange), getBreadCrumb(newExchange)))
+          ex
+        }
+      }
+      agg.setAggregationStrategy(strategy)
+    }
+    delegate
   }
 }
 
@@ -50,15 +76,43 @@ object Breadcrumbs {
   def hasBreadCrumb(exchange: Exchange) : Boolean = getBreadCrumb(exchange) != null
 
   /**
-   * Get the ServiceMix bread crumb value for an Exchange
+   * Get the ServiceMix bread crumb value for an Exchange  (eventually a comma separated list)
    */
   def getBreadCrumb(exchange: Exchange) : String = exchange.getIn.getHeader(SERVICEMIX_BREAD_CRUMB, classOf[String])
 
   /**
+   * Get the ServiceMix bread crumb values for an Exchange
+   */
+  def getBreadCrumbs(exchange: Exchange) : Set[String] = getBreadCrumbs(getBreadCrumb(exchange))
+
+  def getBreadCrumbs(breadcrumbs: String) : Set[String] = if (breadcrumbs == null) Set[String]() else breadcrumbs.split(",").toSet
+
+  /**
    * Add a ServiceMix bread crumb to an Exchange
    */
-  def addBreadCrumb(exchange: Exchange) : Unit = exchange.getIn.setHeader(SERVICEMIX_BREAD_CRUMB,
-                                                                          exchange.getContext.getUuidGenerator.generateUuid())
+  def addBreadCrumb(exchange: Exchange) : Unit = setBreadCrumb(exchange, exchange.getContext.getUuidGenerator.generateUuid())
+
+  /**
+   * Add a number of ServiceMix bread crumbs to an Exchange
+   */
+  def addBreadCrumb(exchange: Exchange, breadcrumbs: Iterable[String]) : Unit = {
+    var bcs = new HashSet[String]()
+    bcs = bcs ++ getBreadCrumbs(exchange)
+    for (bc <- breadcrumbs) {
+      bcs = bcs ++ getBreadCrumbs(bc)
+    }
+    setBreadCrumb(exchange, bcs)
+  }
+
+  /**
+   * Set the ServiceMix bread crumb to an Exchange
+   */
+  def setBreadCrumb(exchange: Exchange, breadcrumb: String) : Unit = exchange.getIn.setHeader(SERVICEMIX_BREAD_CRUMB, breadcrumb)
+
+  /**
+   * Set the ServiceMix bread crumbs to an Exchange
+   */
+  def setBreadCrumb(exchange: Exchange, breadcrumbs: Iterable[String]) : Unit = setBreadCrumb(exchange, breadcrumbs.mkString(","))
 
   /**
    * Enable bread crumbs on the target CamelContext
@@ -80,6 +134,17 @@ object Breadcrumbs {
       }
       case _ => //unable to enable bread crumbs
     }
+  }
+
+  private def nullOrElse[S,T](value: S)(function: S => T) : T = if (value == null) {
+    null.asInstanceOf[T]
+  } else {
+    function(value)
+  }
+  private def nullOrElse[S,T](value: S, default: T)(function: S => T) : T = if (value == null) {
+    default
+  } else {
+    function(value)
   }
 
 }

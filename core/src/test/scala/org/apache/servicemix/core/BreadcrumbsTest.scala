@@ -26,9 +26,9 @@ import org.apache.camel.scala.dsl.builder.{RouteBuilderSupport, RouteBuilder}
 import scala.collection.JavaConversions.asScalaBuffer
 import org.apache.camel.impl.{DefaultCamelContext, DefaultProducerTemplate}
 
-import org.apache.servicemix.core.Breadcrumbs.{hasBreadCrumb, getBreadCrumb}
-import org.scalatest.Assertions._
+import org.apache.servicemix.core.Breadcrumbs.{hasBreadCrumb, getBreadCrumb, getBreadCrumbs}
 import org.scalatest.{BeforeAndAfterEach, BeforeAndAfterAll, FunSuite}
+import org.apache.camel.processor.aggregate.UseLatestAggregationStrategy
 
 @RunWith(classOf[JUnitRunner])
 class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAfterAll with BeforeAndAfterEach {
@@ -118,6 +118,23 @@ class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAf
       assert(!hasBreadCrumb(exchange), "There should be no more bread crumbs here")
   }
 
+  test("bread crumb strategy with aggregator") {
+    Breadcrumbs.enable(context)
+
+    for (body <- messages) {
+      template.sendBody("direct:aggregate", body)
+    }
+
+    val aggres = getMockEndpoint("mock:aggres")
+    aggres.expectedMessageCount(1)
+    aggres.assertIsSatisfied()
+
+    val exchange = aggres.getExchanges.get(0)
+    val bcs = getBreadCrumbs(exchange)
+    assert(bcs.size == messages.size, "There should be no more bread crumbs here")
+  }
+
+
   override protected def afterEach() = {
     MockEndpoint.resetMocks(context)
     context.getProcessorFactory.asInstanceOf[GlobalProcessorFactory].factories.clear
@@ -126,11 +143,18 @@ class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAf
   def getMockEndpoint(name: String) = context.getEndpoint(name, classOf[MockEndpoint])
 
   def createRouteBuilder() = new RouteBuilder {
+      "direct:aggregate" ==> {
+        aggregate (true, new UseLatestAggregationStrategy()).completionSize(messages.size) {
+          to("mock:aggres")
+        }
+      }
+
       "direct:test" ==> {
         to("mock:hansel")
         to("seda:forest")
       }
 
       "seda:forest" to "mock:gretel"
+
     }
 }
