@@ -1,5 +1,3 @@
-package org.apache.servicemix.core
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -16,6 +14,8 @@ package org.apache.servicemix.core
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.apache.servicemix.core
+
 import _root_.scala.Predef._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -37,7 +37,6 @@ class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAf
 
   lazy val context = {
     val result = new DefaultCamelContext()
-    result.setProcessorFactory(new GlobalProcessorFactory)
     result.addRoutes(createRouteBuilder())
     result.start()
     result
@@ -49,14 +48,23 @@ class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAf
     result
   }
 
-  override protected def afterAll() = {
+
+  override protected def beforeEach() {
+    Breadcrumbs.reset()
+  }
+
+  override protected def beforeAll() {
+    ServiceMixContainer.init()
+    Breadcrumbs.register()
+  }
+
+  override protected def afterAll() {
     template.stop()
     context.stop()
+    Breadcrumbs.unregister()
   }
 
   test("add breadcrumbs to message headers") {
-    Breadcrumbs.enable(context)
-
     for (body <- messages) {
       template.sendBody("direct:test", body)
     }
@@ -77,8 +85,6 @@ class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAf
   }
 
   test("bread crumb strategy can be disabled if necessary") {
-    Breadcrumbs.enable(context)
-
     for (body <- messages) {
       template.sendBody("direct:test", body)
     }
@@ -119,8 +125,6 @@ class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAf
   }
 
   test("bread crumb strategy with aggregator") {
-    Breadcrumbs.enable(context)
-
     for (body <- messages) {
       template.sendBody("direct:aggregate", body)
     }
@@ -131,11 +135,11 @@ class BreadcrumbsTest extends FunSuite with RouteBuilderSupport with BeforeAndAf
 
     val exchange = aggres.getExchanges.get(0)
     val bcs = getBreadCrumbs(exchange)
-    assert(bcs.size == messages.size, "There should be no more bread crumbs here")
+    expect(messages.size, "The number of breadcrumbs from the aggregator is wrong")(bcs.size)
   }
 
 
-  override protected def afterEach() = {
+  override protected def afterEach() {
     MockEndpoint.resetMocks(context)
     context.getProcessorFactory.asInstanceOf[GlobalProcessorFactory].factories.clear
   }

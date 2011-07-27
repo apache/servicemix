@@ -16,11 +16,10 @@
  */
 package org.apache.servicemix.core
 
-import org.apache.camel.{AsyncCallback, Exchange, Processor, CamelContext}
 import org.apache.camel.processor.{DelegateProcessor, DelegateAsyncProcessor}
 import org.apache.camel.processor.aggregate.{AggregationStrategy, AggregateProcessor}
-import collection.mutable.HashSet
 import collection.Iterable
+import org.apache.camel._
 
 /**
  * The ServiceMix bread crumb strategy adds a header to the message to ensure we can follow the message throughout
@@ -28,11 +27,11 @@ import collection.Iterable
  */
 class Breadcrumbs extends DelegateProcessorFactory {
 
-  import Breadcrumbs.{hasBreadCrumb, addBreadCrumb, getBreadCrumb}
+  import Breadcrumbs._
 
   def create(delegate: Processor) = new DelegateAsyncProcessor(process(delegate)) {
     override def process(exchange: Exchange, callback: AsyncCallback) = {
-      if (!hasBreadCrumb(exchange)) {
+      if (isEnabled(exchange) && !hasBreadCrumb(exchange)) {
         addBreadCrumb(exchange)
       }
       processNext(exchange, callback)
@@ -50,10 +49,11 @@ class Breadcrumbs extends DelegateProcessorFactory {
       val strategy = new AggregationStrategy {
         def aggregate(oldExchange: Exchange, newExchange: Exchange) : Exchange = {
           val ex = oldstrat.aggregate(oldExchange, newExchange)
-          if (oldExchange == null)
-            addBreadCrumb(ex, List(getBreadCrumb(newExchange)))
-          else
-            addBreadCrumb(ex, List(getBreadCrumb(oldExchange), getBreadCrumb(newExchange)))
+          if (isEnabled(ex)) {
+            val bcs = if (oldExchange == null) getBreadCrumbs(ex) ++ getBreadCrumbs(newExchange)
+                      else getBreadCrumbs(ex) ++ getBreadCrumbs(oldExchange) ++ getBreadCrumbs(newExchange)
+            setBreadCrumbs(ex, bcs)
+          }
           ex
         }
       }
@@ -63,7 +63,7 @@ class Breadcrumbs extends DelegateProcessorFactory {
   }
 }
 
-object Breadcrumbs {
+object Breadcrumbs extends Switchable {
 
   /**
    * ServiceMix bread crumb header name
@@ -90,61 +90,36 @@ object Breadcrumbs {
   /**
    * Add a ServiceMix bread crumb to an Exchange
    */
-  def addBreadCrumb(exchange: Exchange) : Unit = setBreadCrumb(exchange, exchange.getContext.getUuidGenerator.generateUuid())
-
-  /**
-   * Add a number of ServiceMix bread crumbs to an Exchange
-   */
-  def addBreadCrumb(exchange: Exchange, breadcrumbs: Iterable[String]) : Unit = {
-    var bcs = new HashSet[String]()
-    bcs = bcs ++ getBreadCrumbs(exchange)
-    for (bc <- breadcrumbs) {
-      bcs = bcs ++ getBreadCrumbs(bc)
-    }
-    setBreadCrumb(exchange, bcs)
+  def addBreadCrumb(exchange: Exchange) {
+    setBreadCrumb(exchange, exchange.getContext.getUuidGenerator.generateUuid())
   }
 
   /**
    * Set the ServiceMix bread crumb to an Exchange
    */
-  def setBreadCrumb(exchange: Exchange, breadcrumb: String) : Unit = exchange.getIn.setHeader(SERVICEMIX_BREAD_CRUMB, breadcrumb)
+  def setBreadCrumb(exchange: Exchange, breadcrumb: String) {
+    exchange.getIn.setHeader(SERVICEMIX_BREAD_CRUMB, breadcrumb)
+  }
 
   /**
    * Set the ServiceMix bread crumbs to an Exchange
    */
-  def setBreadCrumb(exchange: Exchange, breadcrumbs: Iterable[String]) : Unit = setBreadCrumb(exchange, breadcrumbs.mkString(","))
-
-  /**
-   * Enable bread crumbs on the target CamelContext
-   */
-  def enable(context: CamelContext) = {
-    context.getProcessorFactory match {
-      case global: GlobalProcessorFactory => global.addFactory(new Breadcrumbs)
-      case _ => //unable to enable bread crumbs
-    }
+  def setBreadCrumbs(exchange: Exchange, breadcrumbs: Iterable[String]) {
+    setBreadCrumb(exchange, breadcrumbs.mkString(","))
   }
 
   /**
-   * Disable bread crumbs on the target CamelContext
+   * Enable bread crumbs on the ServiceMix Container
    */
-  def disable(context: CamelContext) = {
-    context.getProcessorFactory match {
-      case global: GlobalProcessorFactory => for (breadcrumb <- global.factories.filter(_.isInstanceOf[Breadcrumbs])) {
-        global.removeFactory(breadcrumb)
-      }
-      case _ => //unable to enable bread crumbs
-    }
+  def register(container: ServiceMixContainer = ServiceMixContainer.instance) {
+    container.register(classOf[Breadcrumbs])
   }
 
-  private def nullOrElse[S,T](value: S)(function: S => T) : T = if (value == null) {
-    null.asInstanceOf[T]
-  } else {
-    function(value)
-  }
-  private def nullOrElse[S,T](value: S, default: T)(function: S => T) : T = if (value == null) {
-    default
-  } else {
-    function(value)
+  /**
+   * Disable bread crumbs on the ServiceMix Container
+   */
+  def unregister(container: ServiceMixContainer = ServiceMixContainer.instance) {
+    container.unregister(classOf[Breadcrumbs])
   }
 
 }

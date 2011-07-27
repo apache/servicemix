@@ -31,14 +31,14 @@ import org.apache.camel.{Exchange, ProducerTemplate}
 @RunWith(classOf[JUnitRunner])
 class ProfilerStrategyTest extends FunSuite with BeforeAndAfterAll with BeforeAndAfterEach {
 
-  override protected def beforeAll() = {
+  override protected def beforeAll() {
   }
 
-  override protected def afterAll() = {
+  override protected def afterAll() {
 
   }
 
-  def sleep() = {
+  def sleep() {
     Thread.sleep(2)
   }
 

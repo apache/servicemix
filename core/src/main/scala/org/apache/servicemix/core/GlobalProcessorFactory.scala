@@ -18,10 +18,11 @@ package org.apache.servicemix.core
 
 import org.apache.camel.spi.{RouteContext, ProcessorFactory}
 import org.apache.camel.model.ProcessorDefinition
-import collection.mutable.ListBuffer
-import org.apache.camel.processor.DelegateAsyncProcessor
-import org.apache.camel.{AsyncProcessor, Processor, AsyncCallback, Exchange}
 import java.util.concurrent.atomic.AtomicInteger
+import collection.mutable.ListBuffer
+import org.apache.camel._
+import processor.DelegateAsyncProcessor
+import GlobalProcessorFactory._
 
 /**
  * Global ServiceMix ProcessorFactory implementation, which will take care of wrapping processors with the additional
@@ -43,37 +44,44 @@ class GlobalProcessorFactory extends ProcessorFactory {
     nullOrElse(definition.createProcessor(context))(new GlobalDelegateProcessor(context, definition, _))
   }
 
-  def nullOrElse[S,T](value: S)(function: S => T) = if (value == null) {
-    null.asInstanceOf[T]
-  } else {
-    function(value)
-  }
-
   def triggerUpdate(block: => Unit) = {
     block
     version.incrementAndGet()
   }
 
-  def configure(original: AsyncProcessor) : AsyncProcessor = {
-    factories.foldLeft(original){ (delegate: AsyncProcessor, factory: DelegateProcessorFactory) =>
-      factory.create(delegate)
-    }
-  }
+  class GlobalDelegateProcessor(routeContext: RouteContext, definition: ProcessorDefinition[_], target: Processor) extends DelegateAsyncProcessor(target) {
 
-  class GlobalDelegateProcessor(context: RouteContext, definition: ProcessorDefinition[_], target: Processor) extends DelegateAsyncProcessor(target) {
-
-    var currentProcessor = GlobalProcessorFactory.this.configure(getProcessor())
+    var currentProcessor = configure(getProcessor)
     var version = GlobalProcessorFactory.this.version.get()
 
     override def process(exchange: Exchange, callback: AsyncCallback) = {
       // let's check if processor factories have changed and reconfigure things if necessary
       if (version < GlobalProcessorFactory.this.version.get) {
-        currentProcessor = GlobalProcessorFactory.this.configure(getProcessor())
+        currentProcessor = configure(getProcessor)
       }
 
       currentProcessor.process(exchange, callback)
     }
 
     override def toString = "ServiceMix Wrapper[" + processor + "]"
+
+    def configure(original: AsyncProcessor) : AsyncProcessor = {
+      factories.foldLeft(original) { (delegate: AsyncProcessor, factory: DelegateProcessorFactory) => {
+          factory.create(delegate)
+        }
+      }
+    }
+
   }
 }
+
+object GlobalProcessorFactory {
+
+  private def nullOrElse[S,T](value: S)(function: S => T) = if (value == null) {
+    null.asInstanceOf[T]
+  } else {
+    function(value)
+  }
+
+}
+
