@@ -1,7 +1,0 @@
-*.i??
-.project
-.classpath
-.settings
-target
-eclipse-classes
-bin
