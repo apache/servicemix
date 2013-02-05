@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Header>
+      <MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:123456789</MessageID>
+      <To xmlns="http://www.w3.org/2005/08/addressing">http://localhost:8080/SoapContext/SoapPort</To>
+      <ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
+         <Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+      </ReplyTo>
+      <FaultTo xmlns="http://www.w3.org/2005/08/addressing">
+         <Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+      </FaultTo>
+      <Action xmlns="http://www.w3.org/2005/08/addressing">http://apache.org/hello_world_soap_http/Greeter/sayHiRequest</Action>
+   </soap:Header>
+   <soap:Body>
+      <sayHi xmlns="http://apache.org/hello_world_soap_http/types"/>
+   </soap:Body>
+</soap:Envelope>
+

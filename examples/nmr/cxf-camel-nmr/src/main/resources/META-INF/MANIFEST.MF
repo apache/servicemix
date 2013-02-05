@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.apache.servicemix.examples.cxfcamel
+Bundle-Version: 1.0.0.SNAPSHOT
+Import-Package: META-INF.cxf,META-INF.cxf.osgi,META-INF.cxf.transport.nmr,javax.jws

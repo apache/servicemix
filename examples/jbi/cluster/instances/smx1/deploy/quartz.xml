@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:quartz="http://servicemix.apache.org/quartz/1.0"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:b="http://servicemix.apache.org/examples/camel"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/util
+         http://www.springframework.org/schema/util/spring-util.xsd
+         http://www.springframework.org/schema/osgi
+         http://www.springframework.org/schema/osgi/spring-osgi.xsd
+         http://www.springframework.org/schema/osgi-compendium
+         http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
+         http://servicemix.apache.org/quartz/1.0
+         http://servicemix.apache.org/quartz/1.0/servicemix-quartz.xsd
+         http://www.springframework.org/schema/osgi
+         http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+    <!-- Define a quartz endpoint, firing JBI exchangs every 500 ms -->
+    <quartz:endpoint id="quartzEndpoint" service="b:service" endpoint="endpoint" targetService="b:receiver">
+        <quartz:trigger>
+            <quartz:simple repeatCount="500" repeatInterval="500" startDelay="2000" />
+        </quartz:trigger>
+    </quartz:endpoint>
+	
+	<!-- Export the endpoints and create a service assembly -->
+    <bean class="org.apache.servicemix.common.osgi.EndpointExporter" />
+
+    <!-- Register the quartzEndpoint endpoint as a clustered endpoint -->
+    <bean class="org.apache.servicemix.jbi.cluster.engine.OsgiSimpleClusterRegistration">
+        <property name="endpoint" ref="quartzEndpoint" />
+    </bean>
+    
+</beans>

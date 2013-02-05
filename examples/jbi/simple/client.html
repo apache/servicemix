@@ -1,0 +1,224 @@
+<html><head><!--
+    
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+--><!-- $Rev$ $Date$ --><title>ServiceMix SOAP Binding Example</title>
+
+
+
+
+<script type="text/javascript">
+
+function getHTTPObject() {
+  var xmlhttp = false;
+
+  /* Compilation conditionnelle d'IE */
+  /*@cc_on
+  @if (@_jscript_version >= 5)
+     try {
+        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+     } catch (e) {
+        try {
+           xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (E) {
+           xmlhttp = false;
+        }
+     }
+  @else
+     xmlhttp = false;
+  @end @*/
+
+  /* on essaie de cr�er l'objet si ce n'est pas d�j� fait */
+  if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+     try {
+        xmlhttp = new XMLHttpRequest();
+     } catch (e) {
+        xmlhttp = false;
+     }
+  }
+
+  if (xmlhttp) {
+     /* on d�finit ce qui doit se passer quand la page r�pondra */
+     xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState == 4) { /* 4 : �tat "complete" */
+           var response = document.getElementById("response");
+           response.value = "STATUS: " + xmlhttp.status + "\n" + xmlhttp.responseText
+        }
+     }
+  }
+  return xmlhttp;
+}
+
+function send(uri) {
+  var xmlhttp = getHTTPObject();
+  if (!xmlhttp) {
+    alert('cound not create XMLHttpRequest object');
+    return;
+  }
+  var request = document.getElementById("request");
+  var response = document.getElementById("response");
+  try {
+    netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead UniversalBrowserWrite");
+    xmlhttp.open("POST", uri, true);
+  } catch (e) {
+    alert('error opening');
+  }
+  xmlhttp.send(request.value);
+}
+
+function sendCPP() {
+  send("http://localhost:8192/wsn/CreatePullPoint/");
+}
+
+function sendBroker() {
+  send("http://localhost:8192/wsn/Broker/");
+}
+
+var soapPre = "<env:Envelope\n" + 
+              "    xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+              "  <env:Body>\n";
+var soapPost = "  </env:Body>\n" +
+               "</env:Envelope>\n";
+
+function createPullPoint() {
+  var request = document.getElementById("request");
+  request.value = soapPre + 
+                  "    <wsnt:CreatePullPoint\n" + 
+                  "        xmlns:wsnt=\"http://docs.oasis-open.org/wsn/b-2\"\n" +
+                  "        xmlns:sm=\"http://servicemix.apache.org/wsn2005/1.0\">\n" +
+                  "      <sm:address>\n" + 
+                  "        http://www.consumer.org/service/endpoint\n" +
+                  "      </sm:address>\n" +
+                  "    </wsnt:CreatePullPoint>\n" + 
+                  soapPost;
+}
+
+function subscribe() {
+  var request = document.getElementById("request");
+  request.value = soapPre +
+                  "    <wsnt:Subscribe\n" +
+                  "      xmlns:wsnt=\"http://docs.oasis-open.org/wsn/b-2\"\n" +
+                  "      xmlns:wsa=\"http://www.w3.org/2005/08/addressing\"\n" +
+                  "      xmlns:ncex=\"http://www.consumer.org\"\n" +
+                  "      xmlns:npex=\"http://www.producer.org\">\n" +
+                  "      <wsnt:ConsumerReference>\n" +
+                  "        <wsa:Address>\n" +
+                  "          http://www.consumer.org/service/endpoint\n" +
+                  "        </wsa:Address>\n" +
+                  "      </wsnt:ConsumerReference>\n" +
+                  "      <wsnt:Filter>\n" +
+                  "        <wsnt:TopicExpression\n" + 
+                  "            Dialect=\"http://docs.oasis-open.org/wsn/t-1/TopicExpression/Simple\">\n" +
+                  "          myTopic\n" +
+                  "        </wsnt:TopicExpression>\n" +
+                  "      </wsnt:Filter>\n" +
+                  "    </wsnt:Subscribe>\n" +
+                  soapPost;
+}
+function notify() {
+  var request = document.getElementById("request");
+  request.value = "<env:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"\n" +
+        " xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">\n" +
+        "<env:Header>\n" +
+                "<wsa:To>\n" +
+                        "http://www.consumer.org/service/endpoint\n" +
+                "</wsa:To>\n" +
+        "</env:Header>\n" +
+
+	"<env:Body>\n" +
+		"<wsnt:Notify xmlns:wsnt=\"http://docs.oasis-open.org/wsn/b-2\">\n" +
+			"<wsnt:NotificationMessage>\n" +
+				"<wsnt:Topic Dialect=\"http://docs.oasis-open.org/wsn/t-1/TopicExpression/Simple\">\n" + 
+					"BrewProcess\n" +
+				"</wsnt:Topic>\n" +
+				"<wsnt:Message>\n" +
+					"<alarm:Alarm xmlns:alarm=\"http://alarms.some-host\">\n" +
+						"<Name>Kettle Overfill</Name>\n" +
+						"<Desc>Kettle Overfill Alarm</Desc>\n" +
+						"<Date>2007-09-22-12:00:30:100</Date>\n" +
+						"<Severity>3</Severity>\n" +
+						"<Value>110.2</Value>\n" +
+						"<Ack>false</Ack>\n" +
+					"</alarm:Alarm>\n" +
+				"</wsnt:Message>\n" +
+			"</wsnt:NotificationMessage>\n" +
+		"</wsnt:Notify>\n" +
+	"</env:Body>\n" +
+"</env:Envelope>"
+}
+function getMessages() {
+  var request = document.getElementById("request");
+  request.value = "<env:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"\n" +
+	"xmlns:wsnt=\"http://docs.oasis-open.org/wsn/b-2\"\n" +
+	"xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">\n" +
+	"<env:Header>\n" +
+		"<wsa:To>\n" +
+			"http://www.consumer.org/service/endpoint\n" +
+		"</wsa:To>\n" +
+	"</env:Header>\n" + 
+	"<env:Body>\n" +
+		"<wsnt:GetMessages>\n" +
+			"<wsnt:MaximumNumber>10</wsnt:MaximumNumber>\n" +
+		"</wsnt:GetMessages>\n" +
+	"</env:Body>\n" +
+"</env:Envelope>"
+}
+
+</script></head><body>
+
+<h1>ServiceMix WS-Notification Binding Example</h1>
+
+<p>Welcome to the WS-Notification example for ServiceMix</p>
+
+<table>
+  <tbody><tr>
+    <td>
+    <h2>Request</h2>
+  <textarea id="request" style="width: 600px; height: 300px;">  </textarea>
+    </td>
+    <td>
+    <h2>Response</h2>
+  <textarea id="response" style="width: 600px; height: 300px;">  </textarea>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+  <input value="CreatePullPoint" onclick="createPullPoint();" type="button">
+  <input value="Send" onclick="sendCPP();" type="button">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+  <input value="Subscribe" onclick="subscribe();" type="button">
+  <input value="Send" onclick="sendBroker();" type="button">
+    </td>
+   </tr>
+  <tr>
+  <td colspan="2">
+  <input value="Notify" onclick="notify();" type="button">
+  <input value="Send" onclick="sendBroker();" type="button">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+  <input value="getMessages" onclick="getMessages();" type="button">
+  <input value="Send" onclick="sendBroker();" type="button">
+    </td>
+
+  </tr>
+</tbody></table>
+
+</body></html>

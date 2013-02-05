@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--
+
+        Licensed to the Apache Software Foundation (ASF) under one or more
+        contributor license agreements.  See the NOTICE file distributed with
+        this work for additional information regarding copyright ownership.
+        The ASF licenses this file to You under the Apache License, Version 2.0
+        (the "License"); you may not use this file except in compliance with
+        the License.  You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+    -->
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.apache.servicemix.examples</groupId>
+        <artifactId>cxf</artifactId>
+        <version>4.6.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>cxf-ws-addressing</artifactId>
+    <packaging>bundle</packaging>
+    <name>Apache ServiceMix :: Features :: Examples :: CXF WS-Addressing OSGI</name>
+    <description>CXF example using WS-Addressing</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix</groupId>
+            <artifactId>servicemix-utils</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-test-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/hello_world_addr.wsdl</wsdl>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Description>${project.description}</Bundle-Description>
+                        <Import-Package>
+                            javax.jws,
+                            javax.wsdl,
+                            javax.xml.bind,
+                            javax.xml.bind.annotation,
+                            javax.xml.namespace,
+                            javax.xml.soap,
+                            javax.xml.transform,
+                            javax.xml.ws,
+                            javax.xml.ws.handler,
+                            javax.xml.ws.handler.soap,
+                            META-INF.cxf,
+                            org.apache.cxf.bus,
+                            org.apache.cxf.bus.spring,
+                            org.apache.cxf.bus.resource,
+                            org.apache.cxf.configuration.spring,
+                            org.apache.cxf.resource,
+                            org.apache.cxf.transport.http,
+                            org.apache.cxf.feature,
+                            org.apache.cxf.interceptor,
+                            org.apache.cxf.ws.addressing,
+                            org.apache.cxf.ws.addressing.soap,
+                            org.apache.servicemix.util,
+                            org.apache.cxf.message, 
+                            org.apache.cxf.phase,
+                            org.springframework.beans.factory.config
+                        </Import-Package>
+                        <Export-Package>
+                            org.apache.servicemix.examples.cxf.wsaddressing,
+                            org.apache.hello_world_soap_http,
+                            org.apache.hello_world_soap_http.types
+                        </Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>org.apache.servicemix.examples.cxf.wsaddressing.Client</mainClass>
+                    <includePluginDependencies>false</includePluginDependencies>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

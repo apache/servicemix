@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<e:Envelope xmlns:e="http://schemas.xmlsoap.org/soap/envelope/">
+  <e:Body>
+    <ping>
+      <pingRequest>
+        <message xmlns="http://soap">hel lo</message>
+      </pingRequest>
+    </ping>
+  </e:Body>
+</e:Envelope>

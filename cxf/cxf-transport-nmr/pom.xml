@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!--
+    
+        Licensed to the Apache Software Foundation (ASF) under one or more
+        contributor license agreements.  See the NOTICE file distributed with
+        this work for additional information regarding copyright ownership.
+        The ASF licenses this file to You under the Apache License, Version 2.0
+        (the "License"); you may not use this file except in compliance with
+        the License.  You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+    -->
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.apache.servicemix.cxf</groupId>
+        <artifactId>cxf</artifactId>
+        <version>4.6.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>org.apache.servicemix.cxf.transport.nmr</artifactId>
+    <packaging>bundle</packaging>
+    <name>Apache ServiceMix :: Features :: CXF Support :: Transport For NMR</name>
+    <description>Apache CXF Transport integration to NMR</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.servicemix.nmr</groupId>
+            <artifactId>org.apache.servicemix.nmr.api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.nmr</groupId>
+            <artifactId>org.apache.servicemix.nmr.core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-bundle</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-annotation_1.0_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-servlet_2.5_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jaxb-api-${jaxb.api.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymockclassextension</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Bundle generation -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Description>${project.description}</Bundle-Description>
+                        <Import-Package>
+                            javax.xml.bind*;version="[0.0,3)",
+                            javax.activation;version="[0.0,2)",
+                            javax.annotation;version="[0.0,2)",
+                            javax.jws*;version="[0.0,3)",
+                            *
+                        </Import-Package>
+                        <!-- Needed for jaxb annotations classes -->
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                        <Export-Package>
+                            ${project.artifactId}*,
+                            org.apache.cxf.transports.nmr,
+                            '=META-INF.cxf.transport.nmr'
+                        </Export-Package>
+                        <Private-Package />
+                        <_failok>true</_failok>
+                        <Spring-Context>*;publish-context:=false</Spring-Context>
+                        <_versionpolicy>[$(version;==;$(@)),$(version;+;$(@)))</_versionpolicy>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <!-- generate dependencies versions -->
+            <plugin>
+                <groupId>org.apache.servicemix.tooling</groupId>
+                <artifactId>depends-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-depends-file</id>
+                        <goals>
+                            <goal>generate-depends-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <forkMode>pertest</forkMode>
+                    <systemProperties>
+                        <property>
+                            <name>javax.xml.parsers.DocumentBuilderFactory</name>
+                            <value>com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl</value>
+                        </property>
+                        <property>
+                            <name>javax.xml.datatype.DatatypeFactory</name>
+                            <value>com.sun.org.apache.xerces.internal.jaxp.datatype.DatatypeFactoryImpl</value>
+                        </property>
+                        <property>
+                            <name>javax.xml.parsers.SAXParserFactory</name>
+                            <value>com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-xjc-plugin</artifactId>
+                <version>${cxf.xjc-utils.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+                            <xsdOptions>
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/schemas/wsdl/nmr.xsd</xsd>
+                                    <bindingFile>${basedir}/src/main/resources/schemas/wsdl/nmr.xjb</bindingFile>
+                                    <catalog>${basedir}/src/main/build-resources/catalog.cat</catalog>
+                                    <deleteDirs>
+                                        <deleteDir>${basedir}/target/generated/src/main/java/org/apache/cxf/wsdl</deleteDir>
+                                    </deleteDirs>
+                                </xsdOption>
+
+                            </xsdOptions>
+                        </configuration>
+                        <goals>
+                            <goal>xsdtojava</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- exclude generated class from Cobertura reports -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <configuration>
+                    <instrumentation>
+                        <excludes>
+                            <exclude>org/apache/servicemix/cxf/transport/nmr/ObjectFactory.class</exclude>
+                            <exclude>org/apache/servicemix/cxf/transport/nmr/package-info.class</exclude>
+                            <exclude>org/apache/servicemix/cxf/transport/nmr/AddressType.class</exclude>
+                        </excludes>
+                    </instrumentation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <profiles>
+        <profile>
+            <id>ibmjdk</id>
+            <activation>
+                <property>
+                    <name>java.vendor</name>
+                    <value>IBM Corporation</value>
+                </property>
+            </activation>
+            <!-- Add the Sun jaxp-ri as a dependency when using the ibm jdk, so that 
+                cxf's dependency on the Sun saaj can work with the ibm jdk. -->
+            <dependencies>
+                <dependency>
+                    <groupId>com.sun.xml.parsers</groupId>
+                    <artifactId>jaxp-ri</artifactId>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>**/*Test*</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*$*</exclude>
+                            </excludes>
+                            <forkMode>${surefire.fork.mode}</forkMode>
+                            <systemProperties>
+                                <property>
+                                    <name>derby.system.home</name>
+                                    <value>${basedir}/target/derby</value>
+                                </property>
+                                <!-- With Maven 2.0.7, it's possible that jaxp-ri will be placed 
+                                    in front of woodstox on the classpath. If this happens, cxf will not use 
+                                    woodstox, causing test failures (e.g., CxfBcProviderConsumerMtomTest). So, 
+                                    set these properties to ensure woodstox is used. Maven 2.0.9 doesn't require 
+                                    this work-around since it consistently places jaxp-ri at the end of the dependencies. -->
+                                <property>
+                                    <name>javax.xml.stream.XMLInputFactory</name>
+                                    <value>com.ctc.wstx.stax.WstxInputFactory</value>
+                                </property>
+                                <property>
+                                    <name>javax.xml.stream.XMLOutputFactory</name>
+                                    <value>com.ctc.wstx.stax.WstxOutputFactory</value>
+                                </property>
+                            </systemProperties>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
