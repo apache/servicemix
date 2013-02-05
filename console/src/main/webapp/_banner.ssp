@@ -1,0 +1,15 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="left" class="topbardiv" nowrap="">
+<a href="http://servicemix.apache.org/" title="An Open Source ESB and Integration Plaftorm powered by OSGi">
+            <img border="0" src="${uri("/images/smx-logo.png")}" width="400px"></img>
+            <span style="position: relative; top: -24px; font-family: Comic Sans MS; font-size: 64px; color: white;"></span>
+</a>
+          </td>
+          <td align="right" nowrap="">
+<a href="http://www.apache.org/" title="The Apache Sofware Foundation">
+            <img border="0" src="${uri("/images/asf-logo.png")}">
+</a>
+          </td>
+        </tr>
+      </table>
