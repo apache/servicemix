@@ -38,7 +38,6 @@
         <module>cxf-http-osgi</module>
         <module>cxf-ws-security-osgi</module>
         <module>cxf-jms-osgi</module>
-        <module>cxf-nmr-osgi</module>
         <module>cxf-soap-handler-osgi</module>
         <module>cxf-handler-cfg</module>
         <module>cxf-mtom-osgi</module>

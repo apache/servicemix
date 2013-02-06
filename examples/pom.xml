@@ -39,8 +39,6 @@
         <!-- <module>akka</module>  commented out now until Akka OSGi bundle are available in a repo -->
         <module>camel</module>
         <module>cxf</module>
-        <module>jbi</module>
-        <module>nmr</module>
     </modules>
 
 </project>

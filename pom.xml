@@ -39,10 +39,9 @@
         <module>parent</module>
         <module>activiti</module>
         <module>branding</module>
-        <module>camel</module>
         <module>logging</module>
-        <module>cxf</module>
         <module>examples</module>
+        <!-- TODO: replace itests with pax-exam-karaf alternatives ? -->
         <module>itests</module>
         <module>assemblies</module>
     </modules>

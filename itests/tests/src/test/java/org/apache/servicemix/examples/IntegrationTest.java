@@ -19,7 +19,6 @@ package org.apache.servicemix.examples;
 import org.apache.cxf.Bus;
 import org.apache.servicemix.examples.cxf.HelloWorld;
 import org.apache.servicemix.jbi.jaxp.StringSource;
-import org.apache.servicemix.nmr.api.*;
 import org.apache.servicemix.platform.testing.support.AbstractIntegrationTest;
 import org.apache.servicemix.util.FileUtil;
 import org.osgi.framework.Constants;
@@ -100,21 +99,20 @@ public class IntegrationTest extends AbstractIntegrationTest {
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.joda-time"),
             getBundle("org.apache.ws.security", "wss4j"),
  
-            getBundle("org.apache.servicemix.specs", "org.apache.servicemix.specs.jbi-api-1.0"),            
             getBundle("org.apache.servicemix.specs", "org.apache.servicemix.specs.stax-api-1.0"),
             getBundle("org.apache.servicemix.specs", "org.apache.servicemix.specs.saaj-api-1.3"),
             getBundle("org.apache.servicemix.specs", "org.apache.servicemix.specs.jaxb-api-2.2"),
             getBundle("org.apache.servicemix.specs", "org.apache.servicemix.specs.jaxws-api-2.2"),
             getBundle("org.apache.servicemix.specs", "org.apache.servicemix.specs.java-persistence-api-2.0"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.asm"),
-            getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.cglib"),
+            // getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.cglib"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.jaxb-impl"),
             getBundle("org.apache.neethi", "neethi"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.saaj-impl"),
             getBundle("org.codehaus.woodstox", "stax2-api"),
             getBundle("org.codehaus.woodstox", "woodstox-core-asl"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.dom4j"),
-            getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.wsdl4j"),
+            // getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.wsdl4j"),
             getBundle("org.apache.ws.xmlschema", "xmlschema-core"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.xmlresolver"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.bcel"),
@@ -134,7 +132,6 @@ public class IntegrationTest extends AbstractIntegrationTest {
             getBundle("org.eclipse.jetty", "jetty-servlets"),
             getBundle("org.eclipse.jetty", "jetty-xml"),
             getBundle("org.eclipse.jetty", "jetty-webapp"),
-            getBundle("javax.mail", "mail"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.commons-codec"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.commons-httpclient"),
             getBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.abdera"),
@@ -147,17 +144,11 @@ public class IntegrationTest extends AbstractIntegrationTest {
             getBundle("org.ops4j.pax.web", "pax-web-jetty"),
             getBundle("org.ops4j.pax.web", "pax-web-extender-whiteboard"),
             getBundle("org.apache.servicemix", "servicemix-utils"),
-            getBundle("org.fusesource.commonman", "commons-management"),
+            // getBundle("org.fusesource.commonman", "commons-management"),
             getBundle("org.apache.karaf.jaas", "org.apache.karaf.jaas.boot"),
             getBundle("org.apache.karaf.jaas", "org.apache.karaf.jaas.config"),
             getBundle("org.apache.karaf.management", "org.apache.karaf.management.server"),
             getBundle("org.apache.cxf", "cxf-bundle"),
-            getBundle("org.apache.servicemix.cxf", "org.apache.servicemix.cxf.transport.nmr"),
-            getBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.api"),
-            getBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.core"),
-            getBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.management"),
-            getBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.osgi"),
-            getBundle("org.apache.servicemix.document", "org.apache.servicemix.document"),
             getBundle("org.apache.servicemix.itests", "org.apache.servicemix.itests.test-commons"),
             getBundle("org.apache.servicemix.itests", "org.apache.servicemix.itests.cxf-http-osgi"),
             getBundle("org.apache.servicemix.itests", "org.apache.servicemix.itests.cxf-ws-security-osgi"),
@@ -167,7 +158,7 @@ public class IntegrationTest extends AbstractIntegrationTest {
             getBundle("org.apache.servicemix.itests", "org.apache.servicemix.itests.cxf-handler-cfg"),
             getBundle("org.apache.servicemix.examples", "cxf-ws-addressing"),
             getBundle("org.apache.servicemix.examples", "cxf-jaxrs"),
-            getBundle("org.apache.servicemix.itests", "org.apache.servicemix.itests.cxf-nmr-osgi"),
+            // getBundle("org.apache.servicemix.itests", "org.apache.servicemix.itests.cxf-nmr-osgi"),
         };
     }
 
@@ -183,7 +174,7 @@ public class IntegrationTest extends AbstractIntegrationTest {
         Thread.sleep(5000);
 
         String filter = "(&(" + "objectclass=" + HelloWorld.class.getName() + ")(TEST-BUNDLE-NAME=cxf-http-osgi))";
-        ServiceReference ref = bundleContext.getServiceReferences(null, filter)[0];
+        ServiceReference ref = bundleContext.getServiceReferences((String) null, filter)[0];
         assertNotNull("Service Reference is null", ref);
 
         org.apache.servicemix.examples.cxf.HelloWorld helloWorld = null;
@@ -199,7 +190,7 @@ public class IntegrationTest extends AbstractIntegrationTest {
         waitOnContextCreation("org.apache.servicemix.itests.cxf-jms-osgi");
         Thread.sleep(5000);
         String filter = "(&(" + "objectclass=" + HelloWorld.class.getName() + ")(TEST-BUNDLE-NAME=cxf-jms-osgi))";
-        ServiceReference ref = bundleContext.getServiceReferences(null, filter)[0];
+        ServiceReference ref = bundleContext.getServiceReferences((String) null, filter)[0];
         assertNotNull("Service Reference is null", ref);
 
         org.apache.servicemix.examples.cxf.HelloWorld helloWorld = null;
@@ -208,24 +199,6 @@ public class IntegrationTest extends AbstractIntegrationTest {
         assertNotNull("Cannot find the service", helloWorld);
 
         assertEquals("Hello Bonjour", helloWorld.sayHi("Bonjour"));
-    }
-    
-    public void testNMROsgi() throws Exception {
-        Thread.sleep(5000);
-        waitOnContextCreation("org.apache.servicemix.itests.cxf-nmr-osgi");
-        Thread.sleep(5000);
-        NMR nmr = getOsgiService(NMR.class);
-        assertNotNull(nmr);
-        
-        Channel client = nmr.createChannel();
-        Exchange e = client.createExchange(Pattern.InOut);
-        for (Endpoint ep : nmr.getEndpointRegistry().getServices()) {
-            e.setTarget(nmr.getEndpointRegistry().lookup(nmr.getEndpointRegistry().getProperties(ep)));
-            e.getIn().setBody(new StringSource("<?xml version=\"1.0\" encoding=\"UTF-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns2:sayHi xmlns:ns2=\"http://cxf.examples.servicemix.apache.org/\"><arg0>Bonjour</arg0></ns2:sayHi></soap:Body></soap:Envelope>"));
-            boolean res = client.sendSync(e);
-            assertTrue(res);
-        }
-    
     }
 
     protected Manifest getManifest() {
