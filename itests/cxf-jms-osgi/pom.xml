@@ -29,7 +29,7 @@
 
     <artifactId>org.apache.servicemix.itests.cxf-jms-osgi</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Integration Tests :: CXF JMS Transport OSGi</name>
+    <name>Apache ServiceMix :: Integration Tests :: CXF JMS Transport OSGi</name>
 
     <dependencies>
         <dependency>

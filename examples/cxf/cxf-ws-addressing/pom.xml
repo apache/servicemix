@@ -29,7 +29,7 @@
 
     <artifactId>cxf-ws-addressing</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: CXF WS-Addressing OSGI</name>
+    <name>Apache ServiceMix :: Examples :: CXF WS-Addressing OSGI</name>
     <description>CXF example using WS-Addressing</description>
 
     <dependencies>

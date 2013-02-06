@@ -30,7 +30,7 @@
 
     <artifactId>apache-servicemix-full</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Assemblies :: Apache ServiceMix (Full)</name>
+    <name>Apache ServiceMix :: Assemblies :: Apache ServiceMix (Full)</name>
 
     <build>
         <plugins>

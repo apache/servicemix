@@ -31,7 +31,7 @@
     <groupId>org.apache.servicemix.examples</groupId>
     <artifactId>examples</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Examples</name>
+    <name>Apache ServiceMix :: Examples</name>
 
     <modules>
         <module>activemq</module>

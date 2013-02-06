@@ -30,7 +30,7 @@
     <groupId>org.apache.servicemix.logging</groupId>
     <artifactId>logging</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Logging</name>
+    <name>Apache ServiceMix :: Logging</name>
 
     <modules>
         <module>jms-appender</module>

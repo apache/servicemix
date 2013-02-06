@@ -29,7 +29,7 @@
 
     <artifactId>org.apache.servicemix.itests.test-commons</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Integration Tests :: Common Classes</name>
+    <name>Apache ServiceMix :: Integration Tests :: Common Classes</name>
 
     <dependencies>
         <dependency>

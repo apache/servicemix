@@ -29,7 +29,7 @@
 
     <artifactId>org.apache.servicemix.itests.cxf-mtom-osgi</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Integration Tests :: CXF MTOM OSGi</name>
+    <name>Apache ServiceMix :: Integration Tests :: CXF MTOM OSGi</name>
 
     <dependencies>
         <dependency>

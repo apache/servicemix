@@ -27,7 +27,7 @@
     </parent>
 
     <artifactId>jms-appender</artifactId>
-    <name>Apache ServiceMix :: Features :: Logging :: JMS Appender</name>
+    <name>Apache ServiceMix :: Logging :: JMS Appender</name>
 
     <packaging>bundle</packaging>
 

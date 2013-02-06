@@ -29,7 +29,7 @@
 
     <artifactId>cxf-jaxrs-blueprint</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: CXF JAX-RS OSGI Blueprint</name>
+    <name>Apache ServiceMix :: Examples :: CXF JAX-RS OSGI Blueprint</name>
     <description>CXF Example using JAX-RS and Blueprint</description>
 
     <dependencies>

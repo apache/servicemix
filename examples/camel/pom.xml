@@ -30,7 +30,7 @@
     <groupId>org.apache.servicemix.examples</groupId>
     <artifactId>camel-examples</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: Camel </name>
+    <name>Apache ServiceMix :: Examples :: Camel </name>
 
     <modules>
         <module>camel-blueprint</module>

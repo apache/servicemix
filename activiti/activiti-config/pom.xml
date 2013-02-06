@@ -28,7 +28,7 @@
 
     <artifactId>org.apache.servicemix.activiti.config</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Activiti Support :: Activiti Configuration</name>
+    <name>Apache ServiceMix :: Activiti Support :: Activiti Configuration</name>
 
     <dependencies>
         <dependency>

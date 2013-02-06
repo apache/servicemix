@@ -30,7 +30,7 @@
     <groupId>org.apache.servicemix.examples</groupId>
     <artifactId>cxf</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: CXF</name>
+    <name>Apache ServiceMix :: Examples :: CXF</name>
 
     <modules>
         <module>cxf-osgi</module>

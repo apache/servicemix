@@ -29,7 +29,7 @@
 
     <artifactId>org.apache.servicemix.itests.cxf-soap-handler-osgi</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Integration Tests :: CXF SOAP Handler OSGi</name>
+    <name>Apache ServiceMix :: Integration Tests :: CXF SOAP Handler OSGi</name>
 
     <dependencies>
         <dependency>

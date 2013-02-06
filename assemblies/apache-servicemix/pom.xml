@@ -29,7 +29,7 @@
 
     <artifactId>apache-servicemix</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Assemblies :: Apache ServiceMix</name>
+    <name>Apache ServiceMix :: Assemblies :: Apache ServiceMix</name>
 
     <dependencies>
         <dependency>
@@ -72,8 +72,8 @@
 
         <!-- branding -->
         <dependency>
-            <groupId>org.apache.servicemix.features</groupId>
-            <artifactId>org.apache.servicemix.features.branding</artifactId>
+            <groupId>org.apache.servicemix</groupId>
+            <artifactId>org.apache.servicemix.branding</artifactId>
         </dependency>
         
     </dependencies>

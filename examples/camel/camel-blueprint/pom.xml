@@ -28,7 +28,7 @@
 
     <artifactId>camel-blueprint</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: Camel Blueprint</name>
+    <name>Apache ServiceMix :: Examples :: Camel Blueprint</name>
     <description>Camel Example using blueprint for configuration</description>
 
     <build>

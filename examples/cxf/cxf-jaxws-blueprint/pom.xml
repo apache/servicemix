@@ -29,7 +29,7 @@
 
     <artifactId>cxf-jaxws-blueprint</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: CXF JAXWS Blueprint</name>
+    <name>Apache ServiceMix :: Examples :: CXF JAXWS Blueprint</name>
     <description>CXF JAXWS example using OSGi and Blueprint</description>
 
     <dependencies>

@@ -30,7 +30,7 @@
 
     <artifactId>apache-servicemix-minimal</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Assemblies :: Apache ServiceMix (Minimal)</name>
+    <name>Apache ServiceMix :: Assemblies :: Apache ServiceMix (Minimal)</name>
 
     <build>
         <plugins>

@@ -28,7 +28,7 @@
 
     <artifactId>activemq-camel-blueprint</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: ActiveMQ Camel Blueprint</name>
+    <name>Apache ServiceMix :: Examples :: ActiveMQ Camel Blueprint</name>
     <description>Camel Example using blueprint for configuration and ActiveMQ for JMS messaging</description>
 
     <build>

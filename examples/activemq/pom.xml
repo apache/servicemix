@@ -30,7 +30,7 @@
     <groupId>org.apache.servicemix.examples</groupId>
     <artifactId>activemq-examples</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: ActiveMQ</name>
+    <name>Apache ServiceMix :: Examples :: ActiveMQ</name>
 
     <modules>
         <module>activemq-camel-blueprint</module>

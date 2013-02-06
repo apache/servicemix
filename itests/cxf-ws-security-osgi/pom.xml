@@ -29,7 +29,7 @@
 
     <artifactId>org.apache.servicemix.itests.cxf-ws-security-osgi</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Integration Tests :: CXF WS Security OSGi</name>
+    <name>Apache ServiceMix :: Integration Tests :: CXF WS Security OSGi</name>
 
     <dependencies>
         <dependency>

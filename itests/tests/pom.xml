@@ -29,7 +29,7 @@
 
     <artifactId>org.apache.servicemix.itests.tests</artifactId>
     <packaging>jar</packaging>
-    <name>Apache ServiceMix :: Features :: Integration Tests :: Tests</name>
+    <name>Apache ServiceMix :: Integration Tests :: Tests</name>
 
     <dependencies>
         <dependency>

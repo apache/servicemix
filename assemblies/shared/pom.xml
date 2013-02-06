@@ -30,7 +30,7 @@
     <groupId>org.apache.servicemix.assemblies</groupId>
     <artifactId>shared</artifactId>
     <packaging>jar</packaging>
-    <name>Apache ServiceMix :: Features :: Assemblies :: Shared files</name>
+    <name>Apache ServiceMix :: Assemblies :: Shared files</name>
      
     <dependencies>
         <dependency>

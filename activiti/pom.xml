@@ -31,7 +31,7 @@
     <groupId>org.apache.servicemix.activiti</groupId>
     <artifactId>activiti</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Activiti Support</name>
+    <name>Apache ServiceMix :: Activiti Support</name>
 
     <modules>
         <module>activiti-config</module>

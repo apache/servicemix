@@ -84,8 +84,8 @@
       </dependency>
 
       <dependency>
-        <groupId>org.apache.servicemix.features</groupId>
-        <artifactId>org.apache.servicemix.features.branding</artifactId>
+        <groupId>org.apache.servicemix</groupId>
+        <artifactId>org.apache.servicemix.branding</artifactId>
         <version>${project.version}</version>
       </dependency>
 

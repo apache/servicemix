@@ -29,7 +29,7 @@
 
     <artifactId>cxf-ws-rm</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: CXF WS-RM OSGi</name>
+    <name>Apache ServiceMix :: Examples :: CXF WS-RM OSGi</name>
     <description>CXF example using WS-RM</description>
 
     <dependencies>

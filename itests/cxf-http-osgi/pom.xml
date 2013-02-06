@@ -29,7 +29,7 @@
 
     <artifactId>org.apache.servicemix.itests.cxf-http-osgi</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Integration Tests :: CXF OSGi</name>
+    <name>Apache ServiceMix :: Integration Tests :: CXF OSGi</name>
 
     <dependencies>
         <dependency>

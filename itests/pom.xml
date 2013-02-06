@@ -31,7 +31,7 @@
     <groupId>org.apache.servicemix.itests</groupId>
     <artifactId>itests</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Features :: Integration Tests</name>
+    <name>Apache ServiceMix :: Integration Tests</name>
 
     <modules>
         <module>test-commons</module>

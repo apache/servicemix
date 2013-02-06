@@ -29,7 +29,7 @@
 
     <artifactId>cxf-ws-security-blueprint</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache ServiceMix :: Features :: Examples :: CXF WS-Security Blueprint</name>
+    <name>Apache ServiceMix :: Examples :: CXF WS-Security Blueprint</name>
     <description>CXF example using WS-Security with Blueprint</description>
     <dependencies>
         <dependency>
