@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.servicemix.itests</groupId>
         <artifactId>itests</artifactId>
-        <version>4.6.0-SNAPSHOT</version>
+        <version>5.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.apache.servicemix.itests.cxf-http-osgi</artifactId>

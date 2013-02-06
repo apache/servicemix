@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.servicemix</groupId>
         <artifactId>apache-servicemix</artifactId>
-        <version>4.6.0-SNAPSHOT</version>
+        <version>5.0.0-SNAPSHOT</version>
         <relativePath>../apache-servicemix/pom.xml</relativePath>
     </parent>
 
