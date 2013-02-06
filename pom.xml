@@ -41,15 +41,14 @@
         <module>branding</module>
         <module>logging</module>
         <module>examples</module>
-        <!-- TODO: replace itests with pax-exam-karaf alternatives ? -->
         <module>itests</module>
         <module>assemblies</module>
     </modules>
 
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/servicemix/smx4/features/trunk</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/servicemix/smx4/features/trunk</developerConnection>
-        <url>http://svn.apache.org/viewvc/servicemix/smx4/features/trunk/</url>
+        <connection>scm:svn:http://svn.apache.org/repos/asf/servicemix/smx5/trunk</connection>
+        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/servicemix/smx5/trunk</developerConnection>
+        <url>http://svn.apache.org/viewvc/servicemix/smx5/trunk/</url>
     </scm>
     
     <issueManagement>
