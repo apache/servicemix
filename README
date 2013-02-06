@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-Welcome to Apache ServiceMix 4 
+Welcome to Apache ServiceMix 5
 ==============================
 Apache ServiceMix is a flexible, open-source integration container that unifies 
 the features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf 
@@ -29,12 +29,6 @@ The main features are:
 - messaging, routing and Enterprise Integration Patterns with Apache Camel
 - WS-* and RESTful web services with Apache CXF
 - OSGi-based server runtime powered by Apache Karaf
-
-Other, optional features:
-- loosely coupled integration between all the other components with 
-    Apache ServiceMix NMR including rich Event, Messaging and Audit API
-- JBI (JSR-208) container implementation and a set of JBI components
-
 
 Getting Started
 ===============
