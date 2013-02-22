@@ -37,7 +37,7 @@
 
   <!-- Properties -->
   <properties>
-    <activemq.version>5.8-SNAPSHOT</activemq.version>
+    <activemq.version>5.8.0</activemq.version>
     <activiti.version>5.10</activiti.version>
     <camel.version>2.11-SNAPSHOT</camel.version>
     <cxf.version>2.7.3</cxf.version>
@@ -87,6 +87,13 @@
         <groupId>org.apache.servicemix</groupId>
         <artifactId>org.apache.servicemix.branding</artifactId>
         <version>${project.version}</version>
+      </dependency>
+
+      <!-- Apache ActiveMQ -->
+      <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-broker</artifactId>
+        <version>${activemq.version}</version>
       </dependency>
 
       <dependency>

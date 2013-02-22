@@ -245,8 +245,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-core</artifactId>
-            <version>${activemq.version}</version>
+            <artifactId>activemq-broker</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -265,7 +264,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>kahadb</artifactId>
+            <artifactId>activemq-kahadb-store</artifactId>
             <version>${activemq.version}</version>
         </dependency>
         <dependency>

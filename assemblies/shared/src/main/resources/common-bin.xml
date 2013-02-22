@@ -29,7 +29,7 @@
             <outputFileNameMapping>servicemix-version.jar</outputFileNameMapping>
             <fileMode>0644</fileMode>
             <includes>
-                <include>org.apache.servicemix.features:org.apache.servicemix.features.branding</include>
+                <include>org.apache.servicemix:org.apache.servicemix.branding</include>
             </includes>
             <useTransitiveDependencies>false</useTransitiveDependencies>
         </dependencySet>
