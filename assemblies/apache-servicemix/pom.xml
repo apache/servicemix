@@ -122,7 +122,6 @@
                                 <feature>config</feature>
                                 <feature>activemq</feature>
                                 <feature>camel</feature>
-                                <feature>camel-activemq</feature>
                                 <feature>camel-cxf</feature>
                                 <feature>camel-blueprint</feature>
                                 <feature>war</feature>
