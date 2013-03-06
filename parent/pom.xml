@@ -52,7 +52,7 @@
     <servicemix.specs.version>2.2.0</servicemix.specs.version>
 
     <!-- TODO: figure out why/if we need this for the CXF examples -->
-    <servicemix.utils.version>1.7.0-SNAPSHOT</servicemix.utils.version>
+    <servicemix.utils.version>1.6.0</servicemix.utils.version>
   </properties>
 
   <!-- Managed dependencies -->
