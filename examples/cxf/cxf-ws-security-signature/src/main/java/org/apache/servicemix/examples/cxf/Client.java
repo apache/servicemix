@@ -19,11 +19,11 @@ package org.apache.servicemix.examples.cxf;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.apache.servicemix.util.FileUtil;
+import org.apache.commons.io.IOUtils;
+
 
 public class Client{
     public static void main(String[] args) {
@@ -42,11 +42,11 @@ public class Client{
         OutputStream os = connection.getOutputStream();
         // Post the request file.
         InputStream fis = getClass().getClassLoader().getResourceAsStream("org/apache/servicemix/examples/cxf/request.xml");
-        FileUtil.copyInputStream(fis, os);
+        IOUtils.copy(fis, os);
         // Read the response.
         InputStream is = connection.getInputStream();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        FileUtil.copyInputStream(is, baos);
+        IOUtils.copy(is, baos);
         System.out.println("the response is =====>");
         System.out.println(baos.toString());
     }

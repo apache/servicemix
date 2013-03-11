@@ -161,6 +161,7 @@
         <commons-lang.bundle.version>2.4_4</commons-lang.bundle.version>
         <commons-net.bundle.version>2.2</commons-net.bundle.version>
         <commons-pool.version>1.6</commons-pool.version>
+        <commons-io.version>2.4</commons-io.version>
         <commons-vfs.bundle.version>1.0_5</commons-vfs.bundle.version>
         <dom4j.bundle.version>1.6.1_5</dom4j.bundle.version>
         <drools.bundle.version>${drools.version}</drools.bundle.version>
@@ -361,6 +362,11 @@
                <groupId>commons-net</groupId>
                <artifactId>commons-net</artifactId>
                <version>${commons-net.bundle.version}</version>
+           </dependency>
+            <dependency>
+               <groupId>commons-io</groupId>
+               <artifactId>commons-io</artifactId>
+               <version>${commons-io.version}</version>
            </dependency>
            <dependency>
                <groupId>commons-pool</groupId>
@@ -940,7 +946,7 @@
         <profile>
             <id>setup.eclipse</id>
             <modules>
-                <module>assembly</module>
+                <module>assemblies</module>
             </modules>
             <properties>
                 <eclipse.workspace.dir>${basedir}/../workspace</eclipse.workspace.dir>

@@ -324,10 +324,6 @@
             <artifactId>spring-tx</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix</groupId>
-            <artifactId>servicemix-utils</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.bcel</artifactId>
         </dependency>

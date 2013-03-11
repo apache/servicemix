@@ -48,11 +48,7 @@
     <aries.version>1.0.0</aries.version>
     <aries.transaction.version>1.0.0</aries.transaction.version>
     <pax.logging.version>1.7.0</pax.logging.version>
-
     <servicemix.specs.version>2.2.0</servicemix.specs.version>
-
-    <!-- TODO: figure out why/if we need this for the CXF examples -->
-    <servicemix.utils.version>1.6.0</servicemix.utils.version>
   </properties>
 
   <!-- Managed dependencies -->
@@ -419,13 +415,6 @@
         <artifactId>cxf-xml2fastinfoset-plugin</artifactId>
         <version>${cxf.version}</version>
       </dependency>
-
-      <dependency>
-        <groupId>org.apache.servicemix</groupId>
-        <artifactId>servicemix-utils</artifactId>
-        <version>${servicemix.utils.version}</version>
-      </dependency>
-
       <dependency>
         <groupId>org.apache.servicemix.specs</groupId>
         <artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>

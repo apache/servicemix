@@ -47,7 +47,7 @@
     <feature name="examples-cxf-osgi" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix/servicemix-utils/${servicemix.utils.version}</bundle>
+        <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
         <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-osgi/${version}</bundle>
     </feature>
@@ -83,28 +83,25 @@
     <feature name="examples-cxf-ws-addressing" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix/servicemix-utils/${servicemix.utils.version}</bundle>
         <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-addressing/${version}</bundle>
     </feature>
     <feature name="examples-cxf-ws-security-osgi" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix/servicemix-utils/${servicemix.utils.version}</bundle>
         <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-osgi/${version}</bundle>
     </feature>
     <feature name="examples-cxf-ws-security-blueprint" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix/servicemix-utils/${servicemix.utils.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-blueprint/${version}</bundle>
     </feature>
     <feature name="examples-cxf-ws-security-signature" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix/servicemix-utils/${servicemix.utils.version}</bundle>
         <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-signature/${version}</bundle>
     </feature>
     <feature name="examples-cxf-ws-rm" version="${version}" resolver="(obr)">
