@@ -129,7 +129,7 @@ Running a Client
 ----------------
 To run the java code client:
 
-1. Change to the <servicemix_home>/examples/cxf-ws-security-signature
+1. Change to the <servicemix_home>/examples/cxf/cxf-ws-security-signature
    directory.
 
 2. Run the following command:

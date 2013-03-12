@@ -126,7 +126,7 @@ Note, if you use Safari, right click the window and select 'Show Source'.
 
 (b) To run a Java client:
     --------------------
-- Change to the <servicemix_home>/examples/cxf-jaxrs
+- Change to the <servicemix_home>/examples/cxf/cxf-jaxrs
   directory.
 
 - Run the following command:
@@ -142,7 +142,7 @@ You can use a command-line utility, such as curl or Wget, to make
 the invocations. For example, try using curl as follows:
 
 - Open a command prompt and change directory to
-  <servicemix_home>/examples/cxf-jaxrs.
+  <servicemix_home>/examples/cxf/cxf-jaxrs.
   
 - Run the following curl commands:
 

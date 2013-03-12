@@ -122,7 +122,7 @@ Running a Client
 ----------------
 To run the java code client:
 
-1. Change to the <servicemix_home>/examples/cxf-ws-rm
+1. Change to the <servicemix_home>/examples/cxf/cxf-ws-rm
    directory.
 
 2. Run the following command:
