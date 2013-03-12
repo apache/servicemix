@@ -147,7 +147,6 @@ To run the java code client:
    If the client request is successful, 
    it will print out
        Hello ffang
-   in the ServiceMix console:
 
 
 Changing /cxf servlet alias

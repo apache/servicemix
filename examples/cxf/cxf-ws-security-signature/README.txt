@@ -139,7 +139,6 @@ To run the java code client:
    If the client request is successful, 
    it will print out
        <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:sayHelloResponse xmlns:ns2="http://cxf.apache.org/wsse/handler/helloworld"><return>Hello CXF</return></ns2:sayHelloResponse></soap:Body></soap:Envelope>
-   in the ServiceMix console:
 
 
 Changing /cxf servlet alias
