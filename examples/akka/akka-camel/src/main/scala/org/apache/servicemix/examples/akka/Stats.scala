@@ -19,7 +19,7 @@ package org.apache.servicemix.examples.akka
 import akka.actor.{ActorRef, Actor, Props, ActorSystem}
 import akka.pattern._
 import akka.util.Timeout
-import akka.util.duration._
+import scala.concurrent.duration._
 import collection.mutable.Map
 import collection.SortedSet
 import org.apache.servicemix.examples.akka.Stats.Metric
@@ -112,6 +112,8 @@ class StdDev(val average: ActorRef) extends Actor {
   def receive = {
     case (key: String, items: Seq[Int]) if items.size > 1 =>
       val original = sender
+
+      import context.dispatcher
       ask(average, items).onSuccess {
         case avg : Double => {
           ask(sum_of_squares, (items, avg)).onSuccess {

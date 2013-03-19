@@ -20,7 +20,7 @@ import akka.actor.{Props, Actor, ActorRef, ActorSystem}
 import akka.camel._
 import io.Source
 import org.apache.servicemix.examples.akka.Stats.{Input, Report}
-import akka.util.duration._
+import scala.concurrent.duration._
 
 /**
  * Sets up the actors that bridge between the Camel routes and the
@@ -36,6 +36,7 @@ object CamelBridge {
     system.actorOf(Props(new CamelConsumer(stats)), "camel.consumer")
 
     val producer = system.actorOf(Props[CamelProducer])
+    import system.dispatcher
     system.scheduler.schedule(5 seconds, 30 seconds) {
       stats.tell(Report(), producer)
     }

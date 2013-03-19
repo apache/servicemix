@@ -21,8 +21,8 @@ import org.junit.Assert.fail
 import akka.actor.ActorSystem
 import akka.pattern._
 import akka.util.Timeout
-import akka.util.duration._
-import akka.dispatch.Await
+import scala.concurrent.duration._
+import scala.concurrent.Await
 import org.apache.servicemix.examples.akka.Stats.{Input, Report}
 import java.util.concurrent.TimeoutException
 

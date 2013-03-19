@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
-    
+
         Licensed to the Apache Software Foundation (ASF) under one or more
         contributor license agreements.  See the NOTICE file distributed with
         this work for additional information regarding copyright ownership.
@@ -28,17 +28,13 @@
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
-    <groupId>org.apache.servicemix.examples</groupId>
-    <artifactId>examples</artifactId>
+    <groupId>org.apache.servicemix.akka</groupId>
+    <artifactId>akka</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Examples</name>
+    <name>Apache ServiceMix :: Akka Support</name>
 
     <modules>
-        <module>activemq</module>
-        <module>activiti</module>
-        <module>akka</module>
-        <module>camel</module>
-        <module>cxf</module>
+        <module>akka-osgi-aries</module>
     </modules>
 
 </project>

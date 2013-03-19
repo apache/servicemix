@@ -48,6 +48,11 @@
     <aries.version>1.0.0</aries.version>
     <aries.transaction.version>1.0.0</aries.transaction.version>
     <pax.logging.version>1.7.0</pax.logging.version>
+
+    <akka.version>2.1.2</akka.version>
+    <scala.version>2.10.0</scala.version>
+    <typesafe-config.version>1.0.0</typesafe-config.version>
+
     <servicemix.specs.version>2.2.0</servicemix.specs.version>
   </properties>
 
