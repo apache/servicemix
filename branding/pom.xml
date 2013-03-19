@@ -32,7 +32,7 @@
     <artifactId>org.apache.servicemix.branding</artifactId>
     <packaging>bundle</packaging>
     <name>Apache ServiceMix :: Branding Support</name>
-    <description>Branding for Apache ServiceMix features</description>
+    <description>Branding for Apache ServiceMix</description>
 
     <build>
         <resources>
