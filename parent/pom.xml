@@ -46,7 +46,7 @@
 
     <karaf.version>2.3.1</karaf.version>
     <aries.version>1.0.0</aries.version>
-    <aries.transaction.version>1.0.0</aries.transaction.version>
+    <aries.transaction.version>1.0.1</aries.transaction.version>
     <pax.logging.version>1.7.0</pax.logging.version>
 
     <akka.version>2.1.2</akka.version>
