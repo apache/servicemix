@@ -172,7 +172,6 @@
         <jaxb-impl.bundle.version>2.2.1.1_1</jaxb-impl.bundle.version>
         <jdt-core.bundle.version>3.2.3_4</jdt-core.bundle.version>
         <jdom.bundle.version>1.1_4</jdom.bundle.version>
-        <jruby.bundle.version>1.1.2_3</jruby.bundle.version>
         <josql.bundle.version>1.5_4</josql.bundle.version>
         <jsmpp.bundle.version>2.1.0_2</jsmpp.bundle.version>
         <opensaml.bundle.version>2.4.1_1</opensaml.bundle.version>
@@ -412,11 +411,6 @@
                <groupId>org.apache.servicemix.bundles</groupId>
                <artifactId>org.apache.servicemix.bundles.josql</artifactId>
                <version>${josql.bundle.version}</version>
-           </dependency>
-           <dependency>
-               <groupId>org.apache.servicemix.bundles</groupId>
-               <artifactId>org.apache.servicemix.bundles.jruby</artifactId>
-               <version>${jruby.bundle.version}</version>
            </dependency>
            <dependency>
                <groupId>org.apache.servicemix.bundles</groupId>
