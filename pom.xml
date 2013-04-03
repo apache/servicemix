@@ -165,7 +165,7 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-vfs.bundle.version>1.0_5</commons-vfs.bundle.version>
         <dom4j.bundle.version>1.6.1_5</dom4j.bundle.version>
-        <drools.bundle.version>${drools.version}</drools.bundle.version>
+        <drools.bundle.version>${drools.version}_1-SNAPSHOT</drools.bundle.version>
         <fastinfoset.bundle.version>1.2.7_3</fastinfoset.bundle.version>
         <jasypt.bundle.version>1.9.0_1</jasypt.bundle.version>
         <jaxb.api.version>2.2</jaxb.api.version>
@@ -381,11 +381,6 @@
                <groupId>org.apache.servicemix.bundles</groupId>
                <artifactId>org.apache.servicemix.bundles.commons-vfs</artifactId>
                <version>${commons-vfs.bundle.version}</version>
-           </dependency>
-           <dependency>
-               <groupId>org.apache.servicemix.bundles</groupId>
-               <artifactId>org.apache.servicemix.bundles.drools</artifactId>
-               <version>${drools.bundle.version}</version>
            </dependency>
            <dependency>
                <groupId>org.apache.servicemix.bundles</groupId>
