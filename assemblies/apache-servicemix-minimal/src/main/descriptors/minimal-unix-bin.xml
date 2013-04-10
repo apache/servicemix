@@ -69,8 +69,6 @@
             <lineEnding>unix</lineEnding>
             <fileMode>0644</fileMode>
             <excludes>
-              <exclude>org.apache.servicemix.nmr.cfg</exclude>
-              <exclude>org.apache.servicemix.jbi.cfg</exclude>
               <exclude>org.apache.felix.fileinstall-activemq.cfg</exclude>
               <exclude>activemq-broker.xml</exclude>
             </excludes>
@@ -91,8 +89,6 @@
                 <include>*.*</include>
             </includes>
             <excludes>
-              <exclude>org.apache.servicemix.nmr.cfg</exclude>
-              <exclude>org.apache.servicemix.jbi.cfg</exclude>
               <exclude>activemq-broker.xml</exclude>
               <exclude>org.apache.felix.fileinstall-activemq.cfg</exclude>
             </excludes>
