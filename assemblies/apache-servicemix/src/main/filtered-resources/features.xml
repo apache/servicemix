@@ -161,6 +161,9 @@
         <bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.manager/${aries.transaction.version}</bundle>
         <bundle dependency="true">mvn:org.apache.aries/org.apache.aries.util/${aries.version}</bundle>
 
+        <!-- Camel JMS is required to get ActiveMQ's Camel component started -->
+        <feature version="${camel.version}">camel-jms</feature>
+
         <!-- the following 4 bundles is needed by activemq-console -->
         <bundle dependency="true">mvn:org.fusesource.hawtbuf/hawtbuf/${hawtbuf.version}</bundle>
         <bundle dependency="true">mvn:org.fusesource.hawtbuf/hawtbuf-proto/${hawtbuf.version}</bundle>
