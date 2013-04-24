@@ -51,6 +51,10 @@
         </dependency>
         <dependency>
             <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.activator</artifactId>
         </dependency>
     </dependencies>
