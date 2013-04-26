@@ -20,12 +20,16 @@ import javax.inject.Inject
 import org.osgi.framework.{ServiceRegistration, BundleContext}
 import java.io.File
 import scala.Some
-import org.junit.After
+import org.junit.{Before, BeforeClass, After}
 import org.ops4j.pax.logging.spi.{PaxLoggingEvent, PaxAppender}
 import collection.mutable.ArrayBuffer
 import java.util.Hashtable
 import org.junit.Assert.fail
-import org.apache.karaf.features.FeaturesService
+import org.apache.karaf.features.{Feature, FeaturesService}
+import scala.collection.JavaConversions.setAsJavaSet
+import java.util
+// allow for postfix notation
+import scala.language.postfixOps
 
 /**
  * Base class for building Apache ServiceMix integration tests
@@ -44,7 +48,7 @@ abstract class IntegrationTestSupport extends Await with IntegrationTestConfigur
   val registrations = ArrayBuffer.empty[ServiceRegistration[_]]
 
   @After
-  def afterTest : Unit = registrations dropWhile { registration => registration.unregister; true }
+  def clearLogging = logging.clear
 
   /*
    * A set of convenience vals for referring to directories within the test container
@@ -57,20 +61,22 @@ abstract class IntegrationTestSupport extends Await with IntegrationTestConfigur
   /**
    * Install a feature and run a block of code.  Afterwards, uninstall the feature again.
    */
-  def testWithFeature(feature: String)(block: => Unit) =
+  def testWithFeature(names: String*)(block: => Unit) =
     try {
-      featuresService.installFeature(feature)
+      val features : Set[Feature] = ( names map { name => featuresService.getFeature(name) } toSet )
+      //TODO: Get this working without the extra options - enabling bundle refresh here will mess up the test container
+      featuresService.installFeatures(features, util.EnumSet.of(FeaturesService.Option.NoAutoRefreshBundles))
       block
     } finally {
-      featuresService.uninstallFeature(feature)
+      names foreach { featuresService.uninstallFeature }
     }
 
 
   /**
    * Expect a certain condition to occur within the allotted waiting time.
    */
-  def expect[T](message: String)(block: => Option[T]) : Unit = await(block) match {
-    case None => fail(s"Gave up waiting for ${message}")
+  def expect[T](block: => Option[T]) : Unit = await(block) match {
+    case None => fail(s"Gave up waiting for test condition")
     case _    => //graciously ignore
   }
 

@@ -73,10 +73,9 @@
                             org.springframework.beans.factory.config,
                             javax.security.auth.callback,
                             org.apache.ws.security,
-                            org.apache.servicemix.util,
                             org.apache.ws.security.processor,
                             org.apache.cxf.binding.soap.saaj,
-			    org.apache.commons.io
+			                      org.apache.commons.io
                         </Import-Package>
                         <Export-Package>org.apache.servicemix.examples.cxf</Export-Package>
                         <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>

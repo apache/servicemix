@@ -66,7 +66,6 @@
                             javax.jws,
                             javax.wsdl,
                             javax.xml.namespace,
-                            org.apache.servicemix.util,
                             org.springframework.beans.factory.config,
                             *
                         </Import-Package>

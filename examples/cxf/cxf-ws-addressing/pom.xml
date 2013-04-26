@@ -48,9 +48,8 @@
             <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix</groupId>
-            <artifactId>servicemix-utils</artifactId>
-            <version>1.5.0</version>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
     </dependencies>
 
@@ -106,10 +105,10 @@
                             org.apache.cxf.interceptor,
                             org.apache.cxf.ws.addressing,
                             org.apache.cxf.ws.addressing.soap,
-                            org.apache.servicemix.util,
                             org.apache.cxf.message, 
                             org.apache.cxf.phase,
-                            org.springframework.beans.factory.config
+                            org.springframework.beans.factory.config,
+                            *
                         </Import-Package>
                         <Export-Package>
                             org.apache.servicemix.examples.cxf.wsaddressing,

@@ -59,5 +59,4 @@ trait IntegrationTestConfigurations {
       editConfigurationFilePut("etc/org.ops4j.pax.logging.cfg", "log4j.rootLogger", "DEBUG,stdout,osgi:*"))
   }
 
-
 }
