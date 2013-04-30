@@ -27,6 +27,8 @@ import java.io.File
  */
 trait IntegrationTestConfigurations {
 
+  lazy val LOCAL_REPOSITORY = System.getProperty("org.ops4j.pax.url.mvn.localRepository")
+
   /**
    * The default integration test configuration, using Scala and the Apache ServiceMix default assembly
    */
@@ -55,6 +57,7 @@ trait IntegrationTestConfigurations {
         karafVersion("2.3.1").name("Apache ServiceMix (${name})").
         unpackDirectory(new File(s"target/pax-exam/${artifact}")),
       keepRuntimeFolder(),
+      systemProperty("org.ops4j.pax.url.mvn.localRepository").value(LOCAL_REPOSITORY),
       // TODO: investigate why we need this to get Pax Logging going again
       editConfigurationFilePut("etc/org.ops4j.pax.logging.cfg", "log4j.rootLogger", "DEBUG,stdout,osgi:*"))
   }
