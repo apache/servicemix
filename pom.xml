@@ -165,7 +165,7 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-vfs.bundle.version>1.0_5</commons-vfs.bundle.version>
         <dom4j.bundle.version>1.6.1_5</dom4j.bundle.version>
-        <drools.bundle.version>${drools.version}_1-SNAPSHOT</drools.bundle.version>
+        <drools.bundle.version>${drools.version}_1</drools.bundle.version>
         <fastinfoset.bundle.version>1.2.7_3</fastinfoset.bundle.version>
         <jasypt.bundle.version>1.9.0_1</jasypt.bundle.version>
         <jaxb.api.version>2.2</jaxb.api.version>
