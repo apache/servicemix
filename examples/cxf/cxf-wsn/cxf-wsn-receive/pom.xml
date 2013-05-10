@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
-    
+
         Licensed to the Apache Software Foundation (ASF) under one or more
         contributor license agreements.  See the NOTICE file distributed with
         this work for additional information regarding copyright ownership.
@@ -19,30 +19,46 @@
         limitations under the License.
     -->
 
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
+        <artifactId>cxf-wsn</artifactId>
         <groupId>org.apache.servicemix.examples</groupId>
-        <artifactId>examples</artifactId>
         <version>5.0.0-SNAPSHOT</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.apache.servicemix.examples</groupId>
-    <artifactId>cxf</artifactId>
-    <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Examples :: CXF</name>
+    <artifactId>cxf-wsn-receive</artifactId>
+    <packaging>bundle</packaging>
 
-    <modules>
-        <module>cxf-osgi</module>
-        <module>cxf-jaxrs</module>
-        <module>cxf-jaxws-blueprint</module>
-        <module>cxf-jaxrs-blueprint</module>
-        <module>cxf-ws-addressing</module>
-        <module>cxf-ws-security-osgi</module>
-        <module>cxf-ws-security-blueprint</module>
-        <module>cxf-ws-rm</module>
-        <module>cxf-ws-security-signature</module>
-        <module>cxf-wsn</module>
-    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Description>${project.description}</Bundle-Description>
+                        <Import-Package>org.apache.servicemix.examples.cxf.base,*</Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf.services.wsn</groupId>
+            <artifactId>cxf-services-wsn-core</artifactId>
+            <version>${cxf-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+    </dependencies>
+
+
+
 
 </project>

@@ -113,6 +113,18 @@
     <feature name="examples-cxf-ws-rm" version="${version}" resolver="(obr)">
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-rm/${version}</bundle>
     </feature>
+    <feature name="examples-cxf-wsn-receive" version="${version}" resolver="(obr)">
+        <feature version="${camel.version}">camel-jetty</feature>
+        <feature version="${camel.version}">camel-jms</feature>
+        <feature version="${camel.version}">camel-jaxb</feature>
+        <feature version="${cxf.version}">cxf-wsn</feature>
+        <bundle>mvn:org.apache.servicemix.examples/cxf-wsn-base/${version}</bundle>
+        <bundle>mvn:org.apache.servicemix.examples/cxf-wsn-receive/${version}</bundle>
+    </feature>
+    <feature name="examples-cxf-wsn-notifier" version="${version}" resolver="(obr)">
+        <feature version="${version}">examples-cxf-wsn-receive</feature>
+        <bundle>mvn:org.apache.servicemix.examples/cxf-wsn-notifier/${version}</bundle>
+    </feature>
 
     <feature name="examples-activiti-camel" version="${version}" resolver="(obr)">
 	      <feature version="${camel.version}">camel-core</feature>

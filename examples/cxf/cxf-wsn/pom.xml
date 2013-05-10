@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
-    
+
         Licensed to the Apache Software Foundation (ASF) under one or more
         contributor license agreements.  See the NOTICE file distributed with
         this work for additional information regarding copyright ownership.
@@ -20,29 +20,26 @@
     -->
 
     <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>cxf-wsn-client</module>
+        <module>cxf-wsn-receive</module>
+        <module>cxf-wsn-notifier</module>
+        <module>cxf-wsn-base</module>
+    </modules>
 
     <parent>
         <groupId>org.apache.servicemix.examples</groupId>
-        <artifactId>examples</artifactId>
+        <artifactId>cxf</artifactId>
         <version>5.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.apache.servicemix.examples</groupId>
-    <artifactId>cxf</artifactId>
+    <artifactId>cxf-wsn</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Examples :: CXF</name>
+    <name>Apache ServiceMix :: Examples :: CXF WSN</name>
+    <description>CXF example using WSN</description>
 
-    <modules>
-        <module>cxf-osgi</module>
-        <module>cxf-jaxrs</module>
-        <module>cxf-jaxws-blueprint</module>
-        <module>cxf-jaxrs-blueprint</module>
-        <module>cxf-ws-addressing</module>
-        <module>cxf-ws-security-osgi</module>
-        <module>cxf-ws-security-blueprint</module>
-        <module>cxf-ws-rm</module>
-        <module>cxf-ws-security-signature</module>
-        <module>cxf-wsn</module>
-    </modules>
+    <properties>
+        <cxf-version>2.7.5-SNAPSHOT</cxf-version>
+    </properties>
 
 </project>

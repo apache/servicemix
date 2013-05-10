@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <!--
-    
+
         Licensed to the Apache Software Foundation (ASF) under one or more
         contributor license agreements.  See the NOTICE file distributed with
         this work for additional information regarding copyright ownership.
@@ -18,31 +17,31 @@
         See the License for the specific language governing permissions and
         limitations under the License.
     -->
-
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
+        <artifactId>cxf-wsn</artifactId>
         <groupId>org.apache.servicemix.examples</groupId>
-        <artifactId>examples</artifactId>
         <version>5.0.0-SNAPSHOT</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.apache.servicemix.examples</groupId>
-    <artifactId>cxf</artifactId>
-    <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Examples :: CXF</name>
+    <artifactId>cxf-wsn-base</artifactId>
+    <packaging>bundle</packaging>
 
-    <modules>
-        <module>cxf-osgi</module>
-        <module>cxf-jaxrs</module>
-        <module>cxf-jaxws-blueprint</module>
-        <module>cxf-jaxrs-blueprint</module>
-        <module>cxf-ws-addressing</module>
-        <module>cxf-ws-security-osgi</module>
-        <module>cxf-ws-security-blueprint</module>
-        <module>cxf-ws-rm</module>
-        <module>cxf-ws-security-signature</module>
-        <module>cxf-wsn</module>
-    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Export-Package>org.apache.servicemix.examples.cxf.base</Export-Package>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Description>${project.description}</Bundle-Description>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
