@@ -81,7 +81,17 @@ repository, Maven will have to download the bundles it needs.
 
 A. Using a Prebuilt Deployment Bundle: Quick and Easy
 -----------------------------------------------------
-To install and run a prebuilt version of this example
+To install and run a prebuilt version of this example, create the
+following config file:
+
+  <servicemix_home>/etc/org.apache.cxf.wsn.cfg
+
+With the following lines:
+
+    cxf.wsn.activemq.username=smx
+    cxf.wsn.activemq.password=smx
+
+Head back to the ServiceMix console and enter the following commands:
  
  features:install examples-cxf-wsn-receive
   

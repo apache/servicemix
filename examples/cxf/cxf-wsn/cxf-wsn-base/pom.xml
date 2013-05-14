@@ -25,6 +25,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cxf-wsn-base</artifactId>
+    <name>Apache ServiceMix :: Examples :: CXF WSN :: Base</name>
     <packaging>bundle</packaging>
 
     <build>
