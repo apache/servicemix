@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<blueprint
+        xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+   <!--
+   We use the DroolsBlueprintBean to replace the grid-node element from the Drools Spring namespace handler:
+
+   Spring example:
+
+   <drools:grid-node id="node1"/>
+   -->
+   <bean id="node1"
+         class="org.apache.servicemix.examples.camel.DroolsBlueprintBean"
+         factory-method="createGridNode">
+       <argument value="node1"/>
+   </bean>
+
+
+   <!--
+   We use the DroolsBlueprintBean to replace the kbase element from the Drools Spring namespace handler:
+
+   Spring example:
+
+   <drools:kbase id="kbase1" node="node1">
+        <drools:resources>
+            <drools:resource type="DRL" source="classpath:testSpring.drl"/>
+        </drools:resources>
+    </drools:kbase>
+   -->
+   <bean id="kbase1"
+         class="org.apache.servicemix.examples.camel.DroolsBlueprintBean"
+         factory-method="createKnowledgeBase">
+       <argument ref="node1"/>
+       <argument value="classpath:testSpring.drl" />
+       <argument value="DRL" />
+   </bean>
+
+    <!--
+   We use the DroolsBlueprintBean to replace the ksession element from the Drools Spring namespace handler:
+
+   Spring example:
+
+   <drools:ksession id="ksession1" type="stateless" name="ksession1" kbase="kbase1" node="node1"/>
+   -->
+   <bean id="ksession1"
+         class="org.apache.servicemix.examples.camel.DroolsBlueprintBean"
+         factory-method="createKnowledgeSession">
+       <argument ref="kbase1"/>
+       <argument ref="node1"/>
+       <argument value="stateless"/>
+       <argument value="ksession1"/>
+   </bean>
+
+
+   <bean id="droolsHelper" class="org.apache.servicemix.examples.camel.DroolsCommandHelper"/>
+
+   <bean id="personHelper" class="org.apache.servicemix.examples.camel.PersonHelper"/>
+
+   <!-- declare the drools bean here to avoid OSGi classpath issues -->
+    <bean id="drools" class="org.drools.camel.component.DroolsComponent" depends-on="ksession1"/>
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" >
+        <route trace="false" id="testRoute">
+            <description>
+                Example route that will regularly create a random Person and choose an appropriate drink based on the
+                drools rules file. After processing, it divides the people into VIPs and regular clients based on the
+                drools result.
+            </description>
+            <from uri="timer:testRoute"/>
+            <bean method="createTestPerson" ref="personHelper"/>
+            <to uri="drools:node1/ksession1?action=insertBody" id="DrinkChooser">
+                <description>valid 'action' values are:
+                    'execute' that takes a 'Command' object (default)
+                    'insertBody' that inserts the Exchange.in.body, and executes rules
+                    'insertMessage' that inserts the Exchange.in (type org.apache.camel.Message), and executes rules
+                    'insertExchange' that inserts the Exchange (type org.apache.camel.Exchange), and executes rules
+                </description>
+            </to>
+            <choice>
+                <when id="Vip">
+                    <simple>${body.isVip}</simple>
+                    <log logName="ServeDrink VIP" message="This ${body.name} is a VIP! Give a ${body.getDrink.getDescription} from the house"/>
+                </when>
+                <otherwise>
+                    <log logName="ServeDrink" message="Serve this ${body.name} a ${body.getDrink.getDescription}"/>
+                </otherwise>
+            </choice>
+        </route>
+    </camelContext>
+
+</blueprint>

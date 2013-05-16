@@ -36,6 +36,7 @@
         <module>camel-blueprint</module>
         <module>camel-osgi</module>
         <module>camel-drools</module>
+        <module>camel-drools-blueprint</module>
     </modules>
 
 </project>

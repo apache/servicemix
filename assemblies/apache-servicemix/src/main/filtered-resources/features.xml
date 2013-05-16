@@ -85,6 +85,11 @@
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/camel-drools/${version}</bundle>
     </feature>
+    <feature name="examples-camel-drools-blueprint" version="${version}" resolver="(obr)">
+        <feature version="${camel.version}">camel-jms</feature>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.examples/camel-drools-blueprint/${version}</bundle>
+    </feature>
     <feature name="examples-cxf-ws-addressing" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
