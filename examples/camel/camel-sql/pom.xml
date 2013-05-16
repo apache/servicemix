@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
-    
+
         Licensed to the Apache Software Foundation (ASF) under one or more
         contributor license agreements.  See the NOTICE file distributed with
         this work for additional information regarding copyright ownership.
@@ -19,25 +19,23 @@
         limitations under the License.
     -->
 
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
+        <artifactId>camel-examples</artifactId>
         <groupId>org.apache.servicemix.examples</groupId>
-        <artifactId>examples</artifactId>
         <version>5.0.0-SNAPSHOT</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.apache.servicemix.examples</groupId>
-    <artifactId>camel-examples</artifactId>
+    <artifactId>camel-sql</artifactId>
+    <name>Apache ServiceMix :: Examples :: Camel SQL</name>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Examples :: Camel </name>
 
     <modules>
-        <module>camel-blueprint</module>
-        <module>camel-osgi</module>
-        <module>camel-drools</module>
-        <module>camel-drools-blueprint</module>
-        <module>camel-sql</module>
+        <module>camel-sql-datasource-derby</module>
+        <module>camel-sql-orders</module>
+        <module>camel-sql-datasource-pgsql</module>
+        <module>camel-sql-datasource-h2</module>
     </modules>
+
 
 </project>

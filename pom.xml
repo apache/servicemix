@@ -158,12 +158,14 @@
         <bcel.bundle.version>5.2_3</bcel.bundle.version>
         <commons-beanutils.bundle.version>1.8.2_1</commons-beanutils.bundle.version>
         <commons-codec.bundle.version>1.4</commons-codec.bundle.version>
+        <commons-dbcp.bundle.version>1.4_3</commons-dbcp.bundle.version>
         <commons-httpclient.bundle.version>3.1_6</commons-httpclient.bundle.version>
         <commons-lang.bundle.version>2.4_4</commons-lang.bundle.version>
         <commons-net.bundle.version>2.2</commons-net.bundle.version>
         <commons-pool.version>1.6</commons-pool.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-vfs.bundle.version>1.0_5</commons-vfs.bundle.version>
+        <derby.bundle.version>10.9.1.0_1</derby.bundle.version>
         <dom4j.bundle.version>1.6.1_5</dom4j.bundle.version>
         <drools.bundle.version>${drools.version}_1</drools.bundle.version>
         <fastinfoset.bundle.version>1.2.7_3</fastinfoset.bundle.version>
@@ -177,6 +179,7 @@
         <opensaml.bundle.version>2.4.1_1</opensaml.bundle.version>
         <jodatime.bundle.version>1.5.2_2</jodatime.bundle.version>
         <oscore.bundle.version>2.2.4_4</oscore.bundle.version>
+        <osgi.version>4.3.1</osgi.version>
         <osworkflow.bundle.version>2.7.0_4</osworkflow.bundle.version>
         <oro.bundle.version>2.0.8_4</oro.bundle.version>
         <propertyset.bundle.version>1.3_4</propertyset.bundle.version>
@@ -203,7 +206,7 @@
         <depends-maven-plugin.version>1.2</depends-maven-plugin.version>
         <maven-antrun-plugin.version>1.6</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>2.2.1</maven-assembly-plugin.version>
-        <maven-bundle-plugin.version>2.1.0</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
 
         <!-- Other Dependencies -->
         <axiom.version>1.2.12</axiom.version>
@@ -230,6 +233,7 @@
         <mybatis.version>3.1.1</mybatis.version>
         <pax.tinybundle.version>1.0.0</pax.tinybundle.version>
         <pojosr.version>0.2.1</pojosr.version>
+        <postgresql.version>9.1-901</postgresql.version>
         <scalatest.version>1.9.1</scalatest.version>
         <scriptengines.version>1.1</scriptengines.version>
         <slf4j.version>1.6.6</slf4j.version>
