@@ -41,6 +41,7 @@
     -->
     <feature name="examples-activemq-camel-blueprint" version="${version}" resolver="(obr)">
         <feature version="${activemq.version}">activemq-broker</feature>
+        <feature version="${camel.version}">camel-jms</feature>
         <feature version="${camel.version}">camel-blueprint</feature>
         <bundle>mvn:org.apache.servicemix.examples/activemq-camel-blueprint/${version}</bundle>
     </feature>
