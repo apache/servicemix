@@ -40,7 +40,7 @@
     <activemq.version>5.8.0</activemq.version>
     <activiti.version>5.10</activiti.version>
     <camel.version>2.11.0</camel.version>
-    <cxf.version>2.7.4</cxf.version>
+    <cxf.version>2.7.5</cxf.version>
 
     <felix.obr.version>1.6.6</felix.obr.version>
 
