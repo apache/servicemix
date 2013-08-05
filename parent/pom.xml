@@ -39,12 +39,12 @@
   <properties>
     <activemq.version>5.8.0</activemq.version>
     <activiti.version>5.10</activiti.version>
-    <camel.version>2.11.0</camel.version>
-    <cxf.version>2.7.5</cxf.version>
+    <camel.version>2.12-SNAPSHOT</camel.version>
+    <cxf.version>2.7.4</cxf.version>
 
     <felix.obr.version>1.6.6</felix.obr.version>
 
-    <karaf.version>2.3.2-SNAPSHOT</karaf.version>
+    <karaf.version>2.3.2</karaf.version>
     <aries.version>1.0.0</aries.version>
     <aries.transaction.version>1.0.1</aries.transaction.version>
     <pax.logging.version>1.7.0</pax.logging.version>

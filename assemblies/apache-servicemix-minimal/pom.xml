@@ -55,6 +55,7 @@
                                 <descriptor>mvn:org.apache.servicemix/apache-servicemix/${project.version}/xml/features</descriptor>
                             </descriptors>
                             <features>
+                              <feature>core</feature>
                               <feature>obr</feature>
                             </features>
                             <includeMvnBasedDescriptors>true</includeMvnBasedDescriptors>

@@ -47,7 +47,7 @@ abstract class IntegrationTestSupport extends Await with IntegrationTestConfigur
    */
   val registrations = ArrayBuffer.empty[ServiceRegistration[_]]
 
-  @Before
+  @After
   def clearLogging = logging.clear
 
   /*
