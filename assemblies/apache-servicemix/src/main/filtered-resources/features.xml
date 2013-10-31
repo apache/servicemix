@@ -271,4 +271,22 @@
     <feature name="jaxrs-api">
         <bundle start-level='10'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr339-api-m10/${servicemix.specs.version}</bundle>
     </feature>
+    <feature name="swagger" version="${version}" resolver="(obr)">
+        <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javassist/${javassist.bundle.version}</bundle>
+        <bundle>mvn:com.google.guava/guava/${google.guava.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${swagger.bundle.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core/${swagger.bundle.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-jaxrs/${swagger.bundle.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/${reflections.bundle.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/${json4s.bundle.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jackson-module-scala/${jackson-module-scala.bundle.version}</bundle>
+
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/${fasterxml.jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml.jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${fasterxml.jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${fasterxml.jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${fasterxml.jackson.version}</bundle>
+   </feature>
+
 </features>

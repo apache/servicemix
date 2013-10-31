@@ -51,6 +51,8 @@
 
     <akka.version>2.1.2</akka.version>
     <scala.version>2.10.0</scala.version>
+    <google.guava.version>14.0.1</google.guava.version>
+    <fasterxml.jackson.version>2.2.1</fasterxml.jackson.version>
     <typesafe-config.version>1.0.0</typesafe-config.version>
 
     <servicemix.specs.version>2.3-SNAPSHOT</servicemix.specs.version>
