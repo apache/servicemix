@@ -18,8 +18,6 @@
  */
 package org.apache.servicemix.examples.cxf.jaxrs;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -30,7 +28,26 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-@Path("/customerservice/")
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+import com.wordnik.swagger.annotations.ApiResponses;
+import com.wordnik.swagger.annotations.ApiResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * This Java class with be hosted in the URI path defined by the @Path annotation. @Path annotations on the methods
+ * of this class always refer to a path relative to the path defined at the class level.
+ * <p/>
+ * For example, with 'http://localhost:8181/cxf' as the default CXF servlet path and '/crm' as the JAX-RS server path,
+ * this class will be hosted in 'http://localhost:8181/cxf/crm/customerservice'.  An @Path("/customers") annotation on
+ * one of the methods would result in 'http://localhost:8181/cxf/crm/customerservice/customers'.
+ */
+@Path("/customerservice")
+@Api(value = "/customerservice", description = "Operations about customerservice")
+
+
 public class CustomerService {
     long currentId = 123;
     Map<Long, Customer> customers = new HashMap<Long, Customer>();
@@ -40,19 +57,50 @@ public class CustomerService {
         init();
     }
 
+    /**
+     * This method is mapped to an HTTP GET of 'http://localhost:8181/cxf/crm/customerservice/customers/{id}'.  The value for
+     * {id} will be passed to this message as a parameter, using the @PathParam annotation.
+     * <p/>
+     * The method returns a Customer object - for creating the HTTP response, this object is marshaled into XML using JAXB.
+     * <p/>
+     * For example: surfing to 'http://localhost:8181/cxf/crm/customerservice/customers/123' will show you the information of
+     * customer 123 in XML format.
+     */
     @GET
     @Path("/customers/{id}/")
     @Produces("application/xml")
-    public Customer getCustomer(@PathParam("id") String id) {
+    @ApiOperation(value = "Find Customer by ID", notes = "More notes about this method", response = Customer.class)
+    @ApiResponses(value = {
+      @ApiResponse(code = 500, message = "Invalid ID supplied"),
+      @ApiResponse(code = 204, message = "Customer not found") 
+    })
+    public Customer getCustomer(@ApiParam(value = "ID of Customer to fetch", required = true) @PathParam("id") String id) {
         System.out.println("----invoking getCustomer, Customer id is: " + id);
         long idNumber = Long.parseLong(id);
         Customer c = customers.get(idNumber);
         return c;
     }
 
+    /**
+     * Using HTTP PUT, we can can upload the XML representation of a customer object.  This operation will be mapped
+     * to the method below and the XML representation will get unmarshaled into a real Customer object using JAXB.
+     * <p/>
+     * The method itself just updates the customer object in our local data map and afterwards uses the Reponse class to
+     * build the appropriate HTTP response: either OK if the update succeeded (translates to HTTP Status 200/OK) or not
+     * modified if the method failed to update a customer object (translates to HTTP Status 304/Not Modified).
+     * <p/>
+     * Note how this method is using the same @Path value as our next method - the HTTP method used will determine which
+     * method is being invoked.
+     */
     @PUT
     @Path("/customers/")
-    public Response updateCustomer(Customer customer) {
+    @ApiOperation(value = "Update an existing Customer")
+    @ApiResponses(value = {
+                           @ApiResponse(code = 500, message = "Invalid ID supplied"),
+                           @ApiResponse(code = 204, message = "Customer not found") 
+                         })
+
+    public Response updateCustomer(@ApiParam(value = "Customer object that needs to be updated", required = true) Customer customer) {
         System.out.println("----invoking updateCustomer, Customer name is: " + customer.getName());
         Customer c = customers.get(customer.getId());
         Response r;
@@ -66,9 +114,25 @@ public class CustomerService {
         return r;
     }
 
+    /**
+     * Using HTTP POST, we can add a new customer to the system by uploading the XML representation for the customer.
+     * This operation will be mapped to the method below and the XML representation will get unmarshaled into a real
+     * Customer object.
+     * <p/>
+     * After the method has added the customer to the local data map, it will use the Response class to build the HTTP reponse,
+     * sending back the inserted customer object together with a HTTP Status 200/OK.  This allows us to send back the
+     * new id for the customer object to the client application along with any other data that might have been updated in
+     * the process.
+     * <p/>
+     * Note how this method is using the same @Path value as our previous method - the HTTP method used will determine which
+     * method is being invoked.
+     */
     @POST
     @Path("/customers/")
-    public Response addCustomer(Customer customer) {
+    @ApiOperation(value = "Add a new Customer")
+    @ApiResponses(value = { @ApiResponse(code = 500, message = "Invalid ID supplied"), })
+    public Response addCustomer(@ApiParam(value = "Customer object that needs to be updated", required = true)
+                                Customer customer) {
         System.out.println("----invoking addCustomer, Customer name is: " + customer.getName());
         customer.setId(++currentId);
 
@@ -77,9 +141,21 @@ public class CustomerService {
         return Response.ok().type("application/xml").entity(customer).build();
     }
 
+    /**
+     * This method is mapped to an HTTP DELETE of 'http://localhost:8181/cxf/crm/customerservice/customers/{id}'.  The value for
+     * {id} will be passed to this message as a parameter, using the @PathParam annotation.
+     * <p/>
+     * The method uses the Response class to create the HTTP response: either HTTP Status 200/OK if the customer object was
+     * successfully removed from the local data map or a HTTP Status 304/Not Modified if it failed to remove the object.
+     */
     @DELETE
     @Path("/customers/{id}/")
-    public Response deleteCustomer(@PathParam("id") String id) {
+    @ApiOperation(value = "Delete Customer")
+    @ApiResponses(value = {
+                           @ApiResponse(code = 500, message = "Invalid ID supplied"),
+                           @ApiResponse(code = 204, message = "Customer not found") 
+                         })
+    public Response deleteCustomer(@ApiParam(value = "ID of Customer to delete", required = true) @PathParam("id") String id) {
         System.out.println("----invoking deleteCustomer, Customer id is: " + id);
         long idNumber = Long.parseLong(id);
         Customer c = customers.get(idNumber);
@@ -95,6 +171,16 @@ public class CustomerService {
         return r;
     }
 
+    /**
+     * This method is mapped to an HTTP GET of 'http://localhost:8181/cxf/crm/customerservice/orders/{id}'.  The value for
+     * {id} will be passed to this message as a parameter, using the @PathParam annotation.
+     * <p/>
+     * The method returns an Order object - the class for that object includes a few more JAX-RS annotations, allowing it to
+     * display one of these two outputs, depending on the actual URI path being used:
+     * - display the order information itself in XML format
+     * - display details about a product in the order in XML format in a path relative to the URI defined here
+     */
+    
     @Path("/orders/{orderId}/")
     public Order getOrder(@PathParam("orderId") String orderId) {
         System.out.println("----invoking getOrder, Order id is: " + orderId);
@@ -103,6 +189,10 @@ public class CustomerService {
         return c;
     }
 
+    /**
+     * The init method is used by the constructor to insert a Customer and Order object into the local data map
+     * for testing purposes.
+     */
     final void init() {
         Customer c = new Customer();
         c.setName("John");

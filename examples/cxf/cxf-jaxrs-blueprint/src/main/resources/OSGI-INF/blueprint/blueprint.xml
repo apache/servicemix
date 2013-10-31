@@ -27,9 +27,31 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
     <jaxrs:server id="customerService" address="/crm">
         <jaxrs:serviceBeans>
             <ref component-id="customerSvc"/>
+            <ref component-id="swaggerResourceJSON"/>
         </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref component-id="resourceWriter" />
+            <ref component-id="apiWriter" />
+        </jaxrs:providers>
     </jaxrs:server>
 
     <bean id="customerSvc" class=" org.apache.servicemix.examples.cxf.jaxrs.CustomerService"/>
+    <bean id="swaggerResourceJSON" class="com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON" />
+
+    <!-- Swagger writers -->
+    <bean id="resourceWriter" class="com.wordnik.swagger.jaxrs.listing.ResourceListingProvider" />
+    <bean id="apiWriter" class="com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider" />
+
+    <bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">
+        <property name="resourcePackage" value="org.apache.servicemix.examples.cxf.jaxrs"/>
+        <property name="version" value="1.0.0"/>
+        <property name="basePath" value="http://localhost:8181/cxf/crm"/>
+        <property name="title" value="Rest sample app"/>
+        <property name="description" value="This is a app."/>
+        <property name="contact" value="freeman.fang@gmail.com"/>
+        <property name="license" value="Apache 2.0 License"/>
+        <property name="licenseUrl" value="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+        <property name="scan" value="true"/>
+     </bean>
 
 </blueprint>
