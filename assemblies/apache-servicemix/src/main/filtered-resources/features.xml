@@ -73,6 +73,7 @@
     </feature>
     <feature name="examples-cxf-jaxrs-blueprint" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
+        <feature version="${version}">swagger</feature>
         <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
 	<bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${commons-httpclient.bundle.version}</bundle>
