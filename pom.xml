@@ -205,7 +205,7 @@
         <javassist.bundle.version>3.12.1.GA_2</javassist.bundle.version>
         <reflections.bundle.version>0.9.8_1</reflections.bundle.version>
         <json4s.bundle.version>3.2.4_1</json4s.bundle.version>
-        <jackson-module-scala.bundle.version>2.1.5_1</jackson-module-scala.bundle.version>
+        <jackson-module-scala.bundle.version>2.1.5_2</jackson-module-scala.bundle.version>
         <!-- ServiceMix legal shared resources -->
         <servicemix.legal.version>1.0</servicemix.legal.version>
 
