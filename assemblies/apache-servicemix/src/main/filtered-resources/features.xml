@@ -156,6 +156,7 @@
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-signature/${version}</bundle>
     </feature>
     <feature name="examples-cxf-ws-rm" version="${version}" resolver="(obr)">
+        <feature version="${cxf.version}">cxf</feature>
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-rm/${version}</bundle>
     </feature>
     <feature name="examples-cxf-wsn-receive" version="${version}" resolver="(obr)">
