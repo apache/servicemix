@@ -158,7 +158,7 @@
         <antlr.bundle.version>3.0.1_6</antlr.bundle.version>
         <antlr-runtime.bundle.version>3.0.1_2</antlr-runtime.bundle.version>
         <bcel.bundle.version>5.2_3</bcel.bundle.version>
-        <casbah.bundle.version>2.6.2_1-SNAPSHOT</casbah.bundle.version>
+        <casbah.bundle.version>2.6.2_1</casbah.bundle.version>
         <commons-beanutils.bundle.version>1.8.2_1</commons-beanutils.bundle.version>
         <commons-codec.bundle.version>1.4</commons-codec.bundle.version>
         <commons-dbcp.bundle.version>1.4_3</commons-dbcp.bundle.version>
@@ -201,11 +201,11 @@
         <xmlsec.bundle.version>1.5.1</xmlsec.bundle.version>
         <xpp3.bundle.version>1.1.4c_5</xpp3.bundle.version>
         <xstream.bundle.version>1.3_3</xstream.bundle.version>
-        <swagger.bundle.version>1.3.0_1-SNAPSHOT</swagger.bundle.version>
+        <swagger.bundle.version>1.3.0_1</swagger.bundle.version>
         <javassist.bundle.version>3.12.1.GA_2</javassist.bundle.version>
-        <reflections.bundle.version>0.9.8_1-SNAPSHOT</reflections.bundle.version>
-        <json4s.bundle.version>3.2.4_1-SNAPSHOT</json4s.bundle.version>
-        <jackson-module-scala.bundle.version>2.1.5_1-SNAPSHOT</jackson-module-scala.bundle.version>
+        <reflections.bundle.version>0.9.8_1</reflections.bundle.version>
+        <json4s.bundle.version>3.2.4_1</json4s.bundle.version>
+        <jackson-module-scala.bundle.version>2.1.5_1</jackson-module-scala.bundle.version>
         <!-- ServiceMix legal shared resources -->
         <servicemix.legal.version>1.0</servicemix.legal.version>
 
