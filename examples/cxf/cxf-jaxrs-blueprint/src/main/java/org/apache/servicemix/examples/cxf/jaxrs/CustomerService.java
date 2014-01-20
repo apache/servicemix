@@ -130,7 +130,7 @@ public class CustomerService {
     @POST
     @Path("/customers/")
     @ApiOperation(value = "Add a new Customer")
-    @ApiResponses(value = { @ApiResponse(code = 500, message = "Invalid ID supplied"), })
+    @ApiResponses(value = { @ApiResponse(code = 500, message = "Invalid ID supplied")})
     public Response addCustomer(@ApiParam(value = "Customer object that needs to be updated", required = true)
                                 Customer customer) {
         System.out.println("----invoking addCustomer, Customer name is: " + customer.getName());
