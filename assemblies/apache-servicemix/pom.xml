@@ -117,7 +117,6 @@
                                 <descriptor>file:${basedir}/target/classes/features.xml</descriptor>
                             </descriptors>
                             <features>
-                                <feature>core</feature>
                                 <feature>cxf</feature>
                                 <feature>obr</feature>
                                 <feature>config</feature>

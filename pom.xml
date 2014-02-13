@@ -37,9 +37,7 @@
 
     <modules>
         <module>parent</module>
-        <module>core</module>
         <module>activiti</module>
-        <module>audit</module>
         <module>akka</module>
         <module>branding</module>
         <module>logging</module>
@@ -56,7 +54,7 @@
     
     <issueManagement>
         <system>jira</system>
-        <url>http://issues.apache.org/jira/browse/SMX4</url>
+        <url>http://issues.apache.org/jira/browse/SM</url>
     </issueManagement>
 
     <prerequisites>

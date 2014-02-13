@@ -21,19 +21,6 @@
     <repository>mvn:org.apache.karaf.assemblies.features/enterprise/${karaf.version}/xml/features</repository>
     <repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
 
-    <feature name="core" version="${project.version}" resolver="(obr)" start-level="30">
-        <feature version="${camel.version}">camel</feature>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.scala-library/${scala.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.core/camel/${project.version}</bundle>
-    </feature>
-
-    <feature name="audit-mongodb" version="${project.version}" resolver="(obr)" start-level="30">
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.scala-library/${scala.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.mongodb/mongo-java-driver/${mongodb.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.casbah/${casbah.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.audit/mongodb/${project.version}</bundle>
-    </feature>
-
     <feature name="connector" version="${version}" resolver="(obr)" start-level='50'>
         <feature version="${aries.transaction.version}">transaction</feature>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.5_spec/${geronimo-j2ee-connector.version}</bundle>

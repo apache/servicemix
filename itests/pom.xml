@@ -149,6 +149,8 @@
         <configuration>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
           <argLine>-Dorg.ops4j.pax.url.mvn.localRepository=${settings.localRepository}</argLine>
+          <!-- SM-2232: hangs in integration tests -->
+          <skipExec>true</skipExec>
         </configuration>
       </plugin>
 
