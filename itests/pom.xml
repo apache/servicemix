@@ -49,11 +49,6 @@
         <version>${scala.bundle.version}</version>
         <scope>test</scope>
       </dependency>
-      <dependency>
-        <groupId>org.apache.karaf.tooling.exam</groupId>
-        <artifactId>org.apache.karaf.tooling.exam.container</artifactId>
-        <version>${karaf.version}</version>
-      </dependency>
 
       <dependency>
         <groupId>junit</groupId>
@@ -75,8 +70,25 @@
 
       <dependency>
         <groupId>org.ops4j.pax.exam</groupId>
+        <artifactId>pax-exam-container-karaf</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.ops4j.pax.exam</groupId>
         <artifactId>pax-exam-junit4</artifactId>
-        <version>${pax-exam-version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.ops4j.pax.url</groupId>
+        <artifactId>pax-url-mvn</artifactId>
+        <scope>test</scope>
+      </dependency>
+      
+      <dependency>
+        <groupId>org.apache.geronimo.specs</groupId>
+        <artifactId>geronimo-atinject_1.0_spec</artifactId>
+        <scope>provided</scope>
       </dependency>
 
       <dependency>
@@ -127,6 +139,8 @@
     </dependencies>
 
   <build>
+    <sourceDirectory>src/main/scala</sourceDirectory>
+    <testSourceDirectory>src/test/scala</testSourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.servicemix.tooling</groupId>
@@ -149,8 +163,6 @@
         <configuration>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
           <argLine>-Dorg.ops4j.pax.url.mvn.localRepository=${settings.localRepository}</argLine>
-          <!-- SM-2232: hangs in integration tests -->
-          <skipExec>true</skipExec>
         </configuration>
       </plugin>
 

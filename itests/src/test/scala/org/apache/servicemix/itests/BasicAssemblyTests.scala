@@ -16,16 +16,14 @@
  */
 package org.apache.servicemix.itests;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.ops4j.pax.exam.junit.Configuration;
-import org.ops4j.pax.exam.junit.ExamReactorStrategy;
-import org.ops4j.pax.exam.junit.JUnit4TestRunner;
-import org.ops4j.pax.exam.spi.reactors.EagerSingleStagedReactorFactory
-
+import org.junit.Test
+import org.junit.runner.RunWith
 import org.junit.Assert._
 import io.Source
 import org.osgi.framework.Bundle
+import org.ops4j.pax.exam.spi.reactors.{PerClass, ExamReactorStrategy}
+import org.ops4j.pax.exam.junit.PaxExam
+import org.ops4j.pax.exam.Configuration
 
 /**
  * A set of quick sanity checks to be run for all three types of container packaging we offer (default, minimal and full)
@@ -53,8 +51,8 @@ trait BasicAssemblyTests { self: IntegrationTestSupport =>
 
 }
 
-@RunWith(classOf[JUnit4TestRunner])
-@ExamReactorStrategy(Array(classOf[EagerSingleStagedReactorFactory]))
+@RunWith(classOf[PaxExam])
+@ExamReactorStrategy(Array(classOf[PerClass]))
 class MinimalAssemblyTest extends IntegrationTestSupport with BasicAssemblyTests {
 
   @Configuration
@@ -63,8 +61,8 @@ class MinimalAssemblyTest extends IntegrationTestSupport with BasicAssemblyTests
 
 }
 
-@RunWith(classOf[JUnit4TestRunner])
-@ExamReactorStrategy(Array(classOf[EagerSingleStagedReactorFactory]))
+@RunWith(classOf[PaxExam])
+@ExamReactorStrategy(Array(classOf[PerClass]))
 class DefaultAssemblyTest extends IntegrationTestSupport with BasicAssemblyTests {
 
   @Configuration
@@ -72,8 +70,8 @@ class DefaultAssemblyTest extends IntegrationTestSupport with BasicAssemblyTests
 
 }
 
-@RunWith(classOf[JUnit4TestRunner])
-@ExamReactorStrategy(Array(classOf[EagerSingleStagedReactorFactory]))
+@RunWith(classOf[PaxExam])
+@ExamReactorStrategy(Array(classOf[PerClass]))
 class FullAssemblyTest extends IntegrationTestSupport with BasicAssemblyTests {
 
   @Configuration

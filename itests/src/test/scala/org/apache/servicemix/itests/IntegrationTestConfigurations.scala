@@ -18,7 +18,7 @@ package org.apache.servicemix.itests
 
 import scala.Array
 import org.ops4j.pax.exam.CoreOptions._
-import org.apache.karaf.tooling.exam.options.KarafDistributionOption._
+import org.ops4j.pax.exam.karaf.options.KarafDistributionOption._
 import scala.Some
 import java.io.File
 
@@ -53,9 +53,10 @@ trait IntegrationTestConfigurations {
     Array(
       karafDistributionConfiguration().
         frameworkUrl(
-        maven().groupId("org.apache.servicemix").artifactId(artifact).`type`("tar.gz").versionAsInProject()).
+          maven().groupId("org.apache.servicemix").artifactId(artifact).`type`("tar.gz").versionAsInProject()).
         karafVersion("2.3.1").name("Apache ServiceMix (${name})").
-        unpackDirectory(new File(s"target/pax-exam/${artifact}")),
+        unpackDirectory(new File(s"target/pax-exam/${artifact}")).
+        useDeployFolder(false),
       keepRuntimeFolder(),
       systemProperty("org.ops4j.pax.url.mvn.localRepository").value(LOCAL_REPOSITORY),
       // TODO: investigate why we need this to get Pax Logging going again

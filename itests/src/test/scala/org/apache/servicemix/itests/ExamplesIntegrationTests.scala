@@ -16,19 +16,18 @@
  */
 package org.apache.servicemix.itests
 
-import org.junit.runner.RunWith;
-import org.ops4j.pax.exam.junit.Configuration;
-import org.ops4j.pax.exam.junit.ExamReactorStrategy;
-import org.ops4j.pax.exam.junit.JUnit4TestRunner;
-import org.ops4j.pax.exam.spi.reactors.EagerSingleStagedReactorFactory
+import org.junit.runner.RunWith
 import org.junit.{Ignore, Test}
 import org.apache.camel.{Exchange, Processor}
+import org.ops4j.pax.exam.spi.reactors.{PerClass, ExamReactorStrategy}
+import org.ops4j.pax.exam.Configuration
+import org.ops4j.pax.exam.junit.PaxExam
 
 /**
  * Base configuration for all examples' integration tests
  */
-@RunWith(classOf[JUnit4TestRunner])
-@ExamReactorStrategy(Array(classOf[EagerSingleStagedReactorFactory]))
+@RunWith(classOf[PaxExam])
+@ExamReactorStrategy(Array(classOf[PerClass]))
 abstract class ExamplesIntegrationTests extends IntegrationTestSupport with CamelTestSupport {
 
   @Configuration
@@ -39,9 +38,10 @@ abstract class ExamplesIntegrationTests extends IntegrationTestSupport with Came
 /**
  * Tests for the ActiveMQ examples
  */
+@Ignore("Example currently does not install, cfr. https://issues.apache.org/jira/browse/SM-2183")
 class ActiveMQExamplesTest extends ExamplesIntegrationTests {
+
   @Test
-  @Ignore("Example currently does not install, cfr. https://issues.apache.org/jira/browse/SM-2183")
   def testActiveMQCamelBlueprintExample = testWithFeature("examples-activemq-camel-blueprint") {
     expect {
       logging.containsMessage(line => line.contains("ActiveMQ-Blueprint-Example set body"))
@@ -52,10 +52,10 @@ class ActiveMQExamplesTest extends ExamplesIntegrationTests {
 /**
  * Tests for the Activiti examples
  */
+@Ignore("SM-2234: Activiti itest fails - runs same test twice?")
 class ActivitiExamplesTest extends ExamplesIntegrationTests {
 
   @Test
-  @Ignore("This test intermittently seems to lock up the test container")
   def testActivitiCamelExample = testWithFeature("examples-activiti-camel") {
     val orderId = "001"
 
@@ -111,7 +111,6 @@ class CamelExamplesTest extends ExamplesIntegrationTests {
 /**
  * Tests for the CXF examples
  */
-@Ignore("https://issues.apache.org/jira/browse/SM-2232")
 class CxfExamplesTest extends ExamplesIntegrationTests {
   @Test
   def testCxfJaxRsExample = testWithFeature("examples-cxf-jaxrs", "camel-http") {
