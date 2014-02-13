@@ -111,6 +111,7 @@ class CamelExamplesTest extends ExamplesIntegrationTests {
 /**
  * Tests for the CXF examples
  */
+@Ignore("https://issues.apache.org/jira/browse/SM-2232")
 class CxfExamplesTest extends ExamplesIntegrationTests {
   @Test
   def testCxfJaxRsExample = testWithFeature("examples-cxf-jaxrs", "camel-http") {
