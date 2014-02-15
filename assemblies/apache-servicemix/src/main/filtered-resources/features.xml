@@ -27,10 +27,10 @@
         <bundle>mvn:org.apache.geronimo.components/geronimo-connector/${geronimo-connector.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_2.5_spec/${geronimo-servlet.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/spring-tx/${spring.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/spring-context/${spring.version}</bundle>                                       ‚
-        <bundle dependency="true">mvn:org.springframework/spring-aop/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.transaction/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.context/${spring.version}</bundle>                                       ‚
+        <bundle dependency="true">mvn:org.springframework/org.springframework.aop/${spring.version}</bundle>
     </feature>
 
     <!--
@@ -48,12 +48,12 @@
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
         <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-osgi/${version}</bundle>
     </feature>
     <feature name="examples-cxf-jaxrs" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
-        <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
 	<bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${commons-httpclient.bundle.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-jaxrs/${version}</bundle>
@@ -61,14 +61,14 @@
     <feature name="examples-cxf-jaxrs-blueprint" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <feature version="${version}">swagger</feature>
-        <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
 	<bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${commons-httpclient.bundle.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-jaxrs-blueprint/${version}</bundle>
     </feature>
     <feature name="examples-cxf-jaxws-blueprint" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
-        <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
 	<bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${commons-httpclient.bundle.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-jaxws-blueprint/${version}</bundle>
@@ -120,14 +120,14 @@
     <feature name="examples-cxf-ws-addressing" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
         <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-addressing/${version}</bundle>
     </feature>
     <feature name="examples-cxf-ws-security-osgi" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-osgi/${version}</bundle>
     </feature>
     <feature name="examples-cxf-ws-security-blueprint" version="${version}" resolver="(obr)">
@@ -138,7 +138,7 @@
     <feature name="examples-cxf-ws-security-signature" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/spring-beans/${spring.version}</bundle>
+        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
         <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-signature/${version}</bundle>
     </feature>
