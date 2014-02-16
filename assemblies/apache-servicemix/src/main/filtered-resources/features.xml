@@ -39,7 +39,7 @@
       -
     -->
     <feature name="examples-activemq-camel-blueprint" version="${version}" resolver="(obr)">
-        <feature version="${activemq.version}">activemq-broker</feature>
+        <feature version="${activemq.version}">activemq-broker-noweb</feature>
         <feature version="${camel.version}">camel-jms</feature>
         <feature version="${camel.version}">camel-blueprint</feature>
         <bundle>mvn:org.apache.servicemix.examples/activemq-camel-blueprint/${version}</bundle>
@@ -171,58 +171,8 @@
         <bundle>mvn:org.apache.servicemix.examples/akka-camel/${version}</bundle>
     </feature>
 
-    <!-- Add a feature called 'activemq' because CXF seems to expect that instead of 'activemq-broker' -->
-    <feature name="activemq" version="${activemq.version}">
-        <feature version="${activemq.version}">activemq-broker</feature>
-    </feature>
-
-    <!-- Override activemq-client feature as a workaround to https://issues.apache.org/jira/browse/AMQ-4341 -->
-    <feature name="activemq-client" version="${activemq.version}" resolver="(obr)" start-level="50">
-      <bundle>mvn:org.apache.activemq/activemq-osgi/${activemq.version}</bundle>
-      <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.0_spec/${geronimo-annotation.version}</bundle>
-      <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo-annotation.version}</bundle>
-      <bundle>mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms.version}</bundle>
-      <bundle>mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${geronimo-j2ee-management.version}</bundle>
-      <bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
-      <feature version="[3,4)">spring</feature>
-      <bundle>mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
-    </feature>
-
-    <!-- Override activemq-broker feature as a workaround to https://issues.apache.org/jira/browse/AMQ-4341 -->
-    <feature name="activemq-broker" version="${activemq.version}" resolver="(obr)" start-level="50">
-        <bundle>mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${geronimo-j2ee-management.version}</bundle>
-        <bundle>mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
-        <feature version="${activemq.version}">activemq-client</feature>
-        <bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections.version}</bundle>
-        <bundle dependency='true'>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
-        <bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.velocity/${velocity.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/${jasypt.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/${xpp3.bundle.version}</bundle>
-        <bundle dependency="true">mvn:joda-time/joda-time/${joda-time.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${jdom.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${dom4j.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/${xstream.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.manager/${aries.transaction.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.aries/org.apache.aries.util/${aries.version}</bundle>
-
-        <!-- Camel JMS is required to get ActiveMQ's Camel component started -->
-        <feature version="${camel.version}">camel-jms</feature>
-
-        <!-- the following 4 bundles is needed by activemq-console -->
-        <bundle dependency="true">mvn:org.fusesource.hawtbuf/hawtbuf/${hawtbuf.version}</bundle>
-        <bundle dependency="true">mvn:org.fusesource.hawtbuf/hawtbuf-proto/${hawtbuf.version}</bundle>
-        <bundle dependency="true">mvn:org.codehaus.jackson/jackson-core-asl/${jackson.version}</bundle>
-        <bundle dependency="true">mvn:org.codehaus.jackson/jackson-mapper-asl/${jackson.version}</bundle>
-        <bundle>mvn:org.apache.activemq/activemq-karaf/${activemq.version}</bundle>
-        <bundle dependency="true">mvn:org.scala-lang/scala-library/${scala.version}</bundle>
-        <configfile finalname="/etc/activemq.xml">mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/activemq</configfile>
-        <configfile finalname="/etc/org.apache.activemq.server-default.cfg">mvn:org.apache.activemq/activemq-karaf/${activemq.version}/cfg/activemq</configfile>
-    </feature>
-
     <feature name="jms-appender" version="${version}" resolver="(obr)" start-level="50">
-        <feature version="${activemq.version}">activemq-broker</feature>
+        <feature version="${activemq.version}">activemq-broker-noweb</feature>
         <bundle>mvn:org.apache.servicemix.logging/jms-appender/${version}</bundle>
     </feature>
 
