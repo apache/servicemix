@@ -54,7 +54,7 @@ trait IntegrationTestConfigurations {
       karafDistributionConfiguration().
         frameworkUrl(
           maven().groupId("org.apache.servicemix").artifactId(artifact).`type`("tar.gz").versionAsInProject()).
-        karafVersion("2.3.1").name("Apache ServiceMix (${name})").
+        karafVersion("2.3.3").name("Apache ServiceMix (${name})").
         unpackDirectory(new File(s"target/pax-exam/${artifact}")).
         useDeployFolder(false),
       keepRuntimeFolder(),
