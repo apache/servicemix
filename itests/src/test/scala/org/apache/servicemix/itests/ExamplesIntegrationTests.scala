@@ -52,11 +52,11 @@ class ActiveMQExamplesTest extends ExamplesIntegrationTests {
 /**
  * Tests for the Activiti examples
  */
-@Ignore("SM-2234: Activiti itest fails - runs same test twice?")
 class ActivitiExamplesTest extends ExamplesIntegrationTests {
 
   @Test
-  def testActivitiCamelExample = testWithFeature("examples-activiti-camel") {
+  // running the test without uninstalling the feature afterwards, cfr. SM-2244
+  def testActivitiCamelExample = testWithFeature(false, "examples-activiti-camel") {
     val orderId = "001"
 
     camelProducer.send("file:var/activiti-camel/order", new Processor() {

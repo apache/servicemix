@@ -59,18 +59,22 @@ abstract class IntegrationTestSupport extends Await with IntegrationTestConfigur
   lazy val logFile : File = new File(logFolder, "servicemix.log")
 
   /**
-   * Install a feature and run a block of code.  Afterwards, uninstall the feature again.
+   * Install a feature and run a block of code.  Afterwards, uninstall the feature again
    */
-  def testWithFeature(names: String*)(block: => Unit) =
+  def testWithFeature(names: String*)(block: => Unit) : Unit = testWithFeature(true, names:_*)(block)
+
+  /**
+   * Install a feature and run a block of code.  Afterwards, uninstall the feature again if indicated.
+   */
+  def testWithFeature(uninstall: Boolean, names: String*)(block: => Unit) =
     try {
       val features : Set[Feature] = ( names map { name => featuresService.getFeature(name) } toSet )
       //TODO: Get this working without the extra options - enabling bundle refresh here will mess up the test container
       featuresService.installFeatures(features, util.EnumSet.of(FeaturesService.Option.NoAutoRefreshBundles))
       block
     } finally {
-      names foreach { featuresService.uninstallFeature }
+       if(uninstall) names foreach { featuresService.uninstallFeature }
     }
-
 
   /**
    * Expect a certain condition to occur within the allotted waiting time.
