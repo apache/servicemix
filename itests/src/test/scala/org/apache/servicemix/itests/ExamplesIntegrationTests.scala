@@ -31,7 +31,7 @@ import org.ops4j.pax.exam.junit.PaxExam
 abstract class ExamplesIntegrationTests extends IntegrationTestSupport with CamelTestSupport {
 
   @Configuration
-  def config() = servicemixTestConfiguration() ++ scalaTestConfiguration
+  def config() = servicemixTestConfiguration ++ scalaTestConfiguration
 
 }
 

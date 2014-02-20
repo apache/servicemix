@@ -39,8 +39,6 @@
     <modules>
         <module>shared</module>
         <module>apache-servicemix</module>
-        <module>apache-servicemix-minimal</module>
-        <module>apache-servicemix-full</module>
     </modules>
 
 

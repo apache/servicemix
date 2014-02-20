@@ -32,7 +32,7 @@ trait IntegrationTestConfigurations {
   /**
    * The default integration test configuration, using Scala and the Apache ServiceMix default assembly
    */
-  def defaultIntegrationTestConfiguration = servicemixTestConfiguration() ++ scalaTestConfiguration
+  def defaultIntegrationTestConfiguration = servicemixTestConfiguration ++ scalaTestConfiguration
 
   /**
    * Add support for Scala-based integration tests
@@ -43,12 +43,9 @@ trait IntegrationTestConfigurations {
   /**
    * Add an Apache ServiceMix container configuration
    */
-  def servicemixTestConfiguration(variant: String = null) = {
-    val name = Option(variant).getOrElse("default")
-    val artifact = Option(variant) match {
-      case Some(value) => s"apache-servicemix-${value}"
-      case None        => "apache-servicemix"
-    }
+  def servicemixTestConfiguration = {
+    val name = "default"
+    val artifact = "apache-servicemix"
 
     Array(
       karafDistributionConfiguration().

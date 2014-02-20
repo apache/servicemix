@@ -53,28 +53,10 @@ trait BasicAssemblyTests { self: IntegrationTestSupport =>
 
 @RunWith(classOf[PaxExam])
 @ExamReactorStrategy(Array(classOf[PerClass]))
-class MinimalAssemblyTest extends IntegrationTestSupport with BasicAssemblyTests {
-
-  @Configuration
-  def config() = servicemixTestConfiguration("minimal") ++ scalaTestConfiguration
-
-
-}
-
-@RunWith(classOf[PaxExam])
-@ExamReactorStrategy(Array(classOf[PerClass]))
 class DefaultAssemblyTest extends IntegrationTestSupport with BasicAssemblyTests {
 
   @Configuration
-  def config() = servicemixTestConfiguration() ++ scalaTestConfiguration
+  def config() = servicemixTestConfiguration ++ scalaTestConfiguration
 
 }
 
-@RunWith(classOf[PaxExam])
-@ExamReactorStrategy(Array(classOf[PerClass]))
-class FullAssemblyTest extends IntegrationTestSupport with BasicAssemblyTests {
-
-  @Configuration
-  def config() = servicemixTestConfiguration("full") ++ scalaTestConfiguration
-
-}

@@ -108,30 +108,6 @@
         </exclusions>
       </dependency>
       <dependency>
-        <groupId>org.apache.servicemix</groupId>
-        <artifactId>apache-servicemix-minimal</artifactId>
-        <version>${project.version}</version>
-        <type>zip</type>
-        <exclusions>
-          <exclusion>
-            <groupId>org.apache.karaf</groupId>
-            <artifactId>apache-karaf</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.servicemix</groupId>
-        <artifactId>apache-servicemix-full</artifactId>
-        <version>${project.version}</version>
-        <type>zip</type>
-        <exclusions>
-          <exclusion>
-            <groupId>org.apache.karaf</groupId>
-            <artifactId>apache-karaf</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-core-osgi</artifactId>
         <scope>test</scope>
