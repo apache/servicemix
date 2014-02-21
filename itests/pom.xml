@@ -138,7 +138,7 @@
         <version>2.14</version>
         <configuration>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
-          <argLine>-Dorg.ops4j.pax.url.mvn.localRepository=${settings.localRepository}</argLine>
+          <argLine>-Dorg.ops4j.pax.url.mvn.localRepository=${settings.localRepository} -Dfile.encoding=UTF-8</argLine>
         </configuration>
       </plugin>
 
