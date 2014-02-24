@@ -23,9 +23,9 @@
     </formats>
 
     <componentDescriptors>
-        <componentDescriptor>target/shared/common-bin.xml</componentDescriptor>
-        <componentDescriptor>target/shared/common-windows-bin.xml</componentDescriptor>
-        <componentDescriptor>target/shared/examples-windows-bin.xml</componentDescriptor>
+        <componentDescriptor>target/classes/common-bin.xml</componentDescriptor>
+        <componentDescriptor>target/classes/common-windows-bin.xml</componentDescriptor>
+        <componentDescriptor>target/classes/examples-windows-bin.xml</componentDescriptor>
     </componentDescriptors>
 
     <files>

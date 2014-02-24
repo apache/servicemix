@@ -55,14 +55,14 @@
 
       <!-- Copy over everything that needs to get dos line endings -->
       <fileSet>
-          <directory>target/shared/etc</directory>
+          <directory>target/classes/etc</directory>
           <outputDirectory>/etc/</outputDirectory>
           <lineEnding>dos</lineEnding>
           <fileMode>0644</fileMode>
       </fileSet>
 
       <fileSet>
-          <directory>target/shared/licenses</directory>
+          <directory>target/classes/licenses</directory>
           <outputDirectory>/licenses/</outputDirectory>
           <lineEnding>dos</lineEnding>
           <fileMode>0644</fileMode>
