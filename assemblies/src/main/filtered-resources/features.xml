@@ -191,14 +191,8 @@
     <feature name="akka" version="${akka.version}" resolver="(obr)">
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.scala-library/${scala.bundle.version}</bundle>
         <bundle dependency="true">mvn:com.typesafe/config/${typesafe-config.version}</bundle>
-        <bundle>mvn:com.typesafe.akka/akka-actor_2.10/${akka.version}</bundle>
-        <bundle>mvn:com.typesafe.akka/akka-camel_2.10/${akka.version}</bundle>
         <bundle>mvn:com.typesafe.akka/akka-osgi_2.10/${akka.version}</bundle>
-        <!--
-          Replace Akka's akka-osgi-aries with our own version to be compatible with Aries Blueprint 1.0.x
-          <bundle>mvn:com.typesafe.akka/akka-osgi-aries_2.10/${akka.version}</bundle>
-        -->
-        <bundle>mvn:org.apache.servicemix.akka/org.apache.servicemix.akka.akka-osgi-aries/${project.version}</bundle>
+        <bundle>mvn:com.typesafe.akka/akka-camel_2.10/${akka.version}</bundle>
     </feature>
 
     <!-- workaround before SM-2179 get addressed on CXF side-->

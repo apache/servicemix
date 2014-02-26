@@ -16,21 +16,35 @@
  */
 package org.apache.servicemix.examples.akka
 
-import akka.actor.ActorSystem
+import akka.actor.{ActorRef, ActorSystem}
 import org.apache.camel.scala.dsl.builder.{RouteBuilder, RouteBuilderSupport}
+import akka.osgi.ActorSystemActivator
+import org.osgi.framework.BundleContext
+
+/**
+ * The Akka project provides the ActorSystemActivator for running Akka in an OSGi container.
+ * We extend this Activator and use the configure() method to set up our own application.
+ */
+class Application extends ActorSystemActivator {
+
+  def configure(context: BundleContext, system: ActorSystem) = Application(system)
+
+}
 
 /**
  * Application bootstrap class.  This class will start the necessary actors on
- * the actor system to
+ * the actor system for our application to work.
  */
 object Application extends RouteBuilderSupport {
 
-  def apply(system: ActorSystem, builder: RouteBuilder) = {
+  def apply(system: ActorSystem, builder: RouteBuilder) : ActorRef = {
     val stats = Stats(system)
     val camel = CamelBridge(system, stats)
 
     camel.context.addRoutes(builder)
     stats
   }
+
+  def apply(system: ActorSystem) : ActorRef = apply(system, new RouteBuilderImpl())
 
 }

@@ -31,11 +31,10 @@ generated with the statistical summary per country.
 
 Explanation
 -----------
-In the Blueprint XML file (akka-camel.xml), we are:
-1. setting up the Akka actor system, using the <akka:actor-system/> element
-2. creating our Camel route builder bean
-3. bootstrapping our application, using the actor system and route builder we
-   defined in 1. and 2.
+The Akka project provides the ActorSystemActivator abstract class for running
+Akka in an OSGi Container.  We implement this activator in the Application class
+and configure that class as the bundle activator in the POM.  We also use the
+Application class to set up our actual actors as well as the Camel route we're using.
 
 The Camel route builder defines two distinct routes:
 1. The first route will process files in var/akka-camel/input directory and

@@ -62,20 +62,6 @@
     </dependency>
   </dependencies>
 
-  <repositories>
-    <repository>
-      <id>akka.releases</id>
-      <url>http://repo.akka.io/releases</url>
-      <name>Akka Release Repository</name>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
     <testSourceDirectory>src/test/scala</testSourceDirectory>
@@ -106,6 +92,8 @@
             <Import-Package>org.osgi.framework,akka.event,*</Import-Package>
             <Export-Package>org.apache.servicemix.examples.akka</Export-Package>
             <Require-Bundle>com.typesafe.akka.camel</Require-Bundle>
+            <!-- The Akka framework and our application are being started by a bundle activator -->
+            <Bundle-Activator>org.apache.servicemix.examples.akka.Application</Bundle-Activator>
           </instructions>
         </configuration>
       </plugin>
