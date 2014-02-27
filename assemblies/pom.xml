@@ -282,7 +282,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>${maven-assembly-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>unix-bin</id>
@@ -296,20 +295,6 @@
                             </descriptors>
                             <finalName>${project.artifactId}-${project.version}</finalName>
                             <tarLongFileMode>gnu</tarLongFileMode>
-                            <appendAssemblyId>false</appendAssemblyId>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>windows-bin</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>src/main/descriptors/windows-bin.xml</descriptor>
-                            </descriptors>
-                            <finalName>${project.artifactId}-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
@@ -338,19 +323,6 @@
                                 <configuration>
                                     <descriptors>
                                         <descriptor>src/main/descriptors/unix-src.xml</descriptor>
-                                    </descriptors>
-                                </configuration>
-                                <inherited>false</inherited>
-                            </execution>
-                            <execution>
-                                <id>windows-src</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>attached</goal>
-                                </goals>
-                                <configuration>
-                                    <descriptors>
-                                        <descriptor>src/main/descriptors/windows-src.xml</descriptor>
                                     </descriptors>
                                 </configuration>
                                 <inherited>false</inherited>

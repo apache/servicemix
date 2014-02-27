@@ -99,7 +99,7 @@
         <groupId>org.apache.servicemix</groupId>
         <artifactId>apache-servicemix</artifactId>
         <version>${project.version}</version>
-        <type>tar.gz</type>
+        <type>zip</type>
         <exclusions>
           <exclusion>
             <groupId>org.apache.karaf</groupId>

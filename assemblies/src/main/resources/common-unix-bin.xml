@@ -40,6 +40,8 @@
               <exclude>RELEASE-NOTES</exclude>
               <exclude>karaf-manual*</exclude>
             </excludes>
+            <fileMode>0644</fileMode>
+            <directoryMode>0775</directoryMode>
         </fileSet>
 
         <!-- Copy over bin/* scripts separately to get the correct file mode -->
@@ -49,6 +51,16 @@
             <includes>
               <include>bin/*</include>
             </includes>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>target/dependencies/win/apache-karaf-${karaf.version}</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>bin/*</include>
+            </includes>
+            <lineEnding>dos</lineEnding>
             <fileMode>0755</fileMode>
         </fileSet>
 
@@ -70,6 +82,7 @@
             <outputDirectory>/etc/</outputDirectory>
             <lineEnding>unix</lineEnding>
             <fileMode>0644</fileMode>
+            <directoryMode>0775</directoryMode>
         </fileSet>
 
         <fileSet>
@@ -77,6 +90,7 @@
             <outputDirectory>/licenses/</outputDirectory>
             <lineEnding>unix</lineEnding>
             <fileMode>0644</fileMode>
+            <directoryMode>0775</directoryMode>
         </fileSet>
 
         <!-- Copy over filtered resources -->
@@ -88,6 +102,7 @@
             </includes>
             <lineEnding>unix</lineEnding>
             <fileMode>0644</fileMode>
+            <directoryMode>0775</directoryMode>
         </fileSet>
     </fileSets>
 
@@ -98,6 +113,13 @@
             <destName>servicemix</destName>
             <fileMode>0755</fileMode>
             <lineEnding>unix</lineEnding>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/win/apache-karaf-${karaf.version}/bin/karaf.bat</source>
+            <outputDirectory>/bin/</outputDirectory>
+            <destName>servicemix.bat</destName>
+            <fileMode>0755</fileMode>
+            <lineEnding>dos</lineEnding>
         </file>
         <file>
             <source>${basedir}/target/maven-shared-archive-resources/META-INF/LICENSE</source>
