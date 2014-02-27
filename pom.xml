@@ -42,7 +42,7 @@
         <module>logging</module>
         <module>examples</module>
         <module>itests</module>
-        <module>assemblies</module>
+        <module>assembly</module>
     </modules>
 
     <scm>
