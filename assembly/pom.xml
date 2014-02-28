@@ -30,7 +30,7 @@
 
     <artifactId>apache-servicemix</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Assemblies</name>
+    <name>Apache ServiceMix :: Assembly</name>
 
     <properties>
         <examples.directory>../examples</examples.directory>
