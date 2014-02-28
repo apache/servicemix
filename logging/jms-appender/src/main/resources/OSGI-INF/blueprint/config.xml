@@ -17,8 +17,7 @@
 
 -->
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
-           xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0">
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0">
 
     <cm:property-placeholder persistent-id="org.apache.servicemix.logging.jms" update-strategy="reload">
         <cm:default-properties>
@@ -28,7 +27,7 @@
     </cm:property-placeholder>
 
     <!-- Need OSGI JMS Connection Factory Service exposed  -->
-    <reference id="jmsConnectionFactory" interface="javax.jms.ConnectionFactory"/>
+    <reference id="jmsConnectionFactory" interface="javax.jms.ConnectionFactory" filter="(transacted=false)" />
 
     <bean id="appender" class="org.apache.servicemix.logging.jms.JMSAppender" destroy-method="close">
         <property name="jmsConnectionFactory" ref="jmsConnectionFactory"/>

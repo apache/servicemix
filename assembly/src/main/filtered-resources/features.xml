@@ -171,6 +171,11 @@
         <bundle>mvn:org.apache.servicemix.logging/jms-appender/${version}</bundle>
     </feature>
 
+    <feature name="activemq-service" version="${version}" resolver="(obr)" start-level="50">
+        <feature version="${activemq.version}">activemq-broker-noweb</feature>
+        <bundle>mvn:org.apache.servicemix.activemq/activemq-service/${version}</bundle>
+    </feature>
+
     <!-- Activiti support -->
     <feature name="activiti" version="${activiti.version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf-specs</feature>
