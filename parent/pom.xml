@@ -425,6 +425,11 @@
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.apache.cxf.services.wsn</groupId>
+        <artifactId>cxf-services-wsn-core</artifactId>
+        <version>${cxf-version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.servicemix.specs</groupId>
         <artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>
         <version>${servicemix.specs.version}</version>

@@ -13,10 +13,6 @@
   <name>Apache ServiceMix :: Examples :: Akka :: Akka Camel</name>
   <packaging>bundle</packaging>
 
-  <properties>
-    <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.scala-lang</groupId>
@@ -69,7 +65,6 @@
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
-        <version>${maven-scala-plugin.version}</version>
         <executions>
           <execution>
             <goals>
