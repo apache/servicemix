@@ -38,7 +38,6 @@ abstract class ExamplesIntegrationTests extends IntegrationTestSupport with Came
 /**
  * Tests for the ActiveMQ examples
  */
-@Ignore("Example currently does not install, cfr. https://issues.apache.org/jira/browse/SM-2183")
 class ActiveMQExamplesTest extends ExamplesIntegrationTests {
 
   @Test
