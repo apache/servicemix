@@ -22,7 +22,6 @@ import org.apache.servicemix.examples.camel.Sex;
 import org.apache.servicemix.examples.camel.Drinks;
 
 
-# no alcohol
 
 rule "humans need water"
 salience 2
@@ -49,7 +48,6 @@ then
 end
 
 
-#alcohol
 
 rule "can you drink?" 
 when
@@ -73,7 +71,6 @@ then
 end
 
 
-# VIP
 
 rule "Vip in the house!"
 salience -1
