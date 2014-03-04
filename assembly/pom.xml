@@ -251,6 +251,25 @@
                             </target>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>increase-perm-mem</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="increase-perm-mem">
+                                <echo message="Updating bin/setenv in unix assembly" />
+                                <concat destfile="target/dependencies/unix/apache-karaf-${karaf.version}/bin/setenv" append="true" eol="unix">
+                                    <fileset file="target/classes/setenv-unix" />
+                                </concat>
+                                <echo message="Updating bin/setenv.bat in windows assembly" />
+                                <concat destfile="target/dependencies/win/apache-karaf-${karaf.version}/bin/setenv.bat" append="true" eol="dos">
+                                    <fileset file="target/classes/setenv-win" />
+                                </concat>
+                            </target>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>

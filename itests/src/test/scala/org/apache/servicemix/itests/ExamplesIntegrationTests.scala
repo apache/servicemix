@@ -82,7 +82,6 @@ class ActivitiExamplesTest extends ExamplesIntegrationTests {
 class CamelExamplesTest extends ExamplesIntegrationTests {
 
   @Test
-  @Ignore("Example requires more PermGen memory than the default, cfr. https://issues.apache.org/jira/browse/SM-2187")
   def testCamelDroolsExample = testWithFeature("examples-camel-drools") {
     expect {
       logging.containsEvent( _.getLoggerName == "ServeDrink" )
