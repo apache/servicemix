@@ -30,10 +30,26 @@
 
     <files>
         <file>
+        <!-- Install the internal features descriptor into the system repository -->
+            <source>${basedir}/target/classes/internal.xml</source>
+            <outputDirectory>system/org/apache/servicemix/${artifactId}/${version}</outputDirectory>
+            <destName>${artifactId}-${version}-internal.xml</destName>
+            <fileMode>0644</fileMode>
+            <lineEnding>unix</lineEnding>
+        </file>
+        <file>
         <!-- Install the features descriptor into the system repository -->
             <source>${basedir}/target/classes/features.xml</source>
             <outputDirectory>system/org/apache/servicemix/${artifactId}/${version}</outputDirectory>
             <destName>${artifactId}-${version}-features.xml</destName>
+            <fileMode>0644</fileMode>
+            <lineEnding>unix</lineEnding>
+        </file>
+        <file>
+        <!-- Install the example features descriptor into the system repository -->
+            <source>${basedir}/target/classes/examples.xml</source>
+            <outputDirectory>system/org/apache/servicemix/${artifactId}/${version}</outputDirectory>
+            <destName>${artifactId}-${version}-examples.xml</destName>
             <fileMode>0644</fileMode>
             <lineEnding>unix</lineEnding>
         </file>

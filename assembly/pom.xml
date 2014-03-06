@@ -144,7 +144,9 @@
                                 <descriptor>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor>
+                                <descriptor>file:${basedir}/target/classes/internal.xml</descriptor>
                                 <descriptor>file:${basedir}/target/classes/features.xml</descriptor>
+                                <descriptor>file:${basedir}/target/classes/examples.xml</descriptor>
                             </descriptors>
                             <features>
                                 <feature>cxf</feature>
@@ -286,9 +288,19 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
+                                    <file>target/classes/internal.xml</file>
+                                    <type>xml</type>
+                                    <classifier>internal</classifier>
+                                </artifact>
+                                <artifact>
                                     <file>target/classes/features.xml</file>
                                     <type>xml</type>
                                     <classifier>features</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/examples.xml</file>
+                                    <type>xml</type>
+                                    <classifier>examples</classifier>
                                 </artifact>
                             </artifacts>
                         </configuration>

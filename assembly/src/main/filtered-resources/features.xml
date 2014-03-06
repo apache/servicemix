@@ -15,11 +15,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<features name="servicemix-${version}">
-    <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
-    <repository>mvn:org.apache.karaf.assemblies.features/standard/${karaf.version}/xml/features</repository>
-    <repository>mvn:org.apache.karaf.assemblies.features/enterprise/${karaf.version}/xml/features</repository>
-    <repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
+<features name="servicemix-features-${version}">
 
     <feature name="connector" version="${version}" resolver="(obr)" start-level='50'>
         <feature version="${aries.transaction.version}">transaction</feature>
@@ -31,139 +27,6 @@
         <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
         <bundle dependency="true">mvn:org.springframework/org.springframework.context/${spring.version}</bundle>                                       ‚
         <bundle dependency="true">mvn:org.springframework/org.springframework.aop/${spring.version}</bundle>
-    </feature>
-
-    <!--
-      -
-      -  Examples
-      -
-    -->
-    <feature name="examples-activemq-camel-blueprint" version="${version}" resolver="(obr)">
-        <feature version="${activemq.version}">activemq-broker-noweb</feature>
-        <feature version="${camel.version}">camel-jms</feature>
-        <feature version="${camel.version}">camel-blueprint</feature>
-        <bundle>mvn:org.apache.servicemix.examples/activemq-camel-blueprint/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-osgi" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-osgi/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-jaxrs" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
-	<bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${commons-httpclient.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-jaxrs/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-jaxrs-blueprint" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <feature version="${version}">swagger</feature>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
-	<bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${commons-httpclient.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-jaxrs-blueprint/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-jaxws-blueprint" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
-	<bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${commons-httpclient.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-jaxws-blueprint/${version}</bundle>
-    </feature>
-    <feature name="examples-camel-sql-derby" version="${version}" resolver="(obr)">
-        <feature version="${camel.version}">camel-sql</feature>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${commons-dbcp.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.derby/${derby.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-sql-datasource-derby/${version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-sql-orders/${version}</bundle>
-    </feature>
-    <feature name="examples-camel-sql-pgsql" version="${version}" resolver="(obr)">
-        <feature version="${camel.version}">camel-sql</feature>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${commons-dbcp.bundle.version}</bundle>
-        <bundle dependency="true">wrap:mvn:postgresql/postgresql/${postgresql.version}.jdbc4</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-sql-datasource-pgsql/${version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-sql-orders/${version}</bundle>
-    </feature>
-    <feature name="examples-camel-sql-h2" version="${version}" resolver="(obr)">
-        <feature version="${camel.version}">camel-sql</feature>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${commons-dbcp.bundle.version}</bundle>
-        <bundle dependency="true">mvn:org.osgi/org.osgi.compendium/${osgi.version}</bundle>
-        <bundle dependency="true">mvn:com.h2database/h2/${h2.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-sql-datasource-h2/${version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-sql-orders/${version}</bundle>
-    </feature>
-    <feature name="examples-camel-osgi" version="${version}" resolver="(obr)">
-        <feature version="${camel.version}">camel</feature>
-        <bundle>mvn:org.apache.servicemix.examples/camel-osgi/${version}</bundle>
-    </feature>
-    <feature name="examples-camel-blueprint" version="${version}" resolver="(obr)">
-        <feature version="${camel.version}">camel-blueprint</feature>
-        <bundle>mvn:org.apache.servicemix.examples/camel-blueprint/${version}</bundle>
-    </feature>
-    <feature name="examples-camel-drools" version="${version}" resolver="(obr)">
-        <feature version="${camel.version}">camel-jms</feature>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-drools/${version}</bundle>
-    </feature>
-    <feature name="examples-camel-drools-blueprint" version="${version}" resolver="(obr)">
-        <feature version="${camel.version}">camel-jms</feature>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-drools-blueprint/${version}</bundle>
-    </feature>
-    <feature name="examples-camel-cxf-rest" version="${version}" resolver="(obr)">
-        <bundle>mvn:org.apache.servicemix.examples/camel-cxf-rest-service/${version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/camel-cxf-rest-route/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-ws-addressing" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
-        <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-ws-addressing/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-ws-security-osgi" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-osgi/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-ws-security-blueprint" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-blueprint/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-ws-security-signature" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
-        <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-ws-security-signature/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-ws-rm" version="${version}" resolver="(obr)">
-        <feature version="${cxf.version}">cxf</feature>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-ws-rm/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-wsn-receive" version="${version}" resolver="(obr)">
-        <feature version="${camel.version}">camel-jetty</feature>
-        <feature version="${camel.version}">camel-jms</feature>
-        <feature version="${camel.version}">camel-jaxb</feature>
-        <feature version="${cxf.version}">cxf-wsn</feature>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-wsn-base/${version}</bundle>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-wsn-receive/${version}</bundle>
-    </feature>
-    <feature name="examples-cxf-wsn-notifier" version="${version}" resolver="(obr)">
-        <feature version="${version}">examples-cxf-wsn-receive</feature>
-        <bundle>mvn:org.apache.servicemix.examples/cxf-wsn-notifier/${version}</bundle>
-    </feature>
-
-    <feature name="examples-activiti-camel" version="${version}" resolver="(obr)">
-	      <feature version="${camel.version}">camel-core</feature>
-        <feature version="${activiti.version}">activiti</feature>
-        <bundle>mvn:org.apache.servicemix.examples/activiti-camel/${version}</bundle>
-    </feature>
-
-    <feature name="examples-akka-camel" version="${version}" resolver="(obr)">
-        <feature version="${akka.version}">akka</feature>
-        <feature version="${camel.version}">camel-scala</feature>
-        <bundle>mvn:org.apache.servicemix.examples/akka-camel/${version}</bundle>
     </feature>
 
     <feature name="jms-appender" version="${version}" resolver="(obr)" start-level="50">
@@ -200,10 +63,6 @@
         <bundle>mvn:com.typesafe.akka/akka-camel_2.10/${akka.version}</bundle>
     </feature>
 
-    <!-- workaround before SM-2179 get addressed on CXF side-->
-    <feature name="jaxrs-api">
-        <bundle start-level='10'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr339-api-m10/${servicemix.specs.version}</bundle>
-    </feature>
     <feature name="swagger" version="${version}" resolver="(obr)">
         <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javassist/${javassist.bundle.version}</bundle>
