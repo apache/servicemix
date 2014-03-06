@@ -20,17 +20,124 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.apache.servicemix</groupId>
-        <artifactId>parent</artifactId>
-        <version>${project.version}</version>
-    </parent>
-
     <groupId>org.apache.servicemix.examples</groupId>
     <artifactId>examples</artifactId>
     <packaging>pom</packaging>
     <version>${project.version}</version>
     <name>Apache ServiceMix :: Examples</name>
+    <properties>
+        <cxf.version>${cxf.version}</cxf.version>
+        <akka.version>${akka.version}</akka.version >
+        <scala.version>${scala.version}</scala.version>
+        <drools.version>${drools.version}</drools.version>
+        <slf4j.version>${slf4j.version}</slf4j.version>
+        <jaxb.api.version>${jaxb.api.version}</jaxb.api.version>
+    </properties>
+    <!-- Managed dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-parent</artifactId>
+        	<version>${camel.version}</version>
+        	<type>pom</type>
+        	<scope>import</scope>
+            </dependency>
+      	    <dependency>
+        	<groupId>org.apache.cxf</groupId>
+        	<artifactId>cxf-rt-transports-http</artifactId>
+        	<version>${cxf.version}</version>
+      	    </dependency>
+            <dependency>
+        	<groupId>org.apache.cxf</groupId>
+        	<artifactId>cxf-rt-ws-security</artifactId>
+        	<version>${cxf.version}</version>
+      	    </dependency>
+      	    <dependency>
+        	<groupId>org.apache.servicemix.specs</groupId>
+        	<artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>
+        	<version>${servicemix.specs.version}</version>
+      	    </dependency>
+      	    <dependency>
+        	<groupId>commons-io</groupId>
+        	<artifactId>commons-io</artifactId>
+        	<version>${commons-io.version}</version>
+      	    </dependency>
+      	    <dependency>
+        	<groupId>org.apache.servicemix.specs</groupId>
+        	<artifactId>org.apache.servicemix.specs.jaxb-api-${jaxb.api.version}</artifactId>
+        	<version>${servicemix.specs.version}</version>
+      	    </dependency>
+      	    <dependency>
+        	<groupId>org.apache.cxf</groupId>
+        	<artifactId>cxf-rt-frontend-jaxws</artifactId>
+        	<version>${cxf.version}</version>
+     	    </dependency>
+      	    <dependency>
+        	<groupId>org.apache.cxf</groupId>
+        	<artifactId>cxf-api</artifactId>
+        	<version>${cxf.version}</version>
+            </dependency>
+     	    <dependency>
+        	<groupId>org.apache.cxf</groupId>
+        	<artifactId>cxf-rt-transports-http-jetty</artifactId>
+        	<version>${cxf.version}</version>
+            </dependency>
+      	    <dependency>
+        	<groupId>org.apache.cxf</groupId>
+        	<artifactId>cxf-rt-ws-rm</artifactId>
+        	<version>${cxf.version}</version>
+      	    </dependency>
+      	    <dependency>
+        	<groupId>org.apache.cxf</groupId>
+        	<artifactId>cxf-rt-ws-addr</artifactId>
+        	<version>${cxf.version}</version>
+      	    </dependency>
+      	    <dependency>
+        	<groupId>org.apache.cxf</groupId>
+        	<artifactId>cxf-rt-ws-policy</artifactId>
+        	<version>${cxf.version}</version>
+      	    </dependency>
+      	    <dependency>
+        	<groupId>org.apache.cxf.services.wsn</groupId>
+        	<artifactId>cxf-services-wsn-core</artifactId>
+        	<version>${cxf.version}</version>
+      	    </dependency>
+            <dependency>
+        	<groupId>org.activiti</groupId>
+        	<artifactId>activiti-camel</artifactId>
+        	<version>${activiti.version}</version>
+            </dependency>
+      	    <dependency>
+        	<groupId>org.apache.geronimo.specs</groupId>
+        	<artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+        	<version>${geronimo-ws-metadata.version}</version>
+            </dependency>
+      	    <dependency>
+        	<groupId>org.apache.servicemix.bundles</groupId>
+        	<artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
+        	<version>${commons-httpclient.bundle.version}</version>
+      	    </dependency>
+            <dependency>
+        	<groupId>org.apache.ws.security</groupId>
+        	<artifactId>wss4j</artifactId>
+        	<version>${wss4j.version}</version>
+      	    </dependency>
+    	</dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+              	    <artifactId>maven-bundle-plugin</artifactId>
+          	    <version>${maven-bundle-plugin.version}</version>
+          	    <extensions>true</extensions>
+                </plugin>
+      	    </plugins>
+        </pluginManagement>
+    </build>
 
     <modules>
         <module>activemq</module>
@@ -50,6 +157,18 @@
             <releases>
                 <enabled>false</enabled>
             </releases>
+        </repository>
+        <!-- Alfresco repository contains Activiti artifacts -->
+        <repository>
+            <id>alfresco.public</id>
+            <name>Alfresco Public Repository</name>
+            <url>https://maven.alfresco.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
