@@ -151,7 +151,7 @@
         <commons-httpclient.bundle.version>3.1_7</commons-httpclient.bundle.version>
         <commons-io.version>2.4</commons-io.version>
         <derby.bundle.version>10.9.1.0_1</derby.bundle.version>
-        <drools.bundle.version>${drools.version}_1-SNAPSHOT</drools.bundle.version>
+        <drools.bundle.version>${drools.version}_1</drools.bundle.version>
         <jaxb.api.version>2.2</jaxb.api.version>
         <osgi.version>4.3.1</osgi.version>
         <scala.bundle.version>2.10.2_1</scala.bundle.version>
