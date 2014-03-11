@@ -22,10 +22,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache.servicemix</groupId>
-        <artifactId>servicemix-pom</artifactId>
-        <version>5</version>
-        <relativePath>../servicemix-pom/pom.xml</relativePath>
+        <groupId>org.apache</groupId>
+        <artifactId>apache</artifactId>
+        <version>14</version>
     </parent>
 
     <groupId>org.apache.servicemix</groupId>
@@ -33,6 +32,8 @@
     <packaging>pom</packaging>
     <version>5.0.0-SNAPSHOT</version>
     <name>Apache ServiceMix</name>
+
+    <url>http://servicemix.apache.org/</url>
     <inceptionYear>2005</inceptionYear>
 
     <modules>
@@ -62,15 +63,6 @@
     </prerequisites>
 
     <repositories>
-        <!-- Required to allow building with a snapshot of the NMR (parent POM) -->
-        <repository>
-            <id>apache.snapshots</id>
-            <name>Apache Snapshot Repository</name>
-            <url>http://repository.apache.org/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
         <!-- JBoss Maven Repository, required by Drools -->
         <repository>
             <id>jboss</id>
@@ -170,29 +162,18 @@
         <maven.compiler.target>1.5</maven.compiler.target>
         <maven.compiler.debug>true</maven.compiler.debug>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
 
         <!-- Maven Plugins -->
         <depends-maven-plugin.version>1.2</depends-maven-plugin.version>
-        <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
-        <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
         <maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
         <maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
         <lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
-        <maven-release-plugin.version>2.4.2</maven-release-plugin.version>
         <maven-idea-plugin.version>2.2.1</maven-idea-plugin.version>
-        <maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
         <cobertura-maven-plugin.version>2.2</cobertura-maven-plugin.version>
         <exec-maven-plugin.version>1.1.1</exec-maven-plugin.version>
         <build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
-        <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
-        <maven-remote-resources-plugin.version>1.5</maven-remote-resources-plugin.version>
-        <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
         <maven-jxr-plugin.version>2.4</maven-jxr-plugin.version>
-        <apache-rat-plugin.version>0.10</apache-rat-plugin.version>
         <maven-deploy-plugin.version>2.8.1</maven-deploy-plugin.version>
-        <maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
-        <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
 
         <!-- Other Dependencies -->
@@ -322,18 +303,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release-plugin.version}</version>
                     <configuration>
                         <preparationGoals>clean install</preparationGoals>
                         <goals>deploy</goals>
                         <arguments>-Prelease,deploy</arguments>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven-deploy-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.servicemix.tooling</groupId>
@@ -349,7 +324,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
@@ -379,21 +353,6 @@
                      </configuration>
                  </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>${maven-assembly-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>${maven-antrun-plugin.version}</version>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>cobertura-maven-plugin</artifactId>
                     <version>${cobertura-maven-plugin.version}</version>
@@ -410,38 +369,8 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${maven-dependency-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-remote-resources-plugin</artifactId>
-                    <version>${maven-remote-resources-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
                     <version>${maven-jxr-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.rat</groupId>
-                    <artifactId>apache-rat-plugin</artifactId>
-                    <version>${apache-rat-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>${maven-gpg-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven-source-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.scala-tools</groupId>
@@ -583,11 +512,6 @@
 
     <reporting>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven-javadoc-plugin.version}</version>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
