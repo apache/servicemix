@@ -30,7 +30,7 @@
     <groupId>org.apache.servicemix</groupId>
     <artifactId>servicemix</artifactId>
     <packaging>pom</packaging>
-    <version>5.0.0-SNAPSHOT</version>
+    <version>5.0.0</version>
     <name>Apache ServiceMix</name>
 
     <url>http://servicemix.apache.org/</url>
@@ -48,9 +48,9 @@
     </modules>
 
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/servicemix/smx5/trunk</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/servicemix/smx5/trunk</developerConnection>
-        <url>http://svn.apache.org/viewvc/servicemix/smx5/trunk/</url>
+        <connection>scm:svn:http://svn.apache.org/repos/asf/servicemix/smx5/tags/servicemix-5.0.0</connection>
+        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/servicemix/smx5/tags/servicemix-5.0.0</developerConnection>
+        <url>http://svn.apache.org/viewvc/servicemix/smx5/tags/servicemix-5.0.0</url>
     </scm>
     
     <issueManagement>
@@ -367,7 +367,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -380,7 +380,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore />
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
