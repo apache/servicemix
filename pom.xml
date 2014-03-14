@@ -476,19 +476,9 @@
                         </executions>
                         <configuration>
                             <reportFile>${project.build.directory}/${project.build.finalName}.rat</reportFile>
-                            <excludeSubProjects>false</excludeSubProjects>
                             <excludes>
-                                <exclude>**/target/**/*</exclude>
-                                <!-- IDEA files -->
-                                <exclude>**/*.iml</exclude>
-                                <exclude>**/*.ipr</exclude>
-                                <exclude>**/*.iws</exclude>
-                                <!-- Eclipse files -->
-                                <exclude>**/.*</exclude>
-                                <exclude>**/eclipse-classes/**/*</exclude>
-                                <exclude>**/dependency-reduced-pom.xml</exclude>
-                                <exclude>assembly/src/main/distribution/text/licenses/**</exclude>
-                                <exclude>cxf/cxf-transport-nmr/src/main/build-resources/wsdl.*</exclude>
+                                <exclude>**/*.csv</exclude>
+                                <exclude>**/src/main/resources/licenses/**</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
