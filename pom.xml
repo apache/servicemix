@@ -62,69 +62,6 @@
         <maven>3.0.0</maven>
     </prerequisites>
 
-    <repositories>
-        <!-- JBoss Maven Repository, required by Drools -->
-        <repository>
-            <id>jboss</id>
-            <name>JBoss Maven2 Repository</name>
-            <url>http://repository.jboss.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <!-- Scriptengines Google Maven Repository, required by scriptengines -->
-        <repository>
-            <id>scriptengines</id>
-            <name>Scriptengines Google Code Maven Repository</name>
-            <url>http://scriptengines.googlecode.com/svn/m2-repo</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <!-- ServiceMix Maven 2 repository: jsmpp 2.0 is not in central repo -->
-        <repository>
-            <id>servicemix.m2-repo</id>
-            <name>ServiceMix Maven 2 repository</name>
-            <url>http://svn.apache.org/repos/asf/servicemix/m2-repo</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <!-- Alfresco repository contains Activiti artifacts -->
-        <repository>
-            <id>alfresco.public</id>
-            <name>Alfresco Public Repository</name>
-            <url>https://maven.alfresco.com/nexus/content/groups/public</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <!-- OPS4J SNAPSHOT repository -->
-        <repository>
-            <id>ops4j.sonatype.snapshots.deploy</id>
-            <name>OPS4J snapshot repository</name>
-            <url>https://oss.sonatype.org/content/repositories/ops4j-snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <properties>
         <!-- CXF -->
         <cxf.codegen-plugin.version>2.4.4</cxf.codegen-plugin.version>
@@ -219,14 +156,9 @@
            
            <!-- Other Dependencies -->
            <dependency>
-               <groupId>org.apache.xerces</groupId>
+               <groupId>xerces</groupId>
                <artifactId>xercesImpl</artifactId>
                <version>${xerces.version}</version>
-           </dependency>
-           <dependency>
-               <groupId>org.apache.xerces</groupId>
-               <artifactId>xml-apis</artifactId>
-               <version>${xml.api.version}</version>
            </dependency>
            <dependency>
                <groupId>xalan</groupId>
