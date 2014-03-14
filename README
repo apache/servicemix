@@ -32,30 +32,30 @@ The main features are:
 
 Getting Started
 ===============
-For an Apache ServiceMix 4 source distribution, please read 
-BUILDING for instructions on building Apache ServiceMix 4.
+For an Apache ServiceMix 5 source distribution, please read 
+BUILDING for instructions on building Apache ServiceMix 5.
 
-For an Apache ServiceMix 4 binary distribution, please read 
+For an Apache ServiceMix 5 binary distribution, please read 
 RELEASE-NOTES for installation instructions and list of supported
 and unsupported features.
 
 Alternatively, you can also find out how to get started here:
-    http://servicemix.apache.org/smx4/
+    http://servicemix.apache.org/docs/5.0.x/
 
 If you need more help try talking to us on our mailing lists
     http://servicemix.apache.org/mailing-lists.html
 
-If you find any issues with ServiceMix 4, please submit reports 
+If you find any issues with ServiceMix 5, please submit reports 
 with JIRA here:
-    http://issues.apache.org/activemq/browse/SMX4
+    http://issues.apache.org/jira/browse/SM
 
 We welcome contributions, and encourage you to get involved in the 
 ServiceMix community. If you'd like to learn more about how you can 
 contribute, please see:
-    http://servicemix.apache.org/contributing.html
+    http://servicemix.apache.org/community/contributing.html
 
 Many thanks for using Apache ServiceMix.
 
 
 The ServiceMix Team
-http://servicemix.apache.org/team.html
+http://servicemix.apache.org/community/team.html

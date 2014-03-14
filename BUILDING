@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-Building Apache ServiceMix 4
+Building Apache ServiceMix 5
 ============================
 
 Initial Setup
@@ -28,7 +28,7 @@ Initial Setup
    JDK location, and that your PATH includes %JAVA_HOME%\bin (windows) or 
    $JAVA_HOME$/bin (unix).
 
-3) Install Maven 2.2.1, which can be downloaded from 
+3) Install Maven 3.0.5, which can be downloaded from 
    http://maven.apache.org/download.html. Make sure that your PATH includes 
    the MVN_HOME/bin directory. 
 
@@ -36,17 +36,24 @@ Initial Setup
 Building
 --------
 
-1) Change to the top level directory of Apache ServiceMix 4 source distribution.
+1) Change to the top level directory of Apache ServiceMix 5 source distribution.
+
 2) Run
          $> mvn
+         
    This will compile Apache ServiceMix 4 and run all of the tests in the 
-   Apache ServiceMix Kernel source distribution. Alternatively, you can run
+   Apache ServiceMix Kernel source distribution. 
+   
+   Alternatively, you can run
          $> mvn -Pfastinstall
+         
    This will compile Apache ServiceMix 4 without running the tests and takes less
    time to build.
-   Depending on the load of remote Maven 2.0 repositories, you may have 
+   
+   Depending on the load of remote Maven repositories, you may have 
    to run "mvn" several times until the required dependencies are 
    all located in your local maven repository. It usually takes some time for 
    maven to download required dependencies in the first build.
+   
 3) The distributions will be available under "assembly/target" directory.
 
