@@ -131,13 +131,6 @@
 
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-remote-resources-plugin</artifactId>
-                <configuration>
-                    <appendedResourcesDirectory>${basedir}/target/shared/appended-resources</appendedResourcesDirectory>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.karaf.tooling</groupId>
                 <artifactId>features-maven-plugin</artifactId>
                 <version>${karaf.version}</version>

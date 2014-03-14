@@ -64,9 +64,9 @@
             <fileMode>0755</fileMode>
         </fileSet>
 
-        <!-- Copy license and other files from root -->
+        <!-- Copy README and RELEASE-NOTES from root -->
         <fileSet>
-            <directory>${basedir}/../..</directory>
+            <directory>${basedir}/..</directory>
             <outputDirectory>/</outputDirectory>
             <includes>
                 <include>README</include>
