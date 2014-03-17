@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.servicemix</groupId>
         <artifactId>activemq</artifactId>
-        <version>5.0.1-SNAPSHOT</version>
+        <version>5.0.0</version>
     </parent>
 
     <groupId>org.apache.servicemix.activemq</groupId>
