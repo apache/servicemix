@@ -69,6 +69,7 @@ Apache ServiceMix 5.0.0 is a new major release of the project, which includes:
 * [SM-2261] - antrun-plugin enable-obr runs multiple times
 * [SM-2265] - Remove unnecessary external repositories
 * [SM-2266] - Fix broken source assembly and add correct LICENSE/NOTICE files
+* [SM-2268] - Error on startup: invalid run level for wrap bundle
 
 ** Improvement
 * [SM-2171] - Add support for Akka
