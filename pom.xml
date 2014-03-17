@@ -30,7 +30,7 @@
     <groupId>org.apache.servicemix</groupId>
     <artifactId>servicemix</artifactId>
     <packaging>pom</packaging>
-    <version>5.0.0</version>
+    <version>5.0.1-SNAPSHOT</version>
     <name>Apache ServiceMix</name>
 
     <url>http://servicemix.apache.org/</url>
@@ -48,9 +48,9 @@
     </modules>
 
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/servicemix/smx5/tags/servicemix-5.0.0</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/servicemix/smx5/tags/servicemix-5.0.0</developerConnection>
-        <url>http://svn.apache.org/viewvc/servicemix/smx5/tags/servicemix-5.0.0</url>
+        <connection>scm:svn:http://svn.apache.org/repos/asf/servicemix/smx5/trunk</connection>
+        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/servicemix/smx5/trunk</developerConnection>
+        <url>http://svn.apache.org/viewvc/servicemix/smx5/trunk/</url>
     </scm>
     
     <issueManagement>
