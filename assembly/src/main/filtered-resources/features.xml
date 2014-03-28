@@ -29,14 +29,14 @@
         <bundle dependency="true">mvn:org.springframework/org.springframework.aop/${spring.version}</bundle>
     </feature>
 
-    <feature name="jms-appender" version="${version}" resolver="(obr)" start-level="50">
-        <feature version="${activemq.version}">activemq-broker-noweb</feature>
-        <bundle>mvn:org.apache.servicemix.logging/jms-appender/${version}</bundle>
-    </feature>
-
     <feature name="activemq-service" version="${version}" resolver="(obr)" start-level="50">
         <feature version="${activemq.version}">activemq-broker-noweb</feature>
         <bundle>mvn:org.apache.servicemix.activemq/activemq-service/${version}</bundle>
+    </feature>
+
+    <feature name="jms-appender" version="${version}" resolver="(obr)" start-level="50">
+        <feature version="${activemq.version}">activemq-broker-noweb</feature>
+        <bundle>mvn:org.apache.servicemix.logging/jms-appender/${version}</bundle>
     </feature>
 
     <!-- Activiti support -->
