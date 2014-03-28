@@ -22,18 +22,19 @@
     <cm:property-placeholder persistent-id="org.apache.servicemix.logging.jms" update-strategy="reload">
         <cm:default-properties>
             <cm:property name="destinationName" value="Logging.Events"/>
-            <cm:property name="format" value="default"/>
+            <cm:property name="format" value="logstash"/>
         </cm:default-properties>
     </cm:property-placeholder>
 
-    <!-- Need OSGI JMS Connection Factory Service exposed  -->
-    <reference id="jmsConnectionFactory" interface="javax.jms.ConnectionFactory" filter="(transacted=false)" />
-
     <bean id="appender" class="org.apache.servicemix.logging.jms.JMSAppender" destroy-method="close">
-        <property name="jmsConnectionFactory" ref="jmsConnectionFactory"/>
         <property name="destinationName" value="${destinationName}" />
         <property name="format" value="${format}"/>
     </bean>
+
+    <!-- Need OSGI JMS Connection Factory Service exposed  -->
+    <reference-list id="jmsConnectionFactory" interface="javax.jms.ConnectionFactory" filter="(transacted=false)">
+        <reference-listener ref="appender" bind-method="onBind" unbind-method="onUnbind" />
+    </reference-list>
 
     <service ref="appender" interface="org.ops4j.pax.logging.spi.PaxAppender">
         <service-properties>
