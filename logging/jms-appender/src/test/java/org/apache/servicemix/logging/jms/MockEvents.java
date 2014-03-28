@@ -27,7 +27,7 @@ import org.ops4j.pax.logging.spi.PaxLoggingEvent;
  */
 public class MockEvents {
 
-    public static final String LOGGER_NAME = MockEvents.class.getName();
+    public static final String LOGGER_NAME = "my.test.logger";
     public static final String LOG_MESSAGE = "Important message about your application!";
 
     public static final String LOG_PROPERTY_ID = "property.id";
