@@ -73,6 +73,12 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-slf4j_2.10</artifactId>
+      <version>${akka.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
