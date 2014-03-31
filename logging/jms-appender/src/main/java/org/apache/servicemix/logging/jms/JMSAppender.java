@@ -22,14 +22,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jms.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class JMSAppender implements PaxAppender {
-
+    private static final String PACKAGE = JMSAppender.class.getPackage().getName();
     private static final transient Logger LOG = LoggerFactory.getLogger(JMSAppender.class);
 
     private static final String DEFAULT_EVENT_FORMAT = "default";
     private static final String LOGSTASH_EVENT_FORMAT = "logstash";
 
+    private boolean serviceAvailable;
 
     private ConnectionFactory jmsConnectionFactory;
     private Connection connection;
@@ -39,21 +42,56 @@ public class JMSAppender implements PaxAppender {
 
     private LoggingEventFormat format = new DefaultLoggingEventFormat();
 
+    private  ExecutorService executor = Executors.newSingleThreadExecutor();
+
     public void close() {
         closeJMSResources();
     }
-
-    public void doAppend(PaxLoggingEvent paxLoggingEvent) {
+    public void onBind(ConnectionFactory service){
+        jmsConnectionFactory = service;
         try {
-            // Send message to the destination
-            TextMessage message = getOrCreateSession().createTextMessage();
-            message.setText(format.toString(paxLoggingEvent));
-            getOrCreatePublisher().send(message);
+            connection = getOrCreateConnection();
+            session = getOrCreateSession();
+            producer = getOrCreatePublisher();
+            serviceAvailable = true;
         } catch (JMSException e) {
-            LOG.warn("Exception caught while sending log event - reinitializing JMS resources to recover", e);
-            closeJMSResources();
-
+            serviceAvailable = false;
         }
+    }
+    public void onUnbind(ConnectionFactory service){
+        serviceAvailable = false;
+        closeJMSResources();
+    }
+
+    public void doAppend(final PaxLoggingEvent paxLoggingEvent) {
+        if (exclude(paxLoggingEvent) || !serviceAvailable) {
+            return;
+        }
+            Runnable worker = new Runnable() {
+                public void run() {
+                    if(serviceAvailable){
+                        try {
+                            // Send message to the destination
+                            TextMessage message = getOrCreateSession().createTextMessage();
+                            message.setText(format.toString(paxLoggingEvent));
+                            MessageProducer producer = getOrCreatePublisher();
+                            producer.send(message);
+                        } catch (JMSException e) {
+                            LOG.warn("Exception caught while sending log event - reinitializing JMS resources to recover", e);
+                            close();
+                        }
+                    }
+                }
+            };
+            executor.execute(worker);
+    }
+
+    private static boolean exclude(PaxLoggingEvent event) {
+        return startsWith(event.getLoggerName(), PACKAGE);
+    }
+
+    private static boolean startsWith(String string, String start) {
+        return string != null && string.startsWith(start);
     }
 
     public void setJmsConnectionFactory(ConnectionFactory jmsConnectionFactory) {
