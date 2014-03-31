@@ -24,6 +24,7 @@ import akka.util.Timeout
 import scala.concurrent.duration._
 import scala.concurrent.Await
 import org.apache.servicemix.examples.akka.Stats.{Input, Report}
+import org.slf4j.LoggerFactory
 import java.util.concurrent.TimeoutException
 
 /**
@@ -33,6 +34,7 @@ class StatsTest {
 
   val ITEM1 = "ITEM1"
   val MAX_ATTEMPTS = 10
+  val LOGGER = LoggerFactory.getLogger(classOf[StatsTest])
 
   val system = ActorSystem("TestSystem")
   val stats = Stats(system)
@@ -54,7 +56,7 @@ class StatsTest {
   def expectReport(expectation: String) : Unit = expectReport(expectation, MAX_ATTEMPTS)
 
   def expectReport(expectation: String, remaining: Int) : Unit = getReport.contains(expectation) match {
-    case true                      => // do nothing here, w received our report
+    case true                      => // do nothing here, we received our report
     case false if (remaining <= 0) => fail("Did not receive reporting containing " + expectation)
     case false                     => expectReport(expectation, remaining - 1)
   }
@@ -64,10 +66,12 @@ class StatsTest {
    */
   def getReport : String = {
     try {
-      Await.result(stats ? Report(), 100 millis).toString
+      val result = Await.result(stats ? Report(), 100 millis).toString
+      LOGGER.debug("Report() message returned '{}'", result)
+      result
     } catch {
       //Report() only sends back a response if it actually has something to tell
-      case e: TimeoutException => ""
+      case e: TimeoutException => LOGGER.debug("Report() message returned no response"); ""
     }
   }
 }
