@@ -19,7 +19,7 @@ package org.apache.servicemix.itests
 import org.junit.runner.RunWith
 import org.junit.{Ignore, Test}
 import org.apache.camel.{Exchange, Processor}
-import org.ops4j.pax.exam.spi.reactors.{PerClass, ExamReactorStrategy}
+import org.ops4j.pax.exam.spi.reactors.{PerMethod, PerClass, ExamReactorStrategy}
 import org.ops4j.pax.exam.Configuration
 import org.ops4j.pax.exam.junit.PaxExam
 
@@ -109,9 +109,10 @@ class CamelExamplesTest extends ExamplesIntegrationTests {
 /**
  * Tests for the CXF examples
  */
+@ExamReactorStrategy(Array(classOf[PerMethod]))
 class CxfExamplesTest extends ExamplesIntegrationTests {
   @Test
-  def testCxfJaxRsExample = testWithFeature("examples-cxf-jaxrs", "camel-http") {
+  def testCxfJaxRsExample = testWithFeature(false,"examples-cxf-jaxrs", "camel-http") {
     expect { logging.containsMessage( _.contains("Setting the server's publish address to be /crm")) }
     // TODO: the service appears to be started, but the URLs are not accessible
     // assertTrue(httpGet("http://localhost:8181/cxf/crm/customerservice/customers/123").contains("<Customer><id>123</id>"))
