@@ -55,6 +55,7 @@ public class ActivitiRouteBuilder extends RouteBuilder {
          */
         from("file:var/activiti-camel/delivery")
             .log("Notifying process about delivery for order ${file:name}")
+            .setBody(bean(helper))
             .setProperty(PROCESS_KEY_PROPERTY, simple("file:name"))
             .to("activiti:OrderProcess:receiveDelivery");
 
