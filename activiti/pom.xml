@@ -32,24 +32,7 @@
     <artifactId>activiti</artifactId>
     <packaging>pom</packaging>
     <name>Apache ServiceMix :: Activiti Support</name>
-
     <modules>
         <module>activiti-config</module>
     </modules>
-        
-    <repositories>
-        <!-- Alfresco repository contains Activiti artifacts -->
-        <repository>
-            <id>alfresco.public</id>
-            <name>Alfresco Public Repository</name>
-            <url>https://maven.alfresco.com/nexus/content/groups/public</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
 </project>
