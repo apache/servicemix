@@ -43,7 +43,6 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-osgi</artifactId>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
