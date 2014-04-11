@@ -64,12 +64,12 @@ public class ActivitiRouteBuilder extends RouteBuilder {
          * you added to the process are available as Exchange properties.  The next two routes will be triggered while
          * processing the order and the order delivery.
          */
-        from("activiti:OrderProcess:processOrder")
-            .log("Processing order ${property.orderid} created on ${property:timestamp}")
+        from("activiti:OrderProcess:processOrder?copyVariablesToProperties=true")
+            .log("Processing order ${property.orderid} created on ${property.timestamp}")
             .log("  original message: ${property.message}");
 
-        from("activiti:OrderProcess:processDelivery")
-            .log("Processing delivery for order ${property.orderid} created on ${property:timestamp}")
+        from("activiti:OrderProcess:processDelivery?copyVariablesToProperties=true")
+            .log("Processing delivery for order ${property.orderid} created on ${property.timestamp}")
             .log("  original message: ${property.message}");
     }
 
