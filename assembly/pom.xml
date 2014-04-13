@@ -156,6 +156,7 @@
                                 <feature>cxf</feature>
                                 <feature>obr</feature>
                                 <feature>config</feature>
+                                <feature>eventadmin</feature>
                                 <feature>activemq-broker-noweb</feature>
                                 <feature>activemq-service</feature>
                                 <feature>camel</feature>
