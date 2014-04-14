@@ -75,7 +75,7 @@
         <geronimo-atinject.version>1.0</geronimo-atinject.version>
 
         <!-- ServiceMix Bundles -->
-        <commons-codec.bundle.version>1.8</commons-codec.bundle.version>
+        <commons-codec.bundle.version>1.9</commons-codec.bundle.version>
         <commons-dbcp.bundle.version>1.4_3</commons-dbcp.bundle.version>
         <commons-httpclient.bundle.version>3.1_7</commons-httpclient.bundle.version>
         <commons-io.version>2.4</commons-io.version>
@@ -121,9 +121,9 @@
         <xml.api.version>2.11.0-20110622</xml.api.version>
         <xalan.version>2.7.1</xalan.version>
         <pax.exam.version>3.4.0</pax.exam.version>
-        <pax.url.version>1.3.6</pax.url.version>
+        <pax.url.version>1.3.7</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
-        <slf4j.version>1.6.6</slf4j.version>
+        <slf4j.version>1.7.5</slf4j.version>
         <spring.version>3.2.4.RELEASE</spring.version>
         <wss4j.version>1.6.7</wss4j.version>
     </properties>
