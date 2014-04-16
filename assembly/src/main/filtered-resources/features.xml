@@ -46,18 +46,20 @@
         <feature version="${aries.transaction.version}">transaction</feature>
         <feature version="${camel.version}">camel</feature>
         <feature version="${spring.version}">spring-orm</feature>
-        <feature version="${spring.version}">spring-test</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.joda-time/${jodatime.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.wsdl4j/${wsdl4j.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/${json4s.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.mybatis/mybatis/${mybatis.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.scripting-api-1.0/${servicemix.specs.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.commons/commons-lang3/${commons-lang.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.commons/commons-lang3/${commons-lang3.version}</bundle>
         <bundle dependency="true">mvn:com.h2database/h2/${h2.version}</bundle>
         <bundle dependency="true">mvn:org.mvel/mvel2/${mvel2.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
+        <!--
         <bundle dependency="true">mvn:org.drools/drools-core/${drools.version}</bundle>
         <bundle dependency="true">mvn:org.drools/knowledge-internal-api/${drools.version}</bundle>
         <bundle dependency="true">mvn:org.drools/knowledge-api/${drools.version}</bundle>
+        -->
         <bundle>mvn:org.activiti/activiti-engine/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-bpmn-converter/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-spring/${activiti.version}</bundle>
