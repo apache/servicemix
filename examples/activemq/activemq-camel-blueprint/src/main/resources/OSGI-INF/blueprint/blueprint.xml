@@ -36,10 +36,12 @@
     </camelContext>
 
     <!-- use CF from ActiveMQ blueprint service running in container -->
+    <!--
     <reference id="connectionFactory" interface="javax.jms.ConnectionFactory" />
     <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
         <property name="connectionFactory" ref="connectionFactory" />
     </bean>
+    -->
 
     <cm:property-placeholder persistent-id="org.apache.servicemix.examples">
         <cm:default-properties>
