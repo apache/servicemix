@@ -167,11 +167,6 @@
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-common-utilities</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-common-xsd</artifactId>
         <version>${cxf.version}</version>
       </dependency>
@@ -263,11 +258,6 @@
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-testsupport</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-transports-common</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
