@@ -103,6 +103,11 @@
         <artifactId>activemq-broker</artifactId>
         <version>${activemq.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-osgi</artifactId>
+        <version>${activemq.version}</version>
+      </dependency>
       <!-- Activiti-->
       <dependency>
         <groupId>org.activiti</groupId>
