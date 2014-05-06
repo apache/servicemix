@@ -88,12 +88,12 @@
     </feature>
     <feature name="examples-camel-drools" version="${version}" resolver="(obr)">
         <feature version="${camel.version}">camel-jms</feature>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
+        <feature version="${drools.version}">drools</feature>
         <bundle>mvn:org.apache.servicemix.examples/camel-drools/${version}</bundle>
     </feature>
     <feature name="examples-camel-drools-blueprint" version="${version}" resolver="(obr)">
         <feature version="${camel.version}">camel-jms</feature>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
+        <feature version="${drools.version}">drools</feature>
         <bundle>mvn:org.apache.servicemix.examples/camel-drools-blueprint/${version}</bundle>
     </feature>
     <feature name="examples-camel-cxf-rest" version="${version}" resolver="(obr)">
