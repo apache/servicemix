@@ -17,8 +17,9 @@
 -->
 <features name="servicemix-internal-${version}">
     <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
-    <repository>mvn:org.apache.karaf.assemblies.features/standard/${karaf.version}/xml/features</repository>
-    <repository>mvn:org.apache.karaf.assemblies.features/enterprise/${karaf.version}/xml/features</repository>
+    <repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+    <repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
+    <repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
     <repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
 
     <!-- workaround before SM-2179 get addressed on CXF side-->
