@@ -152,32 +152,12 @@
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-buildtools</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-bundle</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-common</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-common-schemas</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-common-utilities</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-common-xsd</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
@@ -193,11 +173,6 @@
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-bindings-corba</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-bindings-http</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
@@ -267,27 +242,12 @@
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-testsupport</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-transports-common</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-transports-http</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-transports-http-jetty</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-transports-http-osgi</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
@@ -393,41 +353,6 @@
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-xerces-xsd-validation</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-xjc</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-xjc-dv</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-xjc-dv-test</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-xjc-plugin</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-xjc-ts</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-xjc-ts-test</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-xml2fastinfoset-plugin</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
