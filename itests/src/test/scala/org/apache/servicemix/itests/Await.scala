@@ -22,15 +22,19 @@ package org.apache.servicemix.itests
  */
 trait Await {
 
-  val INITIAL_DELAY = 125;
-  val MAXIMUM_DELAY = 8000;
+  val INITIAL_DELAY = 125
+  val MAXIMUM_DELAY = 8000
 
   def await[T](condition: => Option[T]) : Option[T] = await(condition, INITIAL_DELAY)
 
   private[this] def await[T](condition: => Option[T], delay: Long) : Option[T] =
-    if (delay > MAXIMUM_DELAY) None else condition match {
-      case result @ Some(_) => result
-      case None             => Thread.sleep(delay); await(condition, delay * 2);
+    condition match {
+      case result@Some(_) => result
+      case None           => if (delay > MAXIMUM_DELAY) None else {
+        // let's sleep for a while and give it another go
+        Thread.sleep(delay)
+        await(condition, delay * 2)
+      }
     }
 
 }
