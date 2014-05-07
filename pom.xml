@@ -95,8 +95,8 @@
         <servicemix.legal.version>1.0</servicemix.legal.version>
         
         <!-- Maven Compiler Plugin -->
-        <maven.compiler.source>1.5</maven.compiler.source>
-        <maven.compiler.target>1.5</maven.compiler.target>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
         <maven.compiler.debug>true</maven.compiler.debug>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 
