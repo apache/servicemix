@@ -157,6 +157,11 @@
                                 <feature>cxf</feature>
                                 <feature>obr</feature>
                                 <feature>config</feature>
+                                <feature>standard</feature>
+                                <feature>package</feature>
+                                <feature>kar</feature>
+                                <feature>ssh</feature>
+                                <feature>management</feature>
                                 <feature>eventadmin</feature>
                                 <feature>activemq-broker-noweb</feature>
                                 <feature>activemq-service</feature>
