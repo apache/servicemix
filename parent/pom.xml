@@ -61,6 +61,8 @@
     <jpa.version>1.0.1</jpa.version>
 
     <servicemix.specs.version>2.4.0</servicemix.specs.version>
+
+      <maven-archetype-packaging-version>2.0</maven-archetype-packaging-version>
   </properties>
 
   <!-- Managed dependencies -->
