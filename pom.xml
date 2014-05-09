@@ -45,6 +45,7 @@
         <module>examples</module>
         <module>itests</module>
         <module>assembly</module>
+        <module>tooling</module>
     </modules>
 
     <scm>
