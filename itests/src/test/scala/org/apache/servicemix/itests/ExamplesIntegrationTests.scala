@@ -22,6 +22,8 @@ import org.apache.camel.{Exchange, Processor}
 import org.ops4j.pax.exam.spi.reactors.{PerMethod, PerClass, ExamReactorStrategy}
 import org.ops4j.pax.exam.Configuration
 import org.ops4j.pax.exam.junit.PaxExam
+import org.ops4j.pax.exam.CoreOptions._
+import org.ops4j.pax.exam.karaf.options.KarafDistributionOption._
 
 /**
  * Base configuration for all examples' integration tests
@@ -111,6 +113,10 @@ class CamelExamplesTest extends ExamplesIntegrationTests {
  */
 @ExamReactorStrategy(Array(classOf[PerMethod]))
 class CxfExamplesTest extends ExamplesIntegrationTests {
+
+  @Configuration
+  override def config() = super.config() ++  cxfWsnExampleTestConfiguration
+
   @Test
   def testCxfJaxRsExample = testWithFeature(false,"examples-cxf-jaxrs", "camel-http") {
     expect { logging.containsMessage( _.contains("Setting the server's publish address to be /crm")) }
@@ -155,4 +161,15 @@ class CxfExamplesTest extends ExamplesIntegrationTests {
   def testCxfWsSecuritySignature = testWithFeature("examples-cxf-ws-security-signature") {
     expect { logging.containsMessage( _.contains("Setting the server's publish address to be /HelloWorldSecurity")) }
   }
+
+  @Test
+  def testCxfWsn = testWithFeature("examples-cxf-wsn-receive","examples-cxf-wsn-notifier") {
+    expect { logging.containsMessage( _.contains("### YOU GOT MAIL ####\n")) }
+  }
+
+  def cxfWsnExampleTestConfiguration =
+    Array(
+      editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.username", "smx"),
+      editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.password", "smx")
+    )
 }
