@@ -92,7 +92,7 @@
         <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${fasterxml.jackson.version}</bundle>
    </feature>
 
-    <feature name="drools" version="${drools.version}" resolver="(obr)">
+    <feature name="drools" version="${drools.version}" resolver="(obr)" start-level='50'>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
     </feature>
 
