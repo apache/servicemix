@@ -100,6 +100,11 @@
         <bundle>mvn:org.apache.servicemix.examples/camel-cxf-rest-service/${version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/camel-cxf-rest-route/${version}</bundle>
     </feature>
+    <feature name="examples-camel-cxf-soap" version="${version}" resolver="(obr)">
+        <feature version="${camel.version}">camel-jaxb</feature>
+        <bundle>mvn:org.apache.servicemix.examples/camel-cxf-soap-service/${version}</bundle>
+        <bundle>mvn:org.apache.servicemix.examples/camel-cxf-soap-route/${version}</bundle>
+    </feature>
     <feature name="examples-cxf-ws-addressing" version="${version}" resolver="(obr)">
         <feature version="${cxf.version}">cxf-core</feature>
         <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
