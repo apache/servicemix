@@ -34,7 +34,7 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-osgi</artifactId>
+            <artifactId>activemq-camel</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
