@@ -35,6 +35,7 @@
     <modules>
         <module>activemq-service</module>
         <module>activemq-camel</module>
+        <module>activemq-web</module>
     </modules>
 
 </project>
