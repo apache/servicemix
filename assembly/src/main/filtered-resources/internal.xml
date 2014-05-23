@@ -33,7 +33,7 @@
     </feature>
 
     <!-- workaround for SM-2303 -->
-    <feature name="amq-web-console" version="${version}" resolver="(obr)" start-level="50">
+    <feature name="activemq-web-console" version="${activemq.version}.SMX" resolver="(obr)" start-level="50">
         <feature start-level="10">war</feature>
         <feature start-level="10">eventadmin</feature>
         <configfile finalname="/etc/org.apache.activemq.webconsole.cfg">mvn:org.apache.activemq/activemq-karaf/${activemq.version}/cfg/activemq-webconsole</configfile>
