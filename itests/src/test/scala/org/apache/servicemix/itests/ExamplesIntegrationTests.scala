@@ -91,6 +91,13 @@ class CamelExamplesTest extends ExamplesIntegrationTests {
   }
 
   @Test
+  def testCamelDroolsBlueprintExample = testWithFeature("examples-camel-drools-blueprint") {
+    expect {
+      logging.containsEvent( _.getLoggerName == "ServeDrink" )
+    }
+  }
+
+  @Test
   def testCamelOsgiExample : Unit = testWithFeature("examples-camel-osgi") {
     expect {
       logging.containsMessage(line => line.contains("JavaDSL set body"))
