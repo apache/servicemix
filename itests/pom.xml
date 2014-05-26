@@ -140,7 +140,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
-          <argLine>-Dorg.ops4j.pax.url.mvn.localRepository=${settings.localRepository} -Dfile.encoding=UTF-8</argLine>
+          <argLine>-Dorg.ops4j.pax.url.mvn.localRepository=${settings.localRepository}</argLine>
         </configuration>
       </plugin>
 
