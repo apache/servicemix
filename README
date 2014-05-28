@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-Welcome to Apache ServiceMix 5
+Welcome to Apache ServiceMix 6
 ==============================
 Apache ServiceMix is a flexible, open-source integration container that unifies 
 the features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf 
@@ -32,20 +32,20 @@ The main features are:
 
 Getting Started
 ===============
-For an Apache ServiceMix 5 source distribution, please read 
-BUILDING for instructions on building Apache ServiceMix 5.
+For an Apache ServiceMix 6 source distribution, please read
+BUILDING for instructions on building Apache ServiceMix 6.
 
-For an Apache ServiceMix 5 binary distribution, please read 
+For an Apache ServiceMix 6 binary distribution, please read
 RELEASE-NOTES for installation instructions and list of supported
 and unsupported features.
 
 Alternatively, you can also find out how to get started here:
-    http://servicemix.apache.org/docs/5.0.x/
+    http://servicemix.apache.org/docs/6.x/
 
 If you need more help try talking to us on our mailing lists
     http://servicemix.apache.org/mailing-lists.html
 
-If you find any issues with ServiceMix 5, please submit reports 
+If you find any issues with ServiceMix 6, please submit reports
 with JIRA here:
     http://issues.apache.org/jira/browse/SM
 
