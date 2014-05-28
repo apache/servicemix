@@ -113,6 +113,20 @@ class CamelExamplesTest extends ExamplesIntegrationTests {
       logging.containsMessage(line => line.contains("Blueprint-Example set body"))
     }
   }
+
+  @Test
+  def testCamelCxfSoap : Unit = testWithFeature("examples-camel-cxf-soap") {
+    expect {
+      logging.containsMessage(line => line.contains("Setting the server's publish address to be http://localhost:8989/soap"))
+    }
+  }
+
+  @Test
+  def testCamelCxfRest : Unit = testWithFeature("examples-camel-cxf-rest") {
+    expect {
+      logging.containsMessage(line => line.contains("Setting the server's publish address to be http://localhost:8989/rest"))
+    }
+  }
 }
 
 /**
