@@ -17,14 +17,16 @@
 
 package org.apache.servicemix.examples.camel.rest.client;
 
-import org.apache.cxf.helpers.IOUtils;
-import org.apache.servicemix.examples.camel.rest.model.Person;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+
+import org.apache.cxf.helpers.IOUtils;
+import org.apache.servicemix.examples.camel.rest.model.Person;
 
 public class Client {
     private static final String PERSON_SERVICE_URL = "http://localhost:8989/rest/personservice/";
@@ -63,26 +65,28 @@ public class Client {
     public void getPerson(int id) throws Exception{
         String url = PERSON_SERVICE_URL+"person/get/"+id;
         System.out.println("\n### GET PERSON WITH ID "+id+" FROM URL "+url);
-        URLConnection connection = connect(url);
+        HttpURLConnection connection = connect(url);
         connection.setDoInput(true);
-        System.out.println("\n### GET PERSON RESPONSE");
-        System.out.println(IOUtils.toString(connection.getInputStream()));
+        InputStream stream = connection.getResponseCode() / 100 == 2 ?
+                connection.getInputStream() : connection.getErrorStream();
+        System.out.println(IOUtils.toString(stream));
 
     }
 
     public void deletePerson(int id) throws Exception{
         String url = PERSON_SERVICE_URL+"person/delete/"+id;
         System.out.println("\n### DELETE PERSON WITH ID "+id+" FROM URL "+url);
-        HttpURLConnection httpConnection = (HttpURLConnection) connect(url);
-        httpConnection.setRequestMethod("DELETE");
-        httpConnection.setDoInput(true);
-        System.out.println("\n### DELETE PERSON RESPONSE");
-        System.out.println(IOUtils.toString(httpConnection.getInputStream()));
+        HttpURLConnection connection = (HttpURLConnection) connect(url);
+        connection.setRequestMethod("DELETE");
+        connection.setDoInput(true);
+        InputStream stream = connection.getResponseCode() / 100 == 2 ?
+                connection.getInputStream() : connection.getErrorStream();
+        System.out.println(IOUtils.toString(stream));
 
     }
 
-    private URLConnection connect(String url) throws Exception{
-        URLConnection connection = new URL(url).openConnection();
+    private HttpURLConnection connect(String url) throws Exception{
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         return connection;
     }
 

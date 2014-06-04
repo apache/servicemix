@@ -17,9 +17,14 @@
 
 package org.apache.servicemix.examples.camel.rest;
 
-import org.apache.servicemix.examples.camel.rest.model.Person;
-
 import java.util.ArrayList;
+
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.Response.Status;
+
+import org.apache.servicemix.examples.camel.rest.model.Person;
 
 public class ServiceHandler {
 
@@ -34,11 +39,23 @@ public class ServiceHandler {
     }
 
     private Person get(int id){
+        if (id < 0 || id >= persons.size()) {
+            ResponseBuilder builder = Response.status(Status.NOT_FOUND);
+            builder.entity("Person with ID " + id + " not found.");
+            throw new WebApplicationException(builder.build());
+        }
+
        return persons.get(id);
     }
 
     private void delete(int id){
-        persons.remove(id);
+        if (id < 0 || id >= persons.size()) {
+            ResponseBuilder builder = Response.status(Status.NOT_FOUND);
+            builder.entity("Person with ID " + id + " not found.");
+            throw new WebApplicationException(builder.build());
+        }
+
+    	persons.remove(id);
     }
 
     public Person getPerson(String id){
