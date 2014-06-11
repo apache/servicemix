@@ -17,7 +17,9 @@
 
 package org.apache.servicemix.examples.camel.rest;
 
-import java.util.ArrayList;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
@@ -28,53 +30,48 @@ import org.apache.servicemix.examples.camel.rest.model.Person;
 
 public class ServiceHandler {
 
-    ArrayList<Person> persons = new ArrayList<Person>();
+    private Map<Integer, Person> persons = new HashMap<Integer, Person>();
 
     public void init(){
-        add(new Person(0,"test",100));
+        add(new Person(0, "Test Person", 100));
     }
 
-    private void add(Person person){
-        persons.add(person.getId(),person);
+    private Response add(Person person){
+        persons.put(person.getId(), person);
+        
+        return Response.created(URI.create("/personservice/person/get/"
+                + person.getId())).build();
     }
 
     private Person get(int id){
-        if (id < 0 || id >= persons.size()) {
+        Person person = persons.get(id);
+        if (person == null) {
             ResponseBuilder builder = Response.status(Status.NOT_FOUND);
             builder.entity("Person with ID " + id + " not found.");
             throw new WebApplicationException(builder.build());
         }
 
-       return persons.get(id);
+       return person;
     }
 
     private void delete(int id){
-        if (id < 0 || id >= persons.size()) {
+        if (persons.remove(id) == null) {
             ResponseBuilder builder = Response.status(Status.NOT_FOUND);
             builder.entity("Person with ID " + id + " not found.");
             throw new WebApplicationException(builder.build());
         }
-
-        persons.remove(id);
     }
 
     public Person getPerson(String id){
         return get(Integer.parseInt(id));
     }
 
-    public Person putPerson(Person person){
-        add(person);
-        return person;
+    public Response putPerson(Person person){
+        return add(person);
     }
 
-    public String deletePerson(int id){
+    public void deletePerson(int id){
         delete(id);
-        return new String();
     }
-
-
-
-
-
 
 }
