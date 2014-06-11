@@ -20,14 +20,13 @@ package org.apache.servicemix.examples.camel.rest;
 import org.apache.servicemix.examples.camel.rest.model.Person;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 // This could be an interface if CAMEL-6014 is fixed.
 
 @Path("/personservice/")
 public class PersonService {
-    @PathParam("id")
-    private String id;
-
+    
     @GET
     @Path("/person/get/{id}/")
     @Produces("application/xml")
@@ -37,15 +36,12 @@ public class PersonService {
 
     @POST
     @Path("/person/post")
-    @Produces("application/xml")
-    public Person putPerson(Person p) {
+    public Response putPerson(Person person) {
         return null;
     }
 
     @DELETE
     @Path("/person/delete/{id}")
-    @Produces("application/xml")
-    public Person deletePerson(@PathParam("id") String id) {
-        return null;
+    public void deletePerson(@PathParam("id") String id) {
     }
 }

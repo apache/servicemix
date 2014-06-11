@@ -20,7 +20,6 @@ package org.apache.servicemix.examples.camel.rest.client;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -31,11 +30,10 @@ import org.apache.servicemix.examples.camel.rest.model.Person;
 public class Client {
     private static final String PERSON_SERVICE_URL = "http://localhost:8989/rest/personservice/";
 
-
     public static void main(String[] args) {
         Client client = new Client();
         try {
-            client.postPerson(new Person(1,"John Smith",21));
+            client.postPerson(new Person(1, "John Smith", 21));
             client.getPerson(1);
             client.deletePerson(1);
         } catch (Exception e) {
@@ -45,7 +43,7 @@ public class Client {
 
     public void postPerson(Person person) throws Exception{
         System.out.println("\n### POST PERSON -> ");
-        URLConnection connection = connect(PERSON_SERVICE_URL+"person/post/");
+        HttpURLConnection connection = connect(PERSON_SERVICE_URL + "person/post/");
         connection.setDoOutput(true);
         connection.setRequestProperty("Content-Type", "application/xml");
 
@@ -58,19 +56,22 @@ public class Client {
         jaxbMarshaller.marshal(person, System.out);
         jaxbMarshaller.marshal(person, connection.getOutputStream());
 
-        System.out.println("\n### POST PERSON RESPONSE ");
-        System.out.println(IOUtils.toString(connection.getInputStream()));
+        System.out.println("\n### POST PERSON RESPONSE");
+        System.out.println("Status: " + connection.getResponseCode() +  " " + 
+                connection.getResponseMessage());
+        System.out.println("Location: " + connection.getHeaderField("Location"));
     }
 
     public void getPerson(int id) throws Exception{
-        String url = PERSON_SERVICE_URL+"person/get/"+id;
-        System.out.println("\n### GET PERSON WITH ID "+id+" FROM URL "+url);
+        String url = PERSON_SERVICE_URL + "person/get/" + id;
+        System.out.println("\n### GET PERSON WITH ID " + id + " FROM URL " + url);
         HttpURLConnection connection = connect(url);
         connection.setDoInput(true);
         InputStream stream = connection.getResponseCode() / 100 == 2 ?
                 connection.getInputStream() : connection.getErrorStream();
+        System.out.println("Status: " + connection.getResponseCode() + " " +
+                connection.getResponseMessage());
         System.out.println(IOUtils.toString(stream));
-
     }
 
     public void deletePerson(int id) throws Exception{
@@ -79,16 +80,16 @@ public class Client {
         HttpURLConnection connection = (HttpURLConnection) connect(url);
         connection.setRequestMethod("DELETE");
         connection.setDoInput(true);
-        InputStream stream = connection.getResponseCode() / 100 == 2 ?
-                connection.getInputStream() : connection.getErrorStream();
-        System.out.println(IOUtils.toString(stream));
-
+        System.out.println("Status: " + connection.getResponseCode() + " " +
+                connection.getResponseMessage());
+        if (connection.getResponseCode() / 100 != 2) {
+            System.out.println(IOUtils.toString(connection.getErrorStream()));
+        }
     }
 
     private HttpURLConnection connect(String url) throws Exception{
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         return connection;
     }
-
 
 }
