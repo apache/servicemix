@@ -35,6 +35,18 @@
             <groupId>org.apache.servicemix.examples</groupId>
             <artifactId>camel-cxf-soap-service</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <!-- A dependency on a jaxb implementation will cause problems with the exec plugin classloader -->
+                <exclusion>
+                    <groupId>com.sun.xml.bind</groupId>
+                    <artifactId>jaxb-impl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.examples</groupId>
+            <artifactId>camel-cxf-soap-route</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.servicemix.examples</groupId>
