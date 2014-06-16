@@ -77,10 +77,10 @@ public class Client {
 
     public void deletePerson(int id) throws Exception{
         System.out.println("\n### DELETE PERSON WITH ID "+id);
-        String result = personService.deletePerson(id);
+        Person result = personService.deletePerson(id);
 
         System.out.println("\n### DELETE PERSON RESPONSE");
-        System.out.println(result);
+        printPerson(result);
     }
 
 
