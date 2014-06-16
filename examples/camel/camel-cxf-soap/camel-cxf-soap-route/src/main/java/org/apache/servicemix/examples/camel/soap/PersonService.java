@@ -18,15 +18,16 @@
 package org.apache.servicemix.examples.camel.soap;
 
 import org.apache.servicemix.examples.camel.soap.model.Person;
+import org.apache.servicemix.examples.camel.soap.model.PersonException;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
 @WebService(serviceName = "PersonService")
 public interface PersonService {
-    Person getPerson(@WebParam(name="id")int id);
+    Person getPerson(@WebParam(name="id")int id) throws PersonException;
 
     Person putPerson(Person person);
 
-    String deletePerson(@WebParam(name="id")int id);
+    Person deletePerson(@WebParam(name="id")int id) throws PersonException;
 }
