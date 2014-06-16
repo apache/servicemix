@@ -48,11 +48,6 @@
             <artifactId>camel-cxf-soap-route</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.examples</groupId>
-            <artifactId>camel-cxf-soap-route</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
