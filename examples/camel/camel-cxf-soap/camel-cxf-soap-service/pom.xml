@@ -30,6 +30,13 @@
     <name>Apache ServiceMix :: Examples :: Camel CXF SOAP :: Service</name>
     <packaging>bundle</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

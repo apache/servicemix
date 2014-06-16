@@ -17,52 +17,49 @@
 
 package org.apache.servicemix.examples.camel.soap;
 
+import org.apache.camel.Body;
+import org.apache.camel.Exchange;
 import org.apache.servicemix.examples.camel.soap.model.Person;
+import org.apache.servicemix.examples.camel.soap.model.PersonException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ServiceHandler {
 
-    public static final String ERROR = "error";
-    public static final String OK = "ok";
+    public static final String ERR_PERSON_X_NOT_FOUND = "Person %s not found";
+
     Map<Integer,Person> persons = new HashMap<Integer,Person>();
 
     public void init(){
-        add(new Person(0,"test",100));
-    }
-
-    private void add(Person person){
+        Person person = new Person(0,"test",100);
         persons.put(person.getId(), person);
     }
 
-    private Person get(int id){
-       return persons.get(id);
-    }
-
-    private Person delete(int id){
-        return persons.remove(id);
-    }
-
-    public Person getPerson(String id){
-        return get(Integer.parseInt(id));
+    public void getPerson(@Body String id,Exchange exchange){
+        Person result = persons.get(Integer.parseInt(id));
+        checkResult(id, exchange, result);
     }
 
     public Person putPerson(Person person){
-        add(person);
+        persons.put(person.getId(), person);
         return person;
     }
 
-    public String deletePerson(String id){
-        Person result = delete(Integer.parseInt(id));
-        if (result == null){
-            return ERROR;
-        }else{
-            return OK;
-        }
+    public void deletePerson(@Body String id,Exchange exchange){
+        Person result = persons.remove(Integer.parseInt(id));
+        checkResult(id, exchange, result);
     }
 
 
+    private void checkResult(String id, Exchange exchange, Person result) {
+        if (result == null){
+            exchange.getOut().setFault(true);
+            exchange.getOut().setBody(new PersonException(String.format(ERR_PERSON_X_NOT_FOUND, id), id));
+        }else{
+            exchange.getOut().setBody(result);
+        }
+    }
 
 
 
