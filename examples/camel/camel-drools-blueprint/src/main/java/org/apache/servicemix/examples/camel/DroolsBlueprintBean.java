@@ -16,10 +16,7 @@
  */
 package org.apache.servicemix.examples.camel;
 
-import org.drools.KnowledgeBase;
-import org.drools.KnowledgeBaseConfiguration;
-import org.drools.KnowledgeBaseFactory;
-import org.drools.KnowledgeBaseFactoryService;
+import org.drools.*;
 import org.drools.builder.KnowledgeBuilder;
 import org.drools.builder.KnowledgeBuilderErrors;
 import org.drools.builder.KnowledgeBuilderFactory;
@@ -74,10 +71,16 @@ public class DroolsBlueprintBean {
     public static CommandExecutor createKnowledgeSession(KnowledgeBase kbase,GridNode node,String type,String name){
         CommandExecutor ksession;
 
-        if (type.equals("stateful"))
-            ksession = kbase.newStatefulKnowledgeSession();
-        else
-            ksession = kbase.newStatelessKnowledgeSession();
+        if (type.equals("stateful")) {
+
+            //Adding a configuration forces drools to use the current classloader (see issue SM-2316)
+            ksession = kbase.newStatefulKnowledgeSession(new SessionConfiguration(), null);
+
+        }else {
+
+            //Adding a configuration forces drools to use the current classloader (see issue SM-2316)
+            ksession = kbase.newStatelessKnowledgeSession(new SessionConfiguration());
+        }
 
         node.set(name,ksession);
         return ksession;
