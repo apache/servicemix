@@ -40,7 +40,10 @@
         </drools:resources>
     </drools:kbase>
 
-    <drools:ksession id="ksession1" type="stateless" name="ksession1" kbase="kbase1" node="node1"/>
+    <drools:ksession id="ksession1" type="stateless" name="ksession1" kbase="kbase1" node="node1">
+        <!-- Adding a configuration forces drools to use the current classloader (see issue SM-2316) -->
+        <drools:configuration />
+    </drools:ksession>
 
     <bean id="droolsHelper" class="org.apache.servicemix.examples.camel.DroolsCommandHelper"/>
 
