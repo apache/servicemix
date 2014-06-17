@@ -15,6 +15,104 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.0.2
+                  ================================
+Overview
+--------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+This is a new minor release of the project, which contains a few bug fixes. We also
+downgraded the version of Apache Karaf to 2.3.4 to avoid a known issue in the 2.3.5 version.
+Apache ServiceMix 5.0.2 includes:
+
+- Activiti 5.15.1 (http://www.activiti.org)
+- Apache ActiveMQ 5.9.0 (http://activemq.apache.org)
+- Apache Camel 2.12.3 (http://camel.apache.org)
+- Apache CXF 2.7.10 (http://cxf.apache.org)
+- Apache Karaf 2.3.4 (http://karaf.apache.org)
+
+
+Changelog
+---------
+
+** Sub-task
+* [SM-2311] - Remove the shaded ActiveMQ web console
+
+** Bug
+* [SM-2244] - Uninstall activiti feature results in error
+* [SM-2309] - Add itest for camel-cxf-rest example
+* [SM-2310] - cxf-wsn example doens't compile with maven 3.0.4
+* [SM-2322] - !<history-number> executes wrong history entry
+
+** Improvement
+* [SM-2298] - Add a CXF SOAP with Camel example
+* [SM-2327] - Improve camel-cxf-rest example
+
+** Task
+* [SM-2245] - Upgrade to Pax Exam 3.5.0
+* [SM-2270] - Merge ServiceMix archetypes with ServiceMix code base
+* [SM-2307] - Add itest for camel-cxf-soap example
+* [SM-2308] - Add itest for camel-drools-blueprint example
+* [SM-2312] - Remove placeholder configuration from the activemq-camel blueprint
+* [SM-2313] - Trying to get person with unknown end with error in camel-cxf-soap example
+* [SM-2314] - Trying to get person with unknown end with error in camel-cxf-rest example
+* [SM-2316] - Problems when reinstalling the drools examples
+* [SM-2329] - Downgrade to Karaf 2.3.4
+* [SM-2331] - Release Apache ServiceMix 5.0.2
+
+
+
+                      Apache ServiceMix 5.0.1
+                  ================================
+Overview
+--------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+This is a minor release that fixes a few bugs and picks up new versions of Activiti
+and Apache Karaf. It includes:
+
+- Activiti 5.15.1 (http://www.activiti.org)
+- Apache ActiveMQ 5.9.0 (http://activemq.apache.org)
+- Apache Camel 2.12.3 (http://camel.apache.org)
+- Apache CXF 2.7.10 (http://cxf.apache.org)
+- Apache Karaf 2.3.5 (http://karaf.apache.org)
+
+
+Changelog
+---------
+
+** Bug
+* [SM-2188] - Feature install triggers waterfall bundle refresh
+* [SM-2256] - Unable to shutdown container when JMS appender is configured
+* [SM-2267] - Provide working configuration for activemq-web-console
+* [SM-2269] - ActiveMQ quick start doesn't work due to the missing activemq component
+* [SM-2277] - activiti-camel thrown ActivitiException when put document in delivery folder
+* [SM-2279] - The jndi feature can not be installed
+* [SM-2280] - Activiti test case fails after upgrade to 5.15.1
+* [SM-2282] - Installation of the eventadmin feature fails
+* [SM-2286] - Intermittent test failure in ActivitiExamplesTest.testActivitiCamelExample
+
+** Improvement
+* [SM-2299] - Add itest for cxf-wsn example
+
+** New Feature
+* [SM-2288] - Add drools feature
+
+** Task
+* [SM-2229] - Upgrade to activiti version 5.15.1
+* [SM-2272] - Release Apache ServiceMix 5.0.1
+* [SM-2281] - Upgrade to Karaf 2.3.5
+* [SM-2283] - Align some versions duplicated after the Activiti upgrade
+* [SM-2294] - Cleanup nonexisting cxf dependencies from dependency management
+* [SM-2296] - Add the boot features to the system repository
+
+
                       Apache ServiceMix 5.0.0
                   ================================
  Overview
@@ -99,4 +197,3 @@ Thanks you for downloading ServiceMix.  Enjoy !
 
 The ServiceMix Team
 http://servicemix.apache.org/community/team.html
-
