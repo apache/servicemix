@@ -26,10 +26,10 @@ runtime platform you can use to build your own integrations solutions.
 
 Apache ServiceMix 5.1.0 is a new major release of the project, which includes:
 
-- Apache ActiveMQ 5.9.1 (http://activemq.apache.org)
+- Apache ActiveMQ 5.10.0 (http://activemq.apache.org)
 - Apache Camel 2.13.1 (http://camel.apache.org)
 - Apache CXF 2.7.11 (http://cxf.apache.org)
-- Apache Karaf 2.3.5 (http://karaf.apache.org)
+- Apache Karaf 2.3.4 (http://karaf.apache.org)
 
 
  Changelog
@@ -39,28 +39,49 @@ Apache ServiceMix 5.1.0 is a new major release of the project, which includes:
 * [SM-2297] - Recommend users to install Activiti through the boot features in the Activiti guide
 * [SM-2301] - Problem installing activiti feature after upgrade to Camel 2.13.1
 * [SM-2303] - ActiveMQ web console not installable after upgrade to 5.9.1
+* [SM-2311] - Remove the shaded ActiveMQ web console
 
 ** Bug
 * [SM-2244] - Uninstall activiti feature results in error
 * [SM-2256] - Unable to shutdown container when JMS appender is configured
 * [SM-2267] - Provide working configuration for activemq-web-console
 * [SM-2269] - ActiveMQ quick start doesn't work due to the missing activemq component
-* [SM-2271] - Can't install hibernate-envers in SMX5
 * [SM-2277] - activiti-camel thrown ActivitiException when put document in delivery folder
 * [SM-2279] - The jndi feature can not be installed
 * [SM-2280] - Activiti test case fails after upgrade to 5.15.1
 * [SM-2282] - Installation of the eventadmin feature fails
-* [SM-2284] - Intermittent test failure in CamelExamplesTest.testCamelDroolsExample
 * [SM-2286] - Intermittent test failure in ActivitiExamplesTest.testActivitiCamelExample
 * [SM-2309] - Add itest for camel-cxf-rest example
+* [SM-2322] - !<history-number> executes wrong history entry
 
 ** Improvement
 * [SM-2298] - Add a CXF SOAP with Camel example
 * [SM-2299] - Add itest for cxf-wsn example
+* [SM-2327] - Improve camel-cxf-rest example
 
 ** New Feature
 * [SM-2288] - Add drools feature
 
+** Task
+* [SM-2229] - Upgrade to activiti version 5.15.1
+* [SM-2245] - Upgrade to Pax Exam 3.5.0
+* [SM-2270] - Merge ServiceMix archetypes with ServiceMix code base
+* [SM-2273] - Release Apache ServiceMix 5.1.0
+* [SM-2274] - Upgrade to Camel 2.13.0
+* [SM-2281] - Upgrade to Karaf 2.3.5
+* [SM-2283] - Align some versions duplicated after the Activiti upgrade
+* [SM-2289] - Update ActiveMQ quick start after ServiceMix 5.0.1/5.1.0 release
+* [SM-2292] - Upgrade to Camel 2.13.1
+* [SM-2294] - Cleanup nonexisting cxf dependencies from dependency management
+* [SM-2296] - Add the boot features to the system repository
+* [SM-2306] - Update the README file
+* [SM-2307] - Add itest for camel-cxf-soap example
+* [SM-2308] - Add itest for camel-drools-blueprint example
+* [SM-2312] - Remove placeholder configuration from the activemq-camel blueprint
+* [SM-2315] - activemq:dstat fails after any messagin operation is performed
+* [SM-2316] - Problems when reinstalling the drools examples
+* [SM-2328] - Upgrade to ActiveMQ 5.10.0
+* [SM-2329] - Downgrade to Karaf 2.3.4
 
 See the README file for more general information about ServiceMix 5.
 
