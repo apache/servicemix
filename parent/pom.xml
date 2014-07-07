@@ -39,7 +39,7 @@
   <properties>
     <activemq.version>5.10.0</activemq.version>
     <activiti.version>5.15.1</activiti.version>
-    <camel.version>2.13.1</camel.version>
+    <camel.version>2.13.2</camel.version>
     <cxf.version>2.7.11</cxf.version>
 
     <felix.obr.version>1.6.6</felix.obr.version>
@@ -62,7 +62,7 @@
 
     <servicemix.specs.version>2.4.0</servicemix.specs.version>
 
-      <maven-archetype-packaging-version>2.0</maven-archetype-packaging-version>
+    <maven-archetype-packaging-version>2.0</maven-archetype-packaging-version>
   </properties>
 
   <!-- Managed dependencies -->
