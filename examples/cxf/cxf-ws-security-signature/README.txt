@@ -70,7 +70,7 @@ directory:
            key="org.apache.ws.security.crypto.merlin.keystore.password">storepassword</prop>
 
        <prop
-           key="org.apache.ws.security.crypto.merlin.file">server-truststore.jks</prop>
+           key="org.apache.ws.security.crypto.merlin.keystore.file">server-truststore.jks</prop>
     </util:properties>
 
 Prerequisites for Running the Example
