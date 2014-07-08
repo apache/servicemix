@@ -46,7 +46,7 @@ directory:
                  <property name="properties">
                      <map>
                          <entry key="action" value="UsernameToken"/>
-                         <entry key="passwordType" value="PasswordTest"/>
+                         <entry key="passwordType" value="PasswordText"/>
                      </map>
                  </property>
              </bean>          
