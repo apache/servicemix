@@ -17,18 +17,6 @@
 -->
 <features name="servicemix-features-${version}">
 
-    <feature name="connector" version="${version}" resolver="(obr)" start-level='50'>
-        <feature version="${aries.transaction.version}">transaction</feature>
-        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.5_spec/${geronimo-j2ee-connector.version}</bundle>
-        <bundle>mvn:org.apache.geronimo.components/geronimo-connector/${geronimo-connector.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_2.5_spec/${geronimo-servlet.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.transaction/${spring.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.beans/${spring.version}</bundle>
-        <bundle dependency="true">mvn:org.springframework/org.springframework.context/${spring.version}</bundle>                                       ‚
-        <bundle dependency="true">mvn:org.springframework/org.springframework.aop/${spring.version}</bundle>
-    </feature>
-
     <feature name="jms-appender" version="${version}" resolver="(obr)" start-level="50">
         <feature version="${activemq.version}">activemq-broker-noweb</feature>
         <bundle>mvn:org.apache.servicemix.logging/jms-appender/${version}</bundle>
@@ -47,7 +35,7 @@
         <feature version="${cxf.version}">cxf-specs</feature>
         <feature version="${aries.transaction.version}">transaction</feature>
         <feature version="${camel.version}">camel</feature>
-        <feature version="${spring.version}">spring-orm</feature>
+        <feature version="[3.2,3.3)">spring-orm</feature>
         <feature version="${drools.version}">drools</feature>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.joda-time/${jodatime.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.wsdl4j/${wsdl4j.bundle.version}</bundle>
