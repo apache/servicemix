@@ -39,10 +39,11 @@
     </bean>
 
     <!-- connection factory wrapper to support auto-enlisting of XA resource -->
-    <bean id="jmsXaPoolConnectionFactory" class="org.apache.activemq.pool.XaPooledConnectionFactory">
-        <property name="maxConnections" value="1" />
+    <bean id="jmsXaPoolConnectionFactory" class="org.apache.activemq.pool.JcaPooledConnectionFactory">
+        <property name="maxConnections" value="8" />
         <property name="connectionFactory" ref="jmsXaConnectionFactory" />
         <property name="transactionManager" ref="osgiJtaTransactionManager" />
+        <property name="name" value="activemq.${broker-name}" />
     </bean>
 
     <bean id="jmsXaConnectionFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
