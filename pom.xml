@@ -132,6 +132,20 @@
         <spring.version>3.2.4.RELEASE</spring.version>
         <wss4j.version>1.6.15</wss4j.version>
     </properties>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <name>Apache Snapshot Repository</name>
+            <url>http://repository.apache.org/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencyManagement>
        <dependencies>
