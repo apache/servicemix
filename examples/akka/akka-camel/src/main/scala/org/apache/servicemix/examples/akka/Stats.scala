@@ -24,7 +24,7 @@ import collection.mutable.Map
 import collection.SortedSet
 import org.apache.servicemix.examples.akka.Stats.Metric
 import java.util.concurrent.atomic.AtomicBoolean
-
+import java.util.Locale
 
 /**
  * A statistics engine that generates basic descriptive statistics (count, average and standard deviation) for a
@@ -64,9 +64,10 @@ class Stats extends Actor {
       if (changes.getAndSet(false)) {
         val results = SortedSet(metrics.keys.toArray:_*).map { key =>
           val results = metrics(key)
-          "%s,%d,%.4f,%.4f".format(key, results.getOrElse("count", 0),
-                                   results.getOrElse("avg", Double.NaN),
-                                   results.getOrElse("stddev", Double.NaN))
+          "%s,%d,%.4f,%.4f".formatLocal(Locale.ENGLISH, 
+                                        key, results.getOrElse("count", 0),
+                                        results.getOrElse("avg", Double.NaN),
+                                        results.getOrElse("stddev", Double.NaN))
         }
         sender ! ("key,count,average,stddev" +: results.toSeq).mkString(sys.props("line.separator"))
       }
