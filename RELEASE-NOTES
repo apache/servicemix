@@ -15,6 +15,46 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.1.1
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 5.1.1 is a new minor release, which includes a few bug fixes and
+a new versions of Apache Camel.  This release includes:
+
+- Apache ActiveMQ 5.10.0 (http://activemq.apache.org)
+- Apache Camel 2.13.2 (http://camel.apache.org)
+- Apache CXF 2.7.11 (http://cxf.apache.org)
+- Apache Karaf 2.3.4 (http://karaf.apache.org)
+
+
+ Changelog
+ ---------
+
+** Bug
+* [SM-2287] - Bundle refresh problem when eventadmin is installed
+* [SM-2324] - Use JcaPooledConnectionFactory instead of XaPooledConnectionFactory
+* [SM-2337] - Can't install release bundles from a custom repository
+
+** Improvement
+* [SM-2341] - Improve WS-Security demos
+
+** Task
+* [SM-2313] - Trying to get person with unknown end with error in camel-cxf-soap example
+* [SM-2314] - Trying to get person with unknown end with error in camel-cxf-rest example
+* [SM-2332] - Remove Alfresco repository from org.ops4j.pax.url.mvn.cfg
+* [SM-2340] - Upgrade to Camel 2.13.2
+* [SM-2344] - Release Apache ServiceMix 5.1.1
+
+** Test
+* [SM-2255] - Intermittent test failure in StatsTest
+
+
                       Apache ServiceMix 5.1.0
                   ================================
  Overview
