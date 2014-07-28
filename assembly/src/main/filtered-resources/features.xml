@@ -24,6 +24,7 @@
 
     <feature name="activemq-service" version="${version}" resolver="(obr)" start-level="50">
         <feature version="${activemq.version}">activemq-broker-noweb</feature>
+        <feature version="${activemq.version}">activemq-camel</feature>
         <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.service/${version}</bundle>
         <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.camel/${version}</bundle>
     </feature>
