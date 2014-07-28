@@ -109,6 +109,12 @@
         <artifactId>activemq-camel</artifactId>
         <version>${activemq.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-web-console</artifactId>
+        <version>${activemq.version}</version>
+        <type>war</type>
+      </dependency>
       <!-- Activiti-->
       <dependency>
         <groupId>org.activiti</groupId>
