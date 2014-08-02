@@ -103,7 +103,7 @@
 
         <!-- Maven Plugins -->
         <depends-maven-plugin.version>1.2</depends-maven-plugin.version>
-        <maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
+        <maven-bundle-plugin.version>2.5.0</maven-bundle-plugin.version>
         <maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
         <lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
         <maven-idea-plugin.version>2.2.1</maven-idea-plugin.version>
