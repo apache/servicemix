@@ -15,6 +15,44 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.1.2
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 5.1.2 is a new minor release, which includes a few bug fixes and
+a new version of Apache Karaf.  This release includes:
+
+- Apache ActiveMQ 5.10.0 (http://activemq.apache.org)
+- Apache Camel 2.13.2 (http://camel.apache.org)
+- Apache CXF 2.7.11 (http://cxf.apache.org)
+- Apache Karaf 2.3.7 (http://karaf.apache.org)
+
+ Changelog
+ ---------
+
+** Bug
+* [SM-2271] - Can't install hibernate-envers in SMX5
+* [SM-2284] - Intermittent test failure in CamelExamplesTest.testCamelDroolsExample
+* [SM-2301] - Problem installing activiti feature after upgrade to ActiveMQ 5.9.1
+* [SM-2318] - Can't install Hibernate 3
+* [SM-2319] - Connector feature not in sync with transaction
+* [SM-2325] - Blueprint bean loading multiple times
+* [SM-2352] - Release Apache ServiceMix 5.1.2
+* [SM-2361] - cxf feature should be present as a boot feature
+
+** Task
+* [SM-2223] - Incorrect Information on Remote-debugging ServiceMix in Eclipse
+* [SM-2320] - Upgrade to Karaf 2.3.6
+* [SM-2354] - Upgrade to maven-bundle-plugin 2.5.0
+* [SM-2363] - Require JDK 6 for build
+* [SM-2365] - Upgrade to Karaf 2.3.7
+
+
                       Apache ServiceMix 5.1.1
                   ================================
  Overview
