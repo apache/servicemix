@@ -43,11 +43,11 @@
     <cxf.version>2.7.11</cxf.version>
 
     <felix.bundlerepository.version>1.6.6</felix.bundlerepository.version>
-    <karaf.version>2.3.7</karaf.version>
+    <karaf.version>2.3.8</karaf.version>
     <aries.proxy.version>1.0.2</aries.proxy.version>
     <aries.util.version>1.1.0</aries.util.version>
     <aries.blueprint.core.version>1.4.0</aries.blueprint.core.version>
-    <pax.logging.version>1.7.3</pax.logging.version>
+    <pax.logging.version>1.7.4</pax.logging.version>
 
     <akka.version>2.2.3</akka.version>
     <scala.version>2.10.2</scala.version>
