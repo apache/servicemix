@@ -126,7 +126,7 @@
         <xerces.version>2.11.0</xerces.version>
         <xml.api.version>2.11.0-20110622</xml.api.version>
         <xalan.version>2.7.1</xalan.version>
-        <pax.exam.version>4.1.0</pax.exam.version>
+        <pax.exam.version>4.2.0</pax.exam.version>
         <pax.url.version>2.2.0</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
         <slf4j.version>1.7.5</slf4j.version>
