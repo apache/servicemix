@@ -32,7 +32,7 @@ trait BasicAssemblyTests { self: IntegrationTestSupport =>
 
   def isActive(bundle: Bundle) = Bundle.ACTIVE == bundle.getState
   def isResolved(bundle: Bundle) = Bundle.RESOLVED == bundle.getState
-  def isFragment(bundle: Bundle) = bundle.getHeaders("Fragement-Host").isEmpty
+  def isFragment(bundle: Bundle) = bundle.getHeaders().get("Fragment-Host") != null
 
 
   @Test
