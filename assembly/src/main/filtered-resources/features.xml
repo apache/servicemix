@@ -85,4 +85,13 @@
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
     </feature>
 
+    <feature name="web-script-console" version="${version}" resolver="(obr)">
+        <feature version="${karaf.version}">webconsole</feature>
+        <feature version="${camel.version}">camel-groovy</feature>
+        <feature version="${camel.version}">camel-script-groovy</feature>
+        <bundle dependency="true">mvn:commons-io/commons-io/${commons-io.version}</bundle>
+        <bundle dependency="true">mvn:commons-fileupload/commons-fileupload/${commons-fileupload.version}</bundle>
+        <bundle>mvn:org.apache.felix/org.apache.felix.webconsole.plugins.scriptconsole/${felix.webconsole.plugins.scriptconsole.version}</bundle>
+   </feature>
+
 </features>
