@@ -15,6 +15,39 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.0.5
+                  ================================
+Overview
+--------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+This is a new minor release of the project, which includes new versions of Apache Karaf. 
+It also contains a few bug fixes.
+
+Apache ServiceMix 5.0.5 includes:
+- Activiti 5.15.1 (http://www.activiti.org)
+- Apache ActiveMQ 5.9.1 (http://activemq.apache.org)
+- Apache Camel 2.12.4 (http://camel.apache.org)
+- Apache CXF 2.7.11 (http://cxf.apache.org)
+- Apache Karaf 2.3.8 (http://karaf.apache.org)
+
+Changelog
+---------
+  
+** Bug
+* [SM-2376] - Incorrect javax.annotation version for java7
+
+** New Feature
+* [SM-2381] - Web Script Console Plugin
+
+** Task
+* [SM-2371] - Upgrade to Karaf 2.3.8
+* [SM-2375] - Release Apache ServiceMix 5.0.5
+
+
                       Apache ServiceMix 5.0.4
                   ================================
 Overview
