@@ -7,7 +7,6 @@
     <artifactId>activiti</artifactId>
     <version>5.1.4-SNAPSHOT</version>
   </parent>
-  <groupId>org.apache.servicemix.activiti</groupId>
   <artifactId>activiti-webapp-explorer2</artifactId>
   <packaging>pom</packaging>
   <properties>
