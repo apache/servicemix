@@ -34,5 +34,6 @@
     <name>Apache ServiceMix :: Activiti Support</name>
     <modules>
         <module>activiti-config</module>
+        <module>activiti-webapp-explorer2</module>
     </modules>
 </project>

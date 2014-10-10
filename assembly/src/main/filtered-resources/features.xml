@@ -93,5 +93,10 @@
         <bundle dependency="true">mvn:commons-fileupload/commons-fileupload/${commons-fileupload.version}</bundle>
         <bundle>mvn:org.apache.felix/org.apache.felix.webconsole.plugins.scriptconsole/${felix.webconsole.plugins.scriptconsole.version}</bundle>
    </feature>
-
+   
+   <feature name="activiti-webapp-explorer2" version="${version}" resolver="(obr)">
+        <bundle>mvn:http://maven.restlet.org!org.restlet.osgi/org.restlet/${restlet.version}</bundle>
+        <bundle>mvn:http://maven.restlet.org!org.restlet.osgi/org.restlet.ext.servlet/${restlet.version}</bundle>
+        <bundle>webbundle:mvn:org.apache.servicemix.activiti/activiti-webapp-explorer2/${version}/war?Bundle-SymbolicName=activiti-webapp-explorer2&amp;Bundle-Version=${activiti.version}</bundle>
+   </feature>  
 </features>
