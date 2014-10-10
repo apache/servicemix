@@ -23,7 +23,7 @@
     <parent>
         <artifactId>activiti</artifactId>
         <groupId>org.apache.servicemix.activiti</groupId>
-        <version>5.3.0</version>
+        <version>5.3.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.apache.servicemix.activiti.config</artifactId>
