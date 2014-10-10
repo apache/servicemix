@@ -24,7 +24,7 @@ Apache ServiceMix is a flexible, open-source integration container that unifies 
 features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
 runtime platform you can use to build your own integrations solutions.
 
-Apache ServiceMix 5.4.0 is a new major release of the project, which includes:
+Apache ServiceMix 5.3.0 is a new major release of the project, which includes:
 
 - Apache ActiveMQ 5.10.0 (http://activemq.apache.org)
 - Apache Camel 2.13.2 (http://camel.apache.org)
