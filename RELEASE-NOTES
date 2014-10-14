@@ -37,7 +37,6 @@ Apache ServiceMix 5.3.0 is a new major release of the project, which includes:
 
 ** Bug
 * [SM-2319] - Connector feature not in sync with transaction
-* [SM-2346] - Can not resolve feature: camel-avro
 * [SM-2376] - Incorrect javax.annotation version for java7
 * [SM-2377] - Java8 packages related to JavaFX are missing
 
