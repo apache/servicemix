@@ -39,8 +39,8 @@
   <properties>
     <activemq.version>5.10.0</activemq.version>
     <activiti.version>5.15.1</activiti.version>
-    <camel.version>2.13.2</camel.version>
-    <cxf.version>2.7.11</cxf.version>
+    <camel.version>2.13.3</camel.version>
+    <cxf.version>2.7.13</cxf.version>
 
     <felix.bundlerepository.version>1.6.6</felix.bundlerepository.version>
     <karaf.version>2.3.8</karaf.version>
