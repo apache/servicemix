@@ -132,7 +132,7 @@
         <pax.url.version>2.2.0</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
         <slf4j.version>1.7.5</slf4j.version>
-        <spring.version>3.2.9.RELEASE_1</spring.version>
+        <spring.version>3.2.11.RELEASE_1</spring.version>
         <wss4j.version>1.6.15</wss4j.version>
     </properties>
     
