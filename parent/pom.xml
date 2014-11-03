@@ -39,8 +39,8 @@
   <properties>
     <activemq.version>5.10.0</activemq.version>
     <activiti.version>5.15.1</activiti.version>
-    <camel.version>2.13.2</camel.version>
-    <cxf.version>2.7.11</cxf.version>
+    <camel.version>2.14.0</camel.version>
+    <cxf.version>3.0.2</cxf.version>
 
     <felix.bundlerepository.version>2.0.2</felix.bundlerepository.version>
     <karaf.version>3.0.2-SNAPSHOT</karaf.version>
@@ -155,17 +155,7 @@
       <!-- Apache CXF -->
       <dependency>
         <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-api</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-bundle</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-common</artifactId>
+        <artifactId>cxf-core</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
@@ -196,11 +186,6 @@
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-bindings-xml</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-core</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
@@ -240,12 +225,22 @@
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-features-clustering</artifactId>
+        <version>${cxf.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-javascript</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-management</artifactId>
+        <version>${cxf.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-rs-client</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
@@ -286,6 +281,11 @@
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-ws-security</artifactId>
+        <version>${cxf.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-rs-security-oauth</artifactId>
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
@@ -359,18 +359,13 @@
         <version>${cxf.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-xerces-xsd-validation</artifactId>
-        <version>${cxf.version}</version>
-      </dependency>
-      <dependency>
         <groupId>org.apache.cxf.services.wsn</groupId>
         <artifactId>cxf-services-wsn-core</artifactId>
         <version>${cxf-version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.servicemix.specs</groupId>
-        <artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>
+        <artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
         <version>${servicemix.specs.version}</version>
       </dependency>
       <dependency>

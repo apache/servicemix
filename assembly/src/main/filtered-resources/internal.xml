@@ -24,7 +24,7 @@
 
     <!-- workaround before SM-2179 get addressed on CXF side-->
     <feature name="jaxrs-api">
-        <bundle start-level='10'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr339-api-m10/${servicemix.specs.version}</bundle>
+        <bundle start-level='10'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr339-api-2.0/${servicemix.specs.version}</bundle>
     </feature>
 
     <!-- workaround for SM-2301 -->

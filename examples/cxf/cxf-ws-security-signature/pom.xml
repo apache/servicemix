@@ -38,12 +38,12 @@
             <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.ws.security</groupId>
-            <artifactId>wss4j</artifactId>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-security</artifactId>
         </dependency>
     </dependencies>
 
@@ -61,8 +61,6 @@
                             javax.xml.bind.annotation,
                             javax.xml.namespace,
                             javax.wsdl,
-                            META-INF.cxf,
-                            META-INF.cxf.osgi,
                             org.apache.cxf.bus,
                             org.apache.cxf.bus.spring,
                             org.apache.cxf.bus.resource,
@@ -72,13 +70,11 @@
                             org.apache.cxf.ws.security.wss4j,
                             org.springframework.beans.factory.config,
                             javax.security.auth.callback,
-                            org.apache.ws.security,
-                            org.apache.ws.security.processor,
+                            org.apache.wss4j.common.ext,
                             org.apache.cxf.binding.soap.saaj,
 			                      org.apache.commons.io
                         </Import-Package>
                         <Export-Package>org.apache.servicemix.examples.cxf</Export-Package>
-                        <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
                     </instructions>
                 </configuration>
             </plugin>
