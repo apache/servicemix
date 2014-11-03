@@ -37,10 +37,6 @@
             <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.ws.security</groupId>
-            <artifactId>wss4j</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
         </dependency>
@@ -70,8 +66,7 @@
                             org.apache.cxf.ws.security.wss4j,
                             org.springframework.beans.factory.config,
                             javax.security.auth.callback,
-                            org.apache.ws.security,
-                            org.apache.ws.security.processor,
+                            org.apache.wss4j.common.ext,
                             org.apache.cxf.interceptor.security,
                             org.apache.cxf.transport.http,
                             org.apache.cxf, org.apache.cxf.endpoint, org.apache.cxf.frontend, org.apache.cxf.interceptor, org.apache.cxf.jaxws, org.apache.cxf.message, org.apache.cxf.phase
