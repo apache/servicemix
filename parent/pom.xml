@@ -41,6 +41,7 @@
     <activiti.version>5.15.1</activiti.version>
     <camel.version>2.14.0</camel.version>
     <cxf.version>3.0.2</cxf.version>
+    <cxf.codegen-plugin.version>${cxf.version}</cxf.codegen-plugin.version>
 
     <felix.bundlerepository.version>2.0.2</felix.bundlerepository.version>
     <karaf.version>2.4.0</karaf.version>
@@ -405,4 +406,24 @@
 
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.cxf</groupId>
+          <artifactId>cxf-codegen-plugin</artifactId>
+          <version>${cxf.codegen-plugin.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>xerces</groupId>
+              <artifactId>xercesImpl</artifactId>
+              <version>${xerces.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
 </project>
