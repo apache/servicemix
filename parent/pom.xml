@@ -44,7 +44,7 @@
     <cxf.codegen-plugin.version>${cxf.version}</cxf.codegen-plugin.version>
 
     <felix.bundlerepository.version>1.6.6</felix.bundlerepository.version>
-    <karaf.version>2.3.8</karaf.version>
+    <karaf.version>2.3.9</karaf.version>
     <aries.proxy.version>1.0.2</aries.proxy.version>
     <aries.util.version>1.1.0</aries.util.version>
     <aries.blueprint.core.version>1.4.0</aries.blueprint.core.version>
@@ -58,7 +58,7 @@
     <mvel2.version>2.1.7.Final</mvel2.version>
     <mybatis.version>3.2.7</mybatis.version>
     <jodatime.bundle.version>2.3_1</jodatime.bundle.version>
-    <jpa.version>1.0.1</jpa.version>
+    <jpa.version>1.0.2</jpa.version>
 
     <servicemix.specs.version>2.4.0</servicemix.specs.version>
 
