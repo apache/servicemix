@@ -45,6 +45,9 @@
         <bundle dependency="true">mvn:org.apache.commons/commons-lang3/${commons-lang3.version}</bundle>
         <bundle dependency="true">mvn:com.h2database/h2/${h2.version}</bundle>
         <bundle dependency="true">mvn:org.mvel/mvel2/${mvel2.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${fasterxml.jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml.jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${fasterxml.jackson.version}</bundle>
         <bundle>mvn:org.activiti/activiti-engine/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-bpmn-converter/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-spring/${activiti.version}</bundle>
@@ -52,6 +55,15 @@
         <bundle>mvn:org.activiti/activiti-osgi/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-process-validation/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-camel/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-image-generator/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-ldap/${activiti.version}</bundle>
+        <!--
+        <bundle dependency="true">wrap:mvn:org.tinyjee.jgraphx/jgraphx/1.10.4.1</bundle>
+        <bundle>mvn:org.activiti/activiti-bpmn-layout/${activiti.version}</bundle>  
+        <bundle>mvn:org.activiti/activiti-simple-workflow/${activiti.version}</bundle> 
+        <bundle dependency="true">wrap:mvn:math.geom2d/javaGeom/0.11.1</bundle>
+        <bundle>mvn:org.activiti/activiti-json-converter/${activiti.version}</bundle> 
+        -->
         <bundle>mvn:org.apache.servicemix.activiti/org.apache.servicemix.activiti.config/${project.version}</bundle>
     </feature>
 
