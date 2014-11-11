@@ -15,6 +15,48 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.0.6
+                  ================================
+Overview
+--------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+This is a new minor release of the project, which includes new versions of Apache Karaf, 
+Apache Camel and CXF. It also contains a few bug fixes.
+
+Apache ServiceMix 5.0.6 includes:
+- Activiti 5.15.1 (http://www.activiti.org)
+- Apache ActiveMQ 5.9.1 (http://activemq.apache.org)
+- Apache Camel 2.12.5 (http://camel.apache.org)
+- Apache CXF 2.7.13 (http://cxf.apache.org)
+- Apache Karaf 2.3.9 (http://karaf.apache.org)
+
+Changelog
+---------
+  
+** Bug
+* [SM-2396] - CXF WSN sample installation fails
+
+** Improvement
+* [SM-2388] - Add "update-strategy" to camel-blueprint example
+
+** Task
+* [SM-2333] - activemq:dstat fails after any messagin operation is performed
+* [SM-2357] - Upgrade to ActiveMQ 5.9.2
+* [SM-2380] - Create a overview page with servicemix roadmap
+* [SM-2383] - Upgrade to Camel 2.12.5 and CXF 2.7.13
+* [SM-2384] - Release Apache ServiceMix 5.0.6
+* [SM-2397] - Upgrade to Karaf 2.3.9
+* [SM-2398] - Upgrade maven plugins
+* [SM-2399] - Upgrade to Apache POM 15 
+* [SM-2400] - Upgrade to Felix maven-bundle-plugin 2.5.3
+* [SM-2402] - Use correct cxf.codegen-plugin version
+* [SM-2403] - Upgrade to maven-surefire-plugin 2.18
+
+
                       Apache ServiceMix 5.0.5
                   ================================
 Overview
