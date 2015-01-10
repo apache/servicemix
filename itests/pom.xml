@@ -63,7 +63,7 @@
 
       <dependency>
         <groupId>org.ops4j.pax.logging</groupId>
-        <artifactId>pax-logging-service</artifactId>
+        <artifactId>pax-logging-api</artifactId>
         <scope>test</scope>
       </dependency>
 
