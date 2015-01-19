@@ -15,6 +15,54 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.3.1
+                  ================================
+
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 5.3.1 is a new minor release, which includes a few bug fixes and
+a new version of Apache Karaf, Apache Camel and Apache CXF. This release includes:
+
+- Apache ActiveMQ 5.10.0 (http://activemq.apache.org)
+- Apache Camel 2.13.3 (http://camel.apache.org)
+- Apache CXF 2.7.13 (http://cxf.apache.org)
+- Apache Karaf 2.4.1 (http://karaf.apache.org)
+
+
+ Changelog
+ ---------
+
+** Sub-task
+    * [SM-2415] - Add missing Spring Deployer bundle into startup.properties
+
+** Bug
+    * [SM-2346] - Can not resolve feature: camel-avro
+    * [SM-2396] - CXF WSN sample installation fails
+    * [SM-2408] - JVM options ignored on Windows
+
+** Improvement
+    * [SM-2388] - Add "update-strategy" to camel-blueprint example
+
+** Task
+    * [SM-2385] - Upgrade to Camel 2.13.3  and CXF 2.7.13
+    * [SM-2391] - Release Apache ServiceMix 5.3.1
+    * [SM-2392] - Upgrade to Pax Exam 4.3.0
+    * [SM-2393] - Upgrade to Activiti 5.16.4
+    * [SM-2398] - Upgrade maven plugins
+    * [SM-2399] - Upgrade to Apache POM 15 
+    * [SM-2400] - Upgrade to Felix maven-bundle-plugin 2.5.3
+    * [SM-2401] - Upgrade to Pax Logging 1.8.1 (log4j v2 support)
+    * [SM-2402] - Use correct cxf.codegen-plugin version
+    * [SM-2403] - Upgrade to maven-surefire-plugin 2.18
+    * [SM-2404] - Upgrade to Karaf 2.4.1
+    * [SM-2409] - Upgrade to Pax Exam 4.4.0
+
+
                       Apache ServiceMix 5.3.0
                   ================================
  Overview
@@ -29,7 +77,7 @@ Apache ServiceMix 5.3.0 is a new major release of the project, which includes:
 - Apache ActiveMQ 5.10.0 (http://activemq.apache.org)
 - Apache Camel 2.13.2 (http://camel.apache.org)
 - Apache CXF 2.7.11 (http://cxf.apache.org)
-- Apache Karaf 2.3.8 (http://karaf.apache.org)
+- Apache Karaf 2.4.0 (http://karaf.apache.org)
 
 
  Changelog
