@@ -80,6 +80,7 @@
         <service-properties>
             <entry key="name" value="${broker-name}"/>
             <entry key="transacted" value="false" />
+            <entry key="osgi.jndi.service.name" value="jms/${broker-name}" />
         </service-properties>
     </service>
 
@@ -88,8 +89,9 @@
     -->
     <service ref="jmsXaPoolConnectionFactory" interface="javax.jms.ConnectionFactory">
         <service-properties>
-            <entry key="name" value="${broker-name}" />
+            <entry key="name" value="${broker-name}-xa" />
             <entry key="transacted" value="true" />
+            <entry key="osgi.jndi.service.name" value="jms/${broker-name}-xa" />
         </service-properties>
     </service>
 </blueprint>
