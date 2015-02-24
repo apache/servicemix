@@ -15,85 +15,119 @@
  * limitations under the License.
  */
 
-                      Apache ServiceMix 5.0.0
+                      Apache ServiceMix 6.0.0.M1
                   ================================
  Overview
  --------
 
-Apache ServiceMix is a flexible, open-source integration container that unifies the
-features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
-runtime platform you can use to build your own integrations solutions.
+  !! This is a technology preview release of Apache ServiceMix, and should NOT be considered production ready !!
 
-Apache ServiceMix 5.0.0 is a new major release of the project, which includes:
+Apache ServiceMix is a flexible, open-source integration container that unifies the features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful runtime platform you can use to build your own integrations solutions.
 
-- Apache ActiveMQ 5.9.0 (http://activemq.apache.org)
-- Apache Camel 2.12.3 (http://camel.apache.org)
-- Apache CXF 2.7.10 (http://cxf.apache.org)
-- Apache Karaf 2.3.4 (http://karaf.apache.org)
+Apache ServiceMix 6.0.0 will be the first release based on Karaf 3.0.x, which includes numerous new features. We ask that users provide the community with their feed back so that the full Apache ServiceMix 6.0.0 release can be as feature complete and stable as possible.
+
+Apache ServiceMix 6.0.0.M1 is a new preview release of the project, which includes:
+
+- Apache ActiveMQ 5.10.0 (http://activemq.apache.org)
+- Apache Camel 2.14.1 (http://camel.apache.org)
+- Apache CXF 3.0.2 (http://cxf.apache.org)
+- Apache Karaf 3.0.2 (http://karaf.apache.org)
 
 
  Changelog
  ---------
 
 ** Sub-task
-* [SM-2259] - Improve development in Eclipse using m2 plugin
-* [SM-2260] - Refactor the plugin and dependency management
+    * [SM-2303] - ActiveMQ web console not installable after upgrade to 5.9.1 
 
 ** Bug
-* [SM-2175] - Replace camel-activemq with activemq-camel
-* [SM-2179] - can't install camel-cxf feature
-* [SM-2182] - can't install cxf-wsn feature
-* [SM-2187] - Increase default PermGen size to 256MB
-* [SM-2192] - features:install cxf-jaxrs error
-* [SM-2193] - Configfiles of jbi and nmr still included in assembly
-* [SM-2197] - Test failure building integration tests against a local maven repo
-* [SM-2202] - examples-activemq-camel-blueprint need to have camel-jms has feature dependency
-* [SM-2203] - Intermittent itest failures
-* [SM-2204] - jaxrs-example: service cannot be reached
-* [SM-2206] - An exception is thrown in the console
-* [SM-2210] - CXF WS-RM itest fails with NPE
-* [SM-2216] - add cxf-swagger feature|example
-* [SM-2219] - Compilation failure due to non-existing SNAPSHOT of servicemix bundles
-* [SM-2220] - Integration Tests - Feature named 'examples-cxf-jaxrs-blueprint' is not installed
-* [SM-2227] - Cxf jaxrs example don't compile at 1559008 or 13f79535-47bb-0310-9956-ffa450edef68
-* [SM-2231] - Logging error on startup
-* [SM-2232] - Hang in org.apache.servicemix.itests.CxfExamplesTest
-* [SM-2233] - Single assembly for Windows and other OS's
-* [SM-2234] - Activiti example itest fails with java.rmi.NoSuchObjectException
-* [SM-2237] - Problems with ServiceMix 5 after upgrade to Spring 3.2.x RELEASE
-* [SM-2239] - Error running integration tests on ASF CI machines
-* [SM-2243] - remove jbi related stuff from SMX5
-* [SM-2248] - log4j:WARN No appenders could be found for logger (org.apache.karaf.features.core).
-* [SM-2252] - Intermittent test failure in JMSAppenderTest
-* [SM-2258] - Upgrade to Drools 5.6.0.Final
-* [SM-2261] - antrun-plugin enable-obr runs multiple times
-* [SM-2265] - Remove unnecessary external repositories
-* [SM-2266] - Fix broken source assembly and add correct LICENSE/NOTICE files
-* [SM-2268] - Error on startup: invalid run level for wrap bundle
+    * [SM-2244] - Uninstall activiti feature results in error
+    * [SM-2256] - Unable to shutdown container when JMS appender is configured
+    * [SM-2267] - Provide working configuration for activemq-web-console
+    * [SM-2269] - ActiveMQ quick start doesn't work due to the missing activemq component
+    * [SM-2271] - Can't install hibernate-envers in SMX5
+    * [SM-2277] - activiti-camel thrown ActivitiException when put document in delivery folder
+    * [SM-2279] - The jndi feature can not be installed
+    * [SM-2280] - Activiti test case fails after upgrade to 5.15.1
+    * [SM-2282] - Installation of the eventadmin feature fails
+    * [SM-2286] - Intermittent test failure in ActivitiExamplesTest.testActivitiCamelExample
+    * [SM-2304] - activemq:bstat fails with error "Attribute Uptime can not be found"
+    * [SM-2305] - Access to ActiveMQ web console fails
+    * [SM-2309] - Add itest for camel-cxf-rest example
+    * [SM-2317] - activemq:browse no more working
+    * [SM-2318] - Can't install Hibernate 3
+    * [SM-2319] - Connector feature not in sync with transaction
+    * [SM-2322] - !<history-number> executes wrong history entry
+    * [SM-2324] - Use JcaPooledConnectionFactory instead of XaPooledConnectionFactory
+    * [SM-2326] - Route deployed in deploy directory using activemq does not start after ServiceMix restart 
+    * [SM-2337] - Can't install release bundles from a custom repository
+    * [SM-2346] - Can not resolve feature: camel-avro
+    * [SM-2361] - cxf feature should be present as a boot feature
+    * [SM-2376] - Incorrect javax.annotation version for java7
+    * [SM-2377] - Java8 packages related to JavaFX are missing
+    * [SM-2396] - CXF WSN sample installation fails
+    * [SM-2422] - Multiple JMS connection factories found for amq-broker
 
 ** Improvement
-* [SM-2171] - Add support for Akka
-* [SM-2173] - Upgrade to Karaf 2.3.1
-* [SM-2183] - Provide JMS ConnectionFactory in the OSGi Service Registry
-* [SM-2186] - Add a new example: drools-camel
-* [SM-2194] - Drools Camel Blueprint Example
-* [SM-2195] - rewrite features itests with pax-exam-karaf
-* [SM-2196] - need also endorse activation-api spec jar
-* [SM-2198] - Upgrade to Camel 2.11.0
-* [SM-2199] - Add a new example: cxf-wsn
-* [SM-2205] - add identifier for the org.ops4j.pax.url.mvn.repositories
-* [SM-2211] - Add support for container-wide Camel interceptors
-* [SM-2212] - Auditor to store exchanges into MongoDB
-* [SM-2236] - Some additional upgrades to latest releases
-* [SM-2247] - add @id for the org.ops4j.pax.url.mvn.repositories in etc/org.ops4j.pax.url.mvn.cfg
-* [SM-2257] - Delay console startup until bundles have been propertly started
+    * [SM-2293] - Enable optional imports OBR resolution
+    * [SM-2298] - Add a CXF SOAP with Camel example
+    * [SM-2299] - Add itest for cxf-wsn example
+    * [SM-2327] - Improve camel-cxf-rest example
+    * [SM-2341] - Improve WS-Security demos
+    * [SM-2388] - Add "update-strategy" to camel-blueprint example
 
 ** New Feature
-* [SM-2189] - A Camel SQL example with JDBC connection pool
-* [SM-2190] - A REST example with camel-cxf
+    * [SM-2288] - Add drools feature
+    * [SM-2381] - Web Script Console Plugin
 
+** Task
+    * [SM-2223] - Incorrect Information on Remote-debugging ServiceMix in Eclipse
+    * [SM-2229] - Upgrade to activiti version 5.15.1
+    * [SM-2245] - Upgrade to Pax Exam 3.5.0
+    * [SM-2270] - Merge ServiceMix archetypes with ServiceMix code base
+    * [SM-2274] - Upgrade to Camel 2.13.0
+    * [SM-2276] - Upgrade to Karaf 3.0.1
+    * [SM-2281] - Upgrade to Karaf 2.3.5
+    * [SM-2283] - Align some versions duplicated after the Activiti upgrade
+    * [SM-2292] - Upgrade to Camel 2.13.1
+    * [SM-2294] - Cleanup nonexisting cxf dependencies from dependency management
+    * [SM-2295] - Change the target/source level in compiler plugin to 1.6
+    * [SM-2296] - Add the boot features to the system repository
+    * [SM-2306] - Update the README file
+    * [SM-2307] - Add itest for camel-cxf-soap example
+    * [SM-2308] - Add itest for camel-drools-blueprint example
+    * [SM-2312] - Remove placeholder configuration from the activemq-camel blueprint 
+    * [SM-2313] - Trying to get person with unknown end with error in camel-cxf-soap example
+    * [SM-2314] - Trying to get person with unknown end with error in camel-cxf-rest example
+    * [SM-2315] - activemq:dstat fails after any messagin operation is performed
+    * [SM-2316] - Problems when reinstalling the drools examples
+    * [SM-2321] - Upgrade to Karaf 3.0.2
+    * [SM-2328] - Upgrade to ActiveMQ 5.10.0
+    * [SM-2332] - Remove Alfresco repository from org.ops4j.pax.url.mvn.cfg
+    * [SM-2340] - Upgrade to Camel 2.13.2
+    * [SM-2354] - Upgrade to maven-bundle-plugin 2.5.0
+    * [SM-2359] - Upgrade to Pax Exam 4.1.0
+    * [SM-2362] - Require JDK 7 for build
+    * [SM-2367] - Upgrade to Felix BundleRepository 2.0.2 
+    * [SM-2368] - Upgrade to Camel 2.14.0 and CXF 3.0.2
+    * [SM-2372] - Upgrade to Pax Exam 4.2.0
+    * [SM-2380] - Create a overview page with servicemix roadmap
+    * [SM-2392] - Upgrade to Pax Exam 4.3.0
+    * [SM-2393] - Upgrade to Activiti 5.16.4
+    * [SM-2398] - Upgrade maven plugins
+    * [SM-2399] - Upgrade to Apache POM 15 
+    * [SM-2400] - Upgrade to Felix maven-bundle-plugin 2.5.3
+    * [SM-2402] - Use correct cxf.codegen-plugin version
+    * [SM-2403] - Upgrade to maven-surefire-plugin 2.18
+    * [SM-2409] - Upgrade to Pax Exam 4.4.0
+    * [SM-2411] - Upgrade to Camel 2.14.1
+    * [SM-2421] - Upgrade to ActiveMQ 5.10.1
+    * [SM-2424] - Release Apache ServiceMix 6.0.0.M1
 
-See the README file for more general information about ServiceMix 5.
+** Test
+    * [SM-2255] - Intermittent test failure in StatsTest
+
+See the README file for more general information about ServiceMix 6.
 
 Thanks you for downloading ServiceMix.  Enjoy !
 
