@@ -136,7 +136,6 @@
         <postgresql.version>9.1-901</postgresql.version>
         <slf4j.version>1.7.5</slf4j.version>
         <spring.version>3.2.4.RELEASE</spring.version>
-        <wss4j.version>1.6.15</wss4j.version>
     </properties>
     
     <pluginRepositories>
