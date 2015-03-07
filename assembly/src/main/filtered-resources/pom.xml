@@ -61,7 +61,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix.specs</groupId>
-                <artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>
+                <artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
                 <version>${servicemix.specs.version}</version>
             </dependency>
             <dependency>
@@ -81,7 +81,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-api</artifactId>
+                <artifactId>cxf-core</artifactId>
                 <version>${cxf.version}</version>
             </dependency>
             <dependency>
@@ -123,11 +123,6 @@
                 <groupId>org.apache.servicemix.bundles</groupId>
                 <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
                 <version>${commons-httpclient.bundle.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.ws.security</groupId>
-                <artifactId>wss4j</artifactId>
-                <version>${wss4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
