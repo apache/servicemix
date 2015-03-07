@@ -154,7 +154,6 @@
                                 <descriptor>file:${basedir}/target/classes/examples.xml</descriptor>
                             </descriptors>
                             <features>
-                                <feature>joda-time</feature>
                                 <feature>cxf</feature>
                                 <feature>obr</feature>
                                 <feature>config</feature>
