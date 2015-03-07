@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <!--
 
@@ -26,12 +27,17 @@
     <version>${project.version}</version>
     <name>Apache ServiceMix :: Examples</name>
     <properties>
+        <akka.version>${akka.version}</akka.version>
         <cxf.version>${cxf.version}</cxf.version>
-        <akka.version>${akka.version}</akka.version >
-        <scala.version>${scala.version}</scala.version>
         <drools.version>${drools.version}</drools.version>
-        <slf4j.version>${slf4j.version}</slf4j.version>
         <jaxb.api.version>${jaxb.api.version}</jaxb.api.version>
+        <scala.version>${scala.version}</scala.version>
+        <slf4j.version>${slf4j.version}</slf4j.version>
+        <xerces.version>${xerces.version}</xerces.version>
+
+        <cxf.codegen-plugin.version>${cxf.codegen-plugin.version}</cxf.codegen-plugin.version>
+        <exec-maven-plugin.version>${exec-maven-plugin.version}</exec-maven-plugin.version>
+        <maven-scala-plugin.version>${maven-scala-plugin.version}</maven-scala-plugin.version>
     </properties>
     <!-- Managed dependencies -->
     <dependencyManagement>
@@ -39,91 +45,91 @@
             <dependency>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-parent</artifactId>
-        	<version>${camel.version}</version>
-        	<type>pom</type>
-        	<scope>import</scope>
+                <version>${camel.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-      	    <dependency>
-        	<groupId>org.apache.cxf</groupId>
-        	<artifactId>cxf-rt-transports-http</artifactId>
-        	<version>${cxf.version}</version>
-      	    </dependency>
             <dependency>
-        	<groupId>org.apache.cxf</groupId>
-        	<artifactId>cxf-rt-ws-security</artifactId>
-        	<version>${cxf.version}</version>
-      	    </dependency>
-      	    <dependency>
-        	<groupId>org.apache.servicemix.specs</groupId>
-        	<artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>
-        	<version>${servicemix.specs.version}</version>
-      	    </dependency>
-      	    <dependency>
-        	<groupId>commons-io</groupId>
-        	<artifactId>commons-io</artifactId>
-        	<version>${commons-io.version}</version>
-      	    </dependency>
-      	    <dependency>
-        	<groupId>org.apache.servicemix.specs</groupId>
-        	<artifactId>org.apache.servicemix.specs.jaxb-api-${jaxb.api.version}</artifactId>
-        	<version>${servicemix.specs.version}</version>
-      	    </dependency>
-      	    <dependency>
-        	<groupId>org.apache.cxf</groupId>
-        	<artifactId>cxf-rt-frontend-jaxws</artifactId>
-        	<version>${cxf.version}</version>
-     	    </dependency>
-      	    <dependency>
-        	<groupId>org.apache.cxf</groupId>
-        	<artifactId>cxf-api</artifactId>
-        	<version>${cxf.version}</version>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${cxf.version}</version>
             </dependency>
-     	    <dependency>
-        	<groupId>org.apache.cxf</groupId>
-        	<artifactId>cxf-rt-transports-http-jetty</artifactId>
-        	<version>${cxf.version}</version>
-            </dependency>
-      	    <dependency>
-        	<groupId>org.apache.cxf</groupId>
-        	<artifactId>cxf-rt-ws-rm</artifactId>
-        	<version>${cxf.version}</version>
-      	    </dependency>
-      	    <dependency>
-        	<groupId>org.apache.cxf</groupId>
-        	<artifactId>cxf-rt-ws-addr</artifactId>
-        	<version>${cxf.version}</version>
-      	    </dependency>
-      	    <dependency>
-        	<groupId>org.apache.cxf</groupId>
-        	<artifactId>cxf-rt-ws-policy</artifactId>
-        	<version>${cxf.version}</version>
-      	    </dependency>
-      	    <dependency>
-        	<groupId>org.apache.cxf.services.wsn</groupId>
-        	<artifactId>cxf-services-wsn-core</artifactId>
-        	<version>${cxf.version}</version>
-      	    </dependency>
             <dependency>
-        	<groupId>org.activiti</groupId>
-        	<artifactId>activiti-camel</artifactId>
-        	<version>${activiti.version}</version>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-ws-security</artifactId>
+                <version>${cxf.version}</version>
             </dependency>
-      	    <dependency>
-        	<groupId>org.apache.geronimo.specs</groupId>
-        	<artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
-        	<version>${geronimo-ws-metadata.version}</version>
-            </dependency>
-      	    <dependency>
-        	<groupId>org.apache.servicemix.bundles</groupId>
-        	<artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
-        	<version>${commons-httpclient.bundle.version}</version>
-      	    </dependency>
             <dependency>
-        	<groupId>org.apache.ws.security</groupId>
-        	<artifactId>wss4j</artifactId>
-        	<version>${wss4j.version}</version>
-      	    </dependency>
-    	</dependencies>
+                <groupId>org.apache.servicemix.specs</groupId>
+                <artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>
+                <version>${servicemix.specs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.servicemix.specs</groupId>
+                <artifactId>org.apache.servicemix.specs.jaxb-api-${jaxb.api.version}</artifactId>
+                <version>${servicemix.specs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-api</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http-jetty</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-ws-rm</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-ws-addr</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-ws-policy</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf.services.wsn</groupId>
+                <artifactId>cxf-services-wsn-core</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-camel</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+                <version>${geronimo-ws-metadata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.servicemix.bundles</groupId>
+                <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
+                <version>${commons-httpclient.bundle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ws.security</groupId>
+                <artifactId>wss4j</artifactId>
+                <version>${wss4j.version}</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <build>
@@ -131,11 +137,33 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.felix</groupId>
-              	    <artifactId>maven-bundle-plugin</artifactId>
-          	    <version>${maven-bundle-plugin.version}</version>
-          	    <extensions>true</extensions>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>${maven-bundle-plugin.version}</version>
+                    <extensions>true</extensions>
                 </plugin>
-      	    </plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${exec-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.scala-tools</groupId>
+                    <artifactId>maven-scala-plugin</artifactId>
+                    <version>${maven-scala-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-codegen-plugin</artifactId>
+                    <version>${cxf.codegen-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>xerces</groupId>
+                            <artifactId>xercesImpl</artifactId>
+                            <version>${xerces.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
 
