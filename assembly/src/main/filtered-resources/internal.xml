@@ -27,7 +27,7 @@
         <bundle start-level='10'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr339-api-2.0/${servicemix.specs.version}</bundle>
     </feature>
 
-    <!-- workaround for SM-2301 -->
+    <!-- workaround for SM-2469 -->
     <feature name="joda-time">
         <bundle start-level='10'>mvn:joda-time/joda-time/${jodatime2.bundle.version}</bundle>
     </feature>
