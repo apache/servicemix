@@ -51,11 +51,11 @@
     <aries.transaction.version>1.0.1</aries.transaction.version>
     <pax.logging.version>1.8.1</pax.logging.version>
 
-    <akka.version>2.2.3</akka.version>
+    <akka.version>2.3.9</akka.version>
     <scala.version>2.10.2</scala.version>
     <google.guava.version>15.0</google.guava.version>
     <fasterxml.jackson.version>2.4.1</fasterxml.jackson.version>
-    <typesafe-config.version>1.0.2</typesafe-config.version>
+    <typesafe-config.version>1.2.0</typesafe-config.version>
     <mvel2.version>2.1.7.Final</mvel2.version>
     <mybatis.version>3.2.7</mybatis.version>
     <jodatime2.bundle.version>2.6</jodatime2.bundle.version>
