@@ -38,7 +38,7 @@ trait IntegrationTestConfigurations {
    * Add support for Scala-based integration tests
    */
   def scalaTestConfiguration =
-    Array(mavenBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.scala-library").versionAsInProject())
+    Array(mavenBundle("org.scala-lang", "scala-library").versionAsInProject())
 
   /**
    * Add an Apache ServiceMix container configuration
