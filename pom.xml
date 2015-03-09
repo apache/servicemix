@@ -83,7 +83,6 @@
         <drools.bundle.version>${drools.version}_1</drools.bundle.version>
         <jaxb.api.version>2.2</jaxb.api.version>
         <osgi.version>5.0.0</osgi.version>
-        <scala.bundle.version>2.10.2_1</scala.bundle.version>
         <wsdl4j.bundle.version>1.6.2_6</wsdl4j.bundle.version>
         <swagger.bundle.version>1.3.0_1</swagger.bundle.version>
         <javassist.bundle.version>3.12.1.GA_2</javassist.bundle.version>
