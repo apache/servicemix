@@ -71,7 +71,7 @@
 
     <!-- Akka support -->
     <feature name="akka" version="${akka.version}" resolver="(obr)">
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.scala-library/${scala.bundle.version}</bundle>
+        <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
         <bundle dependency="true">mvn:com.typesafe/config/${typesafe-config.version}</bundle>
         <bundle>mvn:com.typesafe.akka/akka-osgi_2.10/${akka.version}</bundle>
         <bundle>mvn:com.typesafe.akka/akka-camel_2.10/${akka.version}</bundle>
