@@ -15,20 +15,20 @@
  * limitations under the License.
  */
 
-Building Apache ServiceMix 5
+Building Apache ServiceMix 6
 ============================
 
 Initial Setup
 -------------
 
-1) Install J2SE 5.0 SDK, which can be downloaded from 
-   http://java.sun.com/j2se/1.5.0/download.jsp. Use version of 1.5.0_06 JDK.
+1) Install J2SE 8.0 SDK, which can be downloaded from
+   http://www.oracle.com/technetwork/java/javase/downloads/index.html. Use latest version.
 
 2) Make sure that your JAVA_HOME environment variable is set to the newly installed 
    JDK location, and that your PATH includes %JAVA_HOME%\bin (windows) or 
    $JAVA_HOME$/bin (unix).
 
-3) Install Maven 3.0.5, which can be downloaded from 
+3) Install Maven 3.2.5, which can be downloaded from
    http://maven.apache.org/download.html. Make sure that your PATH includes 
    the MVN_HOME/bin directory. 
 
@@ -36,18 +36,18 @@ Initial Setup
 Building
 --------
 
-1) Change to the top level directory of Apache ServiceMix 5 source distribution.
+1) Change to the top level directory of Apache ServiceMix source distribution.
 
 2) Run
          $> mvn
          
-   This will compile Apache ServiceMix 4 and run all of the tests in the 
+   This will compile Apache ServiceMix and run all of the tests in the
    Apache ServiceMix Kernel source distribution. 
    
    Alternatively, you can run
          $> mvn -Pfastinstall
          
-   This will compile Apache ServiceMix 4 without running the tests and takes less
+   This will compile Apache ServiceMix without running the tests and takes less
    time to build.
    
    Depending on the load of remote Maven repositories, you may have 
