@@ -27,6 +27,9 @@
         <feature version="${activemq.version}">activemq-camel</feature>
         <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.service/${version}</bundle>
         <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.camel/${version}</bundle>
+        <configfile finalname="/etc/org.apache.servicemix.activemq.service.cfg">
+            mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.service/${project.version}/cfg/activemq.service
+        </configfile>
     </feature>
 
     <!-- Activiti support -->
