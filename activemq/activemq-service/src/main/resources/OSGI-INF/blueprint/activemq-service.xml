@@ -21,7 +21,7 @@
 
     <ext:property-placeholder placeholder-prefix="$[" placeholder-suffix="]" />
 
-    <cm:property-placeholder persistent-id="org.apache.activemq.server-default" update-strategy="reload">
+    <cm:property-placeholder persistent-id="org.apache.servicemix.activemq.service" update-strategy="reload">
         <cm:default-properties>
             <cm:property name="broker-name" value="amq-broker"/>
         </cm:default-properties>
@@ -78,9 +78,9 @@
     -->
     <service ref="pooledConnectionFactory" interface="javax.jms.ConnectionFactory">
         <service-properties>
-            <entry key="name" value="${broker-name}"/>
+            <entry key="name" value="default-cf"/>
             <entry key="transacted" value="false" />
-            <entry key="osgi.jndi.service.name" value="jms/${broker-name}" />
+            <entry key="osgi.jndi.service.name" value="jms/default-cf" />
         </service-properties>
     </service>
 
@@ -89,9 +89,9 @@
     -->
     <service ref="jmsXaPoolConnectionFactory" interface="javax.jms.ConnectionFactory">
         <service-properties>
-            <entry key="name" value="${broker-name}-xa" />
+            <entry key="name" value="default-cf-xa" />
             <entry key="transacted" value="true" />
-            <entry key="osgi.jndi.service.name" value="jms/${broker-name}-xa" />
+            <entry key="osgi.jndi.service.name" value="jms/default-cf-xa" />
         </service-properties>
     </service>
 </blueprint>
