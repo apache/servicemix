@@ -18,7 +18,7 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 
     <reference id="pooledConnectionFactory" interface="javax.jms.ConnectionFactory"
-               filter="(transacted=false)"/>
+               filter="(&amp;(transacted=false)(name=default-cf))"/>
 
     <!--
         Register the org.apache.camel.spi.ComponentResolver for the activemq component
