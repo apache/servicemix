@@ -53,7 +53,7 @@
     <akka.version>2.2.3</akka.version>
     <scala.version>2.10.4</scala.version>
     <google.guava.version>14.0.1</google.guava.version>
-    <fasterxml.jackson.version>2.2.1</fasterxml.jackson.version>
+    <fasterxml.jackson.version>2.3.3</fasterxml.jackson.version>
     <typesafe-config.version>1.0.2</typesafe-config.version>
     <mvel2.version>2.1.7.Final</mvel2.version>
     <mybatis.version>3.2.7</mybatis.version>
