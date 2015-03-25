@@ -51,7 +51,7 @@
     <pax.logging.version>1.8.1</pax.logging.version>
 
     <akka.version>2.2.3</akka.version>
-    <scala.version>2.10.2</scala.version>
+    <scala.version>2.10.4</scala.version>
     <google.guava.version>14.0.1</google.guava.version>
     <fasterxml.jackson.version>2.2.1</fasterxml.jackson.version>
     <typesafe-config.version>1.0.2</typesafe-config.version>
