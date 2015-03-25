@@ -37,7 +37,7 @@
         <feature version="${camel.version}">camel</feature>
         <feature version="${spring.version}">spring-orm</feature>
         <feature version="${drools.version}">drools</feature>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.joda-time/${jodatime.bundle.version}</bundle>
+        <bundle dependency="true">mvn:joda-time/joda-time/${jodatime2.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.wsdl4j/${wsdl4j.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/${json4s.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.mybatis/mybatis/${mybatis.version}</bundle>
