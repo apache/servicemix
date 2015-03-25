@@ -44,13 +44,6 @@
       </dependency>
 
       <dependency>
-        <groupId>org.apache.servicemix.bundles</groupId>
-        <artifactId>org.apache.servicemix.bundles.scala-library</artifactId>
-        <version>${scala.bundle.version}</version>
-        <scope>test</scope>
-      </dependency>
-
-      <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <scope>test</scope>
