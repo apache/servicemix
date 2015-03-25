@@ -85,7 +85,7 @@
         <osgi.version>5.0.0</osgi.version>
         <wsdl4j.bundle.version>1.6.2_6</wsdl4j.bundle.version>
         <swagger.bundle.version>1.3.0_1</swagger.bundle.version>
-        <javassist.bundle.version>3.12.1.GA_2</javassist.bundle.version>
+        <javassist.bundle.version>3.12.1.GA_3</javassist.bundle.version>
         <reflections.bundle.version>0.9.8_1</reflections.bundle.version>
         <json4s.bundle.version>3.2.4_1</json4s.bundle.version>
         <jackson-module-scala.bundle.version>2.1.5_2</jackson-module-scala.bundle.version>
@@ -128,13 +128,13 @@
         <h2.version>1.3.170</h2.version>
         <xerces.version>2.11.0</xerces.version>
         <xml.api.version>2.11.0-20110622</xml.api.version>
-        <xalan.version>2.7.1</xalan.version>
+        <xalan.version>2.7.2</xalan.version>
         <pax.exam.version>4.4.0</pax.exam.version>
         <pax.url.version>2.3.0</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
         <slf4j.version>1.7.5</slf4j.version>
         <spring.version>3.2.11.RELEASE_1</spring.version>
-        <wss4j.version>1.6.15</wss4j.version>
+        <wss4j.version>1.6.17</wss4j.version>
     </properties>
     
     <pluginRepositories>
