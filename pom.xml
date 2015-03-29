@@ -79,7 +79,7 @@
         <commons-dbcp.bundle.version>1.4_3</commons-dbcp.bundle.version>
         <commons-httpclient.bundle.version>3.1_7</commons-httpclient.bundle.version>
         <commons-io.version>2.4</commons-io.version>
-        <derby.bundle.version>10.9.1.0_1</derby.bundle.version>
+        <derby.bundle.version>10.11.1.1_1</derby.bundle.version>
         <drools.bundle.version>${drools.version}_1</drools.bundle.version>
         <jaxb.api.version>2.2</jaxb.api.version>
         <osgi.version>5.0.0</osgi.version>
@@ -133,7 +133,7 @@
         <pax.exam.version>4.4.0</pax.exam.version>
         <pax.url.version>2.3.0</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
-        <slf4j.version>1.7.9</slf4j.version>
+        <slf4j.version>1.7.10</slf4j.version>
         <spring.version>3.2.11.RELEASE_1</spring.version>
     </properties>
     
