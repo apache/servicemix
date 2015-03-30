@@ -57,7 +57,7 @@
     <typesafe-config.version>1.2.0</typesafe-config.version>
     <mvel2.version>2.2.1.Final</mvel2.version>
     <mybatis.version>3.2.7</mybatis.version>
-    <jodatime2.bundle.version>2.5</jodatime2.bundle.version>
+    <jodatime2.bundle.version>2.6</jodatime2.bundle.version>
     <jpa.version>2.1.0</jpa.version>
     <swagger.version>1.3.11</swagger.version>
 
