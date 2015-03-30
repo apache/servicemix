@@ -33,6 +33,7 @@
         <jaxb.api.version>${jaxb.api.version}</jaxb.api.version>
         <scala.version>${scala.version}</scala.version>
         <slf4j.version>${slf4j.version}</slf4j.version>
+        <swagger.version>${swagger.version}</swagger.version>
         <xerces.version>${xerces.version}</xerces.version>
 
         <cxf.codegen-plugin.version>${cxf.codegen-plugin.version}</cxf.codegen-plugin.version>
@@ -123,6 +124,11 @@
                 <groupId>org.apache.servicemix.bundles</groupId>
                 <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
                 <version>${commons-httpclient.bundle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wordnik</groupId>
+                <artifactId>swagger-jaxrs_2.10</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
