@@ -46,7 +46,21 @@
                 <exclude>**/.project</exclude>
                 <exclude>**/.settings/**</exclude>
                 <exclude>**/*.i??</exclude>
+                <exclude>**/*.jks</exclude>
             </excludes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${basedir}/../examples</directory>
+            <outputDirectory>/examples/</outputDirectory>
+            <lineEnding>keep</lineEnding>
+            <includes>
+                <include>activemq/**/*.jks</include>
+                <include>activiti/**/*.jks</include>
+                <include>akka/**/*.jks</include>
+                <include>camel/**/*.jks</include>
+                <include>cxf/**/*.jks</include>
+            </includes>
         </fileSet>
 
         <fileSet>
