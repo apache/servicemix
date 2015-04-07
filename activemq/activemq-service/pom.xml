@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.servicemix</groupId>
         <artifactId>activemq</artifactId>
-        <version>5.3.2-SNAPSHOT</version>
+        <version>5.3.2</version>
     </parent>
 
     <groupId>org.apache.servicemix.activemq</groupId>
@@ -48,7 +48,7 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Import-Package>*</Import-Package>
-                        <Private-Package></Private-Package>
+                        <Private-Package />
                         <Bundle-Description>${project.description}</Bundle-Description>
                     </instructions>
                 </configuration>
