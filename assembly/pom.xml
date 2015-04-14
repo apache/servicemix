@@ -149,6 +149,7 @@
                                 <descriptor>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.servicemix.drools/features/${version}/xml/features</descriptor>
                                 <descriptor>file:${basedir}/target/classes/internal.xml</descriptor>
                                 <descriptor>file:${basedir}/target/classes/features.xml</descriptor>
                                 <descriptor>file:${basedir}/target/classes/examples.xml</descriptor>
@@ -172,6 +173,9 @@
                                 <feature>camel-blueprint</feature>
                                 <feature>war</feature>
                                 <feature>jaxrs-api</feature>
+                                <feature>kie-aries-blueprint</feature>
+                                <feature>kie-spring</feature>
+                                <feature>kie-camel</feature>
                             </features>
                             <includeMvnBasedDescriptors>true</includeMvnBasedDescriptors>
                             <repository>target/features-repo</repository>
