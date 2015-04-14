@@ -40,6 +40,7 @@
         <module>parent</module>
         <module>activemq</module>
         <module>activiti</module>
+        <module>drools</module>
         <module>branding</module>
         <module>logging</module>
         <module>examples</module>
@@ -125,6 +126,7 @@
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <drools.version>5.6.0.Final</drools.version>
+        <drools6.version>6.2.0.Final</drools6.version>
         <felix.webconsole.plugins.scriptconsole.version>1.0.0</felix.webconsole.plugins.scriptconsole.version>
         <h2.version>1.3.170</h2.version>
         <xerces.version>2.11.0</xerces.version>
