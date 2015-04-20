@@ -30,7 +30,7 @@ import org.apache.karaf.features.Feature
  */
 @RunWith(classOf[PaxExam])
 @ExamReactorStrategy(Array(classOf[PerClass]))
-class Drools6IntegrationTests extends ExamplesIntegrationTests {
+class Drools6IntegrationTest extends ExamplesIntegrationTests {
   /**
    * Check feature installation
    */
