@@ -1,0 +1,32 @@
+package rule;
+import org.apache.servicemix.examples.drools.simple.model.Customer;
+import org.apache.servicemix.examples.drools.simple.model.CustomerType;
+
+rule "Customer poor"
+when
+	$c : Customer( salary <= 1000, type == null)
+then
+	modify( $c ) { 
+		setType(CustomerType.POOR)
+	};
+end
+
+
+rule "Customer NORMAL"
+when
+	$c : Customer( salary > 1000, salary <= 9000, type == null )
+then
+	modify( $c ) { 
+		setType(CustomerType.NORMAL)
+	};
+end
+
+
+rule "Customer VIP"
+when
+	$c : Customer( salary > 9000, type == null)
+then
+	modify( $c ) { 
+		setType(CustomerType.VIP)
+	};
+end
