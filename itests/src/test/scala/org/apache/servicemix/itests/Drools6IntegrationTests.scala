@@ -30,7 +30,13 @@ import org.apache.karaf.features.Feature
  */
 @RunWith(classOf[PaxExam])
 @ExamReactorStrategy(Array(classOf[PerClass]))
-class Drools6IntegrationTest extends ExamplesIntegrationTests {
+abstract class Drools6IntegrationTests extends ExamplesIntegrationTests {
+
+}
+/**
+ * Tests for the Drools feature installation
+ */
+class Drools6FeatureTest extends Drools6IntegrationTests {
   /**
    * Check feature installation
    */
@@ -66,6 +72,25 @@ class Drools6IntegrationTest extends ExamplesIntegrationTests {
   def testKieCamelFeature = testWithFeature("kie-camel") {
     expect {
       installed("kie-camel")
+    }
+  }
+}
+
+/**
+ * Tests for the Drools examples
+ */
+class Drools6ExamplesTest extends Drools6IntegrationTests {
+  
+  @Test
+  def testDroolsSimpleExample = testWithFeature("examples-drools-simple") {
+    expect {
+      logging.containsMessage(line => line.contains("Customer [salary=1000, type=POOR]"))
+    }
+    expect {
+      logging.containsMessage(line => line.contains("Customer [salary=5000, type=NORMAL]"))
+    }
+    expect {
+        logging.containsMessage(line => line.contains("Customer [salary=9001, type=VIP]"))
     }
   }
 }
