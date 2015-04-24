@@ -11,9 +11,8 @@
 	<packaging>bundle</packaging>
 
 	<properties>
-		<osgi.private.package>pl.linuxpolska.drools.simple.osgi</osgi.private.package>
-		<osgi.bundle.activator>pl.linuxpolska.drools.simple.osgi.SimpleRuleActivator</osgi.bundle.activator>
-		<osgi.export.package>pl.linuxpolska.drools.simple.model</osgi.export.package>
+		<osgi.private.package>org.apache.servicemix.examples.drools.simple.osgi</osgi.private.package>
+		<osgi.bundle.activator>org.apache.servicemix.examples.drools.simple.osgi.SimpleRuleActivator</osgi.bundle.activator>
 		<osgi.import.package>
 			org.osgi.framework;version="[1.5,2)",
 			org.slf4j;version="[1.6,2)",
