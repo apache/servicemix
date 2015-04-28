@@ -39,6 +39,7 @@
         <module>akka</module>
         <module>camel</module>
         <module>cxf</module>
+        <module>drools</module>
     </modules>
 
 </project>
