@@ -23,14 +23,8 @@ Purpose
 This example will show you how to use Drools 6 inside Apache ServiceMix and how
 use rule engine in low level.
 
-In our example, we define a simple order process, that process the incoming orders
-and subsequently waits for its delivery.  Once the delivery notification has been
-received, another bit of processing occurs before the business process ends.
-
-We use Camel routes to start new process instances and notify running processes
-about deliveries.  We also use Camel routes to implement the order and delivery
-processing itself.
-
+We use OSGi activator to create KIE Session, inserting facts to rule engine and print
+result to server logs.
 
 
 Prerequisites for Running the Example
