@@ -161,4 +161,9 @@
         <bundle>mvn:org.apache.servicemix.examples/akka-camel/${version}</bundle>
     </feature>
 
+    <feature name="examples-drools-simple" version="${version}" resolver="(obr)">
+        <feature version="${drools6.version}">drools6-module</feature>
+        <bundle>mvn:org.apache.servicemix.examples/drools-simple/${version}</bundle>
+    </feature>
+
 </features>
