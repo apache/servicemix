@@ -14,26 +14,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.servicemix.examples.drools.simple.osgi;
+package rule;
+import org.apache.servicemix.examples.drools.camel.blueprint.model.Customer;
+import org.apache.servicemix.examples.drools.camel.blueprint.model.CustomerType;
 
-import org.apache.servicemix.examples.drools.simple.model.Customer;
-
-
-public final class Utils {
-
-
-    public static Customer customerPoor() {
-        return new Customer(1000);
-    }
-
-
-    public static Customer customerNormal() {
-        return new Customer(5000);
-    }
+rule "Customer poor"
+when
+    $c : Customer( salary <= 1000, type == null)
+then
+    modify( $c ) {
+        setType(CustomerType.POOR)
+    };
+end
 
 
-    public static Customer customerVip() {
-        return new Customer(9001);
-    }
+rule "Customer NORMAL"
+when
+    $c : Customer( salary > 1000, salary <= 9000, type == null )
+then
+    modify( $c ) {
+        setType(CustomerType.NORMAL)
+    };
+end
 
-}
+
+rule "Customer VIP"
+when
+    $c : Customer( salary > 9000, type == null)
+then
+    modify( $c ) {
+        setType(CustomerType.VIP)
+    };
+end

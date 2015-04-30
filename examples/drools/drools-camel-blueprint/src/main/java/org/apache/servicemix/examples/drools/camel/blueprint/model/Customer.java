@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.servicemix.examples.drools.simple.model;
+package org.apache.servicemix.examples.drools.camel.blueprint.model;
 
 public class Customer {
 
@@ -30,7 +30,7 @@ public class Customer {
 
     /**
      * Create customer with salary.
-     * 
+     *
      * @param salary
      */
     public Customer(int salary) {
@@ -52,25 +52,21 @@ public class Customer {
     }
 
     /**
-     * @param salary
-     *            the salary to set
+     * @param salary the salary to set
      */
     public void setSalary(int salary) {
         this.salary = salary;
     }
 
     /**
-     * @param type
-     *            the type to set
+     * @param type the type to set
      */
     public void setType(CustomerType type) {
         this.type = type;
     }
 
     /**
-     * 
-     * 
-     * @see java.lang.Object#toString()
+     * @see Object#toString()
      */
     @Override
     public String toString() {

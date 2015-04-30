@@ -33,10 +33,6 @@ import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author ghalajko
- *
- */
 public class SimpleRuleActivator implements BundleActivator {
     /**
      * LOGGER.
@@ -49,9 +45,7 @@ public class SimpleRuleActivator implements BundleActivator {
      */
     private KieSession ksession;
 
-    /**
-     * 
-     */
+
     @Override
     public void start(BundleContext context) throws Exception {
         KieServices ks = KieServices.Factory.get();

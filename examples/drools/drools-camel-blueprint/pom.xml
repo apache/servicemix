@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--
+        Licensed to the Apache Software Foundation (ASF) under one or more
+        contributor license agreements.  See the NOTICE file distributed with
+        this work for additional information regarding copyright ownership.
+        The ASF licenses this file to You under the Apache License, Version 2.0
+        (the "License"); you may not use this file except in compliance with
+        the License.  You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+    -->
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.apache.servicemix.examples</groupId>
+		<artifactId>drools</artifactId>
+		<version>6.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>drools-camel-blueprint</artifactId>
+	<name>Apache ServiceMix :: Examples :: Drools :: Camel Blueprint</name>
+	<packaging>bundle</packaging>
+
+	<properties>
+		<osgi.private.package>
+			org.apache.servicemix.examples.drools.camel.blueprint.osgi,
+			org.apache.servicemix.examples.drools.camel.blueprint.model
+		</osgi.private.package>
+		<osgi.import.package>
+			org.slf4j;version="[1.6,2)",
+			org.apache.camel;version="[2.15,2.16)",
+			org.kie.api.*;version="[6.0,7)",
+			org.kie.aries.blueprint.factorybeans;version="[6.0,7)",
+			org.kie.internal.command;version="[6.0,7)",
+			org.drools.core.command.runtime.rule;version="[6.0,7)",
+			org.drools.core.impl;version="[6.0,7)",
+			org.osgi.service.blueprint,
+		</osgi.import.package>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-compiler</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-osgi-integration</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.framework</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

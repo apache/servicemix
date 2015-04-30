@@ -14,26 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.servicemix.examples.drools.simple.osgi;
-
-import org.apache.servicemix.examples.drools.simple.model.Customer;
+package org.apache.servicemix.examples.drools.camel.blueprint.model;
 
 
-public final class Utils {
-
-
-    public static Customer customerPoor() {
-        return new Customer(1000);
-    }
-
-
-    public static Customer customerNormal() {
-        return new Customer(5000);
-    }
-
-
-    public static Customer customerVip() {
-        return new Customer(9001);
-    }
-
+public enum CustomerType {
+    POOR, NORMAL, VIP;
 }
