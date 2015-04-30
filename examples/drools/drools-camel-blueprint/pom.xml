@@ -23,8 +23,8 @@
 		<version>6.0.0-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>drools-camel</artifactId>
-	<name>Apache ServiceMix :: Examples :: Drools :: Camel</name>
+	<artifactId>drools-camel-blueprint</artifactId>
+	<name>Apache ServiceMix :: Examples :: Drools :: Camel Blueprint</name>
 	<packaging>bundle</packaging>
 
 	<properties>

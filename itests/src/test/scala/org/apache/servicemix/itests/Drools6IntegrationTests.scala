@@ -95,7 +95,7 @@ class Drools6ExamplesTest extends Drools6IntegrationTests {
   }
   
   @Test
-  def testDroolsCamelExample = testWithFeature("examples-drools-camel") {
+  def testDroolsCamelExample = testWithFeature("examples-drools-camel-blueprint") {
     expect {
       logging.containsMessage(line => line.contains("Total 2 routes, of which 2 is started"))
     }

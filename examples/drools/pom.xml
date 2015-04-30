@@ -76,6 +76,6 @@
 
     <modules>
         <module>drools-simple</module>
-        <module>drools-camel</module>
+        <module>drools-camel-blueprint</module>
     </modules>
 </project>
