@@ -93,4 +93,11 @@ class Drools6ExamplesTest extends Drools6IntegrationTests {
         logging.containsMessage(line => line.contains("Customer [salary=9001, type=VIP]"))
     }
   }
+  
+  @Test
+  def testDroolsCamelExample = testWithFeature("examples-drools-camel") {
+    expect {
+      logging.containsMessage(line => line.contains("Total 2 routes, of which 2 is started"))
+    }
+  }
 }
