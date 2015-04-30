@@ -165,5 +165,11 @@
         <feature version="${drools6.version}">drools6-module</feature>
         <bundle>mvn:org.apache.servicemix.examples/drools-simple/${version}</bundle>
     </feature>
+    
+    <feature name="examples-drools-camel" version="${version}" resolver="(obr)">
+        <feature version="${drools6.version}">kie-camel</feature>
+        <feature version="${drools6.version}">kie-aries-blueprint</feature>
+        <bundle>mvn:org.apache.servicemix.examples/drools-camel/${version}</bundle>
+    </feature>
 
 </features>
