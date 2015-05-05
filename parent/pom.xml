@@ -39,7 +39,7 @@
   <properties>
     <activemq.version>5.11.1</activemq.version>
     <activiti.version>5.17.0</activiti.version>
-    <camel.version>2.15.1</camel.version>
+    <camel.version>2.15.2</camel.version>
     <cxf.version>3.0.4</cxf.version>
     <cxf.codegen-plugin.version>${cxf.version}</cxf.codegen-plugin.version>
 
