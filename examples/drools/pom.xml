@@ -76,5 +76,6 @@
 
     <modules>
         <module>drools-simple</module>
+        <module>drools-spring</module>
     </modules>
 </project>
