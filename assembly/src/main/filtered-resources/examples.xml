@@ -166,4 +166,9 @@
         <bundle>mvn:org.apache.servicemix.examples/drools-simple/${version}</bundle>
     </feature>
 
+    <feature name="examples-drools-spring" version="${version}" resolver="(obr)">
+        <feature version="${drools6.version}">kie-spring</feature>
+        <bundle>mvn:org.apache.servicemix.examples/drools-spring/${version}</bundle>
+    </feature>
+
 </features>
