@@ -51,7 +51,9 @@
     <pax.logging.version>1.8.1</pax.logging.version>
 
     <akka.version>2.3.9</akka.version>
-    <scala.version>2.10.4</scala.version>
+    <scala.version>2.11.5</scala.version>
+    <scala-2.10.version>2.10.4</scala-2.10.version>
+    <scala-xml.version>1.0.4</scala-xml.version>
     <google.guava.version>15.0</google.guava.version>
     <fasterxml.jackson.version>2.4.1</fasterxml.jackson.version>
     <typesafe-config.version>1.2.0</typesafe-config.version>
@@ -431,7 +433,7 @@
       </dependency>
       <dependency>
         <groupId>com.wordnik</groupId>
-        <artifactId>swagger-jaxrs_2.10</artifactId>
+        <artifactId>swagger-jaxrs_2.11</artifactId>
         <version>${swagger.version}</version>
       </dependency>
     </dependencies>

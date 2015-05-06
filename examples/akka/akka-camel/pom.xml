@@ -38,17 +38,17 @@
     </dependency>
     <dependency>
       <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-actor_2.10</artifactId>
+      <artifactId>akka-actor_2.11</artifactId>
       <version>${akka.version}</version>
     </dependency>
     <dependency>
       <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-osgi_2.10</artifactId>
+      <artifactId>akka-osgi_2.11</artifactId>
       <version>${akka.version}</version>
     </dependency>
     <dependency>
       <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-camel_2.10</artifactId>
+      <artifactId>akka-camel_2.11</artifactId>
       <version>${akka.version}</version>
     </dependency>
     <dependency>
@@ -75,7 +75,7 @@
     </dependency>
     <dependency>
       <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-slf4j_2.10</artifactId>
+      <artifactId>akka-slf4j_2.11</artifactId>
       <version>${akka.version}</version>
       <scope>test</scope>
     </dependency>
