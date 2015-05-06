@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
     
@@ -52,9 +53,9 @@
         <connection>scm:git:https://git-wip-us.apache.org/repos/asf/servicemix.git</connection>
         <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/servicemix.git</developerConnection>
         <url>https://git-wip-us.apache.org/repos/asf?p=servicemix.git</url>
-      <tag>HEAD</tag>
-  </scm>
-    
+        <tag>HEAD</tag>
+    </scm>
+
     <issueManagement>
         <system>jira</system>
         <url>http://issues.apache.org/jira/browse/SM</url>
@@ -92,7 +93,7 @@
 
         <!-- ServiceMix legal shared resources -->
         <servicemix.legal.version>1.0</servicemix.legal.version>
-        
+
         <!-- Maven Compiler Plugin -->
         <maven.compiler.source>1.5</maven.compiler.source>
         <maven.compiler.target>1.5</maven.compiler.target>
@@ -135,7 +136,7 @@
         <slf4j.version>1.7.10</slf4j.version>
         <spring.version>3.2.11.RELEASE_1</spring.version>
     </properties>
-    
+
     <pluginRepositories>
         <pluginRepository>
             <id>apache.snapshots</id>
@@ -151,83 +152,83 @@
     </pluginRepositories>
 
     <dependencyManagement>
-       <dependencies>
-           <dependency>
-               <groupId>org.apache.geronimo.specs</groupId>
-               <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
-               <version>${geronimo-ws-metadata.version}</version>
-           </dependency>
-           <dependency>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+                <version>${geronimo-ws-metadata.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.geronimo.specs</groupId>
                 <artifactId>geronimo-atinject_1.0_spec</artifactId>
                 <version>${geronimo-atinject.version}</version>
-           </dependency>
+            </dependency>
 
-           <!-- ServiceMix Bundles -->
-           <dependency>
-               <groupId>org.apache.servicemix.bundles</groupId>
-               <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
-               <version>${commons-httpclient.bundle.version}</version>
-           </dependency>
-           <dependency>
-               <groupId>commons-io</groupId>
-               <artifactId>commons-io</artifactId>
-               <version>${commons-io.version}</version>
-           </dependency>
-           
-           <!-- Other Dependencies -->
-           <dependency>
-               <groupId>xerces</groupId>
-               <artifactId>xercesImpl</artifactId>
-               <version>${xerces.version}</version>
-           </dependency>
-           <dependency>
-               <groupId>xalan</groupId>
-               <artifactId>xalan</artifactId>
-               <version>${xalan.version}</version>
-           </dependency>
-           <dependency>
-               <groupId>xalan</groupId>
-               <artifactId>serializer</artifactId>
-               <version>${xalan.version}</version>
-           </dependency>
-           <dependency>
-               <groupId>org.ops4j.pax.url</groupId>
-               <artifactId>pax-url-aether</artifactId>
-               <version>${pax.url.version}</version>
-           </dependency>
+            <!-- ServiceMix Bundles -->
+            <dependency>
+                <groupId>org.apache.servicemix.bundles</groupId>
+                <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
+                <version>${commons-httpclient.bundle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
 
-           <!-- Pax Exam -->
-           <dependency>
-               <groupId>org.ops4j.pax.exam</groupId>
-               <artifactId>pax-exam</artifactId>
-               <version>${pax.exam.version}</version>
-               <scope>test</scope>
-           </dependency>
-           <dependency>
-               <groupId>org.ops4j.pax.exam</groupId>
-               <artifactId>pax-exam-container-karaf</artifactId>
-               <version>${pax.exam.version}</version>
-               <scope>test</scope>
-           </dependency>
-           <dependency>
-               <groupId>org.ops4j.pax.exam</groupId>
-               <artifactId>pax-exam-container-remote</artifactId>
-               <version>${pax.exam.version}</version>
-               <scope>test</scope>
-           </dependency>
-           <dependency>
-               <groupId>org.ops4j.pax.exam</groupId>
-               <artifactId>pax-exam-junit4</artifactId>
-               <version>${pax.exam.version}</version>
-               <scope>test</scope>
-           </dependency>
-           <dependency>
-               <groupId>org.ops4j.pax.exam</groupId>
-               <artifactId>pax-exam-spi</artifactId>
-               <version>${pax.exam.version}</version>
-               <scope>test</scope>
-           </dependency>
+            <!-- Other Dependencies -->
+            <dependency>
+                <groupId>xerces</groupId>
+                <artifactId>xercesImpl</artifactId>
+                <version>${xerces.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>xalan</groupId>
+                <artifactId>xalan</artifactId>
+                <version>${xalan.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>xalan</groupId>
+                <artifactId>serializer</artifactId>
+                <version>${xalan.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.url</groupId>
+                <artifactId>pax-url-aether</artifactId>
+                <version>${pax.url.version}</version>
+            </dependency>
+
+            <!-- Pax Exam -->
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam</artifactId>
+                <version>${pax.exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-container-karaf</artifactId>
+                <version>${pax.exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-container-remote</artifactId>
+                <version>${pax.exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-junit4</artifactId>
+                <version>${pax.exam.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>pax-exam-spi</artifactId>
+                <version>${pax.exam.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -285,16 +286,16 @@
                         <downloadJavadocs>true</downloadJavadocs>
                     </configuration>
                 </plugin>
-                 <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-eclipse-plugin</artifactId>
-                     <version>${maven-eclipse-plugin.version}</version>
-                     <configuration>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <version>${maven-eclipse-plugin.version}</version>
+                    <configuration>
                         <outputDirectory>${basedir}/eclipse-classes</outputDirectory>
                         <downloadSources>true</downloadSources>
                         <downloadJavadocs>true</downloadJavadocs>
-                     </configuration>
-                 </plugin>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>cobertura-maven-plugin</artifactId>
@@ -357,7 +358,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -371,7 +372,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -384,7 +385,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -398,7 +399,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -411,13 +412,13 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
                     </configuration>
-                 </plugin>
+                </plugin>
 
             </plugins>
         </pluginManagement>
@@ -538,7 +539,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>release</id>
             <build>
@@ -565,7 +566,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>setup.eclipse</id>
             <modules>
@@ -597,7 +598,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>deploy</id>
             <build>
