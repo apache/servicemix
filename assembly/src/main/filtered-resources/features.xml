@@ -116,7 +116,7 @@
         <bundle dependency='true'>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${fasterxml.jackson.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/${fasterxml.jackson.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${swagger.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core_2.11/1.3.12_2-SNAPSHOT</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core_2.11/${swagger.bundle.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-jaxrs_2.11/${swagger.bundle.version}</bundle>
         <bundle dependency='true'>mvn:com.thoughtworks.paranamer/paranamer/${thoughtworks.paranamer.version}</bundle>
         <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s_2.11/${json4s.bundle.version}</bundle>
