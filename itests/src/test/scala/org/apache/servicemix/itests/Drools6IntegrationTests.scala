@@ -93,13 +93,18 @@ class Drools6ExamplesTest extends Drools6IntegrationTests {
         logging.containsMessage(line => line.contains("Customer [salary=9001, type=VIP]"))
     }
   }
-  
+}
+
+/**
+ * Tests for the Drools with spring
+ */
+class Drools6SpringExamplesTest extends Drools6IntegrationTests {
+    
   /**
    * Test installation Spring with drools example.
-   * Test Env have some bug so on begin was installed kie-camel
    */
   @Test
-  def testDroolsSpringExample = testWithFeature("kie-camel","examples-drools-spring") {
+  def testDroolsSpringExample = testWithFeature("examples-drools-spring") {
     expect {
       logging.containsMessage(line => line.contains("KieModule was added: org.drools.osgi.compiler.OsgiKieModule"))
     }
