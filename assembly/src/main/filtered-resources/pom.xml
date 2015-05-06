@@ -127,7 +127,7 @@
             </dependency>
             <dependency>
                 <groupId>com.wordnik</groupId>
-                <artifactId>swagger-jaxrs_2.10</artifactId>
+                <artifactId>swagger-jaxrs_2.11</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
         </dependencies>
