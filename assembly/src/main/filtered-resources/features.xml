@@ -76,29 +76,52 @@
     <feature name="akka" version="${akka.version}" resolver="(obr)">
         <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
         <bundle dependency="true">mvn:com.typesafe/config/${typesafe-config.version}</bundle>
-        <bundle>mvn:com.typesafe.akka/akka-actor_2.10/${akka.version}</bundle>
-        <bundle>mvn:com.typesafe.akka/akka-osgi_2.10/${akka.version}</bundle>
-        <bundle>mvn:com.typesafe.akka/akka-camel_2.10/${akka.version}</bundle>
+        <bundle>mvn:com.typesafe.akka/akka-actor_2.11/${akka.version}</bundle>
+        <bundle>mvn:com.typesafe.akka/akka-osgi_2.11/${akka.version}</bundle>
+        <bundle>mvn:com.typesafe.akka/akka-camel_2.11/${akka.version}</bundle>
     </feature>
 
-    <feature name="swagger" version="${version}" resolver="(obr)">
-        <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
+    <feature name="swagger-2.10" version="${version}" resolver="(obr)">
+        <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala-2.10.version}</bundle>
+        <bundle>mvn:org.scala-lang/scala-reflect/${scala-2.10.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javassist/${javassist.bundle.version}</bundle>
         <bundle>mvn:com.google.guava/guava/${google.guava.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-core/${fasterxml.jackson.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-databind/${fasterxml.jackson.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml.jackson.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${fasterxml.jackson.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${fasterxml.jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.module/jackson-module-scala_2.10/${fasterxml.jackson.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${swagger.bundle.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core/${swagger.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-jaxrs/${swagger.jaxrs.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/${reflections.bundle.version}</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/${json4s.bundle.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-jaxrs/${swagger.bundle.version}</bundle>
         <bundle>mvn:com.thoughtworks.paranamer/paranamer/${thoughtworks.paranamer.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/${json4s.bundle.version}</bundle>
+        <!-- Needs to be upgraded to 0.9.9
+            <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/${reflections.bundle.version}</bundle>
+        -->
+        <bundle dependency='true'>wrap:mvn:org.reflections/reflections/0.9.9</bundle>
+    </feature>
 
-        <bundle>mvn:com.fasterxml.jackson.module/jackson-module-scala_2.10/${fasterxml.jackson.version}</bundle>
+    <feature name="swagger-2.11" version="${version}" resolver="(obr)">
+        <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
+        <bundle dependency='true'>mvn:org.scala-lang/scala-reflect/${scala.version}</bundle>
+        <bundle dependency='true'>mvn:org.scala-lang.modules/scala-xml_2.11/${scala-xml.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javassist/${javassist.bundle.version}</bundle>
+        <bundle dependency='true'>mvn:com.google.guava/guava/${google.guava.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-core/${fasterxml.jackson.version}</bundle>
-        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml.jackson.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-databind/${fasterxml.jackson.version}</bundle>
-        <bundle dependency='true'>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${fasterxml.jackson.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml.jackson.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${fasterxml.jackson.version}</bundle>
-   </feature>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${fasterxml.jackson.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/${fasterxml.jackson.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${swagger.bundle.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core_2.11/1.3.12_2-SNAPSHOT</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-jaxrs_2.11/${swagger.bundle.version}</bundle>
+        <bundle dependency='true'>mvn:com.thoughtworks.paranamer/paranamer/${thoughtworks.paranamer.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s_2.11/${json4s.bundle.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/${reflections.bundle.version}</bundle>
+    </feature>
 
     <feature name="drools" version="${drools.version}" resolver="(obr)">
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
