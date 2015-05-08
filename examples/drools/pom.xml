@@ -76,5 +76,6 @@
 
     <modules>
         <module>drools-simple</module>
+        <module>drools-camel-cxf-server</module>
     </modules>
 </project>
