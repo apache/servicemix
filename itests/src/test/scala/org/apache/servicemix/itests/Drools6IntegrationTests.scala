@@ -94,3 +94,19 @@ class Drools6ExamplesTest extends Drools6IntegrationTests {
     }
   }
 }
+
+/**
+ * Tests for the Drools with spring
+ */
+class Drools6SpringExamplesTest extends Drools6IntegrationTests {
+    
+  /**
+   * Test installation Spring with drools example.
+   */
+  @Test
+  def testDroolsSpringExample = testWithFeature("examples-drools-spring") {
+    expect {
+      logging.containsMessage(line => line.contains("KieModule was added: org.drools.osgi.compiler.OsgiKieModule"))
+    }
+  }
+}
