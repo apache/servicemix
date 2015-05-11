@@ -133,7 +133,9 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
-          <argLine>-Dorg.ops4j.pax.url.mvn.localRepository=${settings.localRepository}</argLine>
+          <systemPropertyVariables>
+            <org.ops4j.pax.logging.DefaultServiceLog.level>INFO</org.ops4j.pax.logging.DefaultServiceLog.level>
+          </systemPropertyVariables>
         </configuration>
       </plugin>
 
@@ -152,5 +154,32 @@
     </plugins>
 
   </build>
+
+  <profiles>
+    <profile>
+      <id>ci-build-profile</id>
+      <activation>
+        <property>
+          <name>maven.repo.local</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <redirectTestOutputToFile>true</redirectTestOutputToFile>
+              <!-- when the local repo location has been specified, we need to pass on this information to PAX mvn url -->
+              <argLine>-Dorg.ops4j.pax.url.mvn.localRepository=${maven.repo.local}</argLine>
+              <systemPropertyVariables>
+                <org.ops4j.pax.logging.DefaultServiceLog.level>INFO</org.ops4j.pax.logging.DefaultServiceLog.level>
+              </systemPropertyVariables>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>
