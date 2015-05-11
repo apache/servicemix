@@ -55,7 +55,10 @@ trait IntegrationTestConfigurations {
         unpackDirectory(new File(s"target/pax-exam/${artifact}")).
         useDeployFolder(false),
       keepRuntimeFolder(),
-      systemProperty("org.ops4j.pax.url.mvn.localRepository").value(LOCAL_REPOSITORY),
+      when(LOCAL_REPOSITORY.length() > 0).useOptions(
+        //systemProperty("org.ops4j.pax.url.mvn.localRepository").value(LOCAL_REPOSITORY)
+        editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg", "org.ops4j.pax.url.mvn.localRepository", LOCAL_REPOSITORY)
+      ),
       // TODO: investigate why we need this to get Pax Logging going again
       editConfigurationFilePut("etc/org.ops4j.pax.logging.cfg", "log4j.rootLogger", "DEBUG,stdout,osgi:*"))
   }
