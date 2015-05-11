@@ -93,4 +93,20 @@ class Drools6ExamplesTest extends Drools6IntegrationTests {
         logging.containsMessage(line => line.contains("Customer [salary=9001, type=VIP]"))
     }
   }
+    
+}
+
+/**
+ * Tests for the Camel Rest Server examples
+ */
+class Drools6CamelServiceExamplesTest extends Drools6IntegrationTests {
+  /**
+   *
+   */
+  @Test
+  def testDroolsCamelServerExample = testWithFeature("examples-drools-camel-cxf-server") {
+    expect {
+      logging.containsMessage(line => line.contains("<execution-results><result identifier=\"customer\">"))
+    }
+  }
 }
