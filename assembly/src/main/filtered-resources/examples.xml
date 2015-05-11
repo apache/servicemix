@@ -166,4 +166,11 @@
         <bundle>mvn:org.apache.servicemix.examples/drools-simple/${version}</bundle>
     </feature>
 
+    <feature name="examples-drools-camel-cxf-server" version="${version}" resolver="(obr)">
+        <feature version="${drools6.version}">kie-aries-blueprint</feature>
+        <feature version="${drools6.version}">kie-camel</feature>
+        <feature version="${camel.version}">camel-xstream</feature>
+        <bundle>mvn:org.apache.servicemix.examples/drools-camel-cxf-server/${version}</bundle>
+    </feature>
+
 </features>
