@@ -18,7 +18,6 @@
 <features name="servicemix-drools6-${version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
-    <repository>mvn:org.apache.servicemix/apache-servicemix/${version}/xml/internal</repository>
 
     <feature name="kie" version="${drools6.version}" description="KIE API"
              start-level="50">
