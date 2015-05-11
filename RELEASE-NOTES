@@ -15,6 +15,57 @@
  * limitations under the License.
  */
 
+
+                      Apache ServiceMix 6.0.0.M2
+                  ================================
+ Overview
+ --------
+
+  !! This is a technology preview release of Apache ServiceMix, and should NOT be considered production ready !!
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 6.0.0 will be the first release based on Karaf 3.0.x, which includes numerous new features. We ask that users provide the community with their feed back so that the full Apache ServiceMix 6.0.0 release can be as feature complete and stable as possible.
+
+Apache ServiceMix 6.0.0.M2 is a new preview release of the project, which includes:
+
+- Apache ActiveMQ 5.11.1 (http://activemq.apache.org)
+- Apache Camel 2.15.2 (http://camel.apache.org)
+- Apache CXF 3.0.4 (http://cxf.apache.org)
+- Apache Karaf 3.0.3 (http://karaf.apache.org)
+
+** Bug
+    * [SM-2330] - Remove joda-time from startup.properties
+    * [SM-2425] - Compilation of examples included in distribution fails
+    * [SM-2464] - Unable to install the bundle created using the servicemix-cxf-code-first-osgi-bundle and servicemix-cxf-wsdl-first-osgi-bundle archetype
+    * [SM-2481] - activemq-service blueprint uses dash in persistent id: config file is never loaded nor read
+    * [SM-2492] - Wrong sample keystore format in examples contained in the assembly
+    * [SM-2535] - Upgrade to Apache Camel 2.15.2
+
+** New Feature
+    * [SM-2550] - Provide Drools Camel example
+
+** Task
+    * [SM-2412] - Upgrade to Karaf 3.0.3
+    * [SM-2426] - Add missing maven plugin versions to examples parent pom in the distribution
+    * [SM-2428] - Upgrade to ActiveMQ 5.11.1
+    * [SM-2429] - Release Apache ServiceMix 6.0.0.M2
+    * [SM-2432] - Upgrade to ActiveMQ 5.10.2
+    * [SM-2438] - Upgrade to Camel 2.14.2
+    * [SM-2468] - Upgrade to Camel 2.15.1
+    * [SM-2469] - Upgrade to Activiti 5.17.0
+    * [SM-2471] - Upgrade to Swagger 1.3.11
+    * [SM-2472] - Upgrade to Scala 2.11
+    * [SM-2473] - Consistent usage of joda-time bundle
+    * [SM-2474] - Consistent usage of scala bundle
+    * [SM-2475] - Upgrade to Akka 2.3.9
+    * [SM-2490] - Upgrade to CXF 3.0.4
+    * [SM-2506] - Upgrade to Felix maven-bundle-plugin 2.5.4
+    * [SM-2507] - Upgrade to Pax Exam 4.5.0
+    * [SM-2536] - Provide simple sample for Drools 6 
+    * [SM-2547] - Perform some housekeeping in poms
+
+
                       Apache ServiceMix 6.0.0.M1
                   ================================
  Overview
