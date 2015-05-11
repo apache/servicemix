@@ -26,10 +26,13 @@ http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v
 http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
 http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd
 http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
-
+    
+    <!-- Bean trim request string -->
     <bean id="messageBodyReader" class="org.kie.jax.rs.CommandMessageBodyReader" />
+    <!-- Bean add support drools, catch rest request and run KIE Commands-->
     <bean id="kiePolicy" class="org.kie.camel.component.KiePolicy" />
 
+    <!-- Apache Camel Rest Server -->
     <cxf:rsServer id="restKieServer" address="/rest"
         serviceClass="org.kie.jax.rs.CommandExecutorImpl">
         <cxf:providers>
@@ -37,10 +40,10 @@ http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/cor
         </cxf:providers>
     </cxf:rsServer>
 
-
+    <!-- CAMEL -->
     <camelContext id="camel"
         xmlns="http://camel.apache.org/schema/blueprint">
-
+        <!-- Route catch REST request and forward request to Kie Policy Bean-->
         <route>
             <from uri="cxfrs:bean:restKieServer" />
             <policy ref="kiePolicy">

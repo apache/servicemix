@@ -28,10 +28,12 @@ http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/cxf/
 http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
 http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-
+    <!-- Rest Converter. Convert object extends by org.kie.api.command.Command 
+        to string -->
     <bean id="resultMessageProvider"
         class="org.apache.servicemix.examples.drools.simple.osgi.CommandMessageBodyRW" />
 
+    <!-- Camel REST Client -->
     <cxf:rsClient id="droolsRestClient" address="http://localhost:8181/cxf/rest"
         serviceClass="org.kie.jax.rs.CommandExecutorImpl">
         <cxf:providers>
@@ -39,28 +41,34 @@ http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprin
         </cxf:providers>
     </cxf:rsClient>
 
+    <!-- Utils. -->
     <bean id="customerUtil"
         class="org.apache.servicemix.examples.drools.simple.osgi.Utils" />
 
-
+    <!-- Bean insert to Camel message configuration parameters
+        for cxf camel component -->
     <bean id="preCxfrs" class="org.kie.camel.component.PreCxfrs" />
+
+    <!-- Bean trim response and convert request from InputStream to String -->
     <bean id="postCxfrs" class="org.kie.camel.component.PostCxfrs" />
 
+    <!-- CAMEL -->
     <camelContext id="camel-client"
         xmlns="http://camel.apache.org/schema/blueprint">
 
         <route id="route-to-rest">
-            <from uri="timer:restClientMock?fixedRate=true&amp;period=30s&amp;delay=5000" />
-
+            <!-- Self-Timer -->
+            <from
+                uri="timer:restClientMock?fixedRate=true&amp;period=30s&amp;delay=5000" />
             <process ref="preCxfrs" />
-
+            <!-- Create Customer with random salary -->
             <bean method="customer" ref="customerUtil" />
+            <!-- Create KIE Commands -->
             <bean method="insertAndFireAll" ref="customerUtil" />
-
+            <!-- Run CXF Rest client -->
             <to uri="cxfrs:bean:droolsRestClient" />
-
             <process ref="postCxfrs" />
-
+            <!-- The result it's printed in the logs. -->
             <to uri="log:DroolsRestResult" />
         </route>
 
