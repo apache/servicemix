@@ -55,7 +55,7 @@ trait IntegrationTestConfigurations {
         unpackDirectory(new File(s"target/pax-exam/${artifact}")).
         useDeployFolder(false),
       keepRuntimeFolder(),
-      when(LOCAL_REPOSITORY.length() > 0).useOptions(
+      when(null != LOCAL_REPOSITORY && LOCAL_REPOSITORY.length() > 0).useOptions(
         //systemProperty("org.ops4j.pax.url.mvn.localRepository").value(LOCAL_REPOSITORY)
         editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg", "org.ops4j.pax.url.mvn.localRepository", LOCAL_REPOSITORY)
       ),
