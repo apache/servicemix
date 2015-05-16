@@ -40,7 +40,7 @@
     <!-- Properties -->
     <properties>
         <activemq.version>5.11.1</activemq.version>
-        <activiti.version>5.16.4</activiti.version>
+        <activiti.version>5.17.0</activiti.version>
         <akka.version>2.3.9</akka.version>
         <aries.blueprint.core.version>1.4.3</aries.blueprint.core.version>
         <aries.proxy.version>1.0.4</aries.proxy.version>
@@ -52,7 +52,7 @@
         <commons-httpclient.bundle.version>3.1_7</commons-httpclient.bundle.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.3</commons-lang3.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
         <cxf.version>3.0.4</cxf.version>
         <derby.bundle.version>10.11.1.1_1</derby.bundle.version>
         <drools.bundle.version>${drools.version}_1</drools.bundle.version>

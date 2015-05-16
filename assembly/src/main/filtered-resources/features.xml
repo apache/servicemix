@@ -60,12 +60,14 @@
         <bundle>mvn:org.activiti/activiti-camel/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-image-generator/${activiti.version}</bundle>
         <bundle>mvn:org.activiti/activiti-ldap/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-jmx/${activiti.version}</bundle>
         <!--
         <bundle dependency="true">wrap:mvn:org.tinyjee.jgraphx/jgraphx/1.10.4.1</bundle>
         <bundle>mvn:org.activiti/activiti-bpmn-layout/${activiti.version}</bundle>  
         <bundle>mvn:org.activiti/activiti-simple-workflow/${activiti.version}</bundle> 
         <bundle dependency="true">wrap:mvn:math.geom2d/javaGeom/0.11.1</bundle>
-        <bundle>mvn:org.activiti/activiti-json-converter/${activiti.version}</bundle> 
+        <bundle>mvn:org.activiti/activiti-json-converter/${activiti.version}</bundle>
+        <bundle>mvn:org.activiti/activiti-hazelcast-async-executor/${activiti.version}</bundle>
         -->
         <bundle>mvn:org.apache.servicemix.activiti/org.apache.servicemix.activiti.config/${project.version}</bundle>
     </feature>
