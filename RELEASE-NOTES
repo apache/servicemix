@@ -15,6 +15,64 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.4.1
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 5.4.0 is a new minor release, which includes a few bug fixes and
+a new version of Apache Karaf, Apache ActiveMQ, Apache Camel and Apache CXF. 
+This release includes:
+
+- Apache ActiveMQ 5.11.1 (http://activemq.apache.org)
+- Apache Camel 2.14.2 (http://camel.apache.org)
+- Apache CXF 3.0.4 (http://cxf.apache.org)
+- Apache Karaf 2.4.2 (http://karaf.apache.org)
+
+
+ Changelog
+ ---------
+
+** Bug
+    * [SM-2317] - activemq:browse no more working
+    * [SM-2330] - Remove joda-time from startup.properties
+    * [SM-2414] - Camel route does not run when it's placed into deploy folder
+    * [SM-2422] - Multiple JMS connection factories found for amq-broker
+    * [SM-2425] - Compilation of examples included in distribution fails
+    * [SM-2464] - Unable to install the bundle created using the servicemix-cxf-code-first-osgi-bundle and servicemix-cxf-wsdl-first-osgi-bundle archetype
+    * [SM-2481] - activemq-service blueprint uses dash in persistent id: config file is never loaded nor read
+    * [SM-2485] - Add missing wrap deployer
+    * [SM-2492] - Wrong sample keystore format in examples contained in the assembly
+    * [SM-2538] - JMSAppenderTest fails on Jenkins
+    * [SM-2551] - Drools6ExamplesTest fails on Jenkins
+
+** Task
+    * [SM-2405] - Remove workaround for SM-2396
+    * [SM-2418] - Release Apache ServiceMix 5.4.1
+    * [SM-2421] - Upgrade to ActiveMQ 5.10.1
+    * [SM-2426] - Add missing maven plugin versions to examples parent pom in the distribution
+    * [SM-2428] - Upgrade to ActiveMQ 5.11.1
+    * [SM-2432] - Upgrade to ActiveMQ 5.10.2
+    * [SM-2438] - Upgrade to Camel 2.14.2
+    * [SM-2471] - Upgrade to Swagger 1.3.11
+    * [SM-2472] - Upgrade to Scala 2.11
+    * [SM-2473] - Consistent usage of joda-time bundle
+    * [SM-2474] - Consistent usage of scala bundle
+    * [SM-2475] - Upgrade to Akka 2.3.9
+    * [SM-2487] - Upgrade to Scala 2.10.4
+    * [SM-2488] - Upgrade to Jackson 2.3.3
+    * [SM-2490] - Upgrade to CXF 3.0.4
+    * [SM-2502] - Upgrade to Karaf 2.4.2
+    * [SM-2506] - Upgrade to Felix maven-bundle-plugin 2.5.4
+    * [SM-2507] - Upgrade to Pax Exam 4.5.0
+    * [SM-2547] - Perform some housekeeping in poms
+
+
+
                       Apache ServiceMix 5.4.0
                   ================================
  Overview
