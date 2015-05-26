@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
         Licensed to the Apache Software Foundation (ASF) under one or more
@@ -36,13 +37,20 @@
         <osgi.export.package>!*</osgi.export.package>
     </properties>
 
-
     <dependencyManagement>
         <dependencies>
             <!-- define drools BOM -->
             <dependency>
                 <groupId>org.drools</groupId>
                 <artifactId>drools-bom</artifactId>
+                <type>pom</type>
+                <version>${drools6.version}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jbpm</groupId>
+                <artifactId>jbpm-bom</artifactId>
                 <type>pom</type>
                 <version>${drools6.version}</version>
                 <scope>import</scope>
@@ -76,5 +84,6 @@
     <modules>
         <module>drools-simple</module>
         <module>drools-camel-blueprint</module>
+        <module>drools-jbpm-blueprint</module>
     </modules>
 </project>
