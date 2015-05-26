@@ -1,0 +1,6 @@
+<insert out-identifier="cusomer1" return-object="true"
+    entry-point="DEFAULT">
+    <org.apache.servicemix.examples.drools.camel.cxf.server.model.Customer>
+        <salary>9000</salary>
+    </org.apache.servicemix.examples.drools.camel.cxf.server.model.Customer>
+</insert>

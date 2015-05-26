@@ -117,3 +117,16 @@ class Drools6SpringExamplesTest extends Drools6IntegrationTests {
     }
   }
 }
+
+/**
+ * Tests for the Camel Rest Server examples
+ */
+class Drools6CamelServiceExamplesTest extends Drools6IntegrationTests {
+
+  @Test
+  def testDroolsCamelServerExample = testWithFeature("examples-drools-camel-cxf-server") {
+    expect {
+      logging.containsMessage(line => line.contains("<execution-results><result identifier=\"customer\">"))
+    }
+  }
+}

@@ -76,6 +76,7 @@
     <modules>
         <module>drools-simple</module>
         <module>drools-camel-blueprint</module>
+        <module>drools-camel-cxf-server</module>
         <module>drools-spring</module>
     </modules>
 </project>
