@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+    xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+    <persistence-unit name="org.jbpm.persistence.jpa.local"
+        transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <non-jta-data-source>osgi:service/javax.sql.DataSource/(datasource=jbpm-ds)</non-jta-data-source>
+
+        <class>org.drools.persistence.info.SessionInfo</class>
+        <class>org.drools.persistence.info.WorkItemInfo</class>
+        
+        <class>org.jbpm.persistence.processinstance.ProcessInstanceInfo</class>
+        <class>org.jbpm.persistence.processinstance.ProcessInstanceEventInfo</class>
+        
+        <class>org.jbpm.persistence.correlation.CorrelationKeyInfo</class>
+        <class>org.jbpm.persistence.correlation.CorrelationPropertyInfo</class>
+        
+        <class>org.jbpm.runtime.manager.impl.jpa.ContextMappingInfo</class>
+
+        <!-- Classes required for audit purposes -->
+        <class>org.jbpm.process.audit.ProcessInstanceLog</class>
+        <class>org.jbpm.process.audit.NodeInstanceLog</class>
+        <class>org.jbpm.process.audit.VariableInstanceLog</class>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+            <property name="hibernate.max_fetch_depth" value="3" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="false" />
+        </properties>
+    </persistence-unit>
+</persistence>
