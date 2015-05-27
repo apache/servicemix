@@ -183,5 +183,19 @@
         <feature version="${camel.version}">camel-xstream</feature>
         <bundle>mvn:org.apache.servicemix.examples/drools-camel-cxf-server/${version}</bundle>
     </feature>
+    
+    <feature name="examples-drools-jbpm-blueprint" version="${version}">
+        <bundle>mvn:org.hsqldb/hsqldb/2.3.2</bundle>
+        <bundle>mvn:org.apache.commons/commons-pool2/2.2</bundle>
+        <bundle>mvn:org.apache.commons/commons-dbcp2/2.0.1</bundle>
+        
+        <feature>jndi</feature>
+        <feature>hibernate</feature>
+        <feature version="${drools6.version}">kie-aries-blueprint</feature>
+        <feature version="${drools6.version}">kie-camel</feature>
+        
+        <bundle>mvn:org.apache.servicemix.examples/drools-jbpm-blueprint/${version}/jar/datasource</bundle>
+        <bundle>mvn:org.apache.servicemix.examples/drools-jbpm-blueprint/${version}</bundle>
+    </feature>
 
 </features>
