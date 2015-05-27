@@ -35,6 +35,7 @@
                 <include>akka/**</include>
                 <include>camel/**</include>
                 <include>cxf/**</include>
+                <include>drools/**</include>
             </includes>
             <excludes>
                 <exclude>pom.xml</exclude>
