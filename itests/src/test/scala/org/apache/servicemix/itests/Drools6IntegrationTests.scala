@@ -130,3 +130,16 @@ class Drools6CamelServiceExamplesTest extends Drools6IntegrationTests {
     }
   }
 }
+
+/**
+ * Tests for the Drools 6 BPM examples
+ */
+class Drools6BPMServiceExamplesTest extends Drools6IntegrationTests {
+
+  @Test
+  def testDroolsCamelServerExample = testWithFeature("examples-drools-jbpm-blueprint") {
+    expect {
+      logging.containsMessage(line => line.contains("Process started pid=bpmn.simpleprocess"))
+    }
+  }
+}
