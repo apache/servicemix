@@ -22,7 +22,8 @@
            http://drools.org/schema/kie-aries-blueprint/1.0.0 http://drools.org/schema/kie-aries-blueprint/1.0.0">
 
     <reference id="transactionManager" interface="javax.transaction.TransactionManager" />
-    <reference id="entityManagerFactory" interface="javax.persistence.EntityManagerFactory" />
+    <reference id="entityManagerFactory" interface="javax.persistence.EntityManagerFactory"
+        filter="(osgi.unit.name=org.jbpm.persistence.jpa.local)" />
 
     <kie:kmodule id="kmodule">
         <kie:kbase name="kPersistence" packages="bpmn">
