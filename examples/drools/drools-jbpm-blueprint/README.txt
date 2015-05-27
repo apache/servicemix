@@ -18,10 +18,6 @@
 Drools 6 BPM Example
 ==========================
 
-Purpose
--------
-
-
 
 Prerequisites for Running the Example
 -------------------------------------
@@ -81,6 +77,15 @@ yourself, complete the following steps:
 4. Once the bundle has been started, you will see on server logs events from rule engine.
    Timer on camel route periodically create random facts and fire rule engine. Rules engine
    operation can be seen in the server log file.
+
+ProcessStarter                   | 300 - drools-jbpm-blueprint - 6.0.0.SNAPSHOT | Process start ...
+droolsProcessLogger              | 271 - org.mvel2 - 2.2.4.Final | Yoi! Process started
+LoggerWorkItemHandler            | 300 - drools-jbpm-blueprint - 6.0.0.SNAPSHOT | Executing work item WorkItem 1
+ [name=Human Task, state=0, processInstanceId=1, parameters{Locale=en-UK, Skipp
+able=true, TaskName=Task Name, NodeName=Human Task, Priority=1]
+LoggerWorkItemHandler            | 300 - drools-jbpm-blueprint - 6.0.0.SNAPSHOT | Executing work item WorkItem 2
+ [name=Manual Task, state=0, processInstanceId=1, parameters{}]
+roolsProcessLogger              | 271 - org.mvel2 - 2.2.4.Final | Yoi! Process stop
 
 
 
