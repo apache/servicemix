@@ -30,7 +30,9 @@
         <akka.version>${akka.version}</akka.version>
         <cxf.version>${cxf.version}</cxf.version>
         <drools.version>${drools.version}</drools.version>
+        <drools6.version>${drools6.version}</drools6.version>
         <jaxb.api.version>${jaxb.api.version}</jaxb.api.version>
+        <karaf.version>${karaf.version}</karaf.version>
         <scala.version>${scala.version}</scala.version>
         <slf4j.version>${slf4j.version}</slf4j.version>
         <swagger.version>${swagger.version}</swagger.version>
@@ -59,6 +61,13 @@
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-ws-security</artifactId>
                 <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.karaf</groupId>
+                <artifactId>karaf</artifactId>
+                <version>${karaf.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix.specs</groupId>
@@ -174,6 +183,7 @@
         <module>akka</module>
         <module>camel</module>
         <module>cxf</module>
+        <module>drools</module>
         <module>karaf</module>
     </modules>
 
