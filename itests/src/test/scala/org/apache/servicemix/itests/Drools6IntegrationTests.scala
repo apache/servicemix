@@ -101,3 +101,32 @@ class Drools6ExamplesTest extends Drools6IntegrationTests {
     }
   }
 }
+
+/**
+ * Tests for the Drools with spring
+ */
+class Drools6SpringExamplesTest extends Drools6IntegrationTests {
+
+  /**
+   * Test installation Spring with drools example.
+   */
+  @Test
+  def testDroolsSpringExample = testWithFeature("examples-drools-spring") {
+    expect {
+      logging.containsMessage(line => line.contains("KieModule was added: org.drools.osgi.compiler.OsgiKieModule"))
+    }
+  }
+}
+
+/**
+ * Tests for the Camel Rest Server examples
+ */
+class Drools6CamelServiceExamplesTest extends Drools6IntegrationTests {
+
+  @Test
+  def testDroolsCamelServerExample = testWithFeature("examples-drools-camel-cxf-server") {
+    expect {
+      logging.containsMessage(line => line.contains("<execution-results><result identifier=\"customer\">"))
+    }
+  }
+}
