@@ -23,18 +23,21 @@
             org.jbpm.persistence.correlation;version="[6.0,7)",
             org.jbpm.runtime.manager.impl.jpa;version="[6.0,7)",
             org.jbpm.process.audit;version="[6.0,7)",
+            org.jbpm.runtime.manager.impl;version="[6.0,7)",
+            org.kie.internal.io;version="[6.0,7)",
+            org.kie.internal.runtime.manager.context;version="[6.0,7)",
+            org.jbpm.persistence;version="[6.0,7)",
 
             org.kie.api.*;version="[6.0,7)",
             org.kie.aries.blueprint.factorybeans;version="[6.0,7)",
             org.kie.internal.command;version="[6.0,7)",
             org.drools.core.command.runtime.rule;version="[6.0,7)",
             org.drools.core.impl;version="[6.0,7)",
-
+            org.drools.core.marshalling.impl;version="[6.0,7)",
             org.osgi.service.blueprint,
             org.apache.commons.dbcp2;version="2.0.1",
             org.apache.commons.dbcp2.managed;version="2.0.1",
-            org.hsqldb.jdbc,
-            org.hsqldb.server,
+            org.h2;version="${h2.version}",
             javax.sql,
             javax.transaction,
             javax.persistence
@@ -87,11 +90,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.3.2</version>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
             <scope>provided</scope>
-            <type>bundle</type>
         </dependency>
 
         <dependency>

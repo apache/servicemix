@@ -57,16 +57,23 @@ public class DataSourceTest {
      */
     public void test() throws SQLException {
         log.info("Connection test begin");
+        Connection conn = null;
+        Statement statm = null;
         try {
-            Connection conn = datasource.getConnection();
-            Statement statm = conn.createStatement();
-            statm.execute("select 1 from INFORMATION_SCHEMA.SYSTEM_USERS");
-            statm.close();
-            conn.close();
+            conn = datasource.getConnection();
+            statm = conn.createStatement();
+            statm.execute("SELECT 1");
             log.info("Ypi Connection is OK!");
         } catch (SQLException e) {
             log.error("Ups", e);
             throw e;
+        }finally{
+            if(null != statm){
+                statm.close();
+            }
+            if(null != conn){
+                conn.close();
+            }
         }
     }
 }

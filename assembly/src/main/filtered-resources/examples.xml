@@ -185,7 +185,7 @@
     </feature>
     
     <feature name="examples-drools-jbpm-blueprint" version="${version}">
-        <bundle>mvn:org.hsqldb/hsqldb/2.3.2</bundle>
+        <bundle>mvn:com.h2database/h2/${h2.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-pool2/2.2</bundle>
         <bundle>mvn:org.apache.commons/commons-dbcp2/2.0.1</bundle>
         

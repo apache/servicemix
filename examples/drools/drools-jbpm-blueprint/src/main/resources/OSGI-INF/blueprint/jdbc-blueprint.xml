@@ -26,7 +26,7 @@
         Driver object. There is classloading problem when BasicDataSource
         takes only class name Handler node in BPM flow
     -->
-    <bean id="hsqldbDriver" class="org.hsqldb.jdbc.JDBCDriver" />
+    <bean id="h2Driver" class="org.h2.Driver" />
 
     <!--
         DS POOL
@@ -34,13 +34,16 @@
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
         destroy-method="close" scope="singleton">
         <property name="url"
-            value="jdbc:hsqldb:file:${karaf.data}/hsqldb/jbpm;shutdown=true" />
-        <property name="driver" ref="hsqldbDriver" />
+            value="jdbc:h2:file:${karaf.data}/h2db/jbpm" />
+        <property name="driver" ref="h2Driver" />
         <property name="username" value="SA" />
         <property name="password" value="" />
         <property name="initialSize" value="1" />
+        <property name="maxIdle" value="1" />
+        <property name="maxTotal" value="3" />
+        <property name="testOnBorrow" value="true" />
         <property name="validationQuery"
-            value="select 1 from INFORMATION_SCHEMA.SYSTEM_USERS" />
+            value="SELECT 1" />
         <property name="jmxName"
             value="org.apache.commons.pool2:type=GenericObjectPool,name=jbpm-ds"></property>
     </bean>

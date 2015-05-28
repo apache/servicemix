@@ -46,7 +46,7 @@ yourself, complete the following steps:
 
 	 bundle:install -s mvn:org.apache.commons/commons-pool2/2.2
 	 bundle:install -s mvn:org.apache.commons/commons-dbcp2/2.0.1
-	 bundle:install -s mvn:org.hsqldb/hsqldb/2.3.2
+	 bundle:install -s mvn:com.h2database/h2/${h2.version}
 	 feature:install jndi
 	 feature:install -v hibernate
 	 feature:install -v kie-aries-blueprint
