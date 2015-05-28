@@ -56,13 +56,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.jbpm</groupId>
-                <artifactId>jbpm-bom</artifactId>
-                <type>pom</type>
-                <version>${drools6.version}</version>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
