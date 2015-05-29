@@ -9,7 +9,6 @@
 
     <artifactId>drools-jbpm-blueprint</artifactId>
     <name>Apache ServiceMix :: Examples :: Drools :: JBPM Blueprint</name>
-    <packaging>bundle</packaging>
 
     <properties>
         <osgi.private.package>
@@ -17,27 +16,35 @@
         </osgi.private.package>
         <osgi.import.package>
             org.slf4j;version="[1.6,2)",
-
-            org.drools.persistence.info;version="[6.0,7)",
-            org.jbpm.persistence.processinstance;version="[6.0,7)",
-            org.jbpm.persistence.correlation;version="[6.0,7)",
-            org.jbpm.runtime.manager.impl.jpa;version="[6.0,7)",
-            org.jbpm.process.audit;version="[6.0,7)",
-            org.jbpm.runtime.manager.impl;version="[6.0,7)",
             org.kie.internal.io;version="[6.0,7)",
             org.kie.internal.runtime.manager.context;version="[6.0,7)",
-            org.jbpm.persistence;version="[6.0,7)",
+            org.drools.persistence.info;version="[6.0,7)",
 
+            org.jbpm.process.audit;version="[6.0,7)",
+            org.jbpm.runtime.manager.impl.jpa;version="[6.0,7)",
+            org.jbpm.runtime.manager.impl;version="[6.0,7)",
+            org.jbpm.persistence;version="[6.0,7)",
+            org.jbpm.persistence.processinstance;version="[6.0,7)",
+            org.jbpm.persistence.correlation;version="[6.0,7)",
+            org.jbpm.services.task.impl.model;version="[6.0,7)",
+            
+            org.jbpm.runtime.manager.impl.identity;version="[6.0,7)",
+            org.jbpm.process.core.timer.impl;version="[6.0,7)",
+            org.kie.api.task.model;version="[6.0,7)",
             org.kie.api.*;version="[6.0,7)",
             org.kie.aries.blueprint.factorybeans;version="[6.0,7)",
+            org.kie.internal.task.api.model;version="[6.0,7)",
             org.kie.internal.command;version="[6.0,7)",
             org.drools.core.command.runtime.rule;version="[6.0,7)",
             org.drools.core.impl;version="[6.0,7)",
             org.drools.core.marshalling.impl;version="[6.0,7)",
+            org.drools.persistence.jta;version="[6.0,7)",
             org.osgi.service.blueprint,
             org.apache.commons.dbcp2;version="2.0.1",
             org.apache.commons.dbcp2.managed;version="2.0.1",
             org.h2;version="${h2.version}",
+            org.apache.camel.spring.spi,
+            org.springframework.transaction.jta,
             javax.sql,
             javax.transaction,
             javax.persistence
@@ -72,6 +79,11 @@
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-persistence-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-human-task-jpa</artifactId>
         </dependency>
 
         <dependency>
@@ -116,7 +128,6 @@
             <artifactId>commons-dbcp2</artifactId>
             <version>2.0.1</version>
             <scope>provided</scope>
-            <type>bundle</type>
         </dependency>
 
     </dependencies>

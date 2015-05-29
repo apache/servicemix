@@ -16,11 +16,8 @@
  */
 package org.apache.servicemix.examples.drools.camel.blueprint.osgi;
 
-import javax.transaction.NotSupportedException;
-import javax.transaction.SystemException;
-
+import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.process.ProcessInstance;
-import org.kie.api.runtime.process.ProcessRuntime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,29 +36,15 @@ public class ProcessStarter {
     /**
      * session
      */
-    private ProcessRuntime session;
-
-    /**
-     * Register handlers for bpm flow items.
-     * 
-     * @throws Exception
-     */
-    public void init() throws Exception {
-        log.info("Adding workItemHandler ...");
-
-        session.getWorkItemManager().registerWorkItemHandler("Human Task",
-                new LoggerWorkItemHandler());
-        session.getWorkItemManager().registerWorkItemHandler("Manual Task",
-                new LoggerWorkItemHandler());
-    }
+    private KieSession kieSession;
 
     /**
      * ProcessRuntime it's set from blueprint.
      * 
      * @param session
      */
-    public void setSession(ProcessRuntime session) {
-        this.session = session;
+    public void setSession(KieSession session) {
+        this.kieSession = session;
     }
 
     /**
@@ -71,7 +54,12 @@ public class ProcessStarter {
     public void startProcess() {
         log.info("Process start ...");
 
-        ProcessInstance processInstance = session
+        kieSession.getWorkItemManager().registerWorkItemHandler("Human Task",
+                new LoggerWorkItemHandler());
+        kieSession.getWorkItemManager().registerWorkItemHandler("Manual Task",
+                new LoggerWorkItemHandler());
+
+        ProcessInstance processInstance = kieSession
                 .startProcess("bpmn.simpleprocess");
 
         log.info("Process started pid={}, id={}",

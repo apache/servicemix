@@ -22,18 +22,20 @@
            http://drools.org/schema/kie-aries-blueprint/1.0.0 http://drools.org/schema/kie-aries-blueprint/1.0.0">
 
     <reference id="transactionManager" interface="javax.transaction.TransactionManager" />
+    <reference id="userTransaction" interface="javax.transaction.UserTransaction" />
+
     <reference id="entityManagerFactory" interface="javax.persistence.EntityManagerFactory"
         filter="(osgi.unit.name=org.jbpm.persistence.jpa.local)" />
 
-    <kie:kmodule id="kmodule">
-        <kie:kbase name="kPersistence" packages="bpmn">
-            <kie:ksession name="BpmKSession" type="stateful" />
-        </kie:kbase>
-    </kie:kmodule>
+    <bean id="bpmnRuntimeManagerFactory"
+        class="org.apache.servicemix.examples.drools.camel.blueprint.osgi.BpmnRuntimeManagerFactory"
+        init-method="init" destroy-method="destroy">
+        <argument index="0" ref="entityManagerFactory" />
+        <argument index="1" ref="transactionManager" />
+        <argument index="2" ref="userTransaction" />
+    </bean>
 
-    <kie:environment id="bpm-env">
-        <kie:transaction-manager ref="transactionManager" />
-        <kie:entity-manager-factory ref="entityManagerFactory" />
-    </kie:environment>
+    <bean id="kiesession" factory-ref="bpmnRuntimeManagerFactory"
+        factory-method="kieSession" />
 
 </blueprint>

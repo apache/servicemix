@@ -24,9 +24,20 @@
     <!-- Bean helps start process -->
     <bean id="startProcesBean"
         class="org.apache.servicemix.examples.drools.camel.blueprint.osgi.ProcessStarter"
-        init-method="init">
-        <property name="session" ref="BpmKSession" />
+        scope="prototype">
+        <property name="session" ref="kiesession" />
     </bean>
+
+    <bean id="txManager"
+        class="org.springframework.transaction.jta.JtaTransactionManager">
+        <argument ref="transactionManager" type="javax.transaction.TransactionManager" />
+    </bean>
+
+    <bean id="required" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="txManager" />
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
+    </bean>
+ 
 
     <!-- Camel Route -->
     <camelContext id="BPM-Camel-Routes"
@@ -36,6 +47,7 @@
         -->
         <route trace="false" id="testRoute">
             <from uri="timer:bpm-start-proces?period=10s&amp;delay=2s" />
+            <transacted ref="required" />
             <bean method="startProcess" ref="startProcesBean" />
         </route>
 
