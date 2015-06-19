@@ -80,7 +80,7 @@
         <pax.logging.version>1.8.2</pax.logging.version>
         <pax.url.version>2.4.1</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
-        <reflections.bundle.version>0.9.8_1</reflections.bundle.version>
+        <reflections.bundle.version>0.9.9_1</reflections.bundle.version>
         <scala-2.10.version>2.10.4</scala-2.10.version>
         <scala-xml.version>1.0.4</scala-xml.version>
         <scala.version>2.11.5</scala.version>
@@ -88,6 +88,7 @@
         <slf4j.version>1.7.12</slf4j.version>
         <spring.version>3.2.11.RELEASE_1</spring.version>
         <swagger.bundle.version>1.3.12_1</swagger.bundle.version>
+        <swagger.core.bundle.version>1.3.12_2</swagger.core.bundle.version>
         <swagger.version>1.3.12</swagger.version>
         <thoughtworks.paranamer.version>2.7</thoughtworks.paranamer.version>
         <typesafe-config.version>1.2.0</typesafe-config.version>
