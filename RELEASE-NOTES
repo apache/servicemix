@@ -15,6 +15,43 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 6.0.0
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the features and functionality
+of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 6.0.0 is the first production ready release based on Karaf 3.0.x, which includes numerous
+new features, improvements, and bug fixes. Apache ServiceMix 6.0.0 includes:
+
+- Apache ActiveMQ 5.11.1 (http://activemq.apache.org)
+- Apache Camel 2.15.2 (http://camel.apache.org)
+- Apache CXF 3.0.4 (http://cxf.apache.org)
+- Apache Karaf 3.0.4 (http://karaf.apache.org)
+
+ Changelog
+ ---------
+
+** Bug
+    * [SM-2551] - Drools6ExamplesTest fails on Jenkins
+    * [SM-2560] - Drools examples source code is not included in SM distribution package.
+
+** Improvement
+    * [SM-2584] - Use overrides.properties to override joda-time version
+
+** New Feature
+    * [SM-2497] - Add features for Drools 6.2
+
+** Task
+    * [SM-2275] - Release Apache ServiceMix 6.0.0
+    * [SM-2405] - Remove workaround for SM-2396
+    * [SM-2543] - Provide Spring example for Drools 6
+    * [SM-2546] - Remove workarounds for SM-2472
+    * [SM-2556] - Upgrade to Karaf 3.0.4
+    * [SM-2591] - Enable command RBAC support
+
 
                       Apache ServiceMix 6.0.0.M2
                   ================================
@@ -33,6 +70,9 @@ Apache ServiceMix 6.0.0.M2 is a new preview release of the project, which includ
 - Apache Camel 2.15.2 (http://camel.apache.org)
 - Apache CXF 3.0.4 (http://cxf.apache.org)
 - Apache Karaf 3.0.3 (http://karaf.apache.org)
+
+ Changelog
+ ---------
 
 ** Bug
     * [SM-2330] - Remove joda-time from startup.properties
