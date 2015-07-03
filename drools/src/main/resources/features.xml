@@ -19,8 +19,6 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
 
-    <repository>mvn:org.apache.servicemix/apache-servicemix/${version}/xml/internal</repository>
-
     <feature name="drools6-module" version="${drools6.version}"
              description="Drools 6 core" start-level="50" resolver="(obr)">
         <feature>pax-cdi</feature>
