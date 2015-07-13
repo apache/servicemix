@@ -72,12 +72,12 @@
         <jodatime2.bundle.version>2.6</jodatime2.bundle.version>
         <jpa.version>2.1.0</jpa.version>
         <json4s.bundle.version>3.2.11_1</json4s.bundle.version>
-        <karaf.version>2.4.2</karaf.version>
+        <karaf.version>2.4.3</karaf.version>
         <mvel2.version>2.2.1.Final</mvel2.version>
         <mybatis.version>3.2.7</mybatis.version>
         <osgi.version>5.0.0</osgi.version>
         <pax.exam.version>4.5.0</pax.exam.version>
-        <pax.logging.version>1.8.2</pax.logging.version>
+        <pax.logging.version>1.8.3</pax.logging.version>
         <pax.url.version>2.4.1</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
         <reflections.bundle.version>0.9.9_1</reflections.bundle.version>
