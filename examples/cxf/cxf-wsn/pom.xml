@@ -30,7 +30,7 @@
     <parent>
         <groupId>org.apache.servicemix.examples</groupId>
         <artifactId>cxf</artifactId>
-        <version>5.4.2-SNAPSHOT</version>
+        <version>5.4.1</version>
     </parent>
 
     <artifactId>cxf-wsn</artifactId>

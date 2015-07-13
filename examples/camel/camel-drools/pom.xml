@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.servicemix.examples</groupId>
         <artifactId>camel-examples</artifactId>
-        <version>5.4.2-SNAPSHOT</version>
+        <version>5.4.1</version>
     </parent>
 
     <artifactId>camel-drools</artifactId>
