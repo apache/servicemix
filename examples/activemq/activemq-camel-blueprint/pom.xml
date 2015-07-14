@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.servicemix.examples</groupId>
         <artifactId>activemq-examples</artifactId>
-        <version>5.5.0-SNAPSHOT</version>
+        <version>5.5.0</version>
     </parent>
 
     <artifactId>activemq-camel-blueprint</artifactId>
