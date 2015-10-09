@@ -83,12 +83,12 @@
 
         <!--xalan jar to be included in lib/endorsed-->
         <dependency>
-            <groupId>xalan</groupId>
-            <artifactId>xalan</artifactId>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.xalan</artifactId>
         </dependency>
         <dependency>
-            <groupId>xalan</groupId>
-            <artifactId>serializer</artifactId>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.xalan-serializer</artifactId>
         </dependency>
 
         <!-- branding -->
