@@ -1,0 +1,174 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.apache.servicemix.examples</groupId>
+        <artifactId>drools</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>drools-jbpm-blueprint</artifactId>
+    <name>Apache ServiceMix :: Examples :: Drools :: JBPM Blueprint</name>
+
+    <properties>
+        <osgi.private.package>
+            org.apache.servicemix.examples.drools.camel.blueprint.osgi
+        </osgi.private.package>
+        <osgi.import.package>
+            org.slf4j;version="[1.6,2)",
+            org.kie.internal.io;version="[6.0,7)",
+            org.kie.internal.runtime.manager.context;version="[6.0,7)",
+            org.drools.persistence.info;version="[6.0,7)",
+
+            org.jbpm.process.audit;version="[6.0,7)",
+            org.jbpm.runtime.manager.impl.jpa;version="[6.0,7)",
+            org.jbpm.runtime.manager.impl;version="[6.0,7)",
+            org.jbpm.persistence;version="[6.0,7)",
+            org.jbpm.persistence.processinstance;version="[6.0,7)",
+            org.jbpm.persistence.correlation;version="[6.0,7)",
+            org.jbpm.services.task.impl.model;version="[6.0,7)",
+            
+            org.jbpm.runtime.manager.impl.identity;version="[6.0,7)",
+            org.jbpm.process.core.timer.impl;version="[6.0,7)",
+            org.kie.api.task.model;version="[6.0,7)",
+            org.kie.api.*;version="[6.0,7)",
+            org.kie.aries.blueprint.factorybeans;version="[6.0,7)",
+            org.kie.internal.task.api.model;version="[6.0,7)",
+            org.kie.internal.command;version="[6.0,7)",
+            org.drools.core.command.runtime.rule;version="[6.0,7)",
+            org.drools.core.impl;version="[6.0,7)",
+            org.drools.core.marshalling.impl;version="[6.0,7)",
+            org.drools.persistence.jta;version="[6.0,7)",
+            org.osgi.service.blueprint,
+            org.apache.commons.dbcp2;version="2.0.1",
+            org.apache.commons.dbcp2.managed;version="2.0.1",
+            org.h2;version="${h2.version}",
+            org.apache.camel.spring.spi,
+            org.springframework.transaction.jta,
+            javax.sql,
+            javax.transaction,
+            javax.persistence
+        </osgi.import.package>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-persistence-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-osgi-integration</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-persistence-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-human-task-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-runtime-manager</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-audit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.framework</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+            <type>bundle</type>
+        </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>package-datasource</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>datasource</classifier>
+                            <instructions>
+                                <Bundle-SymbolicName>${project.artifactId}.datasource</Bundle-SymbolicName>
+                                <Bundle-Name>${project.name} DataSource</Bundle-Name>
+                                <Export-Package>!*</Export-Package>
+                                <_donotcopy>(camel-blueprint\.xml|kie-blueprint\.xml)</_donotcopy>
+                            </instructions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>package-bundle</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                        <configuration>
+                            <instructions>
+                                <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
+                                <_donotcopy>(jdbc-blueprint\.xml)</_donotcopy>
+                            </instructions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
