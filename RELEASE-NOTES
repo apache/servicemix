@@ -15,6 +15,45 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 6.0.1
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the 
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful 
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 6.0.1 is a new patch release, which includes a few bug fixes and
+a new version of Apache Karaf, Apache ActiveMQ, Apache Camel and Apache CXF. 
+This release includes:
+
+Apache ServiceMix 6.0.0 is the first production ready release based on Karaf 3.0.x, which includes numerous
+new features, improvements, and bug fixes. Apache ServiceMix 6.0.0 includes:
+
+- Apache ActiveMQ 5.12.1 (http://activemq.apache.org)
+- Apache Camel 2.15.3 (http://camel.apache.org)
+- Apache CXF 3.0.6 (http://cxf.apache.org)
+- Apache Karaf 3.0.3 (http://karaf.apache.org)
+
+ Changelog
+ ---------
+
+** Bug
+    * [SM-2595] - Error message while installing activiti feature
+    * [SM-2679] - Remove duplicate xalan libraries from endorsed libraries
+
+** Task
+    * [SM-2548] - Provide CXF Rest Service example for Drools 6
+    * [SM-2617] - Release Apache ServiceMix 6.0.1
+    * [SM-2621] - Upgrade to Apache Camel 2.15.3 and CXF 3.0.6
+    * [SM-2653] - Upgrade to Apache ActiveMQ 5.11.2
+    * [SM-2671] - Upgrade to Karaf 3.0.5
+    * [SM-2675] - Upgrade to depends-maven-plugin 1.3.0
+    * [SM-2696] - Upgrade to maven-bundle-plugin 3.0.0
+    * [SM-2697] - Upgrade to Pax Exam 4.6.0
+    * [SM-2701] - Upgrade to ActiveMQ 5.12.1
+
                       Apache ServiceMix 6.0.0
                   ================================
  Overview
