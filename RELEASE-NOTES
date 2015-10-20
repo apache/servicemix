@@ -28,9 +28,6 @@ Apache ServiceMix 6.0.1 is a new patch release, which includes a few bug fixes a
 a new version of Apache Karaf, Apache ActiveMQ, Apache Camel and Apache CXF. 
 This release includes:
 
-Apache ServiceMix 6.0.0 is the first production ready release based on Karaf 3.0.x, which includes numerous
-new features, improvements, and bug fixes. Apache ServiceMix 6.0.0 includes:
-
 - Apache ActiveMQ 5.12.1 (http://activemq.apache.org)
 - Apache Camel 2.15.3 (http://camel.apache.org)
 - Apache CXF 3.0.6 (http://cxf.apache.org)
