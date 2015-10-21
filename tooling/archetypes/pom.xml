@@ -24,7 +24,7 @@
     <parent>
         <artifactId>tooling</artifactId>
         <groupId>org.apache.servicemix.tooling</groupId>
-        <version>6.0.1</version>
+        <version>6.0.2-SNAPSHOT</version>
     </parent>
 
     <groupId>org.apache.servicemix.tooling</groupId>
