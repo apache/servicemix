@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.apache.servicemix.examples</groupId>
         <artifactId>drools</artifactId>
-        <version>6.0.1-SNAPSHOT</version>
+        <version>6.0.1</version>
     </parent>
     <artifactId>drools-simple</artifactId>
     <name>Apache ServiceMix :: Examples :: Drools :: Simple</name>

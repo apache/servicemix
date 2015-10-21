@@ -30,7 +30,7 @@
     <groupId>org.apache.servicemix</groupId>
     <artifactId>servicemix</artifactId>
     <packaging>pom</packaging>
-    <version>6.0.1-SNAPSHOT</version>
+    <version>6.0.1</version>
     <name>Apache ServiceMix</name>
 
     <url>http://servicemix.apache.org/</url>
@@ -53,7 +53,7 @@
         <connection>scm:git:https://git-wip-us.apache.org/repos/asf/servicemix.git</connection>
         <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/servicemix.git</developerConnection>
         <url>https://git-wip-us.apache.org/repos/asf?p=servicemix.git</url>
-        <tag>HEAD</tag>
+        <tag>servicemix-6.0.1</tag>
     </scm>
 
     <issueManagement>
