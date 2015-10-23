@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.apache.servicemix</groupId>
         <artifactId>servicemix</artifactId>
-        <version>5.5.1</version>
+        <version>5.5.2-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
