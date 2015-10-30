@@ -382,6 +382,9 @@
         </profile>
         <profile>
             <id>rat</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -397,9 +400,46 @@
                         </executions>
                         <configuration>
                             <reportFile>${project.build.directory}/${project.build.finalName}.rat</reportFile>
+                            <excludeSubProjects>false</excludeSubProjects>
                             <excludes>
                                 <exclude>**/*.csv</exclude>
                                 <exclude>**/src/main/resources/licenses/**</exclude>
+                                <exclude>**/*.pub</exclude>
+                                <exclude>**/target/**/*</exclude>
+                                <!-- GIT files -->
+                                <exclude>**/.git/**/*</exclude>
+                                <!-- IDEA files -->
+                                <exclude>**/.idea/**/*</exclude>
+                                <exclude>**/*.iml</exclude>
+                                <exclude>**/*.ipr</exclude>
+                                <exclude>**/*.iws</exclude>
+                                <!-- Eclipse files -->
+                                <exclude>**/.*</exclude>
+                                <exclude>**/eclipse-classes/**/*</exclude>
+                                <exclude>**/dependency-reduced-pom.xml</exclude>
+                                <exclude>**/.settings/**</exclude>
+                                <exclude>**/bin/**</exclude>
+                                <!-- resources file -->
+                                <exclude>**/goal.txt</exclude>
+                                <exclude>**/grep.txt</exclude>
+                                <exclude>**/edit.txt</exclude>
+                                <exclude>**/wc.txt</exclude>
+                                <exclude>**/foo</exclude>
+                                <exclude>**/maven-metadata-local.xml</exclude>
+                                <!--manual resources -->
+                                <exclude>**/*.css</exclude>
+                                <exclude>**/*.ssp</exclude>
+                                <exclude>**/*.conf</exclude>
+                                <!-- test manifests -->
+                                <exclude>**/*.mf</exclude>
+                                <!-- test json files -->
+                                <exclude>**/*.json</exclude>
+                                <!-- SSH keys -->
+                                <exclude>**/*.key</exclude>
+                                <!-- For Jenkins, ignore the .repository -->
+                                <exclude>.repository/**</exclude>
+                                <!-- jar files -->
+                                <exclude>**/*.jar</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
