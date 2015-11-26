@@ -19,7 +19,7 @@
     <fileSets>
         <fileSet>
           <outputDirectory>system</outputDirectory>
-          <directory>target/features-repo</directory>
+          <directory>${project.build.directory}/features-repo</directory>
         </fileSet>
     </fileSets>
 

@@ -106,14 +106,14 @@
     </fileSets>
     <files>
         <file>
-            <source>${basedir}/target/maven-shared-archive-resources/META-INF/LICENSE</source>
+            <source>${project.build.directory}/maven-shared-archive-resources/META-INF/LICENSE</source>
             <outputDirectory>/</outputDirectory>
             <destName>LICENSE</destName>
             <fileMode>0644</fileMode>
             <lineEnding>unix</lineEnding>
         </file>
         <file>
-            <source>${basedir}/target/maven-shared-archive-resources/META-INF/NOTICE</source>
+            <source>${project.build.directory}/maven-shared-archive-resources/META-INF/NOTICE</source>
             <outputDirectory>/</outputDirectory>
             <destName>NOTICE</destName>
             <fileMode>0644</fileMode>
