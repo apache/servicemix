@@ -19,7 +19,7 @@
     <fileSets>
         <!-- Copy over karaf demo to examples folder -->
         <fileSet>
-            <directory>target/dependencies/unix/apache-karaf-${karaf.version}/demos</directory>
+            <directory>${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}/demos</directory>
             <outputDirectory>/examples/karaf</outputDirectory>
             <lineEnding>unix</lineEnding>
         </fileSet>
@@ -82,7 +82,7 @@
 
     <files>
         <file>
-            <source>${basedir}/target/classes/pom.xml</source>
+            <source>${project.build.outputDirectory}/pom.xml</source>
             <outputDirectory>/examples/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>0644</fileMode>

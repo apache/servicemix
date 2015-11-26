@@ -67,7 +67,7 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>target/classes/org.apache.servicemix.activemq.service.cfg</file>
+                                    <file>${project.build.outputDirectory}/org.apache.servicemix.activemq.service.cfg</file>
                                     <type>cfg</type>
                                     <classifier>activemq.service</classifier>
                                 </artifact>
