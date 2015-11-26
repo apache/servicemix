@@ -64,7 +64,7 @@
                 <version>3.2.1</version>
                 <configuration>
                     <inputDirectory>${basedir}/src/main/resources</inputDirectory>
-                    <outputDirectory>${basedir}/target/classes</outputDirectory>
+                    <outputDirectory>${project.build.outputDirectory}</outputDirectory>
                     <filters>
                         <!--
                             Don't like these bits.. archetypes should not be tied to specific

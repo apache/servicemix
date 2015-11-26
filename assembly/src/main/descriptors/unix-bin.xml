@@ -23,15 +23,15 @@
     </formats>
 
     <componentDescriptors>
-        <componentDescriptor>target/classes/common-bin.xml</componentDescriptor>
-        <componentDescriptor>target/classes/common-unix-bin.xml</componentDescriptor>
-        <componentDescriptor>target/classes/examples-unix-bin.xml</componentDescriptor>
+        <componentDescriptor>${project.build.outputDirectory}/common-bin.xml</componentDescriptor>
+        <componentDescriptor>${project.build.outputDirectory}/common-unix-bin.xml</componentDescriptor>
+        <componentDescriptor>${project.build.outputDirectory}/examples-unix-bin.xml</componentDescriptor>
     </componentDescriptors>
 
     <files>
         <file>
         <!-- Install the internal features descriptor into the system repository -->
-            <source>${basedir}/target/classes/internal.xml</source>
+            <source>${project.build.outputDirectory}/internal.xml</source>
             <outputDirectory>system/org/apache/servicemix/${artifactId}/${version}</outputDirectory>
             <destName>${artifactId}-${version}-internal.xml</destName>
             <fileMode>0644</fileMode>
@@ -39,7 +39,7 @@
         </file>
         <file>
         <!-- Install the features descriptor into the system repository -->
-            <source>${basedir}/target/classes/features.xml</source>
+            <source>${project.build.outputDirectory}/features.xml</source>
             <outputDirectory>system/org/apache/servicemix/${artifactId}/${version}</outputDirectory>
             <destName>${artifactId}-${version}-features.xml</destName>
             <fileMode>0644</fileMode>
@@ -47,7 +47,7 @@
         </file>
         <file>
         <!-- Install the example features descriptor into the system repository -->
-            <source>${basedir}/target/classes/examples.xml</source>
+            <source>${project.build.outputDirectory}/examples.xml</source>
             <outputDirectory>system/org/apache/servicemix/${artifactId}/${version}</outputDirectory>
             <destName>${artifactId}-${version}-examples.xml</destName>
             <fileMode>0644</fileMode>
