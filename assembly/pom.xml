@@ -150,9 +150,9 @@
                                 <descriptor>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.servicemix.drools/features/${version}/xml/features</descriptor>
-                                <descriptor>file:${basedir}/target/classes/internal.xml</descriptor>
-                                <descriptor>file:${basedir}/target/classes/features.xml</descriptor>
-                                <descriptor>file:${basedir}/target/classes/examples.xml</descriptor>
+                                <descriptor>file:${project.build.outputDirectory}/internal.xml</descriptor>
+                                <descriptor>file:${project.build.outputDirectory}/features.xml</descriptor>
+                                <descriptor>file:${project.build.outputDirectory}/examples.xml</descriptor>
                             </descriptors>
                             <features>
                                 <feature>joda-time</feature>
@@ -178,7 +178,7 @@
                                 <feature>kie-camel</feature>
                             </features>
                             <includeMvnBasedDescriptors>true</includeMvnBasedDescriptors>
-                            <repository>target/features-repo</repository>
+                            <repository>${project.build.directory}/features-repo</repository>
                         </configuration>
                         <inherited>false</inherited>
                     </execution>
@@ -202,10 +202,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>target/features-repo</outputDirectory>
+                            <outputDirectory>${project.build.directory}/features-repo</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>target/dependencies/unix/apache-karaf-${karaf.version}/system</directory>
+                                    <directory>${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}/system</directory>
                                 </resource>
                             </resources>
                         </configuration>
@@ -228,7 +228,7 @@
                                     <groupId>org.apache.karaf</groupId>
                                     <artifactId>apache-karaf</artifactId>
                                     <type>tar.gz</type>
-                                    <outputDirectory>target/dependencies/unix</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/dependencies/unix</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
@@ -245,7 +245,7 @@
                                     <groupId>org.apache.karaf</groupId>
                                     <artifactId>apache-karaf</artifactId>
                                     <type>zip</type>
-                                    <outputDirectory>target/dependencies/win</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/dependencies/win</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
@@ -265,9 +265,9 @@
                         <configuration>
                             <target name="enable-obr">
                                 <echo message="Updating etc/startup.properties in assembly" />
-                                <concat destfile="target/dependencies/unix/apache-karaf-${karaf.version}/etc/startup.properties" append="true">
+                                <concat destfile="${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}/etc/startup.properties" append="true">
                                     <string value="${line.separator}" />
-                                    <fileset file="target/classes/startup-obr.properties" />
+                                    <fileset file="${project.build.outputDirectory}/startup-obr.properties" />
                                 </concat>
                             </target>
                         </configuration>
@@ -281,12 +281,12 @@
                         <configuration>
                             <target name="increase-perm-mem">
                                 <echo message="Updating bin/setenv in unix assembly" />
-                                <concat destfile="target/dependencies/unix/apache-karaf-${karaf.version}/bin/setenv" append="true" eol="unix">
-                                    <fileset file="target/classes/setenv-unix" />
+                                <concat destfile="${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}/bin/setenv" append="true" eol="unix">
+                                    <fileset file="${project.build.outputDirectory}/setenv-unix" />
                                 </concat>
                                 <echo message="Updating bin/setenv.bat in windows assembly" />
-                                <concat destfile="target/dependencies/win/apache-karaf-${karaf.version}/bin/setenv.bat" append="true" eol="dos">
-                                    <fileset file="target/classes/setenv-win" />
+                                <concat destfile="${project.build.directory}/dependencies/win/apache-karaf-${karaf.version}/bin/setenv.bat" append="true" eol="dos">
+                                    <fileset file="${project.build.outputDirectory}/setenv-win" />
                                 </concat>
                             </target>
                         </configuration>
@@ -307,17 +307,17 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>target/classes/internal.xml</file>
+                                    <file>${project.build.outputDirectory}/internal.xml</file>
                                     <type>xml</type>
                                     <classifier>internal</classifier>
                                 </artifact>
                                 <artifact>
-                                    <file>target/classes/features.xml</file>
+                                    <file>${project.build.outputDirectory}/features.xml</file>
                                     <type>xml</type>
                                     <classifier>features</classifier>
                                 </artifact>
                                 <artifact>
-                                    <file>target/classes/examples.xml</file>
+                                    <file>${project.build.outputDirectory}/examples.xml</file>
                                     <type>xml</type>
                                     <classifier>examples</classifier>
                                 </artifact>

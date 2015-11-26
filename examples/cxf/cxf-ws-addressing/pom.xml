@@ -62,7 +62,7 @@
                         <id>generate-test-sources</id>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+                            <sourceRoot>${project.build.directory}/generated/src/main/java</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>${basedir}/src/main/resources/wsdl/hello_world_addr.wsdl</wsdl>
