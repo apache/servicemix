@@ -105,12 +105,14 @@
         <bundle dependency='true'>mvn:org.scala-lang/scala-reflect/${scala.version}</bundle>
         <bundle dependency='true'>mvn:org.scala-lang.modules/scala-xml_2.11/${scala-xml.version}</bundle>
         <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javassist/${javassist.bundle.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax-inject/${javax-inject.bundle.version}</bundle>
         <bundle dependency='true'>mvn:com.google.guava/guava/${google.guava.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-core/${fasterxml.jackson.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-databind/${fasterxml.jackson.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml.jackson.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${fasterxml.jackson.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${fasterxml.jackson.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.module/jackson-module-paranamer/${fasterxml.jackson.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/${fasterxml.jackson.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${swagger.bundle.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core_2.11/${swagger.core.bundle.version}</bundle>
