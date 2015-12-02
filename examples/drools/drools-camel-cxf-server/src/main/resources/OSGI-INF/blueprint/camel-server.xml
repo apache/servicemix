@@ -43,13 +43,19 @@ http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/cor
     <!-- CAMEL -->
     <camelContext id="camel"
         xmlns="http://camel.apache.org/schema/blueprint">
+
+        <dataFormats>
+            <xstream id="xstream-default"
+                     permissions="org.drools.core.command.**,org.apache.servicemix.examples.drools.**"/>
+        </dataFormats>
+
         <!-- Route catch REST request and forward request to Kie Policy Bean-->
         <route>
             <from uri="cxfrs:bean:restKieServer" />
             <policy ref="kiePolicy">
-                <unmarshal ref="xstream" />
+                <unmarshal ref="xstream-default" />
                 <to uri="kie:simpleRuleKSession" />
-                <marshal ref="xstream" />
+                <marshal ref="xstream-default" />
             </policy>
         </route>
 
