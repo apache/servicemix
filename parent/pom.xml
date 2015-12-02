@@ -81,7 +81,7 @@
         <pax.logging.version>1.8.3</pax.logging.version>
         <pax.url.version>2.4.1</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
-        <reflections.bundle.version>0.9.10.3</reflections.bundle.version>
+        <reflections.bundle.version>0.9.10_3</reflections.bundle.version>
         <scala-2.10.version>2.10.4</scala-2.10.version>
         <scala-xml.version>1.0.4</scala-xml.version>
         <scala.version>2.11.7</scala.version>
