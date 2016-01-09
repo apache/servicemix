@@ -25,6 +25,7 @@
         <groupId>org.apache</groupId>
         <artifactId>apache</artifactId>
         <version>15</version>
+        <relativePath />
     </parent>
 
     <groupId>org.apache.servicemix</groupId>
