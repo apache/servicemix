@@ -15,18 +15,20 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<features name="servicemix-features-${version}">
+<features name="servicemix-features-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.1 http://karaf.apache.org/xmlns/features/v1.2.1">
 
-    <feature name="jms-appender" version="${version}" resolver="(obr)" start-level="50">
+    <feature name="jms-appender" version="${project.version}" resolver="(obr)" start-level="50">
         <feature version="${activemq.version}">activemq-broker-noweb</feature>
-        <bundle>mvn:org.apache.servicemix.logging/jms-appender/${version}</bundle>
+        <bundle>mvn:org.apache.servicemix.logging/jms-appender/${project.version}</bundle>
     </feature>
 
-    <feature name="activemq-service" version="${version}" resolver="(obr)" start-level="50">
+    <feature name="activemq-service" version="${project.version}" resolver="(obr)" start-level="50">
         <feature version="${activemq.version}">activemq-broker-noweb</feature>
         <feature version="${activemq.version}">activemq-camel</feature>
-        <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.service/${version}</bundle>
-        <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.camel/${version}</bundle>
+        <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.service/${project.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.camel/${project.version}</bundle>
         <configfile finalname="/etc/org.apache.servicemix.activemq.service.cfg">
             mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.service/${project.version}/cfg/activemq-service
         </configfile>
@@ -81,7 +83,7 @@
         <bundle>mvn:com.typesafe.akka/akka-camel_2.11/${akka.version}</bundle>
     </feature>
 
-    <feature name="swagger-2.10" version="${version}" resolver="(obr)">
+    <feature name="swagger-2.10" version="${project.version}" resolver="(obr)">
         <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala-2.10.version}</bundle>
         <bundle>mvn:org.scala-lang/scala-reflect/${scala-2.10.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javassist/${javassist.bundle.version}</bundle>
@@ -100,7 +102,7 @@
         <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/${reflections.bundle.version}</bundle>
     </feature>
 
-    <feature name="swagger-2.11" version="${version}" resolver="(obr)">
+    <feature name="swagger-2.11" version="${project.version}" resolver="(obr)">
         <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
         <bundle dependency='true'>mvn:org.scala-lang/scala-reflect/${scala.version}</bundle>
         <bundle dependency='true'>mvn:org.scala-lang.modules/scala-xml_2.11/${scala-xml.version}</bundle>
@@ -126,7 +128,7 @@
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
     </feature>
 
-    <feature name="web-script-console" version="${version}" resolver="(obr)">
+    <feature name="web-script-console" version="${project.version}" resolver="(obr)">
         <feature version="${karaf.version}">webconsole</feature>
         <feature version="${camel.version}">camel-groovy</feature>
         <feature version="${camel.version}">camel-script-groovy</feature>
