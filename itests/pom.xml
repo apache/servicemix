@@ -32,10 +32,6 @@
     <artifactId>itests</artifactId>
     <name>Apache ServiceMix :: Integration Tests</name>
 
-  <properties>
-    <pax-exam-version>2.6.0</pax-exam-version>
-  </properties>
-
     <dependencies>
       <dependency>
         <groupId>org.scala-lang</groupId>
@@ -97,12 +93,6 @@
         <artifactId>apache-servicemix</artifactId>
         <version>${project.version}</version>
         <type>zip</type>
-        <exclusions>
-          <exclusion>
-            <groupId>org.apache.karaf</groupId>
-            <artifactId>apache-karaf</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.camel</groupId>

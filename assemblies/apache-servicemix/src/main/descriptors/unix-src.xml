@@ -23,7 +23,7 @@
     <fileSets>
         <!-- Copy license and other files from root -->
         <fileSet>
-            <directory>${basedir}/..</directory>
+            <directory>${basedir}/../..</directory>
             <outputDirectory>/</outputDirectory>
             <includes>
                 <include>BUILDING</include>
@@ -35,7 +35,7 @@
 
         <!-- Binary Files -->
         <fileSet>
-            <directory>${basedir}/..</directory>
+            <directory>${basedir}/../..</directory>
             <outputDirectory>src</outputDirectory>
             <includes>
                 <include>**/*.jpeg</include>
@@ -62,7 +62,7 @@
 
         <!-- Text Files -->
         <fileSet>
-            <directory>${basedir}/..</directory>
+            <directory>${basedir}/../..</directory>
             <outputDirectory>src</outputDirectory>
             <includes>
                 <include>**/*</include>
