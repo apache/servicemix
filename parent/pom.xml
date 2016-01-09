@@ -592,6 +592,12 @@
                     <artifactId>depends-maven-plugin</artifactId>
                     <version>${depends-maven-plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.karaf.tooling</groupId>
+                    <artifactId>karaf-maven-plugin</artifactId>
+                    <version>${karaf.version}</version>
+                    <extensions>true</extensions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>

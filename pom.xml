@@ -41,11 +41,11 @@
         <module>parent</module>
         <module>activemq</module>
         <module>activiti</module>
-        <module>drools</module>
         <module>branding</module>
         <module>logging</module>
         <module>examples</module>
         <module>itests</module>
+        <module>assemblies</module>
         <module>assembly</module>
         <module>tooling</module>
     </modules>

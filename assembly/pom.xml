@@ -37,6 +37,40 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.apache.servicemix.features</groupId>
+            <artifactId>servicemix-internal</artifactId>
+            <version>${project.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.features</groupId>
+            <artifactId>servicemix-features</artifactId>
+            <version>${project.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.features</groupId>
+            <artifactId>servicemix-examples</artifactId>
+            <version>${project.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.features</groupId>
+            <artifactId>servicemix-kie</artifactId>
+            <version>${project.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jaxp-api-1.4</artifactId>
@@ -149,10 +183,10 @@
                                 <descriptor>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.servicemix.drools/features/${version}/xml/features</descriptor>
-                                <descriptor>file:${project.build.outputDirectory}/internal.xml</descriptor>
-                                <descriptor>file:${project.build.outputDirectory}/features.xml</descriptor>
-                                <descriptor>file:${project.build.outputDirectory}/examples.xml</descriptor>
+                                <descriptor>mvn:org.apache.servicemix.features/servicemix-internal/${project.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.servicemix.features/servicemix-features/${project.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.servicemix.features/servicemix-kie/${project.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.servicemix.features/servicemix-examples/${project.version}/xml/features</descriptor>
                             </descriptors>
                             <features>
                                 <feature>joda-time</feature>
@@ -289,39 +323,6 @@
                                     <fileset file="${project.build.outputDirectory}/setenv-win" />
                                 </concat>
                             </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-artifacts</id>
-                        <phase>package</phase>
-                        <inherited>false</inherited>
-                        <goals>
-                            <goal>attach-artifact</goal>
-                        </goals>
-                        <configuration>
-                            <artifacts>
-                                <artifact>
-                                    <file>${project.build.outputDirectory}/internal.xml</file>
-                                    <type>xml</type>
-                                    <classifier>internal</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>${project.build.outputDirectory}/features.xml</file>
-                                    <type>xml</type>
-                                    <classifier>features</classifier>
-                                </artifact>
-                                <artifact>
-                                    <file>${project.build.outputDirectory}/examples.xml</file>
-                                    <type>xml</type>
-                                    <classifier>examples</classifier>
-                                </artifact>
-                            </artifacts>
                         </configuration>
                     </execution>
                 </executions>

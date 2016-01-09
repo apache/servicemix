@@ -15,9 +15,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<features name="servicemix-drools6-${version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+<features name="servicemix-kie-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.1"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.1 http://karaf.apache.org/xmlns/features/v1.2.1">
 
     <feature name="drools6-module" version="${drools6.version}"
              description="Drools 6 core" start-level="50" resolver="(obr)">

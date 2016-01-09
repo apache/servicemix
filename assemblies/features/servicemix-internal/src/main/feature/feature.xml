@@ -15,7 +15,10 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<features name="servicemix-internal-${version}">
+<features name="servicemix-internal-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.1 http://karaf.apache.org/xmlns/features/v1.2.1">
+
     <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
     <repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
     <repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
@@ -24,7 +27,9 @@
 
     <!-- workaround before SM-2179 get addressed on CXF side-->
     <feature name="jaxrs-api">
-        <bundle start-level='10'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr339-api-2.0/${servicemix.specs.version}</bundle>
+        <bundle start-level='10'>
+            mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr339-api-2.0/${servicemix.specs.version}
+        </bundle>
     </feature>
 
     <!-- workaround for SM-2469 -->
