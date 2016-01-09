@@ -22,18 +22,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache.servicemix</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>assemblies</artifactId>
+        <groupId>org.apache.servicemix.assemblies</groupId>
         <version>6.1.1-SNAPSHOT</version>
-        <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
+    <groupId>org.apache.servicemix</groupId>
     <artifactId>apache-servicemix</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix :: Assembly</name>
+    <name>Apache ServiceMix :: Assemblies :: Default Distribution</name>
 
     <properties>
-        <examples.directory>../examples</examples.directory>
+        <examples.directory>../../examples</examples.directory>
     </properties>
 
     <dependencies>

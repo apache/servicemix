@@ -26,7 +26,7 @@
 
         <!-- Copy over the examples -->
         <fileSet>
-            <directory>${basedir}/../examples</directory>
+            <directory>${basedir}/../../examples</directory>
             <outputDirectory>/examples/</outputDirectory>
             <lineEnding>unix</lineEnding>
             <includes>
@@ -52,7 +52,7 @@
         </fileSet>
 
         <fileSet>
-            <directory>${basedir}/../examples</directory>
+            <directory>${basedir}/../../examples</directory>
             <outputDirectory>/examples/</outputDirectory>
             <lineEnding>keep</lineEnding>
             <includes>
@@ -65,7 +65,7 @@
         </fileSet>
 
         <fileSet>
-            <directory>${basedir}/../examples</directory>
+            <directory>${basedir}/../../examples</directory>
             <outputDirectory>/examples/</outputDirectory>
             <lineEnding>unix</lineEnding>
             <filtered>true</filtered>

@@ -37,6 +37,7 @@
 
     <modules>
         <module>features</module>
+        <module>apache-servicemix</module>
     </modules>
 
 </project>

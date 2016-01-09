@@ -44,9 +44,8 @@
         <module>branding</module>
         <module>logging</module>
         <module>examples</module>
-        <module>itests</module>
         <module>assemblies</module>
-        <module>assembly</module>
+        <module>itests</module>
         <module>tooling</module>
     </modules>
 
