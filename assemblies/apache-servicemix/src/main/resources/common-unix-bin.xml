@@ -19,26 +19,23 @@
     <fileSets>
         <!-- Cherry-pick files from the expanded Karaf distribution -->
         <fileSet>
-            <directory>${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}</directory>
+            <directory>${project.build.directory}/assembly</directory>
             <outputDirectory>/</outputDirectory>
             <excludes>
-              <exclude>**/demos/**</exclude>
-              <exclude>bin/**</exclude>
-              <exclude>etc/system.properties</exclude>
-              <exclude>etc/org.apache.karaf.features.cfg</exclude>
-              <exclude>etc/org.apache.karaf.features.obr.cfg</exclude>
-              <exclude>etc/org.ops4j.pax.logging.cfg</exclude>
-              <exclude>etc/org.ops4j.pax.url.mvn.cfg</exclude>
-              <exclude>etc/users.properties</exclude>
-              <exclude>etc/custom.properties</exclude>
-              <exclude>etc/jre.properties</exclude>
-              <exclude>etc/jre.properties.cxf</exclude>
-              <exclude>system/**</exclude>
-              <exclude>LICENSE</exclude>
-              <exclude>NOTICE</exclude>
-              <exclude>README</exclude>
-              <exclude>RELEASE-NOTES</exclude>
-              <exclude>karaf-manual*</exclude>
+                <exclude>bin/**</exclude>
+                <exclude>etc/system.properties</exclude>
+                <exclude>etc/org.apache.karaf.features.cfg</exclude>
+                <exclude>etc/org.apache.karaf.features.obr.cfg</exclude>
+                <exclude>etc/org.ops4j.pax.logging.cfg</exclude>
+                <exclude>etc/org.ops4j.pax.url.mvn.cfg</exclude>
+                <exclude>etc/users.properties</exclude>
+                <exclude>etc/custom.properties</exclude>
+                <exclude>etc/jre.properties</exclude>
+                <exclude>etc/jre.properties.cxf</exclude>
+                <exclude>LICENSE</exclude>
+                <exclude>NOTICE</exclude>
+                <exclude>README</exclude>
+                <exclude>RELEASE-NOTES</exclude>
             </excludes>
             <fileMode>0644</fileMode>
             <directoryMode>0775</directoryMode>
@@ -46,16 +43,16 @@
 
         <!-- Copy over bin/* scripts separately to get the correct file mode -->
         <fileSet>
-            <directory>${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}</directory>
+            <directory>${project.build.directory}/assembly</directory>
             <outputDirectory>/</outputDirectory>
             <includes>
-              <include>bin/*</include>
+                <include>bin/*</include>
             </includes>
             <lineEnding>unix</lineEnding>
             <fileMode>0755</fileMode>
         </fileSet>
         <fileSet>
-            <directory>${project.build.directory}/dependencies/win/apache-karaf-${karaf.version}</directory>
+            <directory>${project.build.directory}/assembly</directory>
             <outputDirectory>/</outputDirectory>
             <includes>
                 <include>bin/*</include>
@@ -66,7 +63,7 @@
 
         <!-- Copy README and RELEASE-NOTES from root -->
         <fileSet>
-            <directory>${basedir}/..</directory>
+            <directory>${project.build.outputDirectory}</directory>
             <outputDirectory>/</outputDirectory>
             <includes>
                 <include>README</include>
@@ -106,16 +103,17 @@
         </fileSet>
     </fileSets>
 
+
     <files>
         <file>
-            <source>${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}/bin/karaf</source>
+            <source>${project.build.directory}/assembly/bin/karaf</source>
             <outputDirectory>/bin/</outputDirectory>
             <destName>servicemix</destName>
             <fileMode>0755</fileMode>
             <lineEnding>unix</lineEnding>
         </file>
         <file>
-            <source>${project.build.directory}/dependencies/win/apache-karaf-${karaf.version}/bin/karaf.bat</source>
+            <source>${project.build.directory}/assembly/bin/karaf.bat</source>
             <outputDirectory>/bin/</outputDirectory>
             <destName>servicemix.bat</destName>
             <fileMode>0755</fileMode>
