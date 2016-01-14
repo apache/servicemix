@@ -38,6 +38,62 @@
 
     <dependencies>
 
+        <!-- Apache Karaf -->
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>framework</artifactId>
+            <type>kar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>standard</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>spring</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>enterprise</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Apache Camel -->
+        <dependency>
+            <groupId>org.apache.camel.karaf</groupId>
+            <artifactId>apache-camel</artifactId>
+            <type>xml</type>
+            <classifier>features</classifier>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Apache CXF -->
+        <dependency>
+            <groupId>org.apache.cxf.karaf</groupId>
+            <artifactId>apache-cxf</artifactId>
+            <type>xml</type>
+            <classifier>features</classifier>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Apache ActiveMQ -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-karaf</artifactId>
+            <type>xml</type>
+            <classifier>features</classifier>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Apache ServiceMix -->
         <dependency>
             <groupId>org.apache.servicemix.features</groupId>
             <artifactId>servicemix-internal</artifactId>
@@ -96,19 +152,6 @@
             <artifactId>org.apache.servicemix.specs.activator</artifactId>
         </dependency>
 
-
-        <!-- Download Karaf assemblies for dependency:unpack-->
-        <dependency>
-            <groupId>org.apache.karaf</groupId>
-            <artifactId>apache-karaf</artifactId>
-            <type>zip</type>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.karaf</groupId>
-            <artifactId>apache-karaf</artifactId>
-            <type>tar.gz</type>
-        </dependency>
-
         <!--Xerces jar to be included in lib/endorsed -->
         <dependency>
             <groupId>xerces</groupId>
@@ -151,8 +194,11 @@
     <build>
         <resources>
             <resource>
-                <!-- we need unfiltered copies of these files -->
                 <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
             </resource>
             <resource>
                 <directory>src/main/filtered-resources</directory>
@@ -160,6 +206,23 @@
                 <includes>
                     <include>**/*</include>
                 </includes>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/../..</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>README</include>
+                    <include>RELEASE*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${project.build.directory}/dependencies</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.i??</exclude>
+                    <exclude>**/.target</exclude>
+                    <exclude>**/.classpath</exclude>
+                </excludes>
             </resource>
         </resources>
 
@@ -170,122 +233,94 @@
                 <version>${karaf.version}</version>
                 <executions>
                     <execution>
-                        <id>add-features-to-repo</id>
+                        <id>install-kar</id>
                         <phase>compile</phase>
                         <goals>
-                            <goal>features-add-to-repository</goal>
+                            <goal>install-kars</goal>
                         </goals>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.servicemix.features/servicemix-internal/${project.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.servicemix.features/servicemix-features/${project.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.servicemix.features/servicemix-kie/${project.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.servicemix.features/servicemix-examples/${project.version}/xml/features</descriptor>
-                            </descriptors>
-                            <features>
-                                <feature>joda-time</feature>
-                                <feature>cxf</feature>
-                                <feature>obr</feature>
-                                <feature>config</feature>
-                                <feature>standard</feature>
-                                <feature>package</feature>
-                                <feature>kar</feature>
-                                <feature>ssh</feature>
-                                <feature>management</feature>
-                                <feature>eventadmin</feature>
-                                <feature>activemq-broker-noweb</feature>
-                                <feature>activemq-service</feature>
-                                <feature>camel</feature>
-                                <feature>camel-cxf</feature>
-                                <feature>activemq-camel</feature>
-                                <feature>camel-blueprint</feature>
-                                <feature>war</feature>
-                                <feature>jaxrs-api</feature>
-                                <feature>kie-aries-blueprint</feature>
-                                <feature>kie-spring</feature>
-                                <feature>kie-camel</feature>
-                            </features>
-                            <includeMvnBasedDescriptors>true</includeMvnBasedDescriptors>
-                            <repository>${project.build.directory}/features-repo</repository>
-                        </configuration>
-                        <inherited>false</inherited>
+                    </execution>
+                    <!-- we will use custom assembly
+                    <execution>
+                        <id>package</id>
+                        <goals>
+                            <goal>instance-create-archive</goal>
+                        </goals>
+                    </execution>
+                    -->
+                </executions>
+                <configuration>
+                    <installedFeatures>
+                        <feature>wrapper</feature>
+                    </installedFeatures>
+                    <bootFeatures>
+                        <feature>joda-time</feature>
+                        <feature>cxf</feature>
+                        <feature>obr</feature>
+                        <feature>config</feature>
+                        <feature>standard</feature>
+                        <feature>package</feature>
+                        <feature>kar</feature>
+                        <feature>ssh</feature>
+                        <feature>management</feature>
+                        <feature>eventadmin</feature>
+                        <feature>activemq-broker-noweb</feature>
+                        <feature>activemq-service</feature>
+                        <feature>camel</feature>
+                        <feature>camel-cxf</feature>
+                        <feature>activemq-camel</feature>
+                        <feature>camel-blueprint</feature>
+                        <feature>war</feature>
+                        <feature>jaxrs-api</feature>
+                        <feature>kie-aries-blueprint</feature>
+                        <feature>kie-spring</feature>
+                        <feature>kie-camel</feature>
+                    </bootFeatures>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>org.apache.karaf</groupId>
+                            <artifactId>demos</artifactId>
+                            <version>${karaf.version}</version>
+                        </artifactItem>
+                    </artifactItems>
+                    <outputDirectory>${project.build.directory}/dependencies/examples/karaf</outputDirectory>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>filter</id>
-                        <phase>generate-resources</phase>
+                        <id>process-resources</id>
                         <goals>
                             <goal>resources</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>copy-system-folder</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/features-repo</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}/system</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>    
-                    <execution>
-                        <id>unpack-unix</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.apache.karaf</groupId>
-                                    <artifactId>apache-karaf</artifactId>
-                                    <type>tar.gz</type>
-                                    <outputDirectory>${project.build.directory}/dependencies/unix</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>unpack-win</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.apache.karaf</groupId>
-                                    <artifactId>apache-karaf</artifactId>
-                                    <type>zip</type>
-                                    <outputDirectory>${project.build.directory}/dependencies/win</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
+                <artifactId>maven-remote-resources-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -299,7 +334,7 @@
                         <configuration>
                             <target name="enable-obr">
                                 <echo message="Updating etc/startup.properties in assembly" />
-                                <concat destfile="${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}/etc/startup.properties" append="true">
+                                <concat destfile="${project.build.directory}/assembly/etc/startup.properties" append="true">
                                     <string value="${line.separator}" />
                                     <fileset file="${project.build.outputDirectory}/startup-obr.properties" />
                                 </concat>
@@ -315,11 +350,11 @@
                         <configuration>
                             <target name="increase-perm-mem">
                                 <echo message="Updating bin/setenv in unix assembly" />
-                                <concat destfile="${project.build.directory}/dependencies/unix/apache-karaf-${karaf.version}/bin/setenv" append="true" eol="unix">
+                                <concat destfile="${project.build.directory}/assembly/bin/setenv" append="true" eol="unix">
                                     <fileset file="${project.build.outputDirectory}/setenv-unix" />
                                 </concat>
                                 <echo message="Updating bin/setenv.bat in windows assembly" />
-                                <concat destfile="${project.build.directory}/dependencies/win/apache-karaf-${karaf.version}/bin/setenv.bat" append="true" eol="dos">
+                                <concat destfile="${project.build.directory}/assembly/bin/setenv.bat" append="true" eol="dos">
                                     <fileset file="${project.build.outputDirectory}/setenv-win" />
                                 </concat>
                             </target>
@@ -349,9 +384,7 @@
                 </executions>
             </plugin>
         </plugins>
-
     </build>
-
 
     <profiles>
         <profile>
@@ -381,6 +414,5 @@
             </build>
         </profile>
     </profiles>
-
 
 </project>
