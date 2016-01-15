@@ -111,7 +111,17 @@
     <!-- Managed dependencies -->
     <dependencyManagement>
         <dependencies>
-            <!-- managed dependencies for all the Camel components -->
+
+            <!-- Apache Karaf BOM -->
+            <dependency>
+                <groupId>org.apache.karaf</groupId>
+                <artifactId>karaf</artifactId>
+                <version>${karaf.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+           <!-- Apache Camel BOM -->
             <dependency>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-parent</artifactId>
@@ -120,6 +130,7 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- managed dependencies for all the Camel components -->
             <dependency>
                 <groupId>org.apache.camel.karaf</groupId>
                 <artifactId>apache-camel</artifactId>
@@ -200,13 +211,6 @@
             </dependency>
 
             <!-- Apache Karaf -->
-            <dependency>
-                <groupId>org.apache.karaf</groupId>
-                <artifactId>karaf</artifactId>
-                <version>${karaf.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <dependency>
                 <groupId>org.apache.karaf.features</groupId>
                 <artifactId>framework</artifactId>
