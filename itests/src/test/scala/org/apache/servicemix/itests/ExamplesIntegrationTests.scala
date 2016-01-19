@@ -84,20 +84,6 @@ class ActivitiExamplesTest extends ExamplesIntegrationTests {
 class CamelExamplesTest extends ExamplesIntegrationTests {
 
   @Test
-  def testCamelDroolsExample = testWithFeature("examples-camel-drools") {
-    expect {
-      logging.containsEvent( _.getLoggerName == "ServeDrink" )
-    }
-  }
-
-  @Test
-  def testCamelDroolsBlueprintExample = testWithFeature("examples-camel-drools-blueprint") {
-    expect {
-      logging.containsEvent( _.getLoggerName == "ServeDrink" )
-    }
-  }
-
-  @Test
   def testCamelOsgiExample : Unit = testWithFeature("examples-camel-osgi") {
     expect {
       logging.containsMessage(line => line.contains("JavaDSL set body"))
@@ -130,13 +116,31 @@ class CamelExamplesTest extends ExamplesIntegrationTests {
 }
 
 /**
+  * Tests for the Camel Drools 5 examples
+  */
+@ExamReactorStrategy(Array(classOf[PerMethod]))
+class CamelDrools5ExamplesTest extends ExamplesIntegrationTests {
+
+  @Test
+  def testCamelDroolsExample = testWithFeature("examples-camel-drools") {
+    expect {
+      logging.containsEvent( _.getLoggerName == "ServeDrink" )
+    }
+  }
+
+  @Test
+  def testCamelDroolsBlueprintExample = testWithFeature("examples-camel-drools-blueprint") {
+    expect {
+      logging.containsEvent( _.getLoggerName == "ServeDrink" )
+    }
+  }
+}
+
+/**
  * Tests for the CXF examples
  */
 @ExamReactorStrategy(Array(classOf[PerMethod]))
 class CxfExamplesTest extends ExamplesIntegrationTests {
-
-  @Configuration
-  override def config() = super.config() ++  cxfWsnExampleTestConfiguration
 
   @Test
   def testCxfJaxRsExample = testWithFeature(false,"examples-cxf-jaxrs", "camel-http") {
@@ -182,6 +186,16 @@ class CxfExamplesTest extends ExamplesIntegrationTests {
   def testCxfWsSecuritySignature = testWithFeature("examples-cxf-ws-security-signature") {
     expect { logging.containsMessage( _.contains("Setting the server's publish address to be /HelloWorldSecurity")) }
   }
+}
+
+/**
+  * Tests for the CXF WSN examples
+  */
+@ExamReactorStrategy(Array(classOf[PerMethod]))
+class CxfWsnExamplesTest extends ExamplesIntegrationTests {
+
+  @Configuration
+  override def config() = super.config() ++  cxfWsnExampleTestConfiguration
 
   @Test
   def testCxfWsn = testWithFeature("examples-cxf-wsn-receive","examples-cxf-wsn-notifier") {
@@ -191,6 +205,7 @@ class CxfExamplesTest extends ExamplesIntegrationTests {
   def cxfWsnExampleTestConfiguration =
     Array(
       editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.username", "smx"),
-      editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.password", "smx")
+      editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.password", "smx"),
+      editConfigurationFilePut("etc/org.ops4j.pax.logging.cfg", "log4j.rootLogger", "DEBUG,stdout,osgi:*")
     )
 }

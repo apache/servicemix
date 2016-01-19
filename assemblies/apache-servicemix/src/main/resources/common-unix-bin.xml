@@ -23,19 +23,11 @@
             <outputDirectory>/</outputDirectory>
             <excludes>
                 <exclude>bin/**</exclude>
-                <exclude>etc/system.properties</exclude>
-                <exclude>etc/org.apache.karaf.features.cfg</exclude>
-                <exclude>etc/org.apache.karaf.features.obr.cfg</exclude>
-                <exclude>etc/org.ops4j.pax.logging.cfg</exclude>
-                <exclude>etc/org.ops4j.pax.url.mvn.cfg</exclude>
-                <exclude>etc/users.properties</exclude>
-                <exclude>etc/custom.properties</exclude>
-                <exclude>etc/jre.properties</exclude>
-                <exclude>etc/jre.properties.cxf</exclude>
                 <exclude>LICENSE</exclude>
                 <exclude>NOTICE</exclude>
-                <exclude>README</exclude>
-                <exclude>RELEASE-NOTES</exclude>
+                <exclude>**/META-INF/**</exclude>
+                <exclude>setenv-*</exclude>
+                <exclude>*-unix-bin.xml</exclude>
             </excludes>
             <fileMode>0644</fileMode>
             <directoryMode>0775</directoryMode>
@@ -59,47 +51,6 @@
             </includes>
             <lineEnding>dos</lineEnding>
             <fileMode>0755</fileMode>
-        </fileSet>
-
-        <!-- Copy README and RELEASE-NOTES from root -->
-        <fileSet>
-            <directory>${project.build.outputDirectory}</directory>
-            <outputDirectory>/</outputDirectory>
-            <includes>
-                <include>README</include>
-                <include>RELEASE*</include>
-            </includes>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0644</fileMode>
-        </fileSet>
-
-        <!-- Copy over everything that needs to get unix line endings -->
-        <fileSet>
-            <directory>${project.build.outputDirectory}/etc</directory>
-            <outputDirectory>/etc/</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0644</fileMode>
-            <directoryMode>0775</directoryMode>
-        </fileSet>
-
-        <fileSet>
-            <directory>${project.build.outputDirectory}/licenses</directory>
-            <outputDirectory>/licenses/</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0644</fileMode>
-            <directoryMode>0775</directoryMode>
-        </fileSet>
-
-        <!-- Copy over filtered resources -->
-        <fileSet>
-            <directory>${project.build.outputDirectory}/etc</directory>
-            <outputDirectory>/etc/</outputDirectory>
-            <includes>
-                <include>*.*</include>
-            </includes>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0644</fileMode>
-            <directoryMode>0775</directoryMode>
         </fileSet>
     </fileSets>
 

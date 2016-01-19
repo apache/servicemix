@@ -51,7 +51,7 @@ trait IntegrationTestConfigurations {
       karafDistributionConfiguration().
         frameworkUrl(
           maven().groupId("org.apache.servicemix").artifactId(artifact).`type`("zip").versionAsInProject()).
-        karafVersion("3.0.2").name("Apache ServiceMix (${name})").
+        karafVersion("4.0.3").name("Apache ServiceMix (${name})").
         unpackDirectory(new File(s"target/pax-exam/${artifact}")).
         useDeployFolder(false),
       keepRuntimeFolder(),
@@ -60,7 +60,7 @@ trait IntegrationTestConfigurations {
         editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg", "org.ops4j.pax.url.mvn.localRepository", LOCAL_REPOSITORY)
       ),
       // TODO: investigate why we need this to get Pax Logging going again
-      editConfigurationFilePut("etc/org.ops4j.pax.logging.cfg", "log4j.rootLogger", "DEBUG,stdout,osgi:*"))
+      editConfigurationFilePut("etc/org.ops4j.pax.logging.cfg", "log4j.rootLogger", "INFO,stdout,osgi:*"))
   }
 
 }

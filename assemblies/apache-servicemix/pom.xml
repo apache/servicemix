@@ -49,7 +49,6 @@
             <artifactId>standard</artifactId>
             <classifier>features</classifier>
             <type>xml</type>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
@@ -195,14 +194,14 @@
                         <id>install-kar</id>
                         <phase>compile</phase>
                         <goals>
-                            <goal>install-kars</goal>
+                            <goal>assembly</goal>
                         </goals>
                     </execution>
                     <!-- we will use custom assembly
                     <execution>
                         <id>package</id>
                         <goals>
-                            <goal>instance-create-archive</goal>
+                            <goal>archive</goal>
                         </goals>
                     </execution>
                     -->
@@ -211,17 +210,30 @@
                     <installedFeatures>
                         <feature>wrapper</feature>
                     </installedFeatures>
+                    <startupFeatures>
+                        <feature>eventadmin</feature>
+                    </startupFeatures>
                     <bootFeatures>
-                        <feature>joda-time</feature>
-                        <feature>cxf</feature>
-                        <feature>obr</feature>
-                        <feature>config</feature>
-                        <feature>standard</feature>
-                        <feature>package</feature>
-                        <feature>kar</feature>
+                        <feature>wrap</feature>
+                        <feature>aries-blueprint</feature>
+                        <feature>shell</feature>
+                        <feature>shell-compat</feature>
+                        <feature>feature</feature>
+                        <feature>jaas</feature>
                         <feature>ssh</feature>
                         <feature>management</feature>
-                        <feature>eventadmin</feature>
+                        <feature>bundle</feature>
+                        <feature>config</feature>
+                        <feature>deployer</feature>
+                        <feature>diagnostic</feature>
+                        <feature>feature</feature>
+                        <feature>instance</feature>
+                        <feature>kar</feature>
+                        <feature>log</feature>
+                        <feature>package</feature>
+                        <feature>service</feature>
+                        <feature>system</feature>
+                        <feature>cxf</feature>
                         <feature>activemq-broker-noweb</feature>
                         <feature>activemq-service</feature>
                         <feature>camel</feature>
@@ -230,10 +242,28 @@
                         <feature>camel-blueprint</feature>
                         <feature>war</feature>
                         <feature>jaxrs-api</feature>
-                        <feature>kie-aries-blueprint</feature>
+                        <feature>camel-xstream</feature>
+                        <!--<feature>jaxrs-api</feature>-->
+                        <!--<feature>kie-aries-blueprint</feature>
                         <feature>kie-spring</feature>
-                        <feature>kie-camel</feature>
+                        <feature>kie-camel</feature>-->
                     </bootFeatures>
+                    <libraries>
+                        <library>xerces-${xerces.version}.jar;url:="wrap:mvn:xerces/xercesImpl/${xerces.version}$Export-Package=org.apache.*;version=${xerces.version}";type:=endorsed;export:=true;delegate:=true</library>
+
+                        <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxp-api-1.4/${servicemix.specs.version};type:=endorsed;export:=true</library>
+                        <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxb-api-2.2/${servicemix.specs.version};type:=endorsed;export:=true</library>
+                        <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/${servicemix.specs.version};type:=endorsed;export:=true</library>
+                        <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/${servicemix.specs.version};type:=endorsed;export:=true</library>
+                        <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${servicemix.specs.version};type:=endorsed;export:=true</library>
+                        <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.2/${servicemix.specs.version};type:=endorsed;export:=true</library>
+                        <library>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xalan/${xalan.bundle.version};type:=endorsed;export:=true</library>
+                        <library>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xalan-serializer/${xalan-serializer.bundle.version};type:=endorsed;export:=true</library>
+                        <library>mvn:javax.annotation/javax.annotation-api/1.2;type:=endorsed;export:=true</library>
+
+                        <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activator/${servicemix.specs.version};type:=default;export:=true</library>
+                        <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.locator/${servicemix.specs.version};type:=default;export:=true</library>
+                    </libraries>
                 </configuration>
             </plugin>
             <plugin>

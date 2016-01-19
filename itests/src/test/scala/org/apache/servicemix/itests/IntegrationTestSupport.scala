@@ -68,7 +68,7 @@ abstract class IntegrationTestSupport extends Await with IntegrationTestConfigur
    */
   def testWithFeature(uninstall: Boolean, names: String*)(block: => Unit) =
     try {
-      val features : Set[Feature] = ( names map { name => featuresService.getFeature(name) } toSet )
+      val features : Set[String] = (names toSet)
       //TODO: Get this working without the extra options - enabling bundle refresh here will mess up the test container
       featuresService.installFeatures(features, util.EnumSet.of(FeaturesService.Option.NoAutoRefreshBundles))
       block

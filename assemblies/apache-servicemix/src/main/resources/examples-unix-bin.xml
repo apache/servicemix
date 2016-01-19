@@ -17,12 +17,6 @@
 -->
 <component>
     <fileSets>
-        <!-- Copy over karaf demo to examples folder -->
-        <fileSet>
-            <directory>${project.build.outputDirectory}/examples/karaf</directory>
-            <outputDirectory>/examples/karaf</outputDirectory>
-            <lineEnding>unix</lineEnding>
-        </fileSet>
 
         <!-- Copy over the examples -->
         <fileSet>
@@ -80,15 +74,5 @@
             </includes>
         </fileSet>
     </fileSets>
-
-    <files>
-        <file>
-            <source>${project.build.outputDirectory}/examples/pom.xml</source>
-            <outputDirectory>/examples/</outputDirectory>
-            <filtered>true</filtered>
-            <fileMode>0644</fileMode>
-            <lineEnding>unix</lineEnding>
-        </file>
-    </files>
 
 </component>

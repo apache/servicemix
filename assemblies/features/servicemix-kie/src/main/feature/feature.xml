@@ -15,12 +15,12 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<features name="servicemix-kie-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.1"
+<features name="servicemix-kie-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.3.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.1 http://karaf.apache.org/xmlns/features/v1.2.1">
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.3.0 http://karaf.apache.org/xmlns/features/v1.3.0">
 
     <feature name="drools6-module" version="${drools6.version}"
-             description="Drools 6 core" start-level="50" resolver="(obr)">
+             description="Drools 6 core" start-level="50">
         <feature>pax-cdi</feature>
         <bundle dependency="true">mvn:org.mvel/mvel2/2.2.4.Final</bundle>
         <bundle dependency="true">mvn:com.google.protobuf/protobuf-java/2.5.0</bundle>
@@ -34,14 +34,14 @@
     </feature>
 
     <feature name="drools6-jpa" version="${drools6.version}"
-             description="Drools 6 JPA support" start-level="50" resolver="(obr)">
+             description="Drools 6 JPA support" start-level="50">
         <feature version="${drools6.version}">drools6-module</feature>
         <feature version="[2.0,3.0)">jpa</feature>
         <bundle>mvn:org.drools/drools-persistence-jpa/${drools6.version}</bundle>
     </feature>
 
     <feature name="jbpm" version="${drools6.version}"
-             description="jBPM Engine support" start-level="50" resolver="(obr)">
+             description="jBPM Engine support" start-level="50">
         <feature version="${drools6.version}">drools6-module</feature>
         <feature version="${drools6.version}">drools6-jpa</feature>
         <!-- commons libs for jbpm -->
@@ -64,13 +64,13 @@
 
     <feature name="kie-aries-blueprint" version="${drools6.version}"
              description="Drools 6 KIE Blueprint support" start-level="50"
-             resolver="(obr)">
+            >
         <feature version="${drools6.version}">jbpm</feature>
         <bundle>mvn:org.kie/kie-aries-blueprint/${drools6.version}</bundle>
     </feature>
 
     <feature name="kie-spring" version="${drools6.version}"
-             description="KIE Spring support" start-level="50" resolver="(obr)">
+             description="KIE Spring support" start-level="50">
         <feature version="${drools6.version}">jbpm</feature>
         <feature version="[3.1,4.0)">spring</feature>
         <feature version="[3.1,4.0)">spring-orm</feature>
@@ -78,7 +78,7 @@
     </feature>
 
     <feature name="kie-camel" version="${drools6.version}"
-             description="KIE Camel support" start-level="50" resolver="(obr)">
+             description="KIE Camel support" start-level="50">
         <feature version="${drools6.version}">kie-spring</feature>
         <feature version="${drools6.version}">jbpm</feature>
 
