@@ -58,6 +58,7 @@
         <drools.bundle.version>${drools.version}_1</drools.bundle.version>
         <drools.version>5.6.0.Final</drools.version>
         <drools6.version>6.2.0.Final</drools6.version>
+        <eclipse.jdt.version>4.4</eclipse.jdt.version>
         <fasterxml.jackson.version>2.6.2</fasterxml.jackson.version>
         <felix.bundlerepository.version>2.0.6</felix.bundlerepository.version>
         <felix.webconsole.plugins.scriptconsole.version>1.0.0</felix.webconsole.plugins.scriptconsole.version>

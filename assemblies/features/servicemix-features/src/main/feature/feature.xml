@@ -125,6 +125,7 @@
     </feature>
 
     <feature name="drools" version="${drools.version}">
+        <bundle dependency="true">mvn:org.eclipse.jdt.core.compiler/ecj/${eclipse.jdt.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.drools/${drools.bundle.version}</bundle>
     </feature>
 
