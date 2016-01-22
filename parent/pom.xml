@@ -80,7 +80,7 @@
         <mvel2.version>2.2.1.Final</mvel2.version>
         <mybatis.version>3.2.8</mybatis.version>
         <osgi.version>5.0.0</osgi.version>
-        <pax.exam.version>4.6.0</pax.exam.version>
+        <pax.exam.version>4.8.0</pax.exam.version>
         <pax.logging.version>1.8.4</pax.logging.version>
         <pax.url.version>2.4.1</pax.url.version>
         <postgresql.version>9.1-901</postgresql.version>
