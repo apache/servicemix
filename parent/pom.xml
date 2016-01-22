@@ -90,6 +90,9 @@
         <servicemix.specs.version>2.5.0</servicemix.specs.version>
         <slf4j.version>1.7.12</slf4j.version>
         <spring.version>3.2.14.RELEASE_1</spring.version>
+        <!-- spring-dm does not support spring 4.x so import-range must be 3.x for the -->
+        <!-- Karaf features file. -->
+        <spring-version-range-karaf>[3.2,4)</spring-version-range-karaf>
         <swagger.bundle.version>1.3.12_1</swagger.bundle.version>
         <swagger.core.bundle.version>1.3.12_2</swagger.core.bundle.version>
         <swagger.version>1.3.12</swagger.version>

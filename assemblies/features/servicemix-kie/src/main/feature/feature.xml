@@ -72,8 +72,8 @@
     <feature name="kie-spring" version="${drools6.version}"
              description="KIE Spring support" start-level="50">
         <feature version="${drools6.version}">jbpm</feature>
-        <feature version="[3.1,4.0)">spring</feature>
-        <feature version="[3.1,4.0)">spring-orm</feature>
+        <feature version="${spring-version-range-karaf}">spring</feature>
+        <feature version="${spring-version-range-karaf}">spring-orm</feature>
         <bundle>mvn:org.kie/kie-spring/${drools6.version}</bundle>
     </feature>
 

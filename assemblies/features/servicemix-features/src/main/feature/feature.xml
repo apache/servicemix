@@ -40,7 +40,7 @@
         <feature version="${cxf.version}">cxf-specs</feature>
         <feature version="${aries.transaction.version}">transaction</feature>
         <feature version="${camel.version}">camel</feature>
-        <feature version="[3.2,3.3)">spring-orm</feature>
+        <feature version="${spring-version-range-karaf}">spring-orm</feature>
         <feature version="${drools.version}">drools</feature>
         <bundle dependency="true">mvn:joda-time/joda-time/${jodatime2.bundle.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.wsdl4j/${wsdl4j.bundle.version}</bundle>
