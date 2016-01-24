@@ -36,7 +36,7 @@
 
     <!-- Activiti support -->
     <feature name="activiti" version="${activiti.version}">
-		<feature version="${jpa.version}">jpa</feature>
+		<feature version="${aries.jpa.version}">jpa</feature>
         <feature version="${cxf.version}">cxf-specs</feature>
         <feature version="${aries.transaction.version}">transaction</feature>
         <feature version="${camel.version}">camel</feature>
