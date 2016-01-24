@@ -57,7 +57,7 @@ class ActivitiExamplesTest extends ExamplesIntegrationTests {
 
   @Test
   // running the test without uninstalling the feature afterwards, cfr. SM-2244
-  def testActivitiCamelExample = testWithFeature(false, "examples-activiti-camel") {
+  def testActivitiCamelExample = testWithFeature(false, "transaction", "examples-activiti-camel") {
     val orderId = "001"
 
     camelProducer.send("file:var/activiti-camel/order", new Processor() {
