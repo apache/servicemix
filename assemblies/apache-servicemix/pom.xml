@@ -241,12 +241,13 @@
                         <feature>activemq-camel</feature>
                         <feature>camel-blueprint</feature>
                         <feature>war</feature>
-                        <feature>jaxrs-api</feature>
                         <feature>camel-xstream</feature>
-                        <!--<feature>jaxrs-api</feature>-->
-                        <!--<feature>kie-aries-blueprint</feature>
+                        <feature>joda-time</feature>
+                        <!--
+                        <feature>kie-aries-blueprint</feature>
                         <feature>kie-spring</feature>
-                        <feature>kie-camel</feature>-->
+                        <feature>kie-camel</feature>
+                        -->
                     </bootFeatures>
                     <libraries>
                         <library>xerces-${xerces.version}.jar;url:="wrap:mvn:xerces/xercesImpl/${xerces.version}$Export-Package=org.apache.*;version=${xerces.version}";type:=endorsed;export:=true;delegate:=true</library>
@@ -314,22 +315,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
-                    <execution>
-                        <id>enable-obr</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target name="enable-obr">
-                                <echo message="Updating etc/startup.properties in assembly" />
-                                <concat destfile="${project.build.directory}/assembly/etc/startup.properties" append="true">
-                                    <string value="${line.separator}" />
-                                    <fileset file="${project.build.outputDirectory}/startup-obr.properties" />
-                                </concat>
-                            </target>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>increase-perm-mem</id>
                         <phase>prepare-package</phase>
