@@ -82,8 +82,7 @@ class Drools6FeatureTest extends Drools6IntegrationTests {
 class Drools6ExamplesTest extends Drools6IntegrationTests {
   
   @Test
-  @Ignore
-  def testDroolsSimpleExample = testWithFeature("examples-drools-simple") {
+  def testDroolsSimpleExample = testWithFeature(false, "examples-drools-simple") {
     expect {
       logging.containsMessage(line => line.contains("Customer [salary=1000, type=POOR]"))
     }
@@ -94,7 +93,7 @@ class Drools6ExamplesTest extends Drools6IntegrationTests {
         logging.containsMessage(line => line.contains("Customer [salary=9001, type=VIP]"))
     }
   }
-  
+
   @Test
   def testDroolsCamelExample = testWithFeature("examples-drools-camel-blueprint") {
     expect {
