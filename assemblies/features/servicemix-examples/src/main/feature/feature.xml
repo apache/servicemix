@@ -139,7 +139,7 @@
         <bundle>mvn:org.apache.servicemix.examples/cxf-ws-rm/${project.version}</bundle>
     </feature>
     <feature name="examples-cxf-wsn-receive" version="${project.version}">
-        <feature version="${camel.version}">camel-jetty</feature>
+        <feature version="${camel.version}">camel-jetty9</feature>
         <feature version="${camel.version}">camel-jms</feature>
         <feature version="${camel.version}">camel-jaxb</feature>
         <feature version="${cxf.version}">cxf-wsn</feature>
