@@ -88,7 +88,7 @@
         <scala-2.10.version>2.10.4</scala-2.10.version>
         <scala-xml.version>1.0.4</scala-xml.version>
         <scala.version>2.11.7</scala.version>
-        <servicemix.specs.version>2.5.0</servicemix.specs.version>
+        <servicemix.specs.version>2.6.0</servicemix.specs.version>
         <slf4j.version>1.7.12</slf4j.version>
         <spring.version>3.2.14.RELEASE_1</spring.version>
         <!-- spring-dm does not support spring 4.x so import-range must be 3.x for the -->
