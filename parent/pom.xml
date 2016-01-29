@@ -151,12 +151,6 @@
                 <classifier>features</classifier>
             </dependency>
 
-            <dependency>
-                <groupId>org.apache.servicemix</groupId>
-                <artifactId>org.apache.servicemix.branding</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
             <!-- Apache ActiveMQ -->
             <dependency>
                 <groupId>org.apache.activemq</groupId>
