@@ -23,8 +23,6 @@
             <outputDirectory>/</outputDirectory>
             <excludes>
                 <exclude>bin/**</exclude>
-                <exclude>LICENSE</exclude>
-                <exclude>NOTICE</exclude>
                 <exclude>**/META-INF/**</exclude>
                 <exclude>setenv-*</exclude>
                 <exclude>*-unix-bin.xml</exclude>
@@ -53,49 +51,5 @@
             <fileMode>0755</fileMode>
         </fileSet>
     </fileSets>
-
-
-    <files>
-        <file>
-            <source>${project.build.directory}/assembly/bin/karaf</source>
-            <outputDirectory>/bin/</outputDirectory>
-            <destName>servicemix</destName>
-            <fileMode>0755</fileMode>
-            <lineEnding>unix</lineEnding>
-        </file>
-        <file>
-            <source>${project.build.directory}/assembly/bin/karaf.bat</source>
-            <outputDirectory>/bin/</outputDirectory>
-            <destName>servicemix.bat</destName>
-            <fileMode>0755</fileMode>
-            <lineEnding>dos</lineEnding>
-        </file>
-        <file>
-            <source>${project.build.directory}/maven-shared-archive-resources/META-INF/LICENSE</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>LICENSE</destName>
-            <fileMode>0644</fileMode>
-            <lineEnding>unix</lineEnding>
-        </file>
-        <file>
-            <source>${project.build.directory}/maven-shared-archive-resources/META-INF/NOTICE</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>NOTICE</destName>
-            <fileMode>0644</fileMode>
-            <lineEnding>unix</lineEnding>
-        </file>
-    </files>
-
-    <dependencySets>
-        <dependencySet>
-            <outputDirectory>/lib</outputDirectory>
-            <outputFileNameMapping>servicemix-version.jar</outputFileNameMapping>
-            <fileMode>0644</fileMode>
-            <includes>
-                <include>org.apache.servicemix:org.apache.servicemix.branding</include>
-            </includes>
-            <useTransitiveDependencies>false</useTransitiveDependencies>
-        </dependencySet>
-    </dependencySets>
 
 </component>

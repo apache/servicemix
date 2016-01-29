@@ -171,6 +171,8 @@
                 <includes>
                     <include>README</include>
                     <include>RELEASE*</include>
+                    <include>LICENSE</include>
+                    <include>NOTICE</include>
                 </includes>
             </resource>
             <resource>
@@ -259,18 +261,41 @@
                         <goals>
                             <goal>unpack</goal>
                         </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix</groupId>
+                                    <artifactId>apache-servicemix-examples</artifactId>
+                                    <version>${project.version}</version>
+                                    <outputDirectory>${project.build.directory}/dependencies/examples</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.karaf</groupId>
+                                    <artifactId>demos</artifactId>
+                                    <version>${karaf.version}</version>
+                                    <outputDirectory>${project.build.directory}/dependencies/examples/karaf</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy</id>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix</groupId>
+                                    <artifactId>org.apache.servicemix.branding</artifactId>
+                                    <version>${project.version}</version>
+                                    <outputDirectory>${project.build.directory}/dependencies/lib</outputDirectory>
+                                    <destFileName>servicemix-version.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <artifactItems>
-                        <artifactItem>
-                            <groupId>org.apache.karaf</groupId>
-                            <artifactId>demos</artifactId>
-                            <version>${karaf.version}</version>
-                        </artifactItem>
-                    </artifactItems>
-                    <outputDirectory>${project.build.directory}/dependencies/examples/karaf</outputDirectory>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -284,7 +309,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-remote-resources-plugin</artifactId>
@@ -292,7 +316,6 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -313,6 +336,23 @@
                                 <concat destfile="${project.build.directory}/assembly/bin/setenv.bat" append="true" eol="dos">
                                     <fileset file="${project.build.outputDirectory}/setenv-win" />
                                 </concat>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-karaf-to-servicemix</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="copy-karaf-to-servicemix">
+                                <echo message="Copying bin/karaf to bin/servicemix" />
+                                <copy file="${project.build.directory}/assembly/bin/karaf"
+                                      tofile="${project.build.directory}/assembly/bin/servicemix" />
+                                <echo message="Copying bin/karaf.bat to bin/servicemix.bat" />
+                                <copy file="${project.build.directory}/assembly/bin/karaf.bat"
+                                      tofile="${project.build.directory}/assembly/bin/servicemix.bat" />
                             </target>
                         </configuration>
                     </execution>

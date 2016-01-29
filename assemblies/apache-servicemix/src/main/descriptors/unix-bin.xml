@@ -24,7 +24,6 @@
 
     <componentDescriptors>
         <componentDescriptor>${project.build.outputDirectory}/common-unix-bin.xml</componentDescriptor>
-        <componentDescriptor>${project.build.outputDirectory}/examples-unix-bin.xml</componentDescriptor>
     </componentDescriptors>
 
 </assembly>
