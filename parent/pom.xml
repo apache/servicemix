@@ -38,7 +38,7 @@
 
     <!-- Properties -->
     <properties>
-        <activemq.version>5.12.1</activemq.version>
+        <activemq.version>5.12.2</activemq.version>
         <activiti.version>5.17.0</activiti.version>
         <akka.version>2.3.9</akka.version>
         <aries.blueprint.core.version>1.4.4</aries.blueprint.core.version>
