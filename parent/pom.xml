@@ -39,7 +39,7 @@
     <!-- Properties -->
     <properties>
         <activemq.version>5.12.1</activemq.version>
-        <activiti.version>5.19.0.1</activiti.version>
+        <activiti.version>5.19.0.2</activiti.version>
         <akka.version>2.3.9</akka.version>
         <aries.blueprint.core.version>1.4.4</aries.blueprint.core.version>
         <aries.proxy.version>1.0.4</aries.proxy.version>
@@ -77,7 +77,7 @@
         <json4s.bundle.version>3.2.11_1</json4s.bundle.version>
         <karaf.version>3.0.5</karaf.version>
         <mvel2.version>2.2.1.Final</mvel2.version>
-        <mybatis.version>3.2.8</mybatis.version>
+        <mybatis.version>3.3.0</mybatis.version>
         <osgi.version>5.0.0</osgi.version>
         <pax.exam.version>4.8.0</pax.exam.version>
         <pax.logging.version>1.8.4</pax.logging.version>
