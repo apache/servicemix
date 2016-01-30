@@ -32,8 +32,6 @@
     <artifactId>cxf-wsn-client</artifactId>
     <name>Apache ServiceMix :: Examples :: CXF WSN :: Client</name>
 
-
-
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -75,6 +73,18 @@
                     <mainClass>org.apache.servicemix.examples.cxf.client.Client</mainClass>
                     <includePluginDependencies>true</includePluginDependencies>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                        <version>${slf4j.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-jdk14</artifactId>
+                        <version>${slf4j.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
