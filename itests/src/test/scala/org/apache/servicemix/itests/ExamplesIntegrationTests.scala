@@ -205,7 +205,6 @@ class CxfWsnExamplesTest extends ExamplesIntegrationTests {
   def cxfWsnExampleTestConfiguration =
     Array(
       editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.username", "smx"),
-      editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.password", "smx"),
-      editConfigurationFilePut("etc/org.ops4j.pax.logging.cfg", "log4j.rootLogger", "DEBUG,stdout,osgi:*")
+      editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.password", "smx")
     )
 }

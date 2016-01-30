@@ -52,7 +52,8 @@ under the License.
             <unmarshal>
                 <jaxb prettyPrint="true" contextPath="org.apache.servicemix.examples.cxf.base"/>
             </unmarshal>
-            <log message="\n\n### YOU GOT MAIL ####\nFrom: ${body.from}\nTo: ${body.to}\nSubject: ${body.subject}?\n${body.body}\n"/>
+            <log message="\n\n### YOU GOT MAIL ####\nFrom: ${body.from}\nTo: ${body.to}\nSubject: ${body.subject}?\n${body.body}\n"
+                 loggingLevel="INFO"/>
         </route>
     </camelContext>
 
