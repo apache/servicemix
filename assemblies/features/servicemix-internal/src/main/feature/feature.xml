@@ -26,8 +26,15 @@
     <repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
 
     <!-- workaround for SM-2469 -->
-    <feature name="joda-time" hidden="true">
+    <feature name="override-joda-time" hidden="true">
         <bundle start-level='10'>mvn:joda-time/joda-time/${jodatime2.bundle.version}</bundle>
+    </feature>
+
+    <!-- workaround for SM-2824 -->
+    <feature name="override-fasterxml-jackson-core" hidden="true">
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/${fasterxml.jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${fasterxml.jackson.version}</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml.jackson.version}</bundle>
     </feature>
 
 </features>
