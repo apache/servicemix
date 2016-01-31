@@ -212,7 +212,6 @@
                         <feature>wrapper</feature>
                     </installedFeatures>
                     <bootFeatures>
-                        <feature>joda-time</feature>
                         <feature>cxf</feature>
                         <feature>obr</feature>
                         <feature>config</feature>
@@ -230,9 +229,9 @@
                         <feature>camel-blueprint</feature>
                         <feature>war</feature>
                         <feature>jaxrs-api</feature>
-                        <feature>kie-aries-blueprint</feature>
-                        <feature>kie-spring</feature>
-                        <feature>kie-camel</feature>
+                        <!-- To ensure the overriden bundles exist in 'system' -->
+                        <feature>override-joda-time</feature>
+                        <feature>override-fasterxml-jackson-core</feature>
                     </bootFeatures>
                 </configuration>
             </plugin>
