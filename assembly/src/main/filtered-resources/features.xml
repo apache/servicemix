@@ -135,4 +135,9 @@
         <bundle>mvn:org.apache.felix/org.apache.felix.webconsole.plugins.scriptconsole/${felix.webconsole.plugins.scriptconsole.version}</bundle>
    </feature>
 
+    <!-- workaround before SM-2179 get addressed on CXF side-->
+    <feature name="jaxrs-api">
+        <bundle start-level='10'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr339-api-2.0/${servicemix.specs.version}</bundle>
+    </feature>
+
 </features>

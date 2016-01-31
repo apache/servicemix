@@ -154,7 +154,6 @@
                                 <descriptor>file:${project.build.outputDirectory}/examples.xml</descriptor>
                             </descriptors>
                             <features>
-                                <feature>joda-time</feature>
                                 <feature>cxf</feature>
                                 <feature>obr</feature>
                                 <feature>config</feature>
@@ -170,6 +169,9 @@
                                 <feature>camel-blueprint</feature>
                                 <feature>war</feature>
                                 <feature>jaxrs-api</feature>
+                                <!-- To ensure the overriden bundles exist in 'system' -->
+                                <feature>override-joda-time</feature>
+                                <feature>override-fasterxml-jackson-core</feature>
                             </features>
                             <includeMvnBasedDescriptors>true</includeMvnBasedDescriptors>
                             <repository>${project.build.directory}/features-repo</repository>
