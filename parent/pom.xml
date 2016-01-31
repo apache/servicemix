@@ -58,7 +58,7 @@
         <drools.bundle.version>${drools.version}_1</drools.bundle.version>
         <drools.version>5.6.0.Final</drools.version>
         <drools6.version>6.2.0.Final</drools6.version>
-        <fasterxml.jackson.version>2.6.2</fasterxml.jackson.version>
+        <fasterxml.jackson.version>2.6.3</fasterxml.jackson.version>
         <felix.bundlerepository.version>2.0.4</felix.bundlerepository.version>
         <felix.webconsole.plugins.scriptconsole.version>1.0.0</felix.webconsole.plugins.scriptconsole.version>
         <geronimo-atinject.version>1.0</geronimo-atinject.version>
