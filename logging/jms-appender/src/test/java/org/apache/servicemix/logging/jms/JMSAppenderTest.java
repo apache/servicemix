@@ -46,10 +46,16 @@ public class JMSAppenderTest extends CamelTestSupport {
     }
 
     @Before
-    public void setupBrokerAndAppender() throws Exception {
+    public void setupAppender() throws Exception {
         appender = new JMSAppender();
         appender.setDestinationName(EVENTS_TOPIC);
         appender.onBind(new ActiveMQConnectionFactory(broker.getVmConnectorURI().toString() + "?create=false"));
+    }
+    
+    @After
+    public void closeAppender() throws Exception {
+        appender.onUnbind(null);
+        appender.close();
     }
 
     @AfterClass
