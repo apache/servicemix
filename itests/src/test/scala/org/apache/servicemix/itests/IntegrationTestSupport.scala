@@ -112,7 +112,7 @@ abstract class IntegrationTestSupport extends Await with IntegrationTestConfigur
 
     def clear = buffer.clear
 
-    def containsMessage(predicate: String => Boolean) : Option[String] = containsEvent(event => predicate(event.getMessage)) map ( _.getMessage )
+    def containsMessage(predicate: String => Boolean) : Option[String] = containsEvent(event => if(event != null) predicate(event.getMessage) else false) map ( _.getMessage )
 
     def containsEvent(predicate: PaxLoggingEvent => Boolean) : Option[PaxLoggingEvent] = buffer find (predicate)
 
