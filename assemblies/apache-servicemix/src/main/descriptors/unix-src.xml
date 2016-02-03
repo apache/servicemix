@@ -29,6 +29,8 @@
                 <include>BUILDING</include>
                 <include>README</include>
                 <include>RELEASE*</include>
+                <include>LICENSE</include>
+                <include>NOTICE</include>
             </includes>
             <lineEnding>unix</lineEnding>
         </fileSet>
@@ -104,20 +106,4 @@
             <lineEnding>unix</lineEnding>
         </fileSet>
     </fileSets>
-    <files>
-        <file>
-            <source>${project.build.directory}/maven-shared-archive-resources/META-INF/LICENSE</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>LICENSE</destName>
-            <fileMode>0644</fileMode>
-            <lineEnding>unix</lineEnding>
-        </file>
-        <file>
-            <source>${project.build.directory}/maven-shared-archive-resources/META-INF/NOTICE</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>NOTICE</destName>
-            <fileMode>0644</fileMode>
-            <lineEnding>unix</lineEnding>
-        </file>
-    </files>
 </assembly>
