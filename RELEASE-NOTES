@@ -55,6 +55,7 @@ Apache ServiceMix 7.0.0.M1 is a new preview release of the project, which includ
     * [SM-2845] - Installation of the cxf-wsn feature fails accidentally
     * [SM-2848] - cxf-wsn-client client fails due to wrong slf4j version
     * [SM-2851] - Some itests fail accidentally with NPE
+    * [SM-2854] - Doclint for Javadoc fails on JDK 8
 
 ** Task
     * [SM-2355] - Remove the workaround jaxrs-api feature
