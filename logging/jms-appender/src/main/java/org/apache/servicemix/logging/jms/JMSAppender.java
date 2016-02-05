@@ -16,14 +16,22 @@
  */
 package org.apache.servicemix.logging.jms;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
 import org.ops4j.pax.logging.spi.PaxAppender;
 import org.ops4j.pax.logging.spi.PaxLoggingEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.jms.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class JMSAppender implements PaxAppender {
     private static final String PACKAGE = JMSAppender.class.getPackage().getName();
@@ -31,8 +39,6 @@ public class JMSAppender implements PaxAppender {
 
     private static final String DEFAULT_EVENT_FORMAT = "default";
     private static final String LOGSTASH_EVENT_FORMAT = "logstash";
-
-    private boolean serviceAvailable;
 
     private ConnectionFactory jmsConnectionFactory;
     private Connection connection;
@@ -47,43 +53,48 @@ public class JMSAppender implements PaxAppender {
     public void close() {
         closeJMSResources();
     }
+
     public void onBind(ConnectionFactory service){
+        closeJMSResources();
         jmsConnectionFactory = service;
-        try {
-            connection = getOrCreateConnection();
-            session = getOrCreateSession();
-            producer = getOrCreatePublisher();
-            serviceAvailable = true;
-        } catch (JMSException e) {
-            serviceAvailable = false;
-        }
+        // Connect early to fail fast in case of config errors
+        executor.execute(new Runnable() {
+            
+            @Override
+            public void run() {
+                try {
+                    getOrCreateConnection();
+                } catch (JMSException e) {
+                    LOG.warn("Exception connecting to broker - reinitializing JMS resources to recover",e);
+                    closeJMSResources();
+                }
+            }
+        });
     }
+
     public void onUnbind(ConnectionFactory service){
-        serviceAvailable = false;
         closeJMSResources();
     }
 
     public void doAppend(final PaxLoggingEvent paxLoggingEvent) {
-        if (exclude(paxLoggingEvent) || !serviceAvailable) {
+        if (exclude(paxLoggingEvent) || jmsConnectionFactory == null) {
             return;
         }
-            Runnable worker = new Runnable() {
-                public void run() {
-                    if(serviceAvailable){
-                        try {
-                            // Send message to the destination
-                            TextMessage message = getOrCreateSession().createTextMessage();
-                            message.setText(format.toString(paxLoggingEvent));
-                            MessageProducer producer = getOrCreatePublisher();
-                            producer.send(message);
-                        } catch (JMSException e) {
-                            LOG.warn("Exception caught while sending log event - reinitializing JMS resources to recover", e);
-                            close();
-                        }
-                    }
+        Runnable worker = new Runnable() {
+            public void run() {
+                try {
+                    // Send message to the destination
+                    TextMessage message = getOrCreateSession().createTextMessage();
+                    message.setText(format.toString(paxLoggingEvent));
+                    MessageProducer producer = getOrCreatePublisher();
+                    producer.send(message);
+                } catch (JMSException e) {
+                    LOG.warn("Exception caught while sending log event - reinitializing JMS resources to recover",e);
+                    closeJMSResources();
                 }
-            };
-            executor.execute(worker);
+            }
+        };
+        executor.execute(worker);
     }
 
     private static boolean exclude(PaxLoggingEvent event) {
@@ -109,10 +120,11 @@ public class JMSAppender implements PaxAppender {
             format = new DefaultLoggingEventFormat();
         }
     }
-
+    
     protected Connection getOrCreateConnection() throws JMSException {
         if (connection == null) {
             connection = jmsConnectionFactory.createConnection();
+            connection.start();
         }
         return connection;
     }
@@ -135,25 +147,28 @@ public class JMSAppender implements PaxAppender {
     }
 
     private void closeJMSResources() {
+        close(producer);
+        close(session);
+        close(connection);
+        producer = null;
+        session = null;
+        connection = null;
+    }
+    
+    private static void close(Object obj) {
+        if (obj == null) {
+            return;
+        }
         try {
-            if (producer != null) {
-                producer.close();
-                producer = null;
-            }
-            if (session != null) {
-                session.close();
-                session = null;
-            }
-            if (connection != null) {
-                connection.close();
-                connection = null;
+            if (obj instanceof MessageProducer) {
+                ((MessageProducer)obj).close();
+            } else if (obj instanceof Session) {
+                ((Session)obj).close();
+            } else if (obj instanceof Connection) {
+                ((Connection)obj).close();
             }
         } catch (JMSException e) {
             LOG.debug("Exception caught while closing JMS resources", e);
-            // let's just set all the fields to null so stuff will be re-created
-            producer = null;
-            session = null;
-            connection = null;
         }
     }
 }
