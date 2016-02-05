@@ -82,8 +82,6 @@ public class JMSAppenderTest extends CamelTestSupport {
         appender.doAppend(MockEvents.createInfoEvent());
 
         assertMockEndpointsSatisfied();
-
-
     }
 
     @Override
