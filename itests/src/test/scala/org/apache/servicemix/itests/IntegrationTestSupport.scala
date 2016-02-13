@@ -64,13 +64,23 @@ abstract class IntegrationTestSupport extends Await with IntegrationTestConfigur
   def testWithFeature(names: String*)(block: => Unit) : Unit = testWithFeature(true, names:_*)(block)
 
   /**
-   * Install a feature and run a block of code.  Afterwards, uninstall the feature again if indicated.
+    * Install a feature and run a block of code.  Afterwards, uninstall the feature again if indicated.
+    */
+  def testWithFeature(uninstall: Boolean, names: String*)(block: => Unit) : Unit = testWithFeature(uninstall, false, names:_*)(block)
+
+  /**
+   * Install a feature and run a block of code. Install features separately if indicated.
+   * Afterwards, uninstall the feature again if indicated.
    */
-  def testWithFeature(uninstall: Boolean, names: String*)(block: => Unit) =
+  def testWithFeature(uninstall: Boolean, separateInstall: Boolean,  names: String*)(block: => Unit) =
     try {
-      val features : Set[String] = (names toSet)
       //TODO: Get this working without the extra options - enabling bundle refresh here will mess up the test container
-      featuresService.installFeatures(features, util.EnumSet.of(FeaturesService.Option.NoAutoRefreshBundles))
+      if (separateInstall) {
+        names foreach {featuresService.installFeature(_, util.EnumSet.of(FeaturesService.Option.NoAutoRefreshBundles))}
+      } else {
+        val features : Set[String] = (names toSet)
+        featuresService.installFeatures(features, util.EnumSet.of(FeaturesService.Option.NoAutoRefreshBundles))
+      }
       block
     } finally {
        if(uninstall) names foreach { featuresService.uninstallFeature }
