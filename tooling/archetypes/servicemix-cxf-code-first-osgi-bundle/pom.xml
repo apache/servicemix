@@ -24,7 +24,7 @@
     <parent>
         <artifactId>archetypes</artifactId>
         <groupId>org.apache.servicemix.tooling</groupId>
-        <version>5.5.3-SNAPSHOT</version>
+        <version>5.5.3</version>
     </parent>
 
     <groupId>org.apache.servicemix.tooling.archetypes</groupId>
