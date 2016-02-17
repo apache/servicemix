@@ -15,6 +15,53 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.6.0
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 5.6.0 is a new minor release of the project, which includes:
+
+- Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
+- Apache Camel 2.16.2 (http://camel.apache.org)
+- Apache CXF 3.1.4 (http://cxf.apache.org)
+- Apache Karaf 2.4.4 (http://karaf.apache.org)
+
+
+ Changelog
+ ---------
+
+** Bug
+    * [SM-2251] - Intermittent test failure in JMSAppenderTest
+    * [SM-2824] - Missing dependencies in system folder
+    * [SM-2848] - cxf-wsn-client client fails due to wrong slf4j version
+    * [SM-2850] -  JMSAppenderTest.testReconnectToBroker fails
+
+** Improvement
+    * [SM-2395] - Download pages should correctly refer the documentation pages
+
+** Task
+    * [SM-2700] - Increase the java compilance level to 1.7
+    * [SM-2707] - Upgrade to Activiti 5.19.0
+    * [SM-2727] - Upgrade to Jackson 2.6.2
+    * [SM-2741] - Upgrade to Apache Camel 2.16.1 and Apache CXF 3.1.4
+    * [SM-2752] - Upgrade to depends-maven-plugin 1.3.1
+    * [SM-2753] - Use maven properties like `${project.build.outputDirectory}` instead of `target/classes`
+    * [SM-2754] - Release Apache ServiceMix 5.6.0
+    * [SM-2763] - Upgrade to Activiti 5.19.0.1
+    * [SM-2778] - Upgrade to Apache ActiveMQ 5.12.2
+    * [SM-2806] - Ensure ServiceMix uses Apache Commons Collections 3.2.2
+    * [SM-2808] - Avoid warnings about 'parent.relativePath' during the maven build
+    * [SM-2816] - Upgrade to Apache Karaf 2.4.4
+    * [SM-2821] - Upgrade to Apache Camel 2.16.2
+    * [SM-2844] - Upgrade to Activiti 5.19.0.2
+    * [SM-2849] - Upgrade to Jackson 2.6.3
+    * [SM-2858] - Upgrade to Apache ActiveMQ 5.12.3
+
 
                       Apache ServiceMix 5.5.1
                   ================================
