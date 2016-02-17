@@ -16,6 +16,42 @@
  */
 
 
+                      Apache ServiceMix 5.5.3
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 5.5.3 is a new patch release, which includes a few bug fixes and
+a new version of Apache Karaf and Apache ActiveMQ. This release includes:
+
+- Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
+- Apache Camel 2.15.5 (http://camel.apache.org)
+- Apache CXF 3.0.6 (http://cxf.apache.org)
+- Apache Karaf 2.4.4 (http://karaf.apache.org)
+
+
+ Changelog
+ ---------
+
+** Bug
+    * [SM-2848] - cxf-wsn-client client fails due to wrong slf4j version
+
+** Improvement
+    * [SM-2395] - Download pages should correctly refer the documentation pages
+
+** Task
+    * [SM-2778] - Upgrade to Apache ActiveMQ 5.12.2
+    * [SM-2780] - Release Apache ServiceMix 5.5.3
+    * [SM-2806] - Ensure ServiceMix uses Apache Commons Collections 3.2.2
+    * [SM-2808] - Avoid warnings about 'parent.relativePath' during the maven build
+    * [SM-2816] - Upgrade to Apache Karaf 2.4.4
+    * [SM-2858] - Upgrade to Apache ActiveMQ 5.12.3
+
+
                       Apache ServiceMix 5.5.2
                   ================================
  Overview
