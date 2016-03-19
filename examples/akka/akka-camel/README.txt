@@ -76,8 +76,8 @@ yourself, complete the following steps:
    features into the container first to add support for the Camel Scala DSL and
    for Akka itself.
 
-     features:install camel-scala
-     features:install akka
+     feature:install camel-scala
+     feature:install akka
 
 2. Build the example by opening a command prompt, changing directory to
    examples/akka/akka-camel (this example) and entering the following Maven
@@ -96,7 +96,7 @@ yourself, complete the following steps:
 3. Install the example by entering the following command in
    the ServiceMix console:
    
-     osgi:install mvn:org.apache.servicemix.examples/akka-camel/${project.version}
+     bundle:install mvn:org.apache.servicemix.examples/akka-camel/${project.version}
        
 4. Once the bundle has been started, you will see a var/akka-camel/input directory
    under your ServiceMix installation directory.  There are some sample files available
@@ -112,7 +112,7 @@ Stopping and Uninstalling the Example
 -------------------------------------
 First, find the bundle id for the deployed example bundle by doing
 
-  osgi:list
+  bundle:list
 
 and looking for a line that looks like this one
 
@@ -124,10 +124,10 @@ In the above case, the bundle id would be 263
 To stop the example, enter the following command in the ServiceMix
 console:
 
-  osgi:stop <bundle_id>
+  bundle:stop <bundle_id>
 
 
 To uninstall the example, enter one of the following commands in
 the ServiceMix console:
 
-  osgi:uninstall <bundle_id>
+  bundle:uninstall <bundle_id>

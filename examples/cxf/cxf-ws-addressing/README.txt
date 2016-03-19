@@ -211,7 +211,7 @@ a. Add org.apache.cxf.osgi.cfg to the /etc directory and
 b. Use shell config commands, for example:
 
      config:edit org.apache.cxf.osgi   
-     config:propset org.apache.cxf.servlet.context /super
+     config:property-set org.apache.cxf.servlet.context /super
      config:update
 
 
@@ -225,7 +225,7 @@ yourself, complete the following steps:
    examples-cxf-ws-addressing feature by entering the following
    command in the ServiceMix console:
 
-     features:uninstall examples-cxf-ws-addressing
+     feature:uninstall examples-cxf-ws-addressing
 
    
 2. Build the example by opening a command prompt, changing directory
@@ -245,7 +245,7 @@ yourself, complete the following steps:
 3. Install the example by entering the following command in
    the ServiceMix console:
    
-     features:install examples-cxf-ws-addressing
+     feature:install examples-cxf-ws-addressing
        
    It makes use of the ServiceMix features facility. For more
    information about the features facility, see the README.txt file
@@ -271,7 +271,7 @@ in the ServiceMix console (Note, the text you are typing will
 intermingle with the output being logged. This is nothing to worry
 about.):
 
-  osgi:list
+  bundle:list
 
 At the end of the listing, you should see an entry similar to the
 following:
@@ -283,20 +283,20 @@ In this case, the bundle ID is 171.
 To stop the example, enter the following command in the ServiceMix
 console:
 
-  osgi:stop <bundle_id>
+  bundle:stop <bundle_id>
 
 For example:
 
-  osgi:stop 171
+  bundle:stop 171
 
 To uninstall the example, enter one of the following commands in
 the ServiceMix console:
 
-  features:uninstall examples-cxf-ws-addressing
+  feature:uninstall examples-cxf-ws-addressing
  
 or
  
-  osgi:uninstall <bundle_id>
+  bundle:uninstall <bundle_id>
   
 
 Viewing the Log Entries

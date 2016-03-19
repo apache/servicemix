@@ -170,11 +170,11 @@ A. Using a Prebuilt Deployment Bundle: Quick and Easy
 To install and run a prebuilt version of this example, enter the
 following command in the ServiceMix console:
 
-  features:install examples-camel-sql-derby
+  feature:install examples-camel-sql-derby
 or
-  features:install examples-camel-sql-h2
+  feature:install examples-camel-sql-h2
 or
-  features:install examples-camel-sql-pgsql
+  feature:install examples-camel-sql-pgsql
   
 This command makes use of the ServiceMix features facility. For more
 information about the features facility, see the README.txt file in the
@@ -199,11 +199,11 @@ yourself, complete the following steps:
    described above, you must first uninstall the examples feature
    by entering the following command in the ServiceMix console:
 
-     features:uninstall examples-camel-sql-derby
+     feature:uninstall examples-camel-sql-derby
    or
-     features:uninstall examples-camel-sql-h2
+     feature:uninstall examples-camel-sql-h2
    or
-     features:uninstall examples-camel-sql-pgsql
+     feature:uninstall examples-camel-sql-pgsql
 
 2. Build the example by opening a command prompt, changing directory to
    examples/camel/camel-sql (this example) and entering the following Maven
@@ -222,11 +222,11 @@ yourself, complete the following steps:
 3. Install the example by entering the following command in
    the ServiceMix console:
 
-      features:install examples-camel-sql-derby
+      feature:install examples-camel-sql-derby
     or
-      features:install examples-camel-sql-h2
+      feature:install examples-camel-sql-h2
     or
-      features:install examples-camel-sql-pgsql
+      feature:install examples-camel-sql-pgsql
        
    It makes use of the ServiceMix features facility. For more information
    about the features facility, see the README.txt file in the examples
@@ -247,7 +247,7 @@ Stopping and Uninstalling the Example
 To stop the example, enter the following command in the ServiceMix
 console:
 
-  osgi:stop <bundle_id>
+  bundle:stop <bundle_id>
 
 For information on how to find the bundle_id assigned to the example,
 see step 3 in the "Updating and Redeploying the Properties File 
@@ -256,13 +256,13 @@ from the Console" section above.
 To uninstall the example, enter one of the following commands in
 the ServiceMix console:
 
-  features:uninstall examples-camel-sql-derby
+  feature:uninstall examples-camel-sql-derby
 or
-  features:uninstall examples-camel-sql-h2
+  feature:uninstall examples-camel-sql-h2
 or
-  features:uninstall examples-camel-sql-pgsql
+  feature:uninstall examples-camel-sql-pgsql
 or
-  osgi:uninstall <bundle_id>
+  bundle:uninstall <bundle_id>
   
 
 Viewing the Log Entries
