@@ -107,7 +107,7 @@ A. Using a Prebuilt Deployment Bundle: Quick and Easy
 To install and run a prebuilt version of this example, enter
 the following command in the ServiceMix console:
 
-  features:install examples-camel-cxf-rest
+  feature:install examples-camel-cxf-rest
 
 This command makes use of the ServiceMix features facility. For
 more information about the features facility, see the README.txt
@@ -134,7 +134,7 @@ yourself, complete the following steps:
    described above, you must first uninstall the examples-camel-cxf-rest
    feature by entering the following command in the ServiceMix console:
 
-     features:uninstall examples-camel-cxf-rest
+     feature:uninstall examples-camel-cxf-rest
 
 2. Build the example by opening a command prompt, changing directory to
    examples/camel/camel-cxf-rest (this example) and entering the following Maven
@@ -153,7 +153,7 @@ yourself, complete the following steps:
 3. Install the example by entering the following command in
    the ServiceMix console:
 
-     features:install examples-camel-cxf-rest
+     feature:install examples-camel-cxf-rest
 
    It makes use of the ServiceMix features facility. For more information
    about the features facility, see the README.txt file in the examples
@@ -171,7 +171,7 @@ following command in the ServiceMix console (Note, the text you are
 typing will intermingle with the output being logged. This is nothing
 to worry about.):
 
-  osgi:list
+  bundle:list
 
 At the end of the listing, you should see an entry similar to the
 following:
@@ -184,20 +184,20 @@ In this case, the bundle IDs are 173 and 175.
 To stop a bundle, enter the following command in the ServiceMix
 console:
 
-  osgi:stop <bundle_id>
+  bundle:stop <bundle_id>
 
 For example:
 
-  osgi:stop 173
+  bundle:stop 173
 
 To uninstall the example, enter one of the following commands at
 the ServiceMix console:
 
-  features:uninstall examples-camel-cxf-rest
+  feature:uninstall examples-camel-cxf-rest
 
 or
 
-  osgi:uninstall <bundle_id>
+  bundle:uninstall <bundle_id>
 
 
 Viewing the Log Entries

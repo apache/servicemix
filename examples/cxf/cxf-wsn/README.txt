@@ -93,7 +93,7 @@ With the following lines:
 
 Head back to the ServiceMix console and enter the following commands:
  
- features:install examples-cxf-wsn-receive
+ feature:install examples-cxf-wsn-receive
   
 This command makes use of the ServiceMix features facility. For
 more information about the features facility, see the README.txt
@@ -122,7 +122,7 @@ Running the notifier
 1. To run the notifier head back to the ServiceMix console
    and enter the following commands:
 
-     features:install examples-cxf-wsn-notifier
+     feature:install examples-cxf-wsn-notifier
 
    This command makes use of the ServiceMix features facility. For
    more information about the features facility, see the README.txt
@@ -153,8 +153,8 @@ yourself, complete the following steps:
    described above, you must first uninstall the previous features
    by entering the following command in the ServiceMix console:
 
-     features:uninstall examples-cxf-wsn-receive
-     features:uninstall examples-cxf-wsn-notifier
+     feature:uninstall examples-cxf-wsn-receive
+     feature:uninstall examples-cxf-wsn-notifier
 
 2. Build the example by opening a command prompt, changing directory to
    examples/cxf/cxf-wsn (this example) and entering the following Maven
@@ -179,7 +179,7 @@ To stop the example, you must first know the bundle IDs that ServiceMix
 has assigned to it. To get the bundle IDs, enter the following command
 at the ServiceMix console:
 
-  osgi:list
+  bundle:list
 
 At the end of the listing, you should see an entry similar to the
 following:
@@ -193,23 +193,23 @@ In this case, the bundle IDs are 172,173 and 174.
 To stop the example, enter the following command for every bundle
 at the ServiceMix console:
 
-  osgi:stop <bundle_id>
+  bundle:stop <bundle_id>
 
 For example:
 
-  osgi:stop 172
-  osgi:stop 173
-  osgi:stop 174
+  bundle:stop 172
+  bundle:stop 173
+  bundle:stop 174
 
 To uninstall the example, enter one of the following commands in
 the ServiceMix console:
 
-  features:uninstall examples-cxf-wsn-receive
-  features:uninstall examples-cxf-wsn-notifier
+  feature:uninstall examples-cxf-wsn-receive
+  feature:uninstall examples-cxf-wsn-notifier
  
 or for every bundle:
  
-  osgi:uninstall <bundle_id>
+  bundle:uninstall <bundle_id>
   
 
 Viewing the Log Entries

@@ -91,7 +91,7 @@ A. Using a Prebuilt Deployment Bundle: Quick and Easy
 To install and run a prebuilt version of this example, enter the
 following command in the ServiceMix console:
 
-  features:install examples-camel-blueprint
+  feature:install examples-camel-blueprint
   
 This command makes use of the ServiceMix features facility. For more
 information about the features facility, see the README.txt file in the
@@ -131,7 +131,7 @@ properties placeholder in the blueprint.xml from console as follows:
        to it. To get the bundle ID, enter the following command in the
        ServiceMix console:
 
-         osgi:list
+         bundle:list
 
       At the end of the listing, you should see an entry similar to
       the following:
@@ -143,7 +143,7 @@ properties placeholder in the blueprint.xml from console as follows:
    (ii) Enter the following command in the ServiceMix console to
         restart the bundle:
     
-          osgi:restart <bundle_id>
+          bundle:restart <bundle_id>
   
   The prefix of the output should change, and the output should look
   similar to the following:
@@ -165,7 +165,7 @@ yourself, complete the following steps:
    described above, you must first uninstall the examples-camel-blueprint
    feature by entering the following command in the ServiceMix console:
 
-     features:uninstall examples-camel-blueprint
+     feature:uninstall examples-camel-blueprint
 
 2. Build the example by opening a command prompt, changing directory to
    examples/camel/camel-blueprint (this example) and entering the following Maven
@@ -184,7 +184,7 @@ yourself, complete the following steps:
 3. Install the example by entering the following command in
    the ServiceMix console:
    
-     features:install examples-camel-blueprint
+     feature:install examples-camel-blueprint
        
    It makes use of the ServiceMix features facility. For more information
    about the features facility, see the README.txt file in the examples
@@ -210,7 +210,7 @@ Stopping and Uninstalling the Example
 To stop the example, enter the following command in the ServiceMix
 console:
 
-  osgi:stop <bundle_id>
+  bundle:stop <bundle_id>
 
 For information on how to find the bundle_id assigned to the example,
 see step 3 in the "Updating and Redeploying the Properties File 
@@ -219,11 +219,11 @@ from the Console" section above.
 To uninstall the example, enter one of the following commands in
 the ServiceMix console:
 
-  features:uninstall examples-camel-blueprint
+  feature:uninstall examples-camel-blueprint
  
 or
  
-  osgi:uninstall <bundle_id>
+  bundle:uninstall <bundle_id>
   
 
 Viewing the Log Entries

@@ -100,7 +100,7 @@ A. Using a Prebuilt Deployment Bundle: Quick and Easy
 To install and run a prebuilt version of this example, enter
 the following command in the ServiceMix console:
 
-  features:install examples-cxf-ws-security-osgi
+  feature:install examples-cxf-ws-security-osgi
   
 This command makes use of the ServiceMix features facility. For
 more information about the features facility, see the README.txt
@@ -162,7 +162,7 @@ a. Add org.apache.cxf.osgi.cfg to the /etc directory and set
 b. Use shell config commands, for example :
    
      config:edit org.apache.cxf.osgi   
-     config:propset org.apache.cxf.servlet.context /super
+     config:property-set org.apache.cxf.servlet.context /super
      config:update
 
 
@@ -175,7 +175,7 @@ yourself, complete the following steps:
    described above, you must first uninstall the examples-cxf-ws-security-osgi
    feature by entering the following command in the ServiceMix console:
 
-     features:uninstall examples-cxf-ws-security-osgi
+     feature:uninstall examples-cxf-ws-security-osgi
 
    
 2. Build the example by opening a command prompt, changing directory to
@@ -195,7 +195,7 @@ yourself, complete the following steps:
 3. Install the example by entering the following command in
    the ServiceMix console:
    
-     features:install examples-cxf-ws-security-osgi
+     feature:install examples-cxf-ws-security-osgi
        
    It makes use of the ServiceMix features facility. For more
    information about the features facility, see the README.txt file
@@ -219,7 +219,7 @@ To stop the example, you must first know the bundle ID that ServiceMix
 has assigned to it. To get the bundle ID, enter the following command
 at the ServiceMix console:
 
-  osgi:list
+  bundle:list
 
 At the end of the listing, you should see an entry similar to the
 following:
@@ -231,20 +231,20 @@ In this case, the bundle ID is 170.
 To stop the example, enter the following command at the ServiceMix
 console:
 
-  osgi:stop <bundle_id>
+  bundle:stop <bundle_id>
 
 For example:
 
-  osgi:stop 170
+  bundle:stop 170
 
 To uninstall the example, enter one of the following commands in
 the ServiceMix console:
 
-  features:uninstall examples-cxf-ws-security-osgi
+  feature:uninstall examples-cxf-ws-security-osgi
  
 or
  
-  osgi:uninstall <bundle_id>
+  bundle:uninstall <bundle_id>
   
 
 Viewing the Log Entries

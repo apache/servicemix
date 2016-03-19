@@ -114,7 +114,7 @@ Stopping and Uninstalling the Example
 -------------------------------------
 First, find the bundle id for the deployed example bundle by doing
 
-  osgi:list
+  bundle:list
 
 and looking for a line that looks like this one
 
