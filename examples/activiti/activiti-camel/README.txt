@@ -80,7 +80,7 @@ yourself, complete the following steps:
 1. Before being able to run this example, you have to install some additional
    features into the container first to add support for the Activiti.
 
-     features:install activiti
+     feature:install activiti
 
 2. Build the example by opening a command prompt, changing directory to
    examples/activiti/activiti-camel (this example) and entering the following Maven
@@ -99,7 +99,7 @@ yourself, complete the following steps:
 3. Install the example by entering the following command in
    the ServiceMix console:
    
-     osgi:install mvn:org.apache.servicemix.examples/activiti-camel/${project.version}
+     bundle:install mvn:org.apache.servicemix.examples/activiti-camel/${project.version}
        
 4. Once the bundle has been started, you will see a var/activiti-camel/order directory
    under your ServiceMix installation directory.  If you create files in that directory,
@@ -125,7 +125,7 @@ Stopping and Uninstalling the Example
 -------------------------------------
 First, find the bundle id for the deployed example bundle by doing
 
-  osgi:list
+  bundle:list
 
 and looking for a line that looks like this one
 
@@ -137,10 +137,10 @@ In the above case, the bundle id would be 317
 To stop the example, enter the following command in the ServiceMix
 console:
 
-  osgi:stop <bundle_id>
+  bundle:stop <bundle_id>
 
 
 To uninstall the example, enter one of the following commands in
 the ServiceMix console:
 
-  osgi:uninstall <bundle_id>
+  bundle:uninstall <bundle_id>
