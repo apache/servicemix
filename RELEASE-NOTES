@@ -15,6 +15,59 @@
  * limitations under the License.
  */
 
+                       Apache ServiceMix 6.1.1
+                   ================================
+  Overview
+  --------
+
+ Apache ServiceMix is a flexible, open-source integration container that unifies the
+ features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+ runtime platform you can use to build your own integrations solutions.
+
+ Apache ServiceMix 6.1.1 is a new patch release, which includes a few bug fixes and
+ a new version of Apache ActiveMQ, Apache Camel and Apache Karaf.
+ This release includes:
+
+ - Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
+ - Apache Camel 2.16.2 (http://camel.apache.org)
+ - Apache CXF 3.1.4 (http://cxf.apache.org)
+ - Apache Karaf 3.0.6 (http://karaf.apache.org)
+
+  Changelog
+  ---------
+
+** Bug
+    * [SM-2251] - Intermittent test failure in JMSAppenderTest
+    * [SM-2824] - Missing dependencies in system folder
+    * [SM-2848] - cxf-wsn-client client fails due to wrong slf4j version
+    * [SM-2850] -  JMSAppenderTest.testReconnectToBroker fails
+    * [SM-2851] - Some itests fail accidentally with NPE
+    * [SM-2854] - Doclint for Javadoc fails on JDK 8
+    * [SM-2864] - Update example README.txt files for new Karaf commands
+
+** Improvement
+    * [SM-2395] - Download pages should correctly refer the documentation pages
+
+** Task
+    * [SM-2751] - Release Apache ServiceMix 6.1.1
+    * [SM-2752] - Upgrade to depends-maven-plugin 1.3.1
+    * [SM-2753] - Use maven properties like `${project.build.outputDirectory}` instead of `target/classes`
+    * [SM-2763] - Upgrade to Activiti 5.19.0.1
+    * [SM-2778] - Upgrade to Apache ActiveMQ 5.12.2
+    * [SM-2803] - Refactor the assembly creation
+    * [SM-2806] - Ensure ServiceMix uses Apache Commons Collections 3.2.2
+    * [SM-2807] - Upgrade to Apache POM 17
+    * [SM-2808] - Avoid warnings about 'parent.relativePath' during the maven build
+    * [SM-2819] - Upgrade to Pax Exam 4.8.0
+    * [SM-2821] - Upgrade to Apache Camel 2.16.2
+    * [SM-2822] - Upgrade Maven-bundle-plugin to version 3.0.1
+    * [SM-2826] - Upgrade to ServiceMix Specs 2.6.0
+    * [SM-2844] - Upgrade to Activiti 5.19.0.2
+    * [SM-2849] - Upgrade to Jackson 2.6.3
+    * [SM-2858] - Upgrade to Apache ActiveMQ 5.12.3
+    * [SM-2861] - Upgrade to Apache Karaf 3.0.6
+
+
                       Apache ServiceMix 6.1.0
                   ================================
  Overview
