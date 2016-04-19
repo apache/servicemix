@@ -96,6 +96,19 @@
 
     </properties>
 
+    <repositories>
+        <repository>
+            <id>ops4j.snapshots</id>
+            <name>OPS4j Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/ops4j-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>apache.snapshots</id>

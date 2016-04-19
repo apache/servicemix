@@ -51,7 +51,7 @@ public class LogCollector implements PaxAppender {
             }
         }
         long startTime = System.currentTimeMillis();
-        while (System.currentTimeMillis() - startTime < 10 * 1000) {
+        while (System.currentTimeMillis() - startTime < 10 * 2000) {
             this.wait(100);
             if (log.size() > 0) {
                 PaxLoggingEvent event = log.get(log.size() - 1);
