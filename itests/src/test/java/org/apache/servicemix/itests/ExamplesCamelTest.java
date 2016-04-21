@@ -29,9 +29,15 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
 public class ExamplesCamelTest extends ServiceMixDistroTest {
 
     @Test
-    public void testExampleCamelCxf() throws Exception {
-        try (Features features = install("examples-camel-cxf-soap", "examples-camel-cxf-rest")) {
+    public void testExampleCamelCxfSoap() throws Exception {
+        try (Features features = install("examples-camel-cxf-soap")) {
             log.expectContains("Setting the server's publish address to be http://localhost:8989/soap");
+        }
+    }
+
+    @Test
+    public void testExampleCamelCxfRest() throws Exception {
+        try (Features features = install("examples-camel-cxf-rest")) {
             log.expectContains("Setting the server's publish address to be http://localhost:8989/rest");
         }
     }

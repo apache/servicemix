@@ -16,17 +16,32 @@
  */
 package org.apache.servicemix.itests;
 
+import static org.ops4j.pax.exam.CoreOptions.composite;
+import static org.ops4j.pax.exam.CoreOptions.options;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
+
 import org.apache.servicemix.itests.base.Features;
 import org.apache.servicemix.itests.base.ServiceMixDistroTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 
+
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ExamplesCXFTest extends ServiceMixDistroTest {
+
+    @Configuration
+    public Option[] config() {
+        return options(composite(super.config()),
+                editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.username", "smx"),
+                editConfigurationFilePut("etc/org.apache.cxf.wsn.cfg", "cxf.wsn.activemq.password", "smx")
+        );
+    }
 
     @Test
     public void testExampleCxfJAXRS() throws Exception {
@@ -81,6 +96,13 @@ public class ExamplesCXFTest extends ServiceMixDistroTest {
     public void testExampleCxfWsSecuritySignature() throws Exception {
         try (Features features = install("examples-cxf-ws-security-signature")) {
             log.expectContains("Setting the server's publish address to be /HelloWorldSecurity");
+        }
+    }
+
+    @Test
+    public void testExampleCxfWsn() throws Exception {
+        try (Features features = install("examples-cxf-wsn-receive","examples-cxf-wsn-notifier")) {
+            log.expectContains("### YOU GOT MAIL ####\n");
         }
     }
 
