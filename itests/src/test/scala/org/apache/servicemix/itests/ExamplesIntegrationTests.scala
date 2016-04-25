@@ -57,7 +57,7 @@ class ActivitiExamplesTest extends ExamplesIntegrationTests {
 
   @Test
   // running the test without uninstalling the feature afterwards, cfr. SM-2244
-  def testActivitiCamelExample = testWithFeature(false, "examples-activiti-camel") {
+  def testActivitiCamelExample = testWithFeature("examples-activiti-camel") {
     val orderId = "001"
 
     camelProducer.send("file:var/activiti-camel/order", new Processor() {
@@ -139,7 +139,7 @@ class CxfExamplesTest extends ExamplesIntegrationTests {
   override def config() = super.config() ++  cxfWsnExampleTestConfiguration
 
   @Test
-  def testCxfJaxRsExample = testWithFeature(false,"examples-cxf-jaxrs", "camel-http") {
+  def testCxfJaxRsExample = testWithFeature("examples-cxf-jaxrs", "camel-http") {
     expect { logging.containsMessage( _.contains("Setting the server's publish address to be /crm")) }
     // TODO: the service appears to be started, but the URLs are not accessible
     // assertTrue(httpGet("http://localhost:8181/cxf/crm/customerservice/customers/123").contains("<Customer><id>123</id>"))
