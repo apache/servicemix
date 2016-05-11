@@ -67,9 +67,6 @@
 
     <properties>
 
-        <!-- ServiceMix legal shared resources -->
-        <servicemix.legal.version>1.0</servicemix.legal.version>
-
         <!-- Maven Compiler Plugin -->
         <maven.compiler.debug>true</maven.compiler.debug>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
@@ -91,8 +88,11 @@
         <maven-idea-plugin.version>2.2.1</maven-idea-plugin.version>
         <maven-jxr-plugin.version>2.4</maven-jxr-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-remote-resources-plugin.version>1.5</maven-remote-resources-plugin.version>
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+
+        <appendedResourcesDirectory>${basedir}/etc/appended-resources</appendedResourcesDirectory>
 
     </properties>
 
@@ -209,6 +209,11 @@
                     <version>${apache-rat-plugin.version}</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-remote-resources-plugin</artifactId>
+                    <version>${maven-remote-resources-plugin.version}</version>
+                </plugin>
+                <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
                     <version>${lifecycle-mapping-plugin.version}</version>
@@ -292,31 +297,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-legal</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.apache.servicemix.legal</groupId>
-                                    <artifactId>legal</artifactId>
-                                    <version>${servicemix.legal.version}</version>
-                                    <type>xml</type>
-                                    <outputDirectory>target/legal/</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                            <stripVersion>true</stripVersion>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <executions>
                     <execution>
@@ -338,6 +318,7 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-remote-resources-plugin</artifactId>
                 <executions>
                     <execution>
@@ -345,17 +326,10 @@
                             <goal>process</goal>
                         </goals>
                         <configuration>
+                            <appendedResourcesDirectory>${appendedResourcesDirectory}</appendedResourcesDirectory>
                             <resourceBundles>
                                 <resourceBundle>org.apache:apache-jar-resource-bundle:1.4</resourceBundle>
                             </resourceBundles>
-                            <supplementalModels>
-                                <supplementalModel>target/legal/legal.xml</supplementalModel>
-                            </supplementalModels>
-                            <properties>
-                                <addLicense>true</addLicense>
-                                <addArtifact>true</addArtifact>
-                                <projectName>Apache ServiceMix</projectName>
-                            </properties>
                         </configuration>
                     </execution>
                 </executions>
