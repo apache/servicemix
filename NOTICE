@@ -14,3 +14,9 @@
    or under the (unmodified) EPL 1.0 (Eclipse Public License).
    An original copy of the license agreement can be found at: http://www.h2database.com/html/license.html
 
+   This software contains unmodified binary redistributions for StAX-Ex library (https://stax-ex.java.net/),
+   which is dual licensed and available under the (unmodified) CDDL 1.1 (Common Development and Distribution License)
+   or under the (unmodified) GPL v2 (GNU General Public License).
+   An original copy of the license agreement can be found at: http://glassfish.java.net/public/CDDL+GPL_1_1.html
+
+
