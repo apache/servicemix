@@ -33,7 +33,6 @@
     <name>Apache ServiceMix :: Assemblies :: Features</name>
 
     <modules>
-        <module>servicemix-internal</module>
         <module>servicemix-features</module>
         <module>servicemix-kie</module>
         <module>servicemix-examples</module>

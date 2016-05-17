@@ -95,14 +95,6 @@
         <!-- Apache ServiceMix -->
         <dependency>
             <groupId>org.apache.servicemix.features</groupId>
-            <artifactId>servicemix-internal</artifactId>
-            <version>${project.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.features</groupId>
             <artifactId>servicemix-features</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
@@ -235,10 +227,17 @@
                         <feature>camel-blueprint</feature>
                         <feature>war</feature>
                         <feature>camel-xstream</feature>
-                        <!-- To ensure the overriden bundles exist in 'system' -->
-                        <feature>override-joda-time</feature>
-                        <feature>override-fasterxml-jackson-core</feature>
                     </bootFeatures>
+                    <installedBundles>
+                        <!-- To ensure the overriden bundles exist in 'system' -->
+                        <bundle>mvn:joda-time/joda-time/${jodatime2.bundle.version}</bundle>
+                        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/${fasterxml.jackson.version}</bundle>
+                        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${fasterxml.jackson.version}</bundle>
+                        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${fasterxml.jackson.version}</bundle>
+                        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${fasterxml.jackson.version}</bundle>
+                        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${fasterxml.jackson.version}</bundle>
+                        <bundle>mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/${fasterxml.jackson.version}</bundle>
+                    </installedBundles>
                     <libraries>
                         <library>xerces-${xerces.version}.jar;url:="wrap:mvn:xerces/xercesImpl/${xerces.version}$Export-Package=org.apache.*;version=${xerces.version}";type:=endorsed;export:=true;delegate:=true</library>
 
