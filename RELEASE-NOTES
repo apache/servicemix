@@ -15,6 +15,35 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 5.5.4
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 5.5.4 is a new patch release, which includes a few bug fixes and
+a new version of Apache Camel. This release includes:
+
+- Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
+- Apache Camel 2.15.6 (http://camel.apache.org)
+- Apache CXF 3.0.6 (http://cxf.apache.org)
+- Apache Karaf 2.4.4 (http://karaf.apache.org)
+
+
+ Changelog
+ ---------
+
+
+** Bug
+    * [SM-2976] - stax-ex-1.7.6.jar is under CDDL+GPL  license
+
+** Task
+    * [SM-2881] - Release Apache ServiceMix 5.5.4
+    * [SM-2933] - Upgrade to Apache Camel 2.15.6
+
 
                       Apache ServiceMix 5.5.3
                   ================================
