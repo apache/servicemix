@@ -23,7 +23,7 @@
     <parent>
         <artifactId>activiti-examples</artifactId>
         <groupId>org.apache.servicemix.examples</groupId>
-        <version>5.5.4</version>
+        <version>5.5.5-SNAPSHOT</version>
     </parent>
 
     <artifactId>activiti-camel</artifactId>
