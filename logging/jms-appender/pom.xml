@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.servicemix.logging</groupId>
         <artifactId>logging</artifactId>
-        <version>7.0.0.M2</version>
+        <version>7.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>jms-appender</artifactId>

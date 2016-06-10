@@ -19,7 +19,7 @@
 	<parent>
 		<groupId>org.apache.servicemix.examples</groupId>
 		<artifactId>drools</artifactId>
-		<version>7.0.0.M2</version>
+		<version>7.0.0-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>drools-camel-blueprint</artifactId>
