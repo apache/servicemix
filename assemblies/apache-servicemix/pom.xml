@@ -24,7 +24,7 @@
     <parent>
         <artifactId>assemblies</artifactId>
         <groupId>org.apache.servicemix.assemblies</groupId>
-        <version>6.1.2-SNAPSHOT</version>
+        <version>6.1.2</version>
     </parent>
 
     <groupId>org.apache.servicemix</groupId>
