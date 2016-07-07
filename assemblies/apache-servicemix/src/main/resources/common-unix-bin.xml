@@ -20,7 +20,7 @@
         <!-- Cherry-pick files from the expanded Karaf distribution -->
         <fileSet>
             <directory>${project.build.directory}/assembly</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory>${file.separator}</outputDirectory>
             <excludes>
                 <exclude>bin/**</exclude>
                 <exclude>etc/system.properties</exclude>
@@ -44,7 +44,7 @@
         <!-- Copy over bin/* scripts separately to get the correct file mode -->
         <fileSet>
             <directory>${project.build.directory}/assembly</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory>${file.separator}</outputDirectory>
             <includes>
                 <include>bin/*</include>
             </includes>
@@ -53,7 +53,7 @@
         </fileSet>
         <fileSet>
             <directory>${project.build.directory}/assembly</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory>${file.separator}</outputDirectory>
             <includes>
                 <include>bin/*</include>
             </includes>
