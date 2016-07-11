@@ -41,7 +41,7 @@
         <activemq.version>5.13.3</activemq.version>
         <activiti.version>5.19.0.2</activiti.version>
         <akka.version>2.3.9</akka.version>
-        <aries.blueprint.core.version>1.6.1</aries.blueprint.core.version>
+        <aries.blueprint.core.version>1.6.2</aries.blueprint.core.version>
         <aries.jpa.version>2.3.0</aries.jpa.version>
         <aries.proxy.version>1.0.5</aries.proxy.version>
         <aries.transaction.version>1.3.0</aries.transaction.version>
