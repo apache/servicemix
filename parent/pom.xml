@@ -75,7 +75,7 @@
         <jodatime2.bundle.version>2.9</jodatime2.bundle.version>
         <jpa.version>2.1.0</jpa.version>
         <json4s.bundle.version>3.2.11_1</json4s.bundle.version>
-        <karaf.version>3.0.7</karaf.version>
+        <karaf.version>3.0.8</karaf.version>
         <mvel2.version>2.2.1.Final</mvel2.version>
         <mybatis.version>3.3.0</mybatis.version>
         <osgi.version>5.0.0</osgi.version>
@@ -89,7 +89,7 @@
         <scala.version>2.11.7</scala.version>
         <servicemix.specs.version>2.6.0</servicemix.specs.version>
         <slf4j.version>1.7.12</slf4j.version>
-        <spring.version>3.2.14.RELEASE_1</spring.version>
+        <spring.version>3.2.17.RELEASE_1</spring.version>
         <!-- spring-dm does not support spring 4.x so import-range must be 3.x for the -->
         <!-- Karaf features file. -->
         <spring-version-range-karaf>[3.2,4)</spring-version-range-karaf>
