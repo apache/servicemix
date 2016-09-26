@@ -75,6 +75,9 @@
 
         <appendedResourcesDirectory>${basedir}/etc/appended-resources</appendedResourcesDirectory>
 
+        <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
+        <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
+
     </properties>
 
     <repositories>
@@ -190,7 +193,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>1.5.0</version>
+                    <version>${exec-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -200,7 +203,7 @@
                 <plugin>
                     <groupId>org.scala-tools</groupId>
                     <artifactId>maven-scala-plugin</artifactId>
-                    <version>2.15.2</version>
+                    <version>${maven-scala-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
