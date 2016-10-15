@@ -29,8 +29,8 @@
 
     <bean id="activemqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
         <property name="brokerURL" value="vm://${broker-name}?create=false&amp;waitForStart=10000"/>
-        <property name="userName" value="$[activemq.jmx.user]" />
-        <property name="password" value="$[activemq.jmx.password]" />
+        <property name="userName" value="$[activemq.jms.user]" />
+        <property name="password" value="$[activemq.jms.password]" />
     </bean>
 
     <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
@@ -48,8 +48,8 @@
 
     <bean id="jmsXaConnectionFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
         <property name="brokerURL" value="vm://${broker-name}?create=false&amp;waitForStart=10000"/>
-        <property name="userName" value="$[activemq.jmx.user]" />
-        <property name="password" value="$[activemq.jmx.password]" />
+        <property name="userName" value="$[activemq.jms.user]" />
+        <property name="password" value="$[activemq.jms.password]" />
         <property name="redeliveryPolicy">
             <bean class="org.apache.activemq.RedeliveryPolicy">
                 <property name="maximumRedeliveries" value="0"/>
