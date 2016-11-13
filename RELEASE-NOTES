@@ -15,6 +15,31 @@
  * limitations under the License.
  */
 
+                       Apache ServiceMix 5.6.2
+                   ================================
+  Overview
+  --------
+
+ Apache ServiceMix is a flexible, open-source integration container that unifies the
+ features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+ runtime platform you can use to build your own integrations solutions.
+
+ Apache ServiceMix 5.6.2 is a new patch release, which includes a few bug fixes and
+ a new version of Apache Camel and Apache CXF. This release includes:
+
+ - Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
+ - Apache Camel 2.16.4 (http://camel.apache.org)
+ - Apache CXF 3.1.5 (http://cxf.apache.org)
+ - Apache Karaf 2.4.4 (http://karaf.apache.org)
+
+  Changelog
+  ---------
+
+ ** Task
+     * [SM-3018] - Release Apache ServiceMix 5.6.2
+     * [SM-3110] - Upgrade to Apache Camel 2.16.4
+
+
                       Apache ServiceMix 5.6.1
                   ================================
  Overview
