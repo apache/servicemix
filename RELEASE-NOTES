@@ -15,6 +15,49 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 7.0.0.M3
+                  ================================
+ Overview
+ --------
+
+  !! This is a technology preview release of Apache ServiceMix, and should NOT be considered production ready !!
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the features and functionality
+of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful runtime platform you can use to build your own 
+integrations solutions.
+
+Apache ServiceMix 7.0.0 will be the first release based on Karaf 4.0.x, which includes numerous new features. 
+We ask that users provide the community with their feed back so that the full Apache ServiceMix 7.0.0 release 
+can be as feature complete and stable as possible.
+
+Apache ServiceMix 7.0.0.M3 is a new preview release of the project, which includes:
+
+- Apache ActiveMQ 5.14.1 (http://activemq.apache.org)
+- Apache Camel 2.16.4 (http://camel.apache.org)
+- Apache CXF 3.1.5 (http://cxf.apache.org)
+- Apache Karaf 4.0.7 (http://karaf.apache.org)
+
+
+ Changelog
+ ---------
+
+** Bug
+    * [SM-3040] - Multiple staging repositories while releasing ServiceMix
+    * [SM-3045] - Assembly descriptor contains a *nix-specific root-relative-reference
+    * [SM-3093] - Examples compile error
+    * [SM-3106] - exec-maven-plugin.version is not set in examples pom.xml
+
+** Task
+    * [SM-3067] - Upgrade to Apache ActiveMQ 5.13.4
+    * [SM-3081] - Upgrade to Apache Karaf 4.0.6
+    * [SM-3082] - Update Exec Maven Plugin to version 1.5.0
+    * [SM-3083] - Upgrade to Apache ActiveMQ 5.14.x
+    * [SM-3103] - Upgrade to Apache Karaf 4.0.7
+    * [SM-3110] - Upgrade to Apache Camel 2.16.4
+    * [SM-3123] - Use values from system.properties in several ActiveMQ configurartion files
+    * [SM-3167] - Release Apache ServiceMix 7.0.0.M3
+
+
                       Apache ServiceMix 7.0.0.M2
                   ================================
  Overview
