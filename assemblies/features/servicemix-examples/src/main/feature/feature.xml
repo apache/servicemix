@@ -75,7 +75,7 @@
     <feature name="examples-camel-sql-h2" version="${project.version}">
         <feature version="${camel.version}">camel-sql</feature>
         <bundle dependency="true">mvn:commons-dbcp/commons-dbcp/${commons-dbcp.version}</bundle>
-        <bundle dependency="true">mvn:org.osgi/org.osgi.compendium/${osgi.version}</bundle>
+        <bundle dependency="true">mvn:org.osgi/osgi.cmpn/${osgi.version}</bundle>
         <bundle dependency="true">mvn:com.h2database/h2/${h2.version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/camel-sql-datasource-h2/${version}</bundle>
         <bundle>mvn:org.apache.servicemix.examples/camel-sql-orders/${project.version}</bundle>
