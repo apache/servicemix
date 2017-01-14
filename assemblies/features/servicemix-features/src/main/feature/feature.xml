@@ -15,16 +15,16 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<features name="servicemix-features-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.3.0"
+<features name="servicemix-features-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.3.0 http://karaf.apache.org/xmlns/features/v1.3.0">
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 
     <feature name="jms-appender" version="${project.version}" start-level="50">
         <feature version="${activemq.version}">activemq-broker-noweb</feature>
         <bundle>mvn:org.apache.servicemix.logging/jms-appender/${project.version}</bundle>
     </feature>
 
-    <feature name="activemq-service" version="${project.version}" start-level="50">
+    <feature name="servicemix-messaging" version="${project.version}" start-level="50">
         <feature version="${activemq.version}">activemq-broker-noweb</feature>
         <feature version="${activemq.version}">activemq-camel</feature>
         <bundle>mvn:org.apache.servicemix.activemq/org.apache.servicemix.activemq.service/${project.version}</bundle>
