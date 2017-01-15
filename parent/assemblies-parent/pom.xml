@@ -38,7 +38,7 @@
     <properties>
 
         <!-- Assembly properties -->
-        <activemq.version>5.14.1</activemq.version>
+        <activemq.version>5.14.3</activemq.version>
         <camel.version>2.16.4</camel.version>
         <cxf.version>3.1.5</cxf.version>
         <fasterxml.jackson.version>2.6.3</fasterxml.jackson.version>
