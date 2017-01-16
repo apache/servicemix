@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.servicemix.examples</groupId>
         <artifactId>examples</artifactId>
-        <version>7.0.0</version>
+        <version>7.0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>org.apache.servicemix.examples</groupId>
