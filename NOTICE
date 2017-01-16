@@ -19,4 +19,6 @@
    or under the (unmodified) GPL v2 (GNU General Public License).
    An original copy of the license agreement can be found at: http://glassfish.java.net/public/CDDL+GPL_1_1.html
 
-
+   This product uses software from http://www.json.org.
+   Copyright (c) 2002 JSON.org
+   Licensed under the JSON License
