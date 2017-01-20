@@ -21,9 +21,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>assemblies</artifactId>
-        <groupId>org.apache.servicemix.assemblies</groupId>
+        <groupId>org.apache.servicemix.parent</groupId>
+        <artifactId>features-parent</artifactId>
         <version>7.0.1-SNAPSHOT</version>
+        <relativePath>../../parent/features-parent/pom.xml</relativePath>
     </parent>
 
     <groupId>org.apache.servicemix</groupId>
@@ -43,6 +44,7 @@
                     <exclude>**/.settings/**</exclude>
                     <exclude>**/*.iws</exclude>
                     <exclude>**/*.iwl</exclude>
+                    <exclude>pom.xml</exclude>
                 </excludes>
             </resource>
             <resource>
@@ -50,6 +52,13 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>**/README.txt</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/filtered-resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
                 </includes>
             </resource>
         </resources>
