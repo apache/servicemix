@@ -15,6 +15,43 @@
  * limitations under the License.
  */
 
+                       Apache ServiceMix 5.6.3
+                   ================================
+  Overview
+  --------
+
+ Apache ServiceMix is a flexible, open-source integration container that unifies the
+ features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+ runtime platform you can use to build your own integrations solutions.
+
+ Apache ServiceMix 5.6.3 is a new patch release, which includes a few bug fixes and
+ a new version of Apache Camel and Apache CXF. This release includes:
+
+ This is the last scheduled release of ServiceMix 5.x.
+
+ - Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
+ - Apache Camel 2.16.5 (http://camel.apache.org)
+ - Apache CXF 3.1.9 (http://cxf.apache.org)
+ - Apache Karaf 2.4.4 (http://karaf.apache.org)
+
+  Changelog
+  ---------
+
+** Sub-task
+    * [SM-3223] - Add notice about usage of non-free json library
+
+** Bug
+    * [SM-2300] - Failed to query stty columns
+    * [SM-2302] - BndUtils - Bundle cannot be generated
+    * [SM-2323] - ServiceMix freezes if bundled is refreshed after feature install
+    * [SM-2338] - cm:property-placeholder and camelContext conflict with each other on redeploy
+    * [SM-2416] - Missing HttpWagon while upgrading to Karaf 2.4.1
+
+** Task
+    * [SM-3164] - Release Apache ServiceMix 5.6.3
+    * [SM-3228] - Upgrade to Apache Camel 2.16.5 and Apache CXF 3.1.9
+
+
                        Apache ServiceMix 5.6.2
                    ================================
   Overview
