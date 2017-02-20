@@ -39,8 +39,8 @@
 
         <!-- Assembly properties -->
         <activemq.version>5.14.3</activemq.version>
-        <camel.version>2.16.4</camel.version>
-        <cxf.version>3.1.5</cxf.version>
+        <camel.version>2.16.5</camel.version>
+        <cxf.version>3.1.9</cxf.version>
         <fasterxml.jackson.version>2.6.3</fasterxml.jackson.version>
         <geronimo-atinject.version>1.0</geronimo-atinject.version>
         <jodatime2.bundle.version>2.9</jodatime2.bundle.version>
