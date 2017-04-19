@@ -16,30 +16,82 @@
     limitations under the License.
 -->
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
            xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0">
 
-    <ext:property-placeholder />
+    <ext:property-placeholder placeholder-prefix="$[" placeholder-suffix="]" />
+
+    <cm:property-placeholder persistent-id="org.apache.servicemix.activiti.config" update-strategy="reload">
+        <cm:default-properties>
+
+            <cm:property name="engine.jdbcDriver" value="org.h2.Driver"/>
+            <cm:property name="engine.jdbcUrl" value="jdbc:h2:file:$[karaf.data]/activiti/database;DB_CLOSE_ON_EXIT=FALSE"/>
+            <cm:property name="engine.jdbcUsername" value="sa"/>
+            <cm:property name="engine.jdbcPassword" value=""/>
+            <cm:property name="engine.databaseType" value="h2"/>
+
+            <cm:property name="engine.jobExecutorActivate" value="true"/>
+            <cm:property name="engine.asyncExecutorEnabled" value="false" />  
+            <cm:property name="engine.asyncExecutorActivate" value="false" />
+            <cm:property name="engine.batchSizeProcessInstances" value="25"/>
+            <cm:property name="engine.batchSizeTasks" value="25"/>
+            <cm:property name="engine.enableDatabaseEventLogging" value="false"/>
+            <cm:property name="engine.enableEventDispatcher" value="true"/>
+            <cm:property name="engine.enableSafeBpmnXml" value="false"/>
+            <cm:property name="engine.asyncFailedJobWaitTime" value="10"/>
+            <cm:property name="engine.databaseCatalog" value=""/>
+            <cm:property name="engine.databaseSchema" value=""/>
+            <cm:property name="engine.databaseTablePrefix" value=""/>
+            <cm:property name="engine.mailServerDefaultFrom" value="activiti@localhost"/>
+            <cm:property name="engine.mailServerHost" value="localhost"/>
+            <cm:property name="engine.mailServerPassword" value=""/>
+            <cm:property name="engine.mailServerPort" value="25"/>
+            <cm:property name="engine.mailServerUsername" value=""/>
+            <cm:property name="engine.useSSL" value="false"/>
+            <cm:property name="engine.useTLS" value="false"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
 
     <!--
       Setting up the process engine configuration, using an embedded H2 database together with our default Aries
       transaction manager.
     -->
-    <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
-        <property name="URL" value="jdbc:h2:file:${karaf.data}/activiti/database;DB_CLOSE_ON_EXIT=FALSE"/>
-        <property name="user" value="sa"/>
-        <property name="password" value=""/>
-    </bean>
 
     <reference id="transactionManager" interface="javax.transaction.TransactionManager"/>
 
-    <bean id="configuration" class="org.activiti.engine.impl.cfg.JtaProcessEngineConfiguration" ext:field-injection="true">
-        <property name="databaseType" value="h2"/>
-        <property name="dataSource" ref="dataSource"/>
+    <bean id="configuration" class="org.activiti.engine.impl.cfg.JtaProcessEngineConfiguration" ext:field-injection="true" >
         <property name="transactionManager" ref="transactionManager"/>
         <property name="databaseSchemaUpdate" value="true"/>
         <property name="transactionsExternallyManaged" value="true" />
-    </bean>
+        
+        <property name="jdbcDriver" value="${engine.jdbcDriver}"/>
+        <property name="jdbcUrl" value="${engine.jdbcUrl}"/>
+        <property name="jdbcUsername" value="${engine.jdbcUsername}"/>
+        <property name="jdbcPassword" value="${engine.jdbcPassword}"/>
+        <property name="databaseType" value="${engine.databaseType}"/>
+        <property name="databaseCatalog" value="${engine.databaseCatalog}"/>
+        <property name="databaseSchema" value="${engine.databaseSchema}"/>
+        <property name="databaseTablePrefix" value="${engine.databaseTablePrefix}"/>
+        <property name="enableDatabaseEventLogging" value="${engine.enableDatabaseEventLogging}"/>
 
+        <property name="jobExecutorActivate" value="${engine.jobExecutorActivate}"/>
+        <property name="asyncExecutorEnabled" value="${engine.asyncExecutorEnabled}" />
+        <property name="asyncExecutorActivate" value="${engine.asyncExecutorActivate}" />
+        <property name="asyncFailedJobWaitTime" value="${engine.asyncFailedJobWaitTime}"/>
+        <property name="batchSizeProcessInstances" value="${engine.batchSizeProcessInstances}"/>
+        <property name="batchSizeTasks" value="${engine.batchSizeTasks}"/>
+        <property name="enableEventDispatcher" value="${engine.enableEventDispatcher}"/>
+        <property name="enableSafeBpmnXml" value="${engine.enableSafeBpmnXml}"/>
+
+        <property name="mailServerDefaultFrom" value="${engine.mailServerDefaultFrom}"/>
+        <property name="mailServerHost" value="${engine.mailServerHost}"/>
+        <property name="mailServerPassword" value="${engine.mailServerPassword}"/>
+        <property name="mailServerPort" value="${engine.mailServerPort}"/>
+        <property name="mailServerUsername" value="${engine.mailServerUsername}"/>
+        <property name="useSSL" value="${engine.useSSL}"/>
+        <property name="useTLS" value="${engine.useTLS}"/>
+    </bean>
+    
     <!--
       Set up the custom resolver implementation to ease integration with Camel routes
     -->
