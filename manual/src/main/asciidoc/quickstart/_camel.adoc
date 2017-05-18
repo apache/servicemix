@@ -1,0 +1,78 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Using Camel
+
+Now that we know how to operate Apache ServiceMix through the shell console, it's time to start using it for what it is built for.  Let's build our very first integration solution with a Camel route and deploy it on ServiceMix.
+
+=== Our simple scenario
+In this simple scenario, we're going to move files from an input directory called _camel/input_ to an output directory called _camel/output_.  To ensure we can keep track of which files get moved, we'll also write a message to the log file whenever we move a file.
+
+=== Creating the route
+One of the most simple ways to deploy a new route on ServiceMix, is by defining the route in a Blueprint XML file.
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint
+    xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+      http://www.osgi.org/xmlns/blueprint/v1.0.0
+      http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+      <route>
+        <from uri="file:camel/input"/>
+        <log message="Moving ${file:name} to the output directory"/>
+        <to uri="file:camel/output"/>
+      </route>
+    </camelContext>
+
+</blueprint>
+----
+
+=== Deploying the route
+
+In order to deploy and start the route, just copy the XML file you created into ServiceMix' _deploy_ directory.  The file will get
+picked up and deployed by ServiceMix.  You will see a _camel/input_ folder appear in your ServiceMix installation directory and any
+files you copy into that directory will get moved into the _camel/output_ directory.
+
+If you do a _log:display_ in the shell, you will also see the log output for every file that's been moved.
+
+image::camel-sample-log.png[]
+
+=== Using the shell to manage the route
+
+Using _bundle:list_, you'll notice that your XML file has been transformed into a bundle and that the Blueprint container has been created to start your Camel route.
+
+image::camel-sample-deploy.png[]
+
+From this output, you also learn that the bundle id for your XML file is 250.  This allow you to start and stop the route whenever
+necessary.  Let's give this a go now:
+
+First, stop the route with
+[source,text]
+----
+karaf@root> bundle:stop 250
+----
+
+The route is no longer active, so any files you copy into the _orders/input_ folder will remain there for now.  As soon as you
+restart the route, the pending files will get moving again.
+
+[source,text]
+----
+karaf@root> bundle:start 250
+----
+

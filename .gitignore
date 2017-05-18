@@ -1,8 +1,10 @@
+generated-docs-karaf
 .settings
 .classpath
 .project
 target
 .idea
+.vscode
 *.i??
 velocity.log
 .DS_Store

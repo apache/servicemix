@@ -1,0 +1,59 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Introducing Activiti
+
+Activiti is a BPMN 2.0 process-engine framework that implements the BPMN 2.0 specification. It's able to  perform BPMN 2.0 functions
+including deploy process definitions, start new process instances, and execute user tasks. Its core is a super-fast and rock-solid
+BPMN 2 process engine for Java.
+
+
+=== Activiti Engine
+
+This is the heart of the Activiti project.  It's a Java process engine that runs BPMN 2 processes natively.  It will have the
+following key properties:
+
+* Allows user updates to be combined with process updates in a single transaction
+* Runs on any Java environment like Spring, JTA, standalone with any form of transaction demarcation
+* Easy to get up and running with the setup utility
+* Built to support the cloud scalability from the ground up
+* Very simple to add new custom activity types and complete dedicated process languages
+* Transactional timers
+* Asynchronous continuations
+* Hidden event listeners for decoupling software technical details from business level diagram
+* Ability to test process executions in isolation in a plain unit test
+
+== Goal of this guide
+
+The goal of this guide is to look into the details for using Activiti inside ServiceMix:
+
+* create a project
+* write and debug a simple process
+
+== Examples
+
+The Apache ServiceMix distributions also contains an Activiti example.  You can find this example in the _examples/activiti_ directory.
+
+== More information about Activiti
+
+More information about Activiti itself, can be found on http://activiti.org/.
+
+There's also book available about Activiti
+
+* Tijs Rademakers. (July 2012). _Activiti in Action_. Greenwich, Manning. ISBN: 9781617290121.
+
+image::rademakers2.png[Activiti in Action]
+
+
+

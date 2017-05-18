@@ -1,0 +1,51 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Technology selection guide
+
+ServiceMix offers a set of different messaging and integration technologies:
+
+* ActiveMQ
+* Camel
+* CXF
+
+Depending on the solution you're building, you want to select one or more of these technologies.  Below are some guidelines to help
+you pick the right mix for your problem.
+
+=== When to use Camel?
+
+For any integration scenario, we recommend to start as simple as possible.  Camel allows you to build routes for integration
+scenario's quickly and efficiently.  You can deploy these routes directly on ServiceMix by deploying the plain Spring XML route or
+by packaging the route in an OSGi bundle.
+
+As you need more (advanced) features, start combining Camel with ActiveMQ and CXF.
+
+=== When to use ActiveMQ?
+
+ActiveMQ is a JMS message broker, featuring support for clustering, pluggable persistence mechanism, master-slave configuration for
+failover, and more.
+
+ServiceMix includes an instance of the ActiveMQ broker, which can be combined with Camel to provide easy-to-use message persistence
+and reliable messaging.
+
+After setting up multiple instances of ActiveMQ (or ServiceMix) on the network, you can configure ActiveMQ clustering or
+master-slave mode to allow for a more reliable and scalable set-up.
+
+=== When to use CXF?
+
+CXF is an open-source services framework that you can use to suit your REST and WS-* standards integration needs.  It allows you to
+use common programming APIs like JAX-RS or JAX-WS for building your own services and to expose them to the outside world.
+
+You can use CXF from within your Camel routes with the Camel CXF component.
+

@@ -1,0 +1,41 @@
+=== Deploy as an OSGi bundle with Spring
+
+Using an OSGi bundle to deploy your Camel routes allows you to use the Java or Scala DSL for defining your routes.
+
+In this case, you're using Spring to start your Camel routes, so you include your Spring XML file (e.g. _camel-context.xml_) in the _META-INF/spring_ folder inside your bundle.
+[source,text]
+----
++ <bundle classes, incl. your RouteBuilder>
+\- META-INF
+   |- MANIFEST.MF
+   \- spring
+      \- camel-context.xml
+----
+
+After the bundle has been activated, the Spring DM extender will find, create and start your Spring ApplicationContexts.
+
+==== Example: Referring to Java or Scala RouteBuilder classes
+If your RouteBuilder classes have been defined in the _org.apache.servicemix.manual.camel_ package, the file would look like this:
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+          http://camel.apache.org/schema/spring
+            http://camel.apache.org/schema/spring/camel-spring-${camel-version}.xsd">
+
+  <camelContext xmlns="http://camel.apache.org/schema/spring">
+    <package>org.apache.servicemix.manual.camel</package>
+  </camelContext>
+
+</beans>
+----
+
+==== Example in the distribution
+
+Another example for using this deployment option can be found in the _camel-osgi_ example that is shipped with Apache ServiceMix.
+

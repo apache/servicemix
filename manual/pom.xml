@@ -1,0 +1,321 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!--
+      Licensed to the Apache Software Foundation (ASF) under one or more
+      contributor license agreements.  See the NOTICE file distributed with
+      this work for additional information regarding copyright ownership.
+      The ASF licenses this file to You under the Apache License, Version 2.0
+      (the "License"); you may not use this file except in compliance with
+      the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+    -->
+    <parent>
+        <groupId>org.apache.servicemix.parent</groupId>
+        <artifactId>assemblies-parent</artifactId>
+        <version>7.0.1-SNAPSHOT</version>
+        <relativePath>../assemblies-parent/pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.apache.servicemix</groupId>
+    <artifactId>manual</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Apache ServiceMix :: Manual</name>
+
+    <description>Manual and Documentation</description>
+
+    <properties>
+		<servicemix.version>${project.version}</servicemix.version>
+        <servicemix.docs.location>7.x</servicemix.docs.location>
+		<asciidoctorj.version>1.5.5</asciidoctorj.version>
+		<asciidoctor-maven-plugin.version>1.5.5</asciidoctor-maven-plugin.version>
+		<asciidoc.sourceDirectory>src/main/asciidoc</asciidoc.sourceDirectory>
+		<!-- required to generate karaf commands documentation -->
+		<felix.bundlerepository.version>2.0.8</felix.bundlerepository.version>
+		<felix.gogo.version>0.16.2</felix.gogo.version>
+		<osgi.version>6.0.0</osgi.version>
+		<osgi.compendium.version>5.0.0</osgi.compendium.version>
+		<karaf.commands.dir>${asciidoc.sourceDirectory}/generated-docs-karaf/</karaf.commands.dir>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${karaf.commands.dir}</directory>
+							<includes>
+								<include>**/*.adoc</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.asciidoctor</groupId>
+				<artifactId>asciidoctor-maven-plugin</artifactId>
+				<version>${asciidoctor-maven-plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.asciidoctor</groupId>
+						<artifactId>asciidoctorj</artifactId>
+						<version>${asciidoctorj.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<sourceDirectory>${asciidoc.sourceDirectory}</sourceDirectory>
+					<imagesDir>./images</imagesDir>
+					<doctype>article</doctype>
+					<!-- Attributes common to all output formats -->
+					<attributes>
+						<project-version>${project.version}</project-version>
+						<servicemix-version>${servicemix.version}</servicemix-version>
+						<camel-version>${camel.version}</camel-version>
+					</attributes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>output-html</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
+						<configuration>
+							<backend>html5</backend>
+							<sourceHighlighter>coderay</sourceHighlighter>
+							<!--preserveDirectories>true</preserveDirectories-->
+							<attributes>
+								<toc>left@</toc>
+								<toclevels>5@</toclevels>
+								<last-update-label>Generated </last-update-label>
+								<icons>font</icons>
+								<sectanchors>true</sectanchors>
+								<idprefix/>
+								<idseparator>-</idseparator>
+								<docinfo1>true</docinfo1>
+								<nofooter/>
+							</attributes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.karaf.tooling</groupId>
+				<artifactId>karaf-maven-plugin</artifactId>
+				<version>${karaf.version}</version>
+				<executions>
+					<execution>
+						<id>generate-commands-help</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>commands-generate-help</goal>
+						</goals>
+						<configuration>
+							<format>asciidoc</format>
+							<targetFolder>${karaf.commands.dir}</targetFolder>
+							<classLoader>plugin</classLoader>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<!-- Commands for help generation -->
+					<dependency>
+						<groupId>org.apache.karaf.shell</groupId>
+						<artifactId>org.apache.karaf.shell.commands</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.shell</groupId>
+						<artifactId>org.apache.karaf.shell.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.log</groupId>
+						<artifactId>org.apache.karaf.log.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.obr</groupId>
+						<artifactId>org.apache.karaf.obr.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.bundle</groupId>
+						<artifactId>org.apache.karaf.bundle.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.bundle</groupId>
+						<artifactId>org.apache.karaf.bundle.springstate</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.service</groupId>
+						<artifactId>org.apache.karaf.service.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.system</groupId>
+						<artifactId>org.apache.karaf.system.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.shell</groupId>
+						<artifactId>org.apache.karaf.shell.ssh</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.web</groupId>
+						<artifactId>org.apache.karaf.web.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.wrapper</groupId>
+						<artifactId>org.apache.karaf.wrapper.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.instance</groupId>
+						<artifactId>org.apache.karaf.instance.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.diagnostic</groupId>
+						<artifactId>org.apache.karaf.diagnostic.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.features</groupId>
+						<artifactId>org.apache.karaf.features.command</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.jaas</groupId>
+						<artifactId>org.apache.karaf.jaas.command</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.scr</groupId>
+						<artifactId>org.apache.karaf.scr.command</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.jdbc</groupId>
+						<artifactId>org.apache.karaf.jdbc.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.jms</groupId>
+						<artifactId>org.apache.karaf.jms.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.jndi</groupId>
+						<artifactId>org.apache.karaf.jndi.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.config</groupId>
+						<artifactId>org.apache.karaf.config.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.http</groupId>
+						<artifactId>org.apache.karaf.http.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.kar</groupId>
+						<artifactId>org.apache.karaf.kar.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.package</groupId>
+						<artifactId>org.apache.karaf.package.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.profile</groupId>
+						<artifactId>org.apache.karaf.profile.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.scheduler</groupId>
+						<artifactId>org.apache.karaf.scheduler.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.karaf.subsystem</groupId>
+						<artifactId>org.apache.karaf.subsystem.core</artifactId>
+						<version>${karaf.version}</version>
+					</dependency>
+					<!-- Additional Required Dependencies -->
+					<dependency>
+						<groupId>org.apache.felix</groupId>
+						<artifactId>org.apache.felix.gogo.runtime</artifactId>
+						<version>${felix.gogo.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.core</artifactId>
+						<version>${osgi.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.compendium</artifactId>
+						<version>${osgi.compendium.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.felix</groupId>
+						<artifactId>org.apache.felix.bundlerepository</artifactId>
+						<version>${felix.bundlerepository.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.groovy.maven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>create-commands-adoc-file</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<source>${basedir}/src/main/groovy/CreateKarafCommandsAdocFile.groovy</source>
+							<properties>
+								<karafCommandsDir>${karaf.commands.dir}</karafCommandsDir>
+							</properties>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <version>1.0-beta-2</version>
+                <configuration>
+                    <checkinComment>[scm-publish] Updating ServiceMix ${servicemix.docs.location} documentation contents</checkinComment>
+                    <pubScmUrl>scm:svn:https://svn.apache.org/repos/asf/servicemix/site/production/docs/${servicemix.docs.location}</pubScmUrl>
+                    <content>${project.build.directory}/generated-docs</content>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+
+</project>
