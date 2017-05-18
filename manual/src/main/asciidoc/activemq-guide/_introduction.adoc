@@ -1,0 +1,74 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Introducing ActiveMQ
+
+Apache ActiveMQ is the most popular and powerful open source messaging and Integration Patterns provider. Apache ActiveMQ is fast,
+supports many Cross Language Clients and Protocols and many advanced features while fully supporting JMS 1.1 and J2EE 1.4. Apache
+ActiveMQ is released under the Apache 2.0 License.
+
+=== ActiveMQ Supports
+
+==== Easy communication via Cross Language Clients
+
+* ActiveMQ C++ Clients
+* Ajax
+* C Integration
+* CMS
+* Delphi and FreePascal
+* dot Net
+* Perl
+* PHP
+* Pike
+* Python
+* Ruby
+* WebSockets
+* JMS to JMS Bridge
+
+==== Several Protocols
+
+* AMQP
+* OpenWire
+* REST
+* RSS and Atom
+* Stomp
+* WSIF
+* WS Notification
+* XMPP
+
+=== Using ActiveMQ from ServiceMix
+
+To start using ActiveMQ from your code, simply get hold of the connection pool declared in the activemq.xml file. You can also
+utilize ActiveMQ from Camel via the camel-jms component.
+
+=== When should I use ActiveMQ?
+
+Whenever you have a unit of work or payload that you could process asynchronously, you would like to have multiple recipients,
+concurrent competing recipients to scale or leverage multiple processing units. If you want to spread load across multiple
+system boundaries. You want to cluster or provide fail over and messaging security, you have long running flows.
+
+In any of these instances it would be strongly suggested you evaluate what a scalable and secure messaging solution can bring to the table.
+
+=== Common use cases
+
+Integration with other systems, since you can pass messages in and out of ActiveMQ from pretty much any programming language
+it is very simple to start integrating heterogeneous environments.
+
+Providing an event driven architecture. You can develop your solutions based on actions as opposed to looking for data or
+relying on completely synchronous behaviour.
+
+Providing infrastructure for messaging across large distances, leverage the network connectors and broker networks to integrate
+for example geographically different data centres.
+
+

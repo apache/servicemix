@@ -1,0 +1,49 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+=== Deploy as a plain Spring XML file
+
+ServiceMix supports the deployment of plain Spring XML files, automatically creating and starting the Spring ApplicationContext from
+the XML file.
+
+In order to leverage this feature to create and start Camel routes, drop a file with this syntax in the _$SERVICEMIX_HOME/deploy_
+folder:
+
+[source,xml,options="nowrap"]
+----
+include::plain-spring-template.xml[]
+----
+
+==== Example
+
+Create a new XML file, plain-spring.xml, in the deployment folder with the code below to start a route to copy files from one
+directory to another.
+
+[source,xml,options="nowrap"]
+----
+include::plain-spring.xml[]
+----
+
+Verify in the Karaf console that it has been started:
+
+[source,text]
+----
+karaf@root> bundle:list | grep plain-spring
+223 | Active   |  80 | 0.0.0                              | plain-spring.xml
+karaf@root>
+----
+
+Copy a file into the folder _$SERVICEMIX_HOME/input_, and verify that it is copied to the folder _$SERVICEMIX_HOME/output_. Note
+that the original file has been moved to the folder _$SERVICEMIX_HOME/input/.camel_.
+

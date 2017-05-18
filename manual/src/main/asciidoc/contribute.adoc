@@ -1,0 +1,34 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+// This is standalone document with a Asciidoctor document title.
+// This document is not intended to be included in other documents.
+= Contributing to the Documentation
+Apache Software Foundation
+:!numbered:
+:!toc:
+
+== Found an mistake or have a suggestion for improvement?
+
+We welcome any feedback or contribution to the documentation.
+
+Whether you spotted a mistake, have suggestions for new content or just want to say hi, feel to get in touch using the http://servicemix.apache.org/community/mailing-lists.html[mailing lists], http://servicemix.apache.org/community/irc.html[IRC channel] or on Twitter using the `#servicemix` hash tag.
+
+== Contributing to the documentation code
+
+The documentation is written using http://asciidoctor.org/[Asciidoctor]. The pages can be edited in any text editor.
+
+You can find more information about how to get and build the documentation codebase http://servicemix.apache.org/developers/source/documentation-source.html[here] and one more thing...
+
+We really love documentation patches ;)

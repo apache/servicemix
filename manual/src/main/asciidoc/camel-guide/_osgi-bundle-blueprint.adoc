@@ -1,0 +1,127 @@
+=== Deploy as an OSGi bundle with Blueprint
+
+Using an OSGi bundle to deploy your Camel routes allows you to use the Java or Scala DSL for defining your routes.
+
+In this case, we will use a Blueprint XML file to start your Camel routs.  To do so, the Blueprint XML files have to be included in
+the bundle inside the _OSGI-INF/blueprint_ directory.
+
+[source,text]
+----
++ <bundle classes, incl. your RouteBuilder>
+|- META-INF
+|  |- MANIFEST.MF
+\- OSGI-INF
+   \- blueprint
+      \- camel-context.xml
+----
+
+As soon as the bundle becomes Active, the Blueprint extender will create the Blueprint container starting your Routes.
+
+==== Example: Referring to Java or Scala RouteBuilder classes
+
+If your RouteBuilder classes have been defined in the _org.apache.servicemix.examples.camel_ package, the file would look like this:
+
+[source,xml,options="nowrap"]
+----
+<blueprint 
+    xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" 
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+    
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+        <package>org.apache.servicemix.examples.camel</package>
+    </camelContext>
+</blueprint>
+----
+
+==== Example in the distribution
+
+Another example for using this deployment option can be found in the _camel-blueprint_ example that is shipped with Apache
+ServiceMix.
+
+In order to add a Java DSL route to that example, the following changes have to be implemented.
+
+First, add the camel-core library as a dependency to the pom-file:
+
+[source,xml,subs="attributes+"]
+----
+<dependencies>
+    <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-core</artifactId>
+        <version>{camel-version}</version>
+    </dependency>
+</dependencies>
+---- 
+
+Then, add the following class to the org.apache.servicemix.examples.camel-package, alongside the existing _MyTransform_-class:
+
+[source,java]
+----
+package org.apache.servicemix.examples.camel;
+
+import org.apache.camel.builder.RouteBuilder;
+
+public class MyRouteBuilder extends RouteBuilder {
+
+    public void configure() {
+        // set up the transform bean
+        MyTransform transform = new MyTransform();
+        transform.setPrefix("JavaDSL");
+        
+        from("timer://javaTimer?fixedRate=true&period=2000")
+            .bean(transform, "transform")
+            .to("log:ExampleRouter");        
+    }    
+}
+----
+
+Finally, add the package-element to the Blueprint-file. The complete Blueprint file looks like this:
+
+[source,xml,options="nowrap"]
+----
+<blueprint 
+    xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" 
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+    <camelContext 
+        xmlns="http://camel.apache.org/schema/blueprint">
+        <!-- install the Java DSL route builder -->
+        <package>org.apache.servicemix.examples.camel</package> <!--1-->
+
+        <!-- install the route which is defined with XML tags --> <!--2-->
+        <route>
+            <from uri="timer://myTimer?fixedRate=true&amp;period=2000" />
+            <bean ref="myTransform" method="transform"/>
+            <to uri="log:ExampleRouterBlueprint" />
+        </route>
+    </camelContext>
+
+    <cm:property-placeholder persistent-id="org.apache.servicemix.examples" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="prefix" value="Blueprint-Example"/> <!--3-->
+        </cm:default-properties>
+    </cm:property-placeholder>
+
+    <bean id="myTransform" class="org.apache.servicemix.examples.camel.MyTransform">
+        <property name="prefix" value="${prefix}" />
+    </bean>
+</blueprint>
+----
+<1> The package-element causes the route defined by the Java DSL to be installed and started.
+<2> The route defined by XML tags and the one defined by the Java DSL are functionally equivalent, and run independently.
+<3> The default value of the prefix-parameter is displayed in the output in the Karaf console, unless it is changed in the example
+configuration file.
+
+
+Once you have built the example, with `mvn clean install`, and installed it in Karaf using `feature:install
+examples-camel-blueprint` output from both routes will be displayed in the Karaf console:
+
+[source,text]
+----
+>>>> Blueprint-Example set body:  Sun May 07 13:38:47 CEST 2017
+>>>> JavaDSL set body:  Sun May 07 13:38:47 CEST 2017
+----
