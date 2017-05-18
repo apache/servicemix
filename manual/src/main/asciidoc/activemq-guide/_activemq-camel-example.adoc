@@ -133,5 +133,5 @@ karaf@root> feature:install examples-activemq-camel-blueprint
 ----
 
 TIP: The relation between the feature name, _examples-activemq-camel-blueprint_, and the Maven artifact coordinates is defined in
-the file _servicemix-examples-7.0.0-features.xml_ in the ServiceMix distribution.
+the file _servicemix-examples-{servicemix-version}-features.xml_ in the ServiceMix distribution.
 
