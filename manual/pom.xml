@@ -37,14 +37,17 @@
 		<servicemix.version>${project.version}</servicemix.version>
         <servicemix.docs.location>7.x</servicemix.docs.location>
 		<asciidoctorj.version>1.5.5</asciidoctorj.version>
+        <asciidoctorj.pdf.version>1.5.0-alpha.15</asciidoctorj.pdf.version>
 		<asciidoctor-maven-plugin.version>1.5.5</asciidoctor-maven-plugin.version>
-		<asciidoc.sourceDirectory>src/main/asciidoc</asciidoc.sourceDirectory>
+		<asciidoctor.sourceDirectory>src/main/asciidoc</asciidoctor.sourceDirectory>
+        <asciidoctor.outputDirectory>${project.build.directory}/generated-docs</asciidoctor.outputDirectory>
+        <asciidoctor.pdf.outputDirectory>${asciidoctor.outputDirectory}/pdf</asciidoctor.pdf.outputDirectory>
 		<!-- required to generate karaf commands documentation -->
 		<felix.bundlerepository.version>2.0.8</felix.bundlerepository.version>
 		<felix.gogo.version>0.16.2</felix.gogo.version>
 		<osgi.version>6.0.0</osgi.version>
 		<osgi.compendium.version>5.0.0</osgi.compendium.version>
-		<karaf.commands.dir>${asciidoc.sourceDirectory}/generated-docs-karaf/</karaf.commands.dir>
+		<karaf.commands.dir>${asciidoctor.sourceDirectory}/generated-docs-karaf/</karaf.commands.dir>
 	</properties>
 
 	<build>
@@ -69,6 +72,11 @@
 				<artifactId>asciidoctor-maven-plugin</artifactId>
 				<version>${asciidoctor-maven-plugin.version}</version>
 				<dependencies>
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj-pdf</artifactId>
+                        <version>${asciidoctorj.pdf.version}</version>
+                    </dependency>                
 					<dependency>
 						<groupId>org.asciidoctor</groupId>
 						<artifactId>asciidoctorj</artifactId>
@@ -76,7 +84,7 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<sourceDirectory>${asciidoc.sourceDirectory}</sourceDirectory>
+					<sourceDirectory>${asciidoctor.sourceDirectory}</sourceDirectory>
 					<imagesDir>./images</imagesDir>
 					<doctype>article</doctype>
 					<!-- Attributes common to all output formats -->
@@ -95,8 +103,8 @@
 						</goals>
 						<configuration>
 							<backend>html5</backend>
+                            <outputDirectory>${asciidoctor.outputDirectory}</outputDirectory>                            
 							<sourceHighlighter>coderay</sourceHighlighter>
-							<!--preserveDirectories>true</preserveDirectories-->
 							<attributes>
 								<toc>left@</toc>
 								<toclevels>5@</toclevels>
@@ -110,6 +118,27 @@
 							</attributes>
 						</configuration>
 					</execution>
+                    <execution>
+                        <id>output-pdf</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>pdf</backend>
+                            <outputDirectory>${asciidoctor.pdf.outputDirectory}</outputDirectory>
+                            <sourceHighlighter>rouge</sourceHighlighter>
+                            <doctype>article</doctype>
+                            <attributes>
+                                <icons>font</icons>
+                                <pagenums>center</pagenums>
+                                <toc/>
+                                <idprefix/>
+                                <idseparator>-</idseparator>
+                                <project-version>${project.version}</project-version>
+                            </attributes>
+                        </configuration>
+                    </execution>
 				</executions>
 			</plugin>
 			<plugin>
