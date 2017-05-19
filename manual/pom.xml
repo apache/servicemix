@@ -39,7 +39,7 @@
 		<asciidoctorj.version>1.5.5</asciidoctorj.version>
         <asciidoctorj.pdf.version>1.5.0-alpha.15</asciidoctorj.pdf.version>
 		<asciidoctor-maven-plugin.version>1.5.5</asciidoctor-maven-plugin.version>
-		<asciidoctor.sourceDirectory>src/main/asciidoc</asciidoctor.sourceDirectory>
+		<asciidoctor.sourceDirectory>${project.basedir}/src/main/asciidoc</asciidoctor.sourceDirectory>
         <asciidoctor.outputDirectory>${project.build.directory}/generated-docs</asciidoctor.outputDirectory>
         <asciidoctor.pdf.outputDirectory>${asciidoctor.outputDirectory}/pdf</asciidoctor.pdf.outputDirectory>
 		<!-- required to generate karaf commands documentation -->
