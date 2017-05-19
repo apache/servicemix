@@ -43,6 +43,7 @@
         <module>activiti</module>
         <module>branding</module>
         <module>logging</module>
+        <module>manual</module>
         <module>examples</module>
         <module>assemblies</module>
         <module>itests</module>
