@@ -45,9 +45,12 @@
             <artifactId>activemq-broker</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20090211</version>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-json_1.0_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.johnzon</groupId>
+            <artifactId>johnzon-core</artifactId>
         </dependency>
 
         <dependency>
@@ -83,7 +86,8 @@
                             org.apache.servicemix.logging.jms
                         </Private-Package>
                         <Embed-Dependency>
-                            json
+                            johnzon-core,
+                            geronimo-json_1.0_spec
                         </Embed-Dependency>
                     </instructions>
                 </configuration>

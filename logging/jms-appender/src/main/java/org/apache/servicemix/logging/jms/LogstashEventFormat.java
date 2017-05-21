@@ -16,15 +16,16 @@
  */
 package org.apache.servicemix.logging.jms;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.ops4j.pax.logging.spi.PaxLoggingEvent;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonException;
+import javax.json.JsonObjectBuilder;
+
+import org.ops4j.pax.logging.spi.PaxLoggingEvent;
 
 /**
  * Creates a log message in Logstash' internal message format,
@@ -41,28 +42,28 @@ public class LogstashEventFormat implements LoggingEventFormat {
     protected static final String TIMESTAMP = "@timestamp";
 
     public String toString(PaxLoggingEvent event) {
-        JSONObject object = new JSONObject();
+        JsonObjectBuilder object = Json.createObjectBuilder();
         try {
-            object.put(MESSAGE, event.getMessage());
-            object.put(SOURCE, event.getLoggerName());
-            object.put(TIMESTAMP, TIMESTAMP_FORMAT.format(new Date(event.getTimeStamp())));
+            object.add(MESSAGE, event.getMessage());
+            object.add(SOURCE, event.getLoggerName());
+            object.add(TIMESTAMP, TIMESTAMP_FORMAT.format(new Date(event.getTimeStamp())));
 
-            JSONObject fields = new JSONObject();
+            JsonObjectBuilder fields = Json.createObjectBuilder();
             for (Object property : event.getProperties().entrySet()) {
                 Map.Entry<String, Object> entry = (Map.Entry<String, Object>) property;
-                fields.put(entry.getKey(), entry.getValue().toString());
+                fields.add(entry.getKey(), entry.getValue().toString());
             }
 
-            object.put(FIELDS, fields);
+            object.add(FIELDS, fields);
 
-            JSONArray tags = new JSONArray();
-            tags.put(event.getLevel().toString());
-            object.put(TAGS, tags);
-        } catch (JSONException e) {
+            JsonArrayBuilder tags = Json.createArrayBuilder();
+            tags.add(event.getLevel().toString());
+            object.add(TAGS, tags);
+        } catch (JsonException e) {
             // let's return a minimal, String-based message representation instead
             return "{ \"" + MESSAGE + "\" : " + event.getMessage() + "}";
         }
-        return object.toString();
+        return object.build().toString();
     }
 
 }
