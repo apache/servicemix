@@ -16,8 +16,11 @@
  */
 package org.apache.servicemix.logging.jms;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.StringReader;
+import javax.json.Json;
+import javax.json.JsonException;
+import javax.json.JsonObject;
+
 import org.junit.Test;
 import org.ops4j.pax.logging.spi.PaxLoggingEvent;
 
@@ -32,15 +35,15 @@ public class LogstashEventFormatTest {
     private final LoggingEventFormat format = new LogstashEventFormat();
 
     @Test
-    public void testBasicLogstashFormat() throws JSONException {
+    public void testBasicLogstashFormat() throws JsonException {
         PaxLoggingEvent event = MockEvents.createInfoEvent();
 
-        JSONObject object = new JSONObject(format.toString(event));
-        assertEquals(MockEvents.LOG_MESSAGE, object.get(LogstashEventFormat.MESSAGE));
-        assertEquals(MockEvents.LOGGER_NAME, object.get(LogstashEventFormat.SOURCE));
-        assertEquals("INFO", object.getJSONArray(LogstashEventFormat.TAGS).get(0));
+        JsonObject object = Json.createReader(new StringReader(format.toString(event))).readObject();
+        assertEquals(MockEvents.LOG_MESSAGE, object.getString(LogstashEventFormat.MESSAGE));
+        assertEquals(MockEvents.LOGGER_NAME, object.getString(LogstashEventFormat.SOURCE));
+        assertEquals("INFO", object.getJsonArray(LogstashEventFormat.TAGS).getString(0));
         assertEquals(MockEvents.LOG_PROPERTY_VALUE,
-                     object.getJSONObject(LogstashEventFormat.FIELDS).get(MockEvents.LOG_PROPERTY_ID));
+                     object.getJsonObject(LogstashEventFormat.FIELDS).getString(MockEvents.LOG_PROPERTY_ID));
         assertNotNull(object.get(LogstashEventFormat.TIMESTAMP));
 
         System.out.println(object);

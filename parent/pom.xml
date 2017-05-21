@@ -74,6 +74,8 @@
         <jaxb.api.version>2.2</jaxb.api.version>
         <jodatime2.bundle.version>2.9</jodatime2.bundle.version>
         <jpa.version>2.1.0</jpa.version>
+        <johnzon.version>0.9.4</johnzon.version>
+        <json-p.spec.version>1.0-alpha-1</json-p.spec.version>
         <json4s.bundle.version>3.2.11_1</json4s.bundle.version>
         <karaf.version>3.0.8</karaf.version>
         <mvel2.version>2.2.1.Final</mvel2.version>
@@ -525,6 +527,18 @@
                 <groupId>org.apache.servicemix.bundles</groupId>
                 <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
                 <version>${commons-httpclient.bundle.version}</version>
+            </dependency>
+
+            <!-- json -->
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-json_1.0_spec</artifactId>
+                <version>${json-p.spec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.johnzon</groupId>
+                <artifactId>johnzon-core</artifactId>
+                <version>${johnzon.version}</version>
             </dependency>
 
             <!-- Pax Url -->
