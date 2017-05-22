@@ -15,37 +15,70 @@
  * limitations under the License.
  */
 
-                        Apache ServiceMix 6.1.3
+                        Apache ServiceMix 6.1.4
                     ================================
-   Overview
-   --------
+  Overview
+  --------
 
-  Apache ServiceMix is a flexible, open-source integration container that unifies the
-  features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
-  runtime platform you can use to build your own integrations solutions.
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
 
-  Apache ServiceMix 6.1.3 is a new patch release, which includes a few bug fixes and
-  a new version of Apache Camel and Apache Karaf.
-  This release includes:
+Apache ServiceMix 6.1.4 is a new patch release, which includes a few bug fixes and
+a new version of Apache Camel and Apache CXF.
+This release includes:
 
-  - Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
-  - Apache Camel 2.16.4 (http://camel.apache.org)
-  - Apache CXF 3.1.5 (http://cxf.apache.org)
-  - Apache Karaf 3.0.8 (http://karaf.apache.org)
+ - Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
+ - Apache Camel 2.16.5 (http://camel.apache.org)
+ - Apache CXF 3.1.9 (http://cxf.apache.org)
+ - Apache Karaf 3.0.8 (http://karaf.apache.org)
 
-   Changelog
-   ---------
+  Changelog
+  ---------
 
- ** Bug
-     * [SM-3045] - Assembly descriptor contains a *nix-specific root-relative-reference
-     * [SM-3093] - Examples compile error
-     * [SM-3106] - exec-maven-plugin.version is not set in examples pom.xml
+** Sub-task
+    * [SM-3223] - Add notice about usage of non-free json library
 
- ** Task
-     * [SM-3043] - Release Apache ServiceMix 6.1.3
-     * [SM-3074] - Upgrade to Apache Karaf 3.0.8
-     * [SM-3110] - Upgrade to Apache Camel 2.16.4
-     * [SM-3123] - Use values from system.properties in several ActiveMQ configurartion files
+** Bug
+    * [SM-2493] - ServiceMix shuts down automatically
+
+** Task
+    * [SM-3166] - Release Apache ServiceMix 6.1.4
+    * [SM-3222] - ServiceMix should not use non-free json.org
+    * [SM-3228] - Upgrade to Apache Camel 2.16.5 and Apache CXF 3.1.9
+
+
+                      Apache ServiceMix 6.1.3
+                  ================================
+  Overview
+  --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the
+features and functionality of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful
+runtime platform you can use to build your own integrations solutions.
+
+Apache ServiceMix 6.1.3 is a new patch release, which includes a few bug fixes and
+a new version of Apache Camel and Apache Karaf.
+This release includes:
+
+ - Apache ActiveMQ 5.12.3 (http://activemq.apache.org)
+ - Apache Camel 2.16.4 (http://camel.apache.org)
+ - Apache CXF 3.1.5 (http://cxf.apache.org)
+ - Apache Karaf 3.0.8 (http://karaf.apache.org)
+
+  Changelog
+  ---------
+
+** Bug
+    * [SM-3045] - Assembly descriptor contains a *nix-specific root-relative-reference
+    * [SM-3093] - Examples compile error
+    * [SM-3106] - exec-maven-plugin.version is not set in examples pom.xml
+
+** Task
+    * [SM-3043] - Release Apache ServiceMix 6.1.3
+    * [SM-3074] - Upgrade to Apache Karaf 3.0.8
+    * [SM-3110] - Upgrade to Apache Camel 2.16.4
+    * [SM-3123] - Use values from system.properties in several ActiveMQ configurartion files
 
 
                        Apache ServiceMix 6.1.2
