@@ -15,6 +15,44 @@
  * limitations under the License.
  */
 
+                      Apache ServiceMix 7.0.1
+                  ================================
+ Overview
+ --------
+
+Apache ServiceMix is a flexible, open-source integration container that unifies the features and functionality
+of Apache ActiveMQ, Camel, CXF, and Karaf into a powerful runtime platform you can use to build your own
+integrations solutions.
+
+Apache ServiceMix 7.0.1 is a new patch release, which includes a few bug fixes and
+a new version of Apache Camel, Apache CXF, Apache ActiveMQ and Apache Karaf.
+This release includes:
+
+- Apache ActiveMQ 5.14.5 (http://activemq.apache.org)
+- Apache Camel 2.16.5 (http://camel.apache.org)
+- Apache CXF 3.1.9 (http://cxf.apache.org)
+- Apache Karaf 4.0.9 (http://karaf.apache.org)
+
+
+ Changelog
+ ---------
+
+** Bug
+    * [SM-3225] - Examples compile error
+    * [SM-3264] - Upgrade to Apache Karaf 4.0.9
+
+** Improvement
+    * [SM-3303] - Expose proces configuration to cfg file
+
+** Task
+    * [SM-3222] - ServiceMix should not use non-free json.org
+    * [SM-3226] - Release Apache ServiceMix 7.0.1
+    * [SM-3228] - Upgrade to Apache Camel 2.16.5 and Apache CXF 3.1.9
+    * [SM-3268] - Upgrade to Apache ActiveMQ 5.14.5
+    * [SM-3357] - Upgrade to depends-maven-plugin 1.4.0
+    * [SM-3358] - Upgrade to maven-bundle-plugin 3.3.0
+    * [SM-3359] - Upgrade maven plugin versions and parent pom
+
                       Apache ServiceMix 7.0.0
                   ================================
  Overview
