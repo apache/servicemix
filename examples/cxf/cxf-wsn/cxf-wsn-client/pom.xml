@@ -23,7 +23,7 @@
     <parent>
         <artifactId>cxf-wsn</artifactId>
         <groupId>org.apache.servicemix.examples</groupId>
-        <version>6.1.4-SNAPSHOT</version>
+        <version>6.1.4</version>
     </parent>
 
 
