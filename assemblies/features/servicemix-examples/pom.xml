@@ -24,7 +24,7 @@
     <parent>
         <artifactId>features</artifactId>
         <groupId>org.apache.servicemix.assemblies.features</groupId>
-        <version>6.1.4</version>
+        <version>6.1.5-SNAPSHOT</version>
     </parent>
 
     <groupId>org.apache.servicemix.features</groupId>
