@@ -3,7 +3,7 @@ Apache Software Foundation
 :!numbered:
 :!toc:
 
-* <<quickstart#,Quickstart Guide>> +
+* <<quickstart#,Quickstart Guide>> [.small]#(image:pdf.png[] link:pdf/quickstart.pdf[as PDF])# +
  [smx-list-description]#If you're new to Apache ServiceMix, this document will guide you in your first steps in Apache ServiceMix.#
 * <<user-guide#,User Guide>> +
  [smx-list-description]#Apache ServiceMix contains a lot of different components and it embeds a lot of other Apache projects.  
@@ -26,7 +26,7 @@ Apache Software Foundation
 * <<resources#,Further Resources>> + 
  [smx-list-description]#A selection of related books and websites.#
 * <<contribute#,We welcome contributions!>>
-* <<documentation#,Complete Documentation>> +
+* <<documentation#,Complete Documentation>> [.small]#(image:pdf.png[] link:pdf/documentation.pdf[as PDF])# +
  [smx-list-description]#The complete ServiceMix documentation as one file, without the Karaf documentation.#
 
 
