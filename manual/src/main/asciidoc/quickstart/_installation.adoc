@@ -1,0 +1,72 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Installation
+
+Before we can start working with Apache ServiceMix, we have to get it installed and running on our local machine first.
+
+=== System requirements
+
+For running Apache ServiceMix itself, you'll need
+
+* Java Runtime Environment (JRE) 1.7.x (Java 7) or
+  Java Runtime Environment (JRE) 1.8.x (Java 8)
+* About 100 MB of free disk space for the default assembly
+
+If you're developing your own integration applications and OSGi bundles, you'll also need
+
+* Java Developer Kit (JDK) 1.7.x (Java 7) or
+  Java Developer Kit (JDK) 1.8.x (Java 8)
+* Apache Maven 3.0.4 or higher
+
+=== Downloading Apache ServiceMix
+
+Apache ServiceMix {servicemix-version} is available under the Apache License v2 and can be downloaded from http://servicemix.apache.org/downloads.html.
+
+Depending on your operation system, you should download either the tar.gz or the zip file:
+
+* _tar.gz_ for Linux/Unix/MacOS X
+* _zip_ for Windows
+
+=== Installing Apache ServiceMix
+
+Installing Apache ServiceMix is as simple as uncompressing the downloaded archive on your hard disk.  For the rest of this guide, we'll refer to the this location as *_<SERVICEMIX_HOME>_*.
+
+=== Starting Apache ServiceMix
+
+Depending on your platform, start Apache ServiceMix by following the instructions below.  After starting the container, you will have access to the console from which you can manage the container.
+
+==== On Windows
+In a command prompt window, navigate to the directory where you extracted ServiceMix and run the _bin\servicemix.bat_ file.
+
+Example: if ServiceMix in installed in the _c:\tools\apache-servicemix-{servicemix-version}_ directory
+[source,text,subs="attributes"]
+----
+> cd c:\tools\apache-servicemix-{servicemix-version}
+> .\bin\servicemix
+----
+
+image::start-windows.png[]
+
+==== On Linux/Unix/MacOS X
+On a command shell, navigate to the directory where you extracted ServiceMix and the _bin/servicemix_ shell script
+
+Example: if ServiceMix is installed in the _~/bin/apache-servicemix-{servicemix-version}_ directory.
+[source,text,subs="attributes"]
+----
+$ cd ~/bin/apache-servicemix-{servicemix-version}
+$ ./bin/servicemix
+----
+
+image::start-linux.png[]

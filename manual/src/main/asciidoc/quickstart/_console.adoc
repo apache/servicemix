@@ -1,0 +1,95 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Apache ServiceMix console
+
+Now that we successfully installed and started Apache ServiceMix, we'll take a closer look at the console.  This is where you manage
+your ServiceMix instance, add and remove bundles, install optional features, and more.
+
+=== Working with bundles
+
+When ServiceMix is first started, a whole set of bundles providing the core features for the product are being installed.  Let's use
+the command console to find out more about them.
+
+The _bundle:list_ command can be used to get a list of all bundles currently installed.  Enter this
+
+[source,text]
+----
+karaf@root> bundle:list
+----
+
+This is what the output looks like if you run this on your ServiceMix instance.
+
+image::osgi-list.png[]
+
+For every bundle, you see:
+
+* the bundle id
+* the bundle state
+* the bundle start level
+* the bundle version and name
+
+If you're looking for something specific in the list, you can use unix-like pipes and utilities to help you. An example: to look
+for all Camel related bundles:
+
+[source,text]
+----
+karaf@root> bundle:list | grep camel
+----
+
+image::osgi-list-pipegrep.png[]
+
+=== Working with logging
+
+Many of the applications you write will have some form of log output.  To look at the message in the log file, you can us the
+_log:diplay_ command.
+
+[source,text]
+----
+karaf@root> log:display
+----
+
+image::log-display.png[]
+
+If you're only interested in the latest exception in the log file, you can use _log:exception-display_ instead.
+
+[source,text]
+----
+karaf@root> log:exception-display
+----
+
+image::log-display-exception.png[]
+
+You can also change the log level at runtime by using the _log:set_ command.  You can try these commands on your instance now by
+first setting the log level to _DEBUG_ and then using _grep_ to make sure that you can actually see the extra logging.
+
+[source,text]
+----
+karaf@root> log:set DEBUG
+karaf@root> log:display | grep DEBUG
+----
+
+image::log-set-debug.png[]
+
+Afterwards, revert the log level to its original _INFO_ value again with _log:set_.
+
+[source,text]
+----
+karaf@root> log:set INFO
+----
+
+=== ...and there's a lot more
+
+These are obviously just a few examples of what the command shell is all about.  There are a lot more commands in the shell to help
+you deploy, monitor, manage and troubleshoot the applications you're building with ServiceMix.

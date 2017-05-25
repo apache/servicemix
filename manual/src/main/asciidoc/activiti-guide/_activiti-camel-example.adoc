@@ -1,0 +1,218 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Using Activiti with Camel
+
+In this example we show an example how Activiti can be used with Camel in ServiceMix through
+http://aries.apache.org/modules/blueprint.html[Blueprint Container].
+ 
+Before being able to run Activiti with Camel, you have to install some additional features into the container first to add support
+for the Activiti.
+
+[source,text]
+----
+karaf@root>feature:install activiti
+----
+
+By default in ServiceMix, the Activiti Engine uses an embedded (local) H2 database. It the can be found under
+
+[source,text]
+----
+${karaf.data}/activiti/database.
+----
+
+The Activiti engine is the entry point for starting new process instances, deploying new processes, querying for user tasks, and
+more. Process data is stored in the H2 database.
+
+
+=== Blueprint configuration
+
+Let's see how you can set up the Camel context in a Blueprint configuration. As you can see,
+the Camel integration is specified with the Activiti Engine in the same Blueprint configuration:
+
+
+[source,xml,options="nowrap"]
+----
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:camel="http://camel.apache.org/schema/blueprint">
+
+    <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/blueprint"> <!--1-->
+        <packageScan>
+            <package>org.apache.servicemix.examples.activiti</package> <!--2-->
+        </packageScan>
+    </camelContext>
+
+    <reference id="runtimeService" interface="org.activiti.engine.RuntimeService" /> <!--3-->
+
+    <service interface="org.activiti.camel.ContextProvider"> <!--4-->
+        <bean class="org.activiti.camel.SimpleContextProvider">
+            <argument value="OrderProcess"/>
+            <argument ref="camelContext"/>
+        </bean>
+    </service>
+
+</blueprint>
+----
+<1> This Camel context contains the routes that interact with our BPMN process.
+<2> Here we instruct the Camel context to scan the classpath in org.apache.servicemix.examples.activiti.
+<3> Obtain a reference to Activiti's RuntimeService - this reference will automatically be picked up by the subsequent Activiti
+Camel component definition.
+<4> Register a context provider to link the Camel context to the OrderProcess definition. Doing this will allow your BPMN process to
+communicate with the Camel routes using the ${camel} expression.
+
+=== Route Definition
+
+
+[source,java,options="nowrap"]
+----
+
+public class ActivitiRouteBuilder extends RouteBuilder {
+
+    private final Helper helper = new Helper();
+
+    @Override
+    public void configure() throws Exception {
+        /*
+         * This route will start a new OrderProcess instance.  Using the
+         * PROCESS_KEY_PROPERTY, we are assigning a business key to our process
+         * to allow for easier correlation in later processing steps.  We are
+         * also sending a Map containing additional variables to add to the
+         * process instance.
+         */
+        from("file:var/activiti-camel/order")
+            .setBody(bean(helper))
+            .setProperty(PROCESS_KEY_PROPERTY, simple("file:name"))
+            .to("activiti:OrderProcess")
+            .log("Process to handle incoming order file has been started (process instance id ${body})");
+
+        /*
+         * This route will notify a running OrderProcess of an order delivery
+         * event.  Here too, we are setting the PROCESS_KEY_PROPERTY to
+         * correlate the delivery message with right order process instance.
+         */
+        from("file:var/activiti-camel/delivery")
+            .log("Notifying process about delivery for order ${file:name}")
+            .setBody(bean(helper))
+            .setProperty(PROCESS_KEY_PROPERTY, simple("file:name"))
+            .to("activiti:OrderProcess:receiveDelivery");
+
+        /*
+         * The BPMN process can also trigger Camel routes as part of the
+         * process.  In these routes, the variables that you added to the
+         * process are available as Exchange properties.  The next two routes
+         * will be triggered while processing the order and the order delivery.
+         */
+        from("activiti:OrderProcess:processOrder?copyVariablesToProperties=true")
+            .log("Processing order ${property.orderid} created on ${property.timestamp}")
+            .log("  original message: ${property.message}");
+
+        from("activiti:OrderProcess:processDelivery?copyVariablesToProperties=true")
+            .log("Processing delivery for order ${property.orderid} created on ${property.timestamp}")
+            .log("  original message: ${property.message}");
+    }
+
+    /*
+     * A few helper methods used for routing
+     */
+    public static final class Helper {
+
+        /*
+         * This method will extract information from the Exchange (using Camel
+         * annotations) and put them in a Map that will be used for setting up
+         * the process' variables.
+         */
+        @Handler
+        public Map getProcessVariables(@Body String body,
+                                       @Header(Exchange.FILE_NAME) String filename,
+                                       @Simple("${date:now:yyyy-MM-dd kk:mm:ss}") String timestamp) {
+            Map<String, Object> variables = new HashMap<String, Object>();
+            variables.put("message", body);
+            variables.put("orderid", filename);
+            variables.put("timestamp", timestamp);
+            return variables;
+        }
+    }
+}
+----
+
+=== Process definition
+
+[source,xml,options="nowrap"]
+----
+
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" 
+             expressionLanguage="http://www.w3.org/1999/XPath" 
+             targetNamespace="http://www.activiti.org/test">
+
+    <process id="OrderProcess" isExecutable="true">
+
+        <startEvent id="start"/>
+
+        <sequenceFlow id="flow1" sourceRef="start" targetRef="processOrder"/>
+
+        <serviceTask id="processOrder" activiti:delegateExpression="${camel}"/>
+
+        <sequenceFlow id="flow2" sourceRef="processOrder" targetRef="receiveDelivery"/>
+
+        <receiveTask id="receiveDelivery" name="Wait for Delivery" />
+
+        <sequenceFlow id="flow3" sourceRef="receiveDelivery" targetRef="processDelivery"/>
+
+        <serviceTask id="processDelivery" activiti:delegateExpression="${camel}"/>
+
+        <sequenceFlow id="flow4" sourceRef="processDelivery" targetRef="end"/>
+
+        <endEvent id="end"/>
+
+    </process>
+
+</definitions>
+----
+
+The process presented here above define a simple order process. It processes the incoming orders and subsequently waits for its
+delivery.  Once the delivery notification has been received, another bit of processing occurs before the business process ends.
+
+This process defines the BPMN definition and is automatically deployed as soon as bundle is started:
+
+[source,text]
+----
+start --> processOrder --> waitForDelivery --> processDelivery --> end
+----
+
+When the service task is executed by the Activiti Engine, the execution is delegated to the CamelBehaviour class, which will send a
+message containing all process variables to an Activiti endpoint defined in the Camel context. This behavior is obtained through the
+use the delegateExpression in the Java service task
+
+=== Building and running the example
+
+. Open a command prompt, and navigate to the directory containing the example, _examples/activiti/activiti-camel_.
+. Build the bundle using `mvn clean install`.
+. In the Karaf console, install the bundle using `bundle:install mvn:org.apache.servicemix.examples/activiti-camel/{servicemix-version}`. Note the bundle id that is returned.
+. In the Karaf console, start the bundle using `bundle:start <id>`, where the id is the bundle id returned from the preceeding command.
+. Create a possibly empty file representing a new order in the newly created directory _var/activiti-camel/order_ under your ServiceMix installation directory. The file name corresponds to the order id.
+. In the log, you will find a message similar to +
+  _Process to handle incoming order file has been started (process instance id {orderid=1234, message=, timestamp=2017-05-09 20:35:33})_ 
+. At that point, you have a running process instance for order 1234 that is waiting for delivery. 
+. To notify the process about the delivery, you have to create a file with the same name in the _var/activiti-camel/delivery_ directory.
+. As soon as the Camel route picks up the file, you will find messages similar to +
+  _Notifying process about delivery for order 1234_ + 
+  and +
+  _Processing delivery for order 1234 created on 2017-05-09 20:43:09_ +
+  in the log.

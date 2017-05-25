@@ -1,0 +1,45 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Deployment Options
+
+There are a few different ways to deploy Camel routes on ServiceMix:
+
+* deploy routes in a plain Blueprint XML file
+* deploy routes in a plain Spring XML file
+* deploy a bundle containing a Blueprint XML file
+* deploy a bundle containing a Spring XML file
+
+=== Benefits and drawbacks
+
+==== Plain XML or OSGi bundles
+
+Choose a plain XML file:
+
+* if you want to get routes deployed as quickly as possible. +
+  All you need for developing routes is a simple text editor, no compilation and building is required.
+* if you prefer the XML syntax over the Java of Scala DSL.
+
+Choose an OSGi bundle:
+
+* if you want to package helper classes together with your route definitions.
+* if you prefer developing routes in the Java or Scala DSL. +
+    The RouteBuilder implementations can be packaged inside the bundle.
+
+==== Blueprint or Spring
+
+Choose Blueprint if you want the best possible integration with the OSGi Framework and Service Registy. The Blueprint specification
+has been developed specifically for the OSGi Framework by the OSGi Alliance.
+
+Choose Spring if you already invested in Spring for creating and running Camel routes.

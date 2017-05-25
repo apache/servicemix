@@ -1,0 +1,32 @@
+= ServiceMix
+Apache Software Foundation
+:!numbered:
+:!toc:
+
+* <<quickstart#,Quickstart Guide>> [.small]#(image:pdf.png[] link:pdf/quickstart.pdf[as PDF])# +
+ [smx-list-description]#If you're new to Apache ServiceMix, this document will guide you in your first steps in Apache ServiceMix.#
+* <<user-guide#,User Guide>> +
+ [smx-list-description]#Apache ServiceMix contains a lot of different components and it embeds a lot of other Apache projects.  
+ This user guide will help you select and configure the right components when building your own solution.#
+* <<activemq-guide#,ActiveMQ Guide>> +
+ [smx-list-description]#Apache ServiceMix embeds Apache ActiveMQ to provide a JMS message broker that you can interact with 
+ from your Camel routes, providing support for message persistence, clustering, failover, ...#
+* <<camel-guide#,Camel Guide>> +
+ [smx-list-description]#Apache Camel is a core component of Apache ServiceMix.  This guide will show you how to build and deploy 
+ Camel routes for Apache ServiceMix.#
+* <<activiti-guide#,Activiti Guide>> +
+ [smx-list-description]#Apache ServiceMix embeds Activiti to provide a light-weight workflow and Business Process Management 
+ (BPM) Platform targeted at business people, developers and system admins, ...#
+* <<karaf-commands#,Karaf Command Reference>> +
+ [smx-list-description]#Help pages for all the available Karaf commands in the Apache ServiceMix console.#
+* link:++https://karaf.apache.org/manual/latest/#_user_guide++[Karaf User Guide] + 
+ [smx-list-description]#Apache ServiceMix uses Apache Karaf as the underlying OSGi server runtime. This manual explains about the features and functionality provided by Karaf.#
+* link:++https://karaf.apache.org/manual/latest/#_developer_guide++[Karaf Developer Guide] +
+ [smx-list-description]#The Apache Karaf Developer Guide gives you some information about developing with and for the OSGi server runtime.#
+* <<resources#,Further Resources>> + 
+ [smx-list-description]#A selection of related books and websites.#
+* <<contribute#,We welcome contributions!>>
+* <<documentation#,Complete Documentation>> [.small]#(image:pdf.png[] link:pdf/documentation.pdf[as PDF])# +
+ [smx-list-description]#The complete ServiceMix documentation as one file, without the Karaf documentation.#
+
+

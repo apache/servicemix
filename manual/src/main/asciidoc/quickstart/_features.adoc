@@ -1,0 +1,55 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Optional features
+
+Everything discussed in the quickstart guide so far is installed out-of-the-box in Apache ServiceMix, but we also have a lot of
+optional features that can be installed in the container when necessary.
+
+=== List of features
+
+The list of features is available with the _feature:list_ command.  The overview shows you whether or not the feature is currently
+installed, the version and the name of the feature.
+
+image::featureslist.png[]
+
+The full list contains a lot of different features: optional Camel components, features for adding OBR or wrapper support to
+ServiceMix, a web console, and many more.  Again, you can use things like _|_ and _grep_ to find the things in the list that you're
+interested in.
+
+[source,text]
+----
+karaf@root> feature:list | grep camel
+----
+
+=== Example: web console
+
+To get the web console installed in ServiceMix, install the feature from your console
+[source,text]
+----
+karaf@root> feature:install webconsole
+----
+
+Afterwards, you can verify that the feature is installed and started in the overview.
+
+[source,text]
+----
+karaf@root> feature:list | grep -i webconsole
+----
+
+image::featureslist-grep-webconsole.png[]
+
+You will now be able to point your browser to http://localhost:8181/system/console and login with user _smx_ and password _smx_ to
+access the web console.  From the webconsole, Karaf can be managed, including starting and stopping bundles, installing and
+uninstalling features, and managing the configuration. 

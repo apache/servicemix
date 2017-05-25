@@ -1,0 +1,72 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+// This document is intended to be included in other documents.
+// No title heading!
+// The top level heading in all included documents should not be a document title.
+
+== Books
+
+[%autowidth,frame=topbot,grid=rows]
+|===
+a|https://www.amazon.com/Enterprise-Integration-Patterns-Designing-Deploying/dp/0321200683/ref=sr_1_1?s=books&ie=UTF8&qid=1494695165&sr=1-1[Enterprise Integration Patterns : Designing, Building, and Deploying Messaging Solutions] + 
+Gregor Hohpe and Bobby Woolf + 
+October 2003 | image:eip150x198.jpg[]
+
+a|http://www.amazon.com/Service-Oriented-Business-Integration-Binildas-Christudas/dp/1847194400[Service Oriented Java Business Integration - Enterprise Service Bus Integration Solutions for Java Developers] + 
+Binildas A. Christudas +
+March 2008 | image:sojbi150x190.jpg[]
+
+a|https://www.amazon.com/Design-Patterns-Prentice-Service-Oriented-Computing/dp/0136135161[SOA Design Patterns] +
+Thomas Erl +
+January 2009 | image:soa-dp-erl150x195.jpg[]
+
+a|https://www.manning.com/books/understanding-enterprise-soa[Understanding Enterprise SOA] +
+Eric Pulier and Hugh Taylor +
+November 2005 | image:pulier150x188.jpg[]
+
+a|https://www.amazon.com/o/ASIN/0131428985/002-7139888-4078404[Service-Oriented Architecture: A Field Guide to Integrating XML and Web Services] +
+Thomas Erl +
+April 2006 | image:soa-fieldguide-xml-ws150x197.jpg[]
+
+a|https://www.amazon.com/o/ASIN/0131858580/002-7139888-4078404[Service-Oriented Architecture (SOA): Concepts, Technology, and Design] +
+Thomas Erl +
+August 2005 | image:soa-concepts150x212.jpg[]
+
+a|https://www.amazon.com/o/ASIN/0131465759/002-7139888-4078404[Enterprise SOA: Service-Oriented Architecture Best Practices] +
+Dirk Krafzig, Karl Banke, and Dirk Slama +
+November 2004 | image:enterpreise-soa-best-practices-krafzig150x197.jpg[]
+
+a|https://www.amazon.com/Understanding-SOA-Services-Eric-Newcomer/dp/0321180860[Understanding SOA with Web Services] +
+Eric Newcomer and Greg Lomow +
+December 2004 | image:understanding-soa-ws-newcomer150x202.jpg[]
+
+a|https://www.amazon.com/Services-Service-Oriented-Architectures-Computing-Second/dp/0123983576[Web Services, Service-Oriented Architectures, and Cloud Computing, Second Edition: The Savvy Manager's Guide] +
+Douglas K. Barry +
+January 2013 | image:ws-soa-cloud-mamager-guide-barry150x225.jpg[]
+
+a|https://www.amazon.com/Web-Services-Platform-Architecture-WS-Addressing/dp/0131488740[Web Services Platform Architecture : SOAP, WSDL, WS-Policy, WS-Addressing, WS-BPEL, WS-Reliable Messaging, and More] +
+Sanjiva Weerawarana, Francisco Curbera, Frank Leymann, Tony Storey, and Donald F. Ferguson +
+April 2005 | image:webservice-platform150x196.jpg[]
+
+a|https://www.amazon.com/Loosely-Coupled-Missing-Pieces-Services/dp/1881378241[Loosely Coupled: The Missing Pieces of Web Services] + 
+Doug Kaye + 
+August 2003 | image:loosely-coupled-kaye150x208.jpg[]
+
+|===
+
+== Websites
+
+* http://www.eaipatterns.com/[Enterprise Integration Patterns]
+* http://www.servicetechbooks.com/[The Prentice Hall Service Technology Series from Thomas Erl]

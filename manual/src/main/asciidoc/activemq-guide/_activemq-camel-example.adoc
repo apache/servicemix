@@ -1,0 +1,137 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== Using ActiveMQ with Camel
+
+This sections is based on the activemq-camel-blueprint example in the ServiceMix distribution.
+
+=== Objectives 
+
+The objectives of this sections are to explain how to
+
+* define Camel routes as an OSGi bundle using Blueprint,   
+* publish messages to an ActiveMQ queue,
+* consume messages from an ActiveMQ queue,
+* build and install the OSGi bundle,
+* write messages to the log.
+
+=== Prerequisites
+
+For this example, it is assumed that ServiceMix, Java and Maven are installed locally on your machine. Further, it is assumed that
+ServiceMix is up and running.
+
+=== ActiveMQ and ServiceMix Web Consoles
+
+The ActiveMQ web console can be used to inspect and manage ActiveMQ configuration, queues and topics. If ServiceMix is running
+locally, the console can be accessed at http://localhost:8181/activemqweb/.
+
+If the ActiveMQ web console has not been installed previously, install the feature from the Karaf console:
+
+[source,text]
+----
+karaf@root> feature:install activemq-web-console
+---- 
+
+Note that the ServiceMix console is accessible at http://localhost:8181/system/console/, with default username smx, and password smx.
+This feature can be installed from the Karaf console using
+
+[source,text]
+----
+karaf@root>feature:install webconsole
+---- 
+ 
+Inspect the ActiveMQ web console before running the example. Note that initially, there are no queues defined.  
+
+=== Blueprint Example Explained
+
+The following Blueprint XML-file is based on the example included in the ServiceMix distribution. Configuration related to the
+custom transformation bean and handling of persistent properties have been removed for simplicity.
+
+[source,xml,options="nowrap"]
+----
+<blueprint
+    xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+        <route>
+            <from uri="timer://myTimer?fixedRate=true&amp;period=2000" /> <!--1-->
+            <bean ref="myTransform" method="transform"/> <!--2--> <!--7-->
+            <to uri="activemq:queue:LOG.ME" /> <!--3-->
+        </route>
+        <route>
+            <from uri="activemq:queue:LOG.ME" /> <!--4-->
+            <to uri="log:ExampleActiveMQRouterBlueprint" /> <!--5-->
+        </route>
+    </camelContext>
+
+    <cm:property-placeholder persistent-id="org.apache.servicemix.examples"> <!--6-->
+        <cm:default-properties>
+            <cm:property name="prefix" value="ActiveMQ-Blueprint-Example"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+
+    <bean id="myTransform" class="org.apache.servicemix.examples.activemq.MyTransform"> <!--7-->
+        <property name="prefix" value="${prefix}" />
+    </bean>
+
+</blueprint>
+----
+<1> A Camel timer endpoint generates a heartbeat event every 2000ms, generating a new message.
+<2> The timer message is transformed by the _transform_ method of the bean referenced by _myTransform_.
+<3> The message is sent to the LOG.ME queue on the ActiveMQ broker. This queue is created automatically.
+<4> The message is consumed from the LOG.ME queue on the ActiveMQ broker.
+<5> A Camel log endpoint sends the message to the Jakarta commons logger. By default, the log is written to
+_c:\bin\apache-servicemix-7.0.0\data\log\servicemix.log.
+<6> The persistent property _prefix_ has a default value of _ActiveMQ-Blueprint-Example_ and can be configured in the file
+_org.apache.servicemix.examples.cfg_ if desired.
+<7> The bean _myTransform_ references the class _org.apache.servicemix.examples.activemq.MyTransform_. This class has one
+configurable property, _prefix_. The expression _${prefix}_ links it to the corresponding persistent cm:property.  
+
+The class _org.apache.servicemix.examples.activemq.MyTransform_ transforms the message, using the _prefix_, some text and
+the current date. It writes to both a logger and System.out. 
+
+=== Building, Running, and Modifying the Example
+
+Open a command window and navigate to the example directory, e.g. _c:\bin\apache-servicemix-7.0.0\examples\activemq\activemq-camel-blueprint\_.
+
+WARNING: If you are using ServiceMix 7.0.0 download the pom.xml-file from https://issues.apache.org/jira/browse/SM-3225 and replace the
+pom.xml-file in the examples folder of the distribution with this.
+
+Build the bundle by executing `mvn clean install`. After a successfull build, install the bundle from the Karaf console using
+
+[source,text]
+----
+karaf@root> feature:install examples-activemq-camel-blueprint
+----
+
+Almost immediately, log messages begin to appear in the Karaf console. 
+
+Open the ActiveMQ web console at http://localhost:8181/activemqweb/ and inspect the Queues: the queue _LOG.ME_ has automatically
+been created.
+
+Edit the class _MyTransform_ and set `verbose=false;` to suppress the messages written to the Karaf console. Rebuild the bundle, and
+reinstall it. Note that the bundle needs to be uninstalled before it can be re-installed:
+
+[source,text]
+----
+karaf@root> feature:uninstall examples-activemq-camel-blueprint
+karaf@root> feature:install examples-activemq-camel-blueprint
+----
+
+TIP: The relation between the feature name, _examples-activemq-camel-blueprint_, and the Maven artifact coordinates is defined in
+the file _servicemix-examples-{servicemix-version}-features.xml_ in the ServiceMix distribution.
+

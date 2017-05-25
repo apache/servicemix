@@ -1,0 +1,157 @@
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+== What is (in) ServiceMix?
+
+Apache ServiceMix is an open source ESB (Enterprise Service Bus) that combines the functionality of a Service Oriented Architecture
+(SOA) and the modularity. The adoption of a Service Bus allows to decouple the applicatons together and reduce dependencies.
+Messages are used to wire together applications (=services) and/or connectors to exchange information using different protocols or
+communication modes like FTP, HTTP, and web services.
+
+Apache ServiceMix is designed on top of the OSGI specification. Using OSGI framework brings a new important feature to SOA development:
+modularity. That means that we can handle classloading and application lifecycle differently between the components.
+
+ServiceMix is lightweight and easily embeddable, has integrated Spring support and can be run at the edge of the network (inside a
+client or server), as a standalone ESB provider or as a service within another ESB. You can use ServiceMix in Java SE or Java EE
+application server.
+
+=== Platform presentation
+
+Apache ServiceMix is a distributed ESB built from the ground up and released under the Apache license. 
+
+ServiceMix uses ActiveMQ to provide remoting, clustering, reliability and distributed failover.
+
+ServiceMix can also be embedded into a JEE application server such as JBoss WildFly, Oracle Weblogic or IBM Websphere.
+
+=== OSGi for Dummies
+
+http://www.osgi.org/About/Technology[OSGi technology] is the dynamic module system for
+http://www.oracle.com/technetwork/java/index.html[Java]. The OSGi Service Platform provides functionality to Java that makes Java
+the premier environment for software integration and thus for development. Java provides the portability that is required to support
+products on many different platforms. The OSGi technology provides the standardized primitives that allow applications to be
+constructed from small, reusable and collaborative components. These components can be composed into an application and deployed.
+
+The OSGi Service Platform provides the functions to change the composition dynamically on the device of a variety of networks,
+without requiring restarts. To minimize the coupling, as well as make these couplings managed, the OSGi technology provides a
+service-oriented architecture that enables these components to dynamically discover each other for collaboration. The OSGi Alliance
+has developed many standard component interfaces for common functions like HTTP servers, configuration, logging, security, user
+administration, XML and many more. Plug-compatible implementations of these components can be obtained from different vendors with
+different optimizations and costs. However, service interfaces can also be developed on a proprietary basis.
+
+OSGi technology adopters benefit from improved time-to-market and reduced development costs because OSGi technology provides for the
+integration of pre-built and pre-tested component subsystems. The technology also reduces maintenance costs and enables unique new
+aftermarket opportunities because components can be dynamically delivered to devices in the field.
+
+For more information, check out the http://www.osgi.org/Main/HomePage[OSGi Alliance website].
+
+=== Powered by Apache Karaf
+
+Apache ServiceMix is based on http://karaf.apache.org/[Apache Karaf]. Apache Karaf is a small
+http://www.osgi.org/Main/HomePage[OSGi-based] runtime which provides a lightweight container onto which various components and
+applications can be deployed.
+
+Here is a short list of features supported by the Karaf:
+
+Hot deployment: Karaf supports hot deployment of OSGi bundles by monitoring jar files inside the $home/deploy directory. Each time a
+jar is copied in this folder, it will be installed inside the runtime. You can then update or delete it and changes will be handled
+automatically. In addition, the Karaf also supports exploded bundles and custom deployers (Blueprint and Spring ones are included by
+default).
+
+Dynamic configuration: Services are usually configured through the ConfigurationAdmin OSGi service. Such configuration can be
+defined in Karaf using property files inside the $home/etc directory. These configurations are monitored and changes on the
+properties files will be propagated to the services.
+
+Logging System: using a centralized logging back end supported by Log4J, Karaf supports a number of different APIs (JDK 1.4, JCL,
+SLF4J, Avalon, Tomcat, OSGi)
+
+Provisioning: Provisioning of libraries or applications can be done through a number of different ways, by which they will be
+downloaded locally, installed and started.
+
+Native OS integration: Karaf can be integrated into your own Operating System as a service so that the lifecycle will be bound to
+your Operating System.
+
+Extensible Shell console: Karaf features a nice text console where you can manage the services, install new applications or
+libraries and manage their state. This shell is easily extensible by deploying new commands dynamically along with new features or
+applications.
+
+Remote access: use any SSH client to connect to Karaf and issue commands in the console .
+
+Security framework based on JAAS.
+
+Managing instances: Karaf provides simple commands for managing multiple instances. You can easily create, delete, start and stop
+instances of Karaf through the console.
+
+For more information, check out the http://karaf.apache.org/[Apache Karaf project page].
+
+=== Apache Camel
+
+Apache Camel is a powerful open source integration framework based on known
+http://camel.apache.org/enterprise-integration-patterns.html[Enterprise Integration Patterns] with powerful
+http://camel.apache.org/bean-integration.html[Bean Integration].
+
+Apache Camel lets you create the http://camel.apache.org/enterprise-integration-patterns.html[Enterprise Integration Patterns] to
+implement routing and mediation rules in either a Java based http://camel.apache.org/dsl.html[Domain Specific Language (or Fluent
+API)], via http://camel.apache.org/spring.html[Spring based Xml Configuration] files or via the
+http://camel.apache.org/scala-dsl.html[Scala DSL].
+
+For more information, check out the <<camel-guide.adoc#,Using Apache Camel in ServiceMix User Guide>>.
+
+=== Services proposed
+
+_TODO: write this bit_
+
+==== Message Broker : Apache ActiveMQ
+
+Apache ServiceMix ships with an embedded instance of http://activemq.apache.org[Apache ActiveMQ] out-of-the-box.
+
+It is a fully functional Apache ActiveMQ message broker instance listening for http://activemq.apache.org/openwire.html[TCP]
+connections on port 61616 and http://activemq.apache.org/stomp.html[STOMP] connections on port 61613.
+
+The http://activemq.apache.org/xml-configuration.html[default configuration for the Apache ActiveMQ] message broker resides in the
+ServiceMix installation directory under the etc sub-directory. The ActiveMQ configuration file is named activemq.xml. It's
+configured with reasonable default information like http://activemq.apache.org/persistence.html[Persistence (KahaDB)] and
+http://activemq.apache.org/producer-flow-control.html[Producer Flow Control] (essentially to make sure the broker does not run out
+of memory).
+
+The configuration file also makes use of a reusable connection pool available to all OSGi bundles exposing a
+http://docs.oracle.com/javaee/1.4/api/javax/jms/ConnectionFactory.html[javax.jms.ConnectionFactory] as a service for consumption.
+You can re-use this connection pool via tools such as http://activemq.apache.org/osgi-integration.html[spring-dm or blueprint].
+
+The ActiveMQ message broker allows several components such as servicemix-cluster, http://camel.apache.org/jms.html[camel-jms],
+http://camel.apache.org/activemq.html[camel-activemq], http://cxf.apache.org/docs/jms-transport.html[cxf-jms transport] to be
+utilized without any additional configuration.
+
+==== Transaction : Geronimo Transaction Manager
+_TODO: write this bit_
+
+==== Routing and Mediation : Apache Camel
+_TODO: write this bit_
+
+==== Web Services : Apache CXF
+_TODO: write this bit_
+
+==== Web Container
+_TODO: write this bit_
+
+==== SOA platform
+_TODO: write this bit_
+
+===== Spring DM container
+_TODO: write this bit_
+
+===== Blueprint OSGI container
+_TODO: write this bit_
+
+===== EJB Container
+_TODO: write this bit_
