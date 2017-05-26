@@ -19,8 +19,8 @@
     <parent>
         <groupId>org.apache.servicemix.parent</groupId>
         <artifactId>assemblies-parent</artifactId>
-        <version>7.0.1-SNAPSHOT</version>
-        <relativePath>../assemblies-parent/pom.xml</relativePath>
+        <version>7.0.2-SNAPSHOT</version>
+        <relativePath>../parent/assemblies-parent/pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
