@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.servicemix.parent</groupId>
         <artifactId>features-parent</artifactId>
-        <version>7.0.2-SNAPSHOT</version>
+        <version>7.1.0-SNAPSHOT</version>
         <relativePath>../../parent/features-parent/pom.xml</relativePath>
     </parent>
 

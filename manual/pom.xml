@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.apache.servicemix.parent</groupId>
         <artifactId>assemblies-parent</artifactId>
-        <version>7.0.2-SNAPSHOT</version>
+        <version>7.1.0-SNAPSHOT</version>
         <relativePath>../parent/assemblies-parent/pom.xml</relativePath>
     </parent>
 
@@ -111,10 +111,10 @@
                                 <last-update-label>Generated </last-update-label>
                                 <icons>font</icons>
                                 <sectanchors>true</sectanchors>
-                                <idprefix/>
+                                <idprefix />
                                 <idseparator>-</idseparator>
                                 <docinfo1>true</docinfo1>
-                                <nofooter/>
+                                <nofooter />
                             </attributes>
                         </configuration>
                     </execution>
@@ -132,8 +132,8 @@
                             <attributes>
                                 <icons>font</icons>
                                 <pagenums>center</pagenums>
-                                <toc/>
-                                <idprefix/>
+                                <toc />
+                                <idprefix />
                                 <idseparator>-</idseparator>
                                 <project-version>${project.version}</project-version>
                             </attributes>
