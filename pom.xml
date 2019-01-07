@@ -51,9 +51,9 @@
     </modules>
 
     <scm>
-        <connection>scm:git:https://git-wip-us.apache.org/repos/asf/servicemix.git</connection>
-        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/servicemix.git</developerConnection>
-        <url>https://git-wip-us.apache.org/repos/asf?p=servicemix.git</url>
+        <connection>scm:git:https://gitbox.apache.org/repos/asf/servicemix.git</connection>
+        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/servicemix.git</developerConnection>
+        <url>https://gitbox.apache.org/repos/asf?p=servicemix.git</url>
         <tag>HEAD</tag>
     </scm>
 
