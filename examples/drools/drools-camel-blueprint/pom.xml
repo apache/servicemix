@@ -33,7 +33,7 @@
 		</osgi.private.package>
 		<osgi.import.package>
 			org.slf4j;version="[1.6,2)",
-			org.apache.camel;version="[2.16,2.17)",
+			org.apache.camel;version="[2.17,2.18)",
 			org.kie.api.*;version="[6.0,7)",
 			org.kie.aries.blueprint.factorybeans;version="[6.0,7)",
 			org.kie.internal.command;version="[6.0,7)",

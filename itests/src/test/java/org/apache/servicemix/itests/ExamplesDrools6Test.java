@@ -58,7 +58,7 @@ public class ExamplesDrools6Test extends ServiceMixDistroTest {
     @Test
     public void testDroolsCamelExample() throws Exception {
         try (Features features = install("examples-drools-camel-blueprint")) {
-            log.expectContains("Total 2 routes, of which 2 is started");
+            log.expectContains("Total 2 routes, of which 2 are started");
         }
     }
 
