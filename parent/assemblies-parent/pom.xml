@@ -44,7 +44,7 @@
         <fasterxml.jackson.version>2.6.3</fasterxml.jackson.version>
         <geronimo-atinject.version>1.0</geronimo-atinject.version>
         <jodatime2.bundle.version>2.9</jodatime2.bundle.version>
-        <karaf.version>4.0.9</karaf.version>
+        <karaf.version>4.2.9</karaf.version>
         <pax.exam.version>4.9.1</pax.exam.version>
         <pax.logging.version>1.8.5</pax.logging.version>
         <servicemix.specs.version>2.8.0</servicemix.specs.version>
