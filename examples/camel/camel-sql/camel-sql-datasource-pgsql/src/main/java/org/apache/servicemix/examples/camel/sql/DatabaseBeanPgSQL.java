@@ -34,8 +34,7 @@ public class DatabaseBeanPgSQL {
     }
 
     public void create() throws SQLException {
-        Statement sta = dataSource.getConnection().createStatement();
-        try {
+        try (Statement sta = dataSource.getConnection().createStatement()) {
             sta.executeUpdate("CREATE SEQUENCE order_id_seq;");
             sta.executeUpdate("CREATE TABLE orders ( id INT NOT NULL PRIMARY KEY DEFAULT nextval('order_id_seq'), item VARCHAR(50), amount INT, description VARCHAR(300), processed BOOLEAN, consumed BOOLEAN);");
         } catch (SQLException e) {

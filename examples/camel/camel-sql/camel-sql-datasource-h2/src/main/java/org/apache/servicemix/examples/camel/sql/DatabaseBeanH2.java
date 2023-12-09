@@ -35,8 +35,7 @@ public class DatabaseBeanH2 {
     }
 
     public void create() throws SQLException{
-        Statement sta = dataSource.getConnection().createStatement();
-        try {
+        try (Statement sta = dataSource.getConnection().createStatement()) {
             sta.executeUpdate("CREATE TABLE orders ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item VARCHAR(50), amount INT, description VARCHAR(300), processed BOOLEAN, consumed BOOLEAN);");
         } catch (SQLException e) {
             LOGGER.info("Table orders already exists");
