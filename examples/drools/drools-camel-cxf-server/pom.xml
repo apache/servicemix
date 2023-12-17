@@ -40,7 +40,7 @@
             org.kie.api.event.rule;version="[6.0,7.0)",
             org.kie.api.command;version="[6.0,7.0)",
             org.kie.aries.blueprint.factorybeans;version="[6.0,7.0)",
-            org.apache.camel;version="[2.16,2.17)",
+            org.apache.camel;version="[2.17,2.18)",
 
             org.kie.internal.command;version="[6.0,7)",
             
